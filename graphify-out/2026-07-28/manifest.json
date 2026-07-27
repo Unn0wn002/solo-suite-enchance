@@ -1,8 +1,8 @@
 {
   ".openai/hosting.json": {
-    "mtime": 1785165564.2644556,
-    "ast_hash": "3cc3b424d752d37687215a9bbaed913e",
-    "semantic_hash": ""
+    "mtime": 1783503510.846021,
+    "ast_hash": "9a0cc2e1cce98c1aac6956148ab24e92",
+    "semantic_hash": "9a0cc2e1cce98c1aac6956148ab24e92"
   },
   "app/_sites-preview/SkeletonPreview.tsx": {
     "mtime": 1784268440.4096394,
@@ -93,35 +93,5 @@
     "mtime": 1783503510.8517826,
     "ast_hash": "c151710790937516c29e15f22474c967",
     "semantic_hash": "c151710790937516c29e15f22474c967"
-  },
-  "README.md": {
-    "mtime": 1783623383.2717366,
-    "ast_hash": "8013612a8e47f987c08e21c57c5135d5",
-    "semantic_hash": ""
-  },
-  "public/favicon.svg": {
-    "mtime": 1783503510.8445718,
-    "ast_hash": "c61e0e78dc93ca669418b9315a7bc9ba",
-    "semantic_hash": ""
-  },
-  "public/file.svg": {
-    "mtime": 1783503510.8507657,
-    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
-    "semantic_hash": ""
-  },
-  "public/globe.svg": {
-    "mtime": 1783503510.8507657,
-    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
-    "semantic_hash": ""
-  },
-  "public/og.png": {
-    "mtime": 1785165458.22715,
-    "ast_hash": "fb9c5d82825e835957c26ce28518981e",
-    "semantic_hash": ""
-  },
-  "public/window.svg": {
-    "mtime": 1783503510.8507657,
-    "ast_hash": "a2760511c65806022ad20adf74370ff3",
-    "semantic_hash": ""
   }
 }

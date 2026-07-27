@@ -1,0 +1,309 @@
+{
+  "communities": {
+    "0": [
+      "cloudflare_vite_plugin",
+      "drizzle_kit",
+      "eslint",
+      "eslint_config_next",
+      "package_devdependencies",
+      "package_devdependencies_cloudflare_vite_plugin",
+      "package_devdependencies_drizzle_kit",
+      "package_devdependencies_eslint",
+      "package_devdependencies_eslint_config_next",
+      "package_devdependencies_react_server_dom_webpack",
+      "package_devdependencies_tailwindcss",
+      "package_devdependencies_tailwindcss_postcss",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_devdependencies_vinext",
+      "package_devdependencies_vite",
+      "package_devdependencies_vitejs_plugin_react",
+      "package_devdependencies_vitejs_plugin_rsc",
+      "package_devdependencies_wrangler",
+      "react_server_dom_webpack",
+      "tailwindcss",
+      "tailwindcss_postcss",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript",
+      "vinext",
+      "vite",
+      "vitejs_plugin_react",
+      "vitejs_plugin_rsc",
+      "wrangler"
+    ],
+    "1": [
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_allowjs",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_incremental",
+      "tsconfig_compileroptions_isolatedmodules",
+      "tsconfig_compileroptions_jsx",
+      "tsconfig_compileroptions_lib",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_noemit",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_plugins",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target"
+    ],
+    "2": [
+      "package",
+      "package_engines",
+      "package_engines_node",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_db_generate",
+      "package_scripts_dev",
+      "package_scripts_lint",
+      "package_scripts_start",
+      "package_scripts_test",
+      "package_type",
+      "package_version"
+    ],
+    "3": [
+      "drizzle_orm",
+      "next",
+      "package_dependencies",
+      "package_dependencies_drizzle_orm",
+      "package_dependencies_next",
+      "package_dependencies_react",
+      "package_dependencies_react_dom",
+      "package_dependencies_react_loading_skeleton",
+      "react",
+      "react_dom",
+      "react_loading_skeleton"
+    ],
+    "4": [
+      "ref_mts",
+      "ref_next_dev_types_ts",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx",
+      "tsconfig",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "5": [
+      "app_chatgpt_auth",
+      "app_chatgpt_auth_chatgptsigninpath",
+      "app_chatgpt_auth_chatgptsignoutpath",
+      "app_chatgpt_auth_chatgptuser",
+      "app_chatgpt_auth_getchatgptuser",
+      "app_chatgpt_auth_isreservedauthpath",
+      "app_chatgpt_auth_requirechatgptuser",
+      "app_chatgpt_auth_safedecodeuricomponent",
+      "app_chatgpt_auth_saferelativereturnpath"
+    ],
+    "6": [
+      "db_index",
+      "db_index_getdb",
+      "db_schema",
+      "examples_d1_app_api_notes_route",
+      "examples_d1_app_api_notes_route_get",
+      "examples_d1_app_api_notes_route_post",
+      "examples_d1_app_api_notes_route_torouteerrormessage",
+      "examples_d1_db_schema",
+      "examples_d1_db_schema_notes"
+    ],
+    "7": [
+      "worker_index",
+      "worker_index_env",
+      "worker_index_executioncontext",
+      "worker_index_executioncontext_passthroughonexception",
+      "worker_index_executioncontext_waituntil",
+      "worker_index_input",
+      "worker_index_worker"
+    ],
+    "8": [
+      "app_layout",
+      "app_layout_geistmono",
+      "app_layout_geistsans",
+      "app_layout_metadata",
+      "app_layout_rootlayout"
+    ],
+    "9": [
+      "app_page",
+      "app_page_home",
+      "app_page_modules",
+      "app_page_runtimes",
+      "app_page_workflow"
+    ],
+    "10": [
+      "app_sites_preview_skeletonpreview",
+      "app_sites_preview_skeletonpreview_articlewidths",
+      "app_sites_preview_skeletonpreview_sidebarwidths",
+      "app_sites_preview_skeletonpreview_skeletonpreview"
+    ],
+    "11": [
+      "tests_rendered_html_test",
+      "tests_rendered_html_test_previewroot",
+      "tests_rendered_html_test_render",
+      "tests_rendered_html_test_templateroot"
+    ],
+    "12": [
+      "eslint_config",
+      "eslint_config_eslintconfig"
+    ],
+    "13": [
+      "next_config",
+      "next_config_nextconfig"
+    ],
+    "14": [
+      "postcss_config",
+      "postcss_config_config"
+    ],
+    "15": [
+      "vite_config",
+      "vite_config_localbindingconfig"
+    ],
+    "16": [
+      "drizzle_config"
+    ]
+  },
+  "cohesion": {
+    "0": 0.06060606060606061,
+    "1": 0.10526315789473684,
+    "2": 0.14285714285714285,
+    "3": 0.18181818181818182,
+    "4": 0.2,
+    "5": 0.3888888888888889,
+    "6": 0.3888888888888889,
+    "7": 0.2857142857142857,
+    "8": 0.4,
+    "9": 0.4,
+    "10": 0.5,
+    "11": 0.5,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0
+  },
+  "gods": [
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "degree": 7
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "degree": 7
+    },
+    {
+      "id": "app_chatgpt_auth_saferelativereturnpath",
+      "label": "safeRelativeReturnPath()",
+      "degree": 4
+    },
+    {
+      "id": "db_index_getdb",
+      "label": "getDb()",
+      "degree": 4
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "degree": 4
+    },
+    {
+      "id": "app_chatgpt_auth_getchatgptuser",
+      "label": "getChatGPTUser()",
+      "degree": 3
+    },
+    {
+      "id": "app_chatgpt_auth_requirechatgptuser",
+      "label": "requireChatGPTUser()",
+      "degree": 3
+    },
+    {
+      "id": "app_chatgpt_auth_chatgptsigninpath",
+      "label": "chatGPTSignInPath()",
+      "degree": 3
+    },
+    {
+      "id": "examples_d1_app_api_notes_route_torouteerrormessage",
+      "label": "toRouteErrorMessage()",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "GET()",
+      "target": "getDb()",
+      "source_files": [
+        "examples/d1/app/api/notes/route.ts",
+        "db/index.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "POST()",
+      "target": "getDb()",
+      "source_files": [
+        "examples/d1/app/api/notes/route.ts",
+        "db/index.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `devDependencies` connect `devDependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.135) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `dependencies` connect `dependencies` to `package.json`?",
+      "why": "High betweenness centrality (0.054) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `compilerOptions` connect `compilerOptions` to `include`?",
+      "why": "High betweenness centrality (0.035) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `sidebarWidths`, `articleWidths`, `ChatGPTUser` to the rest of the system?",
+      "why": "73 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `devDependencies` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `compilerOptions` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `package.json` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

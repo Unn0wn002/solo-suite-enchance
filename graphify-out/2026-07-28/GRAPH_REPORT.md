@@ -1,18 +1,12 @@
-# Graph Report - EC Solo Suite  (2026-07-28)
+# Graph Report - .  (2026-07-27)
 
 ## Corpus Check
-- 20 files · ~79,442 words
-- Verdict: corpus is large enough that graph structure adds value.
+- cluster-only mode — file stats not available
 
 ## Summary
-- 148 nodes · 145 edges · 18 communities (12 shown, 6 thin omitted)
+- 139 nodes · 137 edges · 17 communities (11 shown, 6 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `01bf61a7`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - devDependencies
@@ -31,19 +25,18 @@
 - next.config.ts
 - postcss.config.mjs
 - vite.config.ts
-- vinext-starter
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
-2. `vinext-starter` - 8 edges
-3. `scripts` - 7 edges
-4. `include` - 7 edges
-5. `safeRelativeReturnPath()` - 4 edges
-6. `getDb()` - 4 edges
-7. `lib` - 4 edges
-8. `getChatGPTUser()` - 3 edges
-9. `requireChatGPTUser()` - 3 edges
-10. `chatGPTSignInPath()` - 3 edges
+2. `scripts` - 7 edges
+3. `include` - 7 edges
+4. `safeRelativeReturnPath()` - 4 edges
+5. `getDb()` - 4 edges
+6. `lib` - 4 edges
+7. `getChatGPTUser()` - 3 edges
+8. `requireChatGPTUser()` - 3 edges
+9. `chatGPTSignInPath()` - 3 edges
+10. `toRouteErrorMessage()` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `GET()` --calls--> `getDb()`  [EXTRACTED]
@@ -54,7 +47,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (18 total, 6 thin omitted)
+## Communities (17 total, 6 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.06
@@ -96,12 +89,8 @@ Nodes (3): geistMono, geistSans, metadata
 Cohesion: 0.40
 Nodes (3): modules, runtimes, workflow
 
-### Community 17 - "vinext-starter"
-Cohesion: 0.22
-Nodes (8): Included Shape, Learn More, Optional Dispatch-Owned ChatGPT Sign-In, Prerequisites, Quick Start, Useful Commands, vinext-starter, Workspace Auth Headers
-
 ## Knowledge Gaps
-- **80 isolated node(s):** `sidebarWidths`, `articleWidths`, `ChatGPTUser`, `geistSans`, `geistMono` (+75 more)
+- **73 isolated node(s):** `sidebarWidths`, `articleWidths`, `ChatGPTUser`, `geistSans`, `geistMono` (+68 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -109,13 +98,13 @@ Nodes (8): Included Shape, Learn More, Optional Dispatch-Owned ChatGPT Sign-In, 
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
-  _High betweenness centrality (0.119) - this node is a cross-community bridge._
+  _High betweenness centrality (0.135) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
-  _High betweenness centrality (0.048) - this node is a cross-community bridge._
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
 - **Why does `compilerOptions` connect `compilerOptions` to `include`?**
-  _High betweenness centrality (0.030) - this node is a cross-community bridge._
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **What connects `sidebarWidths`, `articleWidths`, `ChatGPTUser` to the rest of the system?**
-  _80 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _73 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
