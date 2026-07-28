@@ -1,0 +1,43 @@
+{
+  "name": "gate",
+  "version": "1.0.27",
+  "description": "Run before-code, before-merge, before-deploy, project-scoring, and 14-category production-readiness gates. Migrated workflows: $gate-before-code, $gate-before-deploy, $gate-before-merge, $gate-finalize-evidence, $gate-production-ready, $gate-score-project.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "before-deploy",
+    "before-merge",
+    "blockers",
+    "checklist",
+    "codex",
+    "gate",
+    "go-no-go",
+    "launch",
+    "launch-status",
+    "production-ready",
+    "quality",
+    "readiness",
+    "scoring",
+    "solo",
+    "solo-suite",
+    "strict"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Quality Gates",
+    "shortDescription": "Run evidence-based engineering quality gates",
+    "longDescription": "Run before-code, before-merge, before-deploy, project-scoring, and 14-category production-readiness gates. Migrated workflows: $gate-before-code, $gate-before-deploy, $gate-before-merge, $gate-finalize-evidence, $gate-production-ready, $gate-score-project. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Quality",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Quality Gates to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Api Contract Designer"
+  short_description: "Run the Api Contract Designer workflow in Codex"
+  default_prompt: "Use $api-contract-designer to help with this project."
+policy:
+  allow_implicit_invocation: false

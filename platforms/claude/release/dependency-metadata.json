@@ -1,0 +1,63 @@
+{
+  "schema": "solo-suite/dependency-metadata-v1",
+  "packages": {
+    "attrs": {
+      "license": "MIT",
+      "direct": false,
+      "depends_on": []
+    },
+    "coverage": {
+      "license": "Apache-2.0",
+      "direct": true,
+      "depends_on": [
+        "tomli"
+      ]
+    },
+    "jsonschema": {
+      "license": "MIT",
+      "direct": true,
+      "depends_on": [
+        "attrs",
+        "jsonschema-specifications",
+        "referencing",
+        "rpds-py"
+      ]
+    },
+    "jsonschema-specifications": {
+      "license": "MIT",
+      "direct": false,
+      "depends_on": [
+        "referencing"
+      ]
+    },
+    "pyyaml": {
+      "license": "MIT",
+      "direct": true,
+      "depends_on": []
+    },
+    "referencing": {
+      "license": "MIT",
+      "direct": false,
+      "depends_on": [
+        "attrs",
+        "rpds-py",
+        "typing-extensions"
+      ]
+    },
+    "rpds-py": {
+      "license": "MIT",
+      "direct": false,
+      "depends_on": []
+    },
+    "tomli": {
+      "license": "MIT",
+      "direct": false,
+      "depends_on": []
+    },
+    "typing-extensions": {
+      "license": "PSF-2.0",
+      "direct": false,
+      "depends_on": []
+    }
+  }
+}

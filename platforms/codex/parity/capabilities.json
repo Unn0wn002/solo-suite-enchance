@@ -1,0 +1,2874 @@
+{
+  "adapter": {
+    "allowed_extra_skills": [
+      "full-team:full-team-orchestrator"
+    ],
+    "allowed_native_files": [
+      "plugins/gate/skills/production-readiness-reviewer/references/gate-evidence-v1.schema.json",
+      "plugins/gate/skills/production-readiness-reviewer/references/project-profile-v1.schema.json",
+      "plugins/gate/skills/production-readiness-reviewer/references/score-evidence-v1.schema.json",
+      "plugins/gate/skills/production-readiness-reviewer/scripts/validate_gate_evidence.py",
+      "plugins/gate/skills/quality-gatekeeper/references/phase-gate-evidence-v1.schema.json",
+      "plugins/gate/skills/quality-gatekeeper/scripts/validate_phase_gate_evidence.py"
+    ],
+    "body_waivers": [
+      {
+        "id": "full-team:full-team-verify",
+        "reason": "Codex-native fail-closed preflight wrapper"
+      },
+      {
+        "id": "gate:gate-production-ready",
+        "reason": "synchronized Codex gate-policy workflow"
+      },
+      {
+        "id": "gate:production-readiness-reviewer",
+        "reason": "synchronized Codex gate-policy specialist"
+      },
+      {
+        "id": "seo:seo",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-backlinks",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-cluster",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-competitor-pages",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-content",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-content-brief",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-drift",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-ecommerce",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-flow",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-geo",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-google",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-hreflang",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-images",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-local",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-maps",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-page",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-plan",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-programmatic",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-schema",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-sitemap",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-sxo",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "seo:seo-technical",
+        "reason": "Codex SEO specialist with merged command routing and output contract"
+      },
+      {
+        "id": "solo:solo-full-team-dev",
+        "reason": "authoritative Codex AgentRoom compatibility wrapper"
+      }
+    ],
+    "skill_waivers": [
+      {
+        "id": "ai:agent-room-templates",
+        "reason": "codex-native AgentRoom runtime and trust journal"
+      },
+      {
+        "id": "solo:suite-integrity",
+        "reason": "Codex source-checkout/installed-plugin integrity checker"
+      }
+    ]
+  },
+  "agentroom_archive": [
+    {
+      "archive_path": "parity/claude-rooms/SKILL.md",
+      "sha256": "7f7c0ca27eeaba82c93d5e92b86168881624a39c25c21814270c5ef27986757b",
+      "source_path": "plugins/ai/skills/agent-room-templates/SKILL.md"
+    },
+    {
+      "archive_path": "parity/claude-rooms/agentsrooms/bug-fix-loop.json",
+      "sha256": "c3e779403caa0bbd60ad6356193cfb1282f41f9f3738672df6fa563d3f1ed792",
+      "source_path": "plugins/ai/skills/agent-room-templates/agentsrooms/bug-fix-loop.json"
+    },
+    {
+      "archive_path": "parity/claude-rooms/agentsrooms/full-team-website.json",
+      "sha256": "41b72b072fe334de546550e538a4480ece30c9b971108bdcbcfab85e604ad665",
+      "source_path": "plugins/ai/skills/agent-room-templates/agentsrooms/full-team-website.json"
+    },
+    {
+      "archive_path": "parity/claude-rooms/agentsrooms/production-release.json",
+      "sha256": "327636b6fc205f6d77b218b0310e1f2aa8076ed3b122de7729f2900435744b6d",
+      "source_path": "plugins/ai/skills/agent-room-templates/agentsrooms/production-release.json"
+    },
+    {
+      "archive_path": "parity/claude-rooms/agentsrooms/site-doctor-audit.json",
+      "sha256": "a4feac03345b89d474403c273fe34bd1263ef81894c77df75e666de6db17917c",
+      "source_path": "plugins/ai/skills/agent-room-templates/agentsrooms/site-doctor-audit.json"
+    },
+    {
+      "archive_path": "parity/claude-rooms/references/runner.md",
+      "sha256": "cef734420666ce111bc9617d147364b6d235a5418b66169934d170c5c88de6e6",
+      "source_path": "plugins/ai/skills/agent-room-templates/references/runner.md"
+    },
+    {
+      "archive_path": "parity/claude-rooms/references/untrusted-content.md",
+      "sha256": "8b2f68af862dd0240fe8f41a3b64510f4413ac62d4ccf3ea8cc27aaee367239c",
+      "source_path": "plugins/ai/skills/agent-room-templates/references/untrusted-content.md"
+    },
+    {
+      "archive_path": "parity/claude-rooms/schema/agentroom-v1.schema.json",
+      "sha256": "b6fde5890cf21a3b5a564dd8eb5391af041eeb8ef3105042774182b8522ce124",
+      "source_path": "plugins/ai/skills/agent-room-templates/schema/agentroom-v1.schema.json"
+    },
+    {
+      "archive_path": "parity/claude-rooms/scripts/validate_rooms.py",
+      "sha256": "8c8e1f1b36634bb4609f47a12c5a6c89549f0fd63ace110893f6314ed2d15159",
+      "source_path": "plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py"
+    }
+  ],
+  "commands": [
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-agent-rooms",
+      "command": "agent-rooms",
+      "id": "ai:agent-rooms",
+      "legacy_invocation": "/ai:agent-rooms",
+      "normalized_sha256": "ea54d2455cf9eb4b05b9a37502e3cb800acaeae7f541aca33a34e0c680706fc0",
+      "plugin": "ai",
+      "skill_invocation": "$ai-agent-rooms",
+      "skill_name": "ai-agent-rooms",
+      "source_path": "plugins/ai/commands/agent-rooms.md",
+      "source_sha256": "924bc04e0803a27df7d49657b80c03ba3fa3c29b4d12d04120b711c5947cf559",
+      "target_path": "plugins/ai/skills/ai-agent-rooms/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-compare-models",
+      "command": "compare-models",
+      "id": "ai:compare-models",
+      "legacy_invocation": "/ai:compare-models",
+      "normalized_sha256": "698c2c883a84027af7d7729933b1f8fc7e3ccfcf698aef039164b77dfaed68b3",
+      "plugin": "ai",
+      "skill_invocation": "$ai-compare-models",
+      "skill_name": "ai-compare-models",
+      "source_path": "plugins/ai/commands/compare-models.md",
+      "source_sha256": "28e7c2daff5606c3a552edcb6504bcbab33c345b6ec4f8fd49c4178feca8581c",
+      "target_path": "plugins/ai/skills/ai-compare-models/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-handoff-check",
+      "command": "handoff-check",
+      "id": "ai:handoff-check",
+      "legacy_invocation": "/ai:handoff-check",
+      "normalized_sha256": "7dee690adf48d81422a3e8594fcebeb496832471ead947e0151570dfdc76c757",
+      "plugin": "ai",
+      "skill_invocation": "$ai-handoff-check",
+      "skill_name": "ai-handoff-check",
+      "source_path": "plugins/ai/commands/handoff-check.md",
+      "source_sha256": "93114929616ed51763357e47e768fef972323910db5101383d52c2aca943abc8",
+      "target_path": "plugins/ai/skills/ai-handoff-check/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-prompt-improve",
+      "command": "prompt-improve",
+      "id": "ai:prompt-improve",
+      "legacy_invocation": "/ai:prompt-improve",
+      "normalized_sha256": "8d931dc7be4a2261be21fe68e4c479fca437e4c6c798cd2a8f230d15cd6c3969",
+      "plugin": "ai",
+      "skill_invocation": "$ai-prompt-improve",
+      "skill_name": "ai-prompt-improve",
+      "source_path": "plugins/ai/commands/prompt-improve.md",
+      "source_sha256": "c02119ea2a870e903747df4975bdcdb001993ab3e7a95118d7df9a20eec030a5",
+      "target_path": "plugins/ai/skills/ai-prompt-improve/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-repair-cycle",
+      "command": "repair-cycle",
+      "id": "ai:repair-cycle",
+      "legacy_invocation": "/ai:repair-cycle",
+      "normalized_sha256": "50044e09b153aa1f7786f8bf376ad569659d9647094796b99f660fb0c20e6ed2",
+      "plugin": "ai",
+      "skill_invocation": "$ai-repair-cycle",
+      "skill_name": "ai-repair-cycle",
+      "source_path": "plugins/ai/commands/repair-cycle.md",
+      "source_sha256": "f77dbe8d0da15b5c9094859c3a93c726514f9c4ef6bcc5d3b6043d4abe8c3b8b",
+      "target_path": "plugins/ai/skills/ai-repair-cycle/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$ai-review-output",
+      "command": "review-output",
+      "id": "ai:review-output",
+      "legacy_invocation": "/ai:review-output",
+      "normalized_sha256": "da97b9dbe763e9ca30f1cad1aade97f98fe03811ffb3e2d5bf7394e7e286aebe",
+      "plugin": "ai",
+      "skill_invocation": "$ai-review-output",
+      "skill_name": "ai-review-output",
+      "source_path": "plugins/ai/commands/review-output.md",
+      "source_sha256": "43dcc9c71f72355d87c75eaddcb5c6fb7e6f45373b1f640ae47f6ae4464b56fb",
+      "target_path": "plugins/ai/skills/ai-review-output/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$browser-console-errors",
+      "command": "console-errors",
+      "id": "browser:console-errors",
+      "legacy_invocation": "/browser:console-errors",
+      "normalized_sha256": "b8ef0771882c518f363e2c4f987459bd677a8581c9ee76ed393d59cff32f59cf",
+      "plugin": "browser",
+      "skill_invocation": "$browser-console-errors",
+      "skill_name": "browser-console-errors",
+      "source_path": "plugins/browser/commands/console-errors.md",
+      "source_sha256": "a050def9b452264285884c99382b13e5465957a4c2692b64a89632a19728b2b1",
+      "target_path": "plugins/browser/skills/browser-console-errors/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$browser-form-submit-test",
+      "command": "form-submit-test",
+      "id": "browser:form-submit-test",
+      "legacy_invocation": "/browser:form-submit-test",
+      "normalized_sha256": "ffe9d71f3f23eef7a9e5b13e5ccd0631298d98a1ca6e597ee4ecf212c4d9d24d",
+      "plugin": "browser",
+      "skill_invocation": "$browser-form-submit-test",
+      "skill_name": "browser-form-submit-test",
+      "source_path": "plugins/browser/commands/form-submit-test.md",
+      "source_sha256": "f9839ac2df5ea2429e1e71d12c5226ff7c43113b18eb089fdecf0c8cc2716f87",
+      "target_path": "plugins/browser/skills/browser-form-submit-test/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$browser-mobile-test",
+      "command": "mobile-test",
+      "id": "browser:mobile-test",
+      "legacy_invocation": "/browser:mobile-test",
+      "normalized_sha256": "715f5470d3e88ac89d068d62aba22638d0d988e65b8ecf028104c61585bc56c3",
+      "plugin": "browser",
+      "skill_invocation": "$browser-mobile-test",
+      "skill_name": "browser-mobile-test",
+      "source_path": "plugins/browser/commands/mobile-test.md",
+      "source_sha256": "7d927dd556c26ba344f3ac491156a0e52251f2614248caf95fb42b0020d8e149",
+      "target_path": "plugins/browser/skills/browser-mobile-test/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$browser-smoke-test",
+      "command": "smoke-test",
+      "id": "browser:smoke-test",
+      "legacy_invocation": "/browser:smoke-test",
+      "normalized_sha256": "9561ebc95ad24d993dbad431e124d828c61a6d38d88369a4c5e9b45cab9bf6be",
+      "plugin": "browser",
+      "skill_invocation": "$browser-smoke-test",
+      "skill_name": "browser-smoke-test",
+      "source_path": "plugins/browser/commands/smoke-test.md",
+      "source_sha256": "c8df6c5c438345be5aa0172adeb1a80b792c9f1793011253bdcf50f369aedcfc",
+      "target_path": "plugins/browser/skills/browser-smoke-test/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$browser-visual-check",
+      "command": "visual-check",
+      "id": "browser:visual-check",
+      "legacy_invocation": "/browser:visual-check",
+      "normalized_sha256": "085be877f73b43e0206054f1ec72cadb289f9348169fa2dce733f39082752610",
+      "plugin": "browser",
+      "skill_invocation": "$browser-visual-check",
+      "skill_name": "browser-visual-check",
+      "source_path": "plugins/browser/commands/visual-check.md",
+      "source_sha256": "1299f569b9914a4fcfcdc2f1391e66f3e9de103d052e4c73bea33bf17ef1aef6",
+      "target_path": "plugins/browser/skills/browser-visual-check/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$design-component-system",
+      "command": "component-system",
+      "id": "design:component-system",
+      "legacy_invocation": "/design:component-system",
+      "normalized_sha256": "a0e2dff629d968fa0bec54879ffac4f66bd6ba5268c4961fd19c30ab9152b652",
+      "plugin": "design",
+      "skill_invocation": "$design-component-system",
+      "skill_name": "design-component-system",
+      "source_path": "plugins/design/commands/component-system.md",
+      "source_sha256": "3b71282278ab38830bb300ad6fda9d7638a657f32c513790af21ad12e3dc0e50",
+      "target_path": "plugins/design/skills/design-component-system/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$design-ui-review",
+      "command": "ui-review",
+      "id": "design:ui-review",
+      "legacy_invocation": "/design:ui-review",
+      "normalized_sha256": "ed19406d164de4e88074c7d70c844cf012fc6141ebd5da1de58788038452118d",
+      "plugin": "design",
+      "skill_invocation": "$design-ui-review",
+      "skill_name": "design-ui-review",
+      "source_path": "plugins/design/commands/ui-review.md",
+      "source_sha256": "ba8c552c421dc3f72937d007053282e4971ee3464682fb56332f793435b6f5fe",
+      "target_path": "plugins/design/skills/design-ui-review/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$design-ux-flow",
+      "command": "ux-flow",
+      "id": "design:ux-flow",
+      "legacy_invocation": "/design:ux-flow",
+      "normalized_sha256": "c8f7926bffebb719574ff5ea4d2b289a6c63e85a021e471379206ac0bb71e0ed",
+      "plugin": "design",
+      "skill_invocation": "$design-ux-flow",
+      "skill_name": "design-ux-flow",
+      "source_path": "plugins/design/commands/ux-flow.md",
+      "source_sha256": "cb2c25b495fda33403e62c62c2d9cfbb492644f6a5032847289912808d40974b",
+      "target_path": "plugins/design/skills/design-ux-flow/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$dev-code-review",
+      "command": "code-review",
+      "id": "dev:code-review",
+      "legacy_invocation": "/dev:code-review",
+      "normalized_sha256": "1d88a978cd0d782e6b46881884d929736965f1eabc572402c0e436b6791d2e5e",
+      "plugin": "dev",
+      "skill_invocation": "$dev-code-review",
+      "skill_name": "dev-code-review",
+      "source_path": "plugins/dev/commands/code-review.md",
+      "source_sha256": "45e584d88a04789de5c827be213fccf3db015ea897232786c4fbb4ca13811378",
+      "target_path": "plugins/dev/skills/dev-code-review/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$dev-fix-bug",
+      "command": "fix-bug",
+      "id": "dev:fix-bug",
+      "legacy_invocation": "/dev:fix-bug",
+      "normalized_sha256": "c2bd8aee2b62189dc720c7859656210a90cc957278777b7c000a9bafa7bbccf9",
+      "plugin": "dev",
+      "skill_invocation": "$dev-fix-bug",
+      "skill_name": "dev-fix-bug",
+      "source_path": "plugins/dev/commands/fix-bug.md",
+      "source_sha256": "4228eb375bcd7bedb2e6803a44818ade2d8ae28d3be012e05a5652db4576d2f9",
+      "target_path": "plugins/dev/skills/dev-fix-bug/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$dev-implement-feature",
+      "command": "implement-feature",
+      "id": "dev:implement-feature",
+      "legacy_invocation": "/dev:implement-feature",
+      "normalized_sha256": "a5abbdbef69e1a3cca1d1959ac1f8b9f48a0c914ce6d8458217c7145311893e9",
+      "plugin": "dev",
+      "skill_invocation": "$dev-implement-feature",
+      "skill_name": "dev-implement-feature",
+      "source_path": "plugins/dev/commands/implement-feature.md",
+      "source_sha256": "791a3a4ab6c3839da5d1e06e5d83c0d590f7ccf1f8d0c3dedbb81ea1d5fc8786",
+      "target_path": "plugins/dev/skills/dev-implement-feature/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$dev-refactor-code",
+      "command": "refactor-code",
+      "id": "dev:refactor-code",
+      "legacy_invocation": "/dev:refactor-code",
+      "normalized_sha256": "3d263cf14e82bd4fba6e9d739d8d678099bcaecbdf7ae33e076a584d23d67428",
+      "plugin": "dev",
+      "skill_invocation": "$dev-refactor-code",
+      "skill_name": "dev-refactor-code",
+      "source_path": "plugins/dev/commands/refactor-code.md",
+      "source_sha256": "eb3ab0e7135ba31e1c8e306e373603ae10014efcc889df770ba298e6bee5e109",
+      "target_path": "plugins/dev/skills/dev-refactor-code/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$docs-api",
+      "command": "api",
+      "id": "docs:api",
+      "legacy_invocation": "/docs:api",
+      "normalized_sha256": "b8f2c10808b7766f3ad32d122500f541c5b63aad30efa50d19313a494306d8d6",
+      "plugin": "docs",
+      "skill_invocation": "$docs-api",
+      "skill_name": "docs-api",
+      "source_path": "plugins/docs/commands/api.md",
+      "source_sha256": "f708583f7b4e22026f0b3d31787ad50f4eb32dddbf772bd394cd08e51d312793",
+      "target_path": "plugins/docs/skills/docs-api/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$docs-runbook",
+      "command": "runbook",
+      "id": "docs:runbook",
+      "legacy_invocation": "/docs:runbook",
+      "normalized_sha256": "268240f08faa9285d0ed3136ed552d6ee7a5df191c03568b8dd2f393e55e0263",
+      "plugin": "docs",
+      "skill_invocation": "$docs-runbook",
+      "skill_name": "docs-runbook",
+      "source_path": "plugins/docs/commands/runbook.md",
+      "source_sha256": "e024ea213ad18e35ed0d3c920e994a57850d02f52a00d777d348b99440ac4a6b",
+      "target_path": "plugins/docs/skills/docs-runbook/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$docs-setup-guide",
+      "command": "setup-guide",
+      "id": "docs:setup-guide",
+      "legacy_invocation": "/docs:setup-guide",
+      "normalized_sha256": "1a9acc1688fb880d587e3d0b35e215260e974ba9d377b9af9318e5d6286bbd48",
+      "plugin": "docs",
+      "skill_invocation": "$docs-setup-guide",
+      "skill_name": "docs-setup-guide",
+      "source_path": "plugins/docs/commands/setup-guide.md",
+      "source_sha256": "e28a103a50c057b75c1b7bbab0f6b9ccc9eb51f208b9c5fdea2cb54423976312",
+      "target_path": "plugins/docs/skills/docs-setup-guide/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$docs-update",
+      "command": "update",
+      "id": "docs:update",
+      "legacy_invocation": "/docs:update",
+      "normalized_sha256": "56636b17ff814c2a1ee381980709ac5c74f065c7cc3a7d11c74267d1b7100710",
+      "plugin": "docs",
+      "skill_invocation": "$docs-update",
+      "skill_name": "docs-update",
+      "source_path": "plugins/docs/commands/update.md",
+      "source_sha256": "0c52a7953d2fd2df33da80f6193f4ecc233be35271c1814cf38a7a2b709eadbd",
+      "target_path": "plugins/docs/skills/docs-update/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$full-team-verify",
+      "command": "verify",
+      "id": "full-team:verify",
+      "legacy_invocation": "/full-team:verify",
+      "normalized_sha256": "b148e5d86dca4f96aa73c4bc626cf46df6cf0e73e6bb321e3d48a7ae827d169f",
+      "plugin": "full-team",
+      "skill_invocation": "$full-team-verify",
+      "skill_name": "full-team-verify",
+      "source_path": "plugins/full-team/commands/verify.md",
+      "source_sha256": "9da5fadb4b102487563393ce67bb9520cfa4bf034bf851932a42b57544cb8c6f",
+      "target_path": "plugins/full-team/skills/full-team-verify/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-before-code",
+      "command": "before-code",
+      "id": "gate:before-code",
+      "legacy_invocation": "/gate:before-code",
+      "normalized_sha256": "f03079d9383179b0195c89d6cf6e28161a05aaeee6dfc27cb0186ff16c0f616d",
+      "plugin": "gate",
+      "skill_invocation": "$gate-before-code",
+      "skill_name": "gate-before-code",
+      "source_path": "plugins/gate/commands/before-code.md",
+      "source_sha256": "9567ce4c2275875d2dfac579e75af2a7175ada90df1300f748ff65e7ff6a62eb",
+      "target_path": "plugins/gate/skills/gate-before-code/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-before-deploy",
+      "command": "before-deploy",
+      "id": "gate:before-deploy",
+      "legacy_invocation": "/gate:before-deploy",
+      "normalized_sha256": "6fbd989dc98a48ebba92c75bd04250ad13e08f26b476ad1885953f117fc15ab1",
+      "plugin": "gate",
+      "skill_invocation": "$gate-before-deploy",
+      "skill_name": "gate-before-deploy",
+      "source_path": "plugins/gate/commands/before-deploy.md",
+      "source_sha256": "eebca86e1d34ad30ea5d66511ddd9a87dfaf041e1eae53902a6929929b859d00",
+      "target_path": "plugins/gate/skills/gate-before-deploy/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-before-merge",
+      "command": "before-merge",
+      "id": "gate:before-merge",
+      "legacy_invocation": "/gate:before-merge",
+      "normalized_sha256": "9d853b20ec1d682d2769cd0affd1b7790c591d924de776430a0889e88032cfac",
+      "plugin": "gate",
+      "skill_invocation": "$gate-before-merge",
+      "skill_name": "gate-before-merge",
+      "source_path": "plugins/gate/commands/before-merge.md",
+      "source_sha256": "5ad14f998c697062f06e4d9cdf1dcf0143bb309b071c59a8bc69bcd3ff1b1140",
+      "target_path": "plugins/gate/skills/gate-before-merge/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-finalize-evidence",
+      "command": "finalize-evidence",
+      "id": "gate:finalize-evidence",
+      "legacy_invocation": "/gate:finalize-evidence",
+      "normalized_sha256": "2fe203bff9d88c8b9d5cd7bc3af612e12b82197ec7e02a32610aa1af92bf3450",
+      "plugin": "gate",
+      "skill_invocation": "$gate-finalize-evidence",
+      "skill_name": "gate-finalize-evidence",
+      "source_path": "plugins/gate/commands/finalize-evidence.md",
+      "source_sha256": "5754c5aee39cd86f51c1a7bce31c6db99e911b3b2a81323705071d6bd84429c6",
+      "target_path": "plugins/gate/skills/gate-finalize-evidence/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-production-ready",
+      "command": "production-ready",
+      "id": "gate:production-ready",
+      "legacy_invocation": "/gate:production-ready",
+      "normalized_sha256": "0bbe35ba81542e75a042114143e1c12af1a2c8cf7e88bb8bfc3944a1646f9e92",
+      "plugin": "gate",
+      "skill_invocation": "$gate-production-ready",
+      "skill_name": "gate-production-ready",
+      "source_path": "plugins/gate/commands/production-ready.md",
+      "source_sha256": "034c52b1ebe9726d0eaa3b2fb76bbf08dcc0afd086fedc4adfc8d41b606cbc9f",
+      "target_path": "plugins/gate/skills/gate-production-ready/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$gate-score-project",
+      "command": "score-project",
+      "id": "gate:score-project",
+      "legacy_invocation": "/gate:score-project",
+      "normalized_sha256": "eee8d8e6693686f34932dc7700834887f586403075eee06d41f22fdd5ed8dba8",
+      "plugin": "gate",
+      "skill_invocation": "$gate-score-project",
+      "skill_name": "gate-score-project",
+      "source_path": "plugins/gate/commands/score-project.md",
+      "source_sha256": "599f26c9b27325182241fee24aee620e2ae2448b7a2831f682d5ed4ad3220660",
+      "target_path": "plugins/gate/skills/gate-score-project/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$git-commit-plan",
+      "command": "commit-plan",
+      "id": "git:commit-plan",
+      "legacy_invocation": "/git:commit-plan",
+      "normalized_sha256": "f4a61cd912d3f2e172d446f8220b023c8b192811eb4bf6d2885174d90f79fdb9",
+      "plugin": "git",
+      "skill_invocation": "$git-commit-plan",
+      "skill_name": "git-commit-plan",
+      "source_path": "plugins/git/commands/commit-plan.md",
+      "source_sha256": "ce456433b4bab4fc5367a740fc10efd80377f8164a1fde0e3d1c2061efe2f36d",
+      "target_path": "plugins/git/skills/git-commit-plan/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$git-create-branch",
+      "command": "create-branch",
+      "id": "git:create-branch",
+      "legacy_invocation": "/git:create-branch",
+      "normalized_sha256": "fba3be2a8f5faac5c68329133f820e05e999c96ef2414e2e9ff762e808aaa2ae",
+      "plugin": "git",
+      "skill_invocation": "$git-create-branch",
+      "skill_name": "git-create-branch",
+      "source_path": "plugins/git/commands/create-branch.md",
+      "source_sha256": "2bb9eb200993effc51067e92f6730afef5f15f59f954951d925c3f25a3ced1f5",
+      "target_path": "plugins/git/skills/git-create-branch/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$git-pr-review",
+      "command": "pr-review",
+      "id": "git:pr-review",
+      "legacy_invocation": "/git:pr-review",
+      "normalized_sha256": "6123349902c5fd179a3bb7d5c9f8e6e2158dc7b35c1e3d24aec479a7ae6e43aa",
+      "plugin": "git",
+      "skill_invocation": "$git-pr-review",
+      "skill_name": "git-pr-review",
+      "source_path": "plugins/git/commands/pr-review.md",
+      "source_sha256": "88e1b4ab4d9031dbde20457a9cbe72c4f93d8f9babb5e137632c0ca0cf30cf81",
+      "target_path": "plugins/git/skills/git-pr-review/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$git-release-notes",
+      "command": "release-notes",
+      "id": "git:release-notes",
+      "legacy_invocation": "/git:release-notes",
+      "normalized_sha256": "6981eea19c2f7c609a51a9b2e0fe075c7ac8347d04fc8981ebd4845c6d3e2140",
+      "plugin": "git",
+      "skill_invocation": "$git-release-notes",
+      "skill_name": "git-release-notes",
+      "source_path": "plugins/git/commands/release-notes.md",
+      "source_sha256": "e9b81b4a8c4058db6c2b8c8b325b0d0c3ac8c89e81a4773633e32ff60296373d",
+      "target_path": "plugins/git/skills/git-release-notes/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$git-sync-issues",
+      "command": "sync-issues",
+      "id": "git:sync-issues",
+      "legacy_invocation": "/git:sync-issues",
+      "normalized_sha256": "ce23e394e0601191f99faad858f34e73a22011941e64b65052ba02b5421ad9fa",
+      "plugin": "git",
+      "skill_invocation": "$git-sync-issues",
+      "skill_name": "git-sync-issues",
+      "source_path": "plugins/git/commands/sync-issues.md",
+      "source_sha256": "d47494347b74fa9606ec2ab966fe81edfab28cbd8bdb85a31e5747e56a0fef14",
+      "target_path": "plugins/git/skills/git-sync-issues/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$growth-conversion-audit",
+      "command": "conversion-audit",
+      "id": "growth:conversion-audit",
+      "legacy_invocation": "/growth:conversion-audit",
+      "normalized_sha256": "53efacb55e5ff13811098e980e7c9f8ebb0006a45d422e65f3ec55de0fdacdfa",
+      "plugin": "growth",
+      "skill_invocation": "$growth-conversion-audit",
+      "skill_name": "growth-conversion-audit",
+      "source_path": "plugins/growth/commands/conversion-audit.md",
+      "source_sha256": "d84b7b929c20817a688476bcc939e24957f84baaa37a008f46839b0f5b704785",
+      "target_path": "plugins/growth/skills/growth-conversion-audit/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$project-architecture",
+      "command": "architecture",
+      "id": "project:architecture",
+      "legacy_invocation": "/project:architecture",
+      "normalized_sha256": "e49326c54e2f9f6742e5fad4b77c6ff4c1ade14e27205f2b5902956359f74a40",
+      "plugin": "project",
+      "skill_invocation": "$project-architecture",
+      "skill_name": "project-architecture",
+      "source_path": "plugins/project/commands/architecture.md",
+      "source_sha256": "d519a96397017c1dcb015be09a78e82e51757fdc733f520c36ad53f674f3dcd8",
+      "target_path": "plugins/project/skills/project-architecture/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$project-prd",
+      "command": "prd",
+      "id": "project:prd",
+      "legacy_invocation": "/project:prd",
+      "normalized_sha256": "86e7de711c9e0991ce08976003bb8f613331b6f14a509410c73907d0465ebb7d",
+      "plugin": "project",
+      "skill_invocation": "$project-prd",
+      "skill_name": "project-prd",
+      "source_path": "plugins/project/commands/prd.md",
+      "source_sha256": "f0b8393d16bf04d7ab9a6c1570765c33146b43591cc4c4af49af892ab58d51dd",
+      "target_path": "plugins/project/skills/project-prd/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$project-task-breakdown",
+      "command": "task-breakdown",
+      "id": "project:task-breakdown",
+      "legacy_invocation": "/project:task-breakdown",
+      "normalized_sha256": "656d65e99d74e5c76da1dec5c82f254557b2add8e6059abef967d5c1b781793d",
+      "plugin": "project",
+      "skill_invocation": "$project-task-breakdown",
+      "skill_name": "project-task-breakdown",
+      "source_path": "plugins/project/commands/task-breakdown.md",
+      "source_sha256": "f69c3bfc68eb55ea30f2bf704ac7230b51023fa87f36a8013d2eef3fb1919131",
+      "target_path": "plugins/project/skills/project-task-breakdown/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$release-ci-setup",
+      "command": "ci-setup",
+      "id": "release:ci-setup",
+      "legacy_invocation": "/release:ci-setup",
+      "normalized_sha256": "c4df6c40944b1880f79ed204e00578995f8cf53adf09c5ef22cffdb90a7e3f1c",
+      "plugin": "release",
+      "skill_invocation": "$release-ci-setup",
+      "skill_name": "release-ci-setup",
+      "source_path": "plugins/release/commands/ci-setup.md",
+      "source_sha256": "639b0e6ccaeb24585097baf9b975b96ff2c3b3e62307deb8d7c5a2981196ec36",
+      "target_path": "plugins/release/skills/release-ci-setup/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$release-deploy-plan",
+      "command": "deploy-plan",
+      "id": "release:deploy-plan",
+      "legacy_invocation": "/release:deploy-plan",
+      "normalized_sha256": "8a1ec305470a02729c22cfc7e5ce853b8d1a3ce2abdb7f05c5eca683aa49051c",
+      "plugin": "release",
+      "skill_invocation": "$release-deploy-plan",
+      "skill_name": "release-deploy-plan",
+      "source_path": "plugins/release/commands/deploy-plan.md",
+      "source_sha256": "de3001f609c49b0f1ff17bafacfe6308595e54823947c60eb3929d18f0ff1fea",
+      "target_path": "plugins/release/skills/release-deploy-plan/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$release-preflight",
+      "command": "preflight",
+      "id": "release:preflight",
+      "legacy_invocation": "/release:preflight",
+      "normalized_sha256": "8ecae472d4ee41391ddb6126408577a5e4dba2d6ad725cf1db01937195069b49",
+      "plugin": "release",
+      "skill_invocation": "$release-preflight",
+      "skill_name": "release-preflight",
+      "source_path": "plugins/release/commands/preflight.md",
+      "source_sha256": "b3415767d47d60b0ace837e35a0129bbaabc504d0ab5721fce434a2d3b9d9dfc",
+      "target_path": "plugins/release/skills/release-preflight/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$release-rollback-plan",
+      "command": "rollback-plan",
+      "id": "release:rollback-plan",
+      "legacy_invocation": "/release:rollback-plan",
+      "normalized_sha256": "631a086c8a9bf773e96eff42666d2ba3220e99bb88c5cc1a5d20c32d4dffde20",
+      "plugin": "release",
+      "skill_invocation": "$release-rollback-plan",
+      "skill_name": "release-rollback-plan",
+      "source_path": "plugins/release/commands/rollback-plan.md",
+      "source_sha256": "4e1709bba5068613596201a00127003fa3a6cec119fe8e29e918309de87f3f75",
+      "target_path": "plugins/release/skills/release-rollback-plan/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$repo-dependency-map",
+      "command": "dependency-map",
+      "id": "repo:dependency-map",
+      "legacy_invocation": "/repo:dependency-map",
+      "normalized_sha256": "d9cfb2d8de241846847594d03eb1ca807a145eb3a1f880cdf606975ff33782db",
+      "plugin": "repo",
+      "skill_invocation": "$repo-dependency-map",
+      "skill_name": "repo-dependency-map",
+      "source_path": "plugins/repo/commands/dependency-map.md",
+      "source_sha256": "436b3038fe0a4cd43a1cd75ba6bcd6ad095e5dd588d0f40a64440eaf878ffd32",
+      "target_path": "plugins/repo/skills/repo-dependency-map/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$repo-find-dead-code",
+      "command": "find-dead-code",
+      "id": "repo:find-dead-code",
+      "legacy_invocation": "/repo:find-dead-code",
+      "normalized_sha256": "0ccea864dd02df394f4516004f0c7d17105de9ae08da7ad9b43c2bd632a63462",
+      "plugin": "repo",
+      "skill_invocation": "$repo-find-dead-code",
+      "skill_name": "repo-find-dead-code",
+      "source_path": "plugins/repo/commands/find-dead-code.md",
+      "source_sha256": "c47763b1d36bb9993a92059012b7c44d925523eb685d7589d71484eff3ae764a",
+      "target_path": "plugins/repo/skills/repo-find-dead-code/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$repo-map",
+      "command": "map",
+      "id": "repo:map",
+      "legacy_invocation": "/repo:map",
+      "normalized_sha256": "fd6c0f1da30017090153f559a0a686fef193e981d73cff0aa76e97008139a8a8",
+      "plugin": "repo",
+      "skill_invocation": "$repo-map",
+      "skill_name": "repo-map",
+      "source_path": "plugins/repo/commands/map.md",
+      "source_sha256": "363cf1f71416c3239e0642aad14bac12c2760a59be84ebf9632bfaaf31569993",
+      "target_path": "plugins/repo/skills/repo-map/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$repo-onboarding",
+      "command": "onboarding",
+      "id": "repo:onboarding",
+      "legacy_invocation": "/repo:onboarding",
+      "normalized_sha256": "c54dbe4cfbf4c604733f3bd699c1fcadf83b53f7734c35139afb0645d0b38abc",
+      "plugin": "repo",
+      "skill_invocation": "$repo-onboarding",
+      "skill_name": "repo-onboarding",
+      "source_path": "plugins/repo/commands/onboarding.md",
+      "source_sha256": "d8c2cbcae20ad84d076fe6440432e2a7f98fdb178bc8e718cc11e173c196139a",
+      "target_path": "plugins/repo/skills/repo-onboarding/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$repo-risk-map",
+      "command": "risk-map",
+      "id": "repo:risk-map",
+      "legacy_invocation": "/repo:risk-map",
+      "normalized_sha256": "2d600b50c49f51c6780c3e354f0c44bb40bb374b62d5d92d38d89db82cc6909b",
+      "plugin": "repo",
+      "skill_invocation": "$repo-risk-map",
+      "skill_name": "repo-risk-map",
+      "source_path": "plugins/repo/commands/risk-map.md",
+      "source_sha256": "79ca3e5d9815823100fe2e13cbad9af3669406433c6d2426fbc2a72c87c5e8f8",
+      "target_path": "plugins/repo/skills/repo-risk-map/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$security-abuse-cases",
+      "command": "abuse-cases",
+      "id": "security:abuse-cases",
+      "legacy_invocation": "/security:abuse-cases",
+      "normalized_sha256": "15993296d35ba12e3bcf2e861449928b4e6d594fb55559ba38205438eee602ec",
+      "plugin": "security",
+      "skill_invocation": "$security-abuse-cases",
+      "skill_name": "security-abuse-cases",
+      "source_path": "plugins/security/commands/abuse-cases.md",
+      "source_sha256": "36cbca461d2b70c0ebbcbd262fd47584aa91f81c7b425ac38223e40b5adff406",
+      "target_path": "plugins/security/skills/security-abuse-cases/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$security-authz-matrix",
+      "command": "authz-matrix",
+      "id": "security:authz-matrix",
+      "legacy_invocation": "/security:authz-matrix",
+      "normalized_sha256": "a87c277f0530d1bbbba3853138a8ebc3445302888a544b416601ffbae9f63bc7",
+      "plugin": "security",
+      "skill_invocation": "$security-authz-matrix",
+      "skill_name": "security-authz-matrix",
+      "source_path": "plugins/security/commands/authz-matrix.md",
+      "source_sha256": "c722573a304f0aacdd4b3cd3ce945ec6fb19b44da998f2567246fc26a22f6cf7",
+      "target_path": "plugins/security/skills/security-authz-matrix/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$security-rls-test",
+      "command": "rls-test",
+      "id": "security:rls-test",
+      "legacy_invocation": "/security:rls-test",
+      "normalized_sha256": "11fcf998d351bf7c9a637d51e9042b533db474f0db80238e7aad0d5837d5a222",
+      "plugin": "security",
+      "skill_invocation": "$security-rls-test",
+      "skill_name": "security-rls-test",
+      "source_path": "plugins/security/commands/rls-test.md",
+      "source_sha256": "d67da7229faf8164c1e3998858976b8ca471988048cc045fcec27553ea76e035",
+      "target_path": "plugins/security/skills/security-rls-test/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$security-secrets-fix",
+      "command": "secrets-fix",
+      "id": "security:secrets-fix",
+      "legacy_invocation": "/security:secrets-fix",
+      "normalized_sha256": "a9f92ce95d43e32b8180baa13e08b620c2d84cd70b740c057d97f34ae7471464",
+      "plugin": "security",
+      "skill_invocation": "$security-secrets-fix",
+      "skill_name": "security-secrets-fix",
+      "source_path": "plugins/security/commands/secrets-fix.md",
+      "source_sha256": "02b4ba59251145311fe29b9bcf34da87efe9c937a1d8332f0152c20b9ba41d06",
+      "target_path": "plugins/security/skills/security-secrets-fix/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$security-threat-model",
+      "command": "threat-model",
+      "id": "security:threat-model",
+      "legacy_invocation": "/security:threat-model",
+      "normalized_sha256": "77662f6d467732681a0c2e8486de39821531595dbaf5b8478c44a9eaf6862cfb",
+      "plugin": "security",
+      "skill_invocation": "$security-threat-model",
+      "skill_name": "security-threat-model",
+      "source_path": "plugins/security/commands/threat-model.md",
+      "source_sha256": "c157a0e7547e40f921380b6cbde4517ac981c1ba841589f7a8c86ef8334f1709",
+      "target_path": "plugins/security/skills/security-threat-model/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-audit",
+      "command": "audit",
+      "id": "seo:audit",
+      "legacy_invocation": "/seo:audit",
+      "normalized_sha256": "b2545be4e1611c6c82c4c98fec27e84fb7b04a666ec9b8c9b77ea30c9ee85992",
+      "plugin": "seo",
+      "skill_invocation": "$seo-audit",
+      "skill_name": "seo-audit",
+      "source_path": "plugins/seo/commands/audit.md",
+      "source_sha256": "47d76255d3986a7848ad993e887e386c7d0beb0de00c34a373e5ee1917f2859d",
+      "target_path": "plugins/seo/skills/seo-audit/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-backlinks",
+      "command": "backlinks",
+      "id": "seo:backlinks",
+      "legacy_invocation": "/seo:backlinks",
+      "normalized_sha256": "05d78b5e82ec9321d2f5239ccb88e4caa7125e8d644cb930729a31a5298fe7fa",
+      "plugin": "seo",
+      "skill_invocation": "$seo-backlinks",
+      "skill_name": "seo-backlinks",
+      "source_path": "plugins/seo/commands/backlinks.md",
+      "source_sha256": "577027fbb1e8c41ced0d2d5cd1efab1e6f805c82f0246acf1220da95ed4b9c76",
+      "target_path": "plugins/seo/skills/seo-backlinks/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-cluster",
+      "command": "cluster",
+      "id": "seo:cluster",
+      "legacy_invocation": "/seo:cluster",
+      "normalized_sha256": "e0e01af11210c2fca9d139a65026f413d8443576c13fdfc5412196cc8ccd4f3a",
+      "plugin": "seo",
+      "skill_invocation": "$seo-cluster",
+      "skill_name": "seo-cluster",
+      "source_path": "plugins/seo/commands/cluster.md",
+      "source_sha256": "53ebf3bddce5725436422ae3d6264a361ab7a74c2e5ead8b41c8ddcc4a5efc6c",
+      "target_path": "plugins/seo/skills/seo-cluster/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-competitor-pages",
+      "command": "competitor-pages",
+      "id": "seo:competitor-pages",
+      "legacy_invocation": "/seo:competitor-pages",
+      "normalized_sha256": "4a512d0f2ed2a4170f030c62092838cccd96000951cc3fd0802bca944fe814de",
+      "plugin": "seo",
+      "skill_invocation": "$seo-competitor-pages",
+      "skill_name": "seo-competitor-pages",
+      "source_path": "plugins/seo/commands/competitor-pages.md",
+      "source_sha256": "a7467c6d0ac980ece30e75a332189f1c524a02c4c9a436e14373b4a9669608fa",
+      "target_path": "plugins/seo/skills/seo-competitor-pages/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-content",
+      "command": "content",
+      "id": "seo:content",
+      "legacy_invocation": "/seo:content",
+      "normalized_sha256": "34a59ccf907fd69ad50a9f892bce648ca429dcb3b9bac1a949cd15e7c13abaac",
+      "plugin": "seo",
+      "skill_invocation": "$seo-content",
+      "skill_name": "seo-content",
+      "source_path": "plugins/seo/commands/content.md",
+      "source_sha256": "b14edc1c5f7a27e9018fedc492e330e0c9074fb0e2ae950301bb0bce397b5a29",
+      "target_path": "plugins/seo/skills/seo-content/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-content-brief",
+      "command": "content-brief",
+      "id": "seo:content-brief",
+      "legacy_invocation": "/seo:content-brief",
+      "normalized_sha256": "3750390f98c12af7611f7afac3f2e124808f2a3e2e5cf1b4d0690093d566b79b",
+      "plugin": "seo",
+      "skill_invocation": "$seo-content-brief",
+      "skill_name": "seo-content-brief",
+      "source_path": "plugins/seo/commands/content-brief.md",
+      "source_sha256": "5fa6e226efec103673ca67d6076a731c246d5bd857c7f1c4932090d1396b05b5",
+      "target_path": "plugins/seo/skills/seo-content-brief/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-drift",
+      "command": "drift",
+      "id": "seo:drift",
+      "legacy_invocation": "/seo:drift",
+      "normalized_sha256": "df19c4c4eec1b9cd719859e0ea769ed8fa84ea5c69bc583f01b854d24396bbf5",
+      "plugin": "seo",
+      "skill_invocation": "$seo-drift",
+      "skill_name": "seo-drift",
+      "source_path": "plugins/seo/commands/drift.md",
+      "source_sha256": "b6890ed4256ca86c7f5338fc0f2285d927b3b7b8fb177fb8596f986f5c0bb8e7",
+      "target_path": "plugins/seo/skills/seo-drift/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-ecommerce",
+      "command": "ecommerce",
+      "id": "seo:ecommerce",
+      "legacy_invocation": "/seo:ecommerce",
+      "normalized_sha256": "17e139330f59294784546fdc99f6c844db3831a0f852e6079a8dd1ef0d107c50",
+      "plugin": "seo",
+      "skill_invocation": "$seo-ecommerce",
+      "skill_name": "seo-ecommerce",
+      "source_path": "plugins/seo/commands/ecommerce.md",
+      "source_sha256": "6d64fbc14eda0eed3fd489d1de3e1a7597b8ea6a5652b1e9ab874b3be02c389e",
+      "target_path": "plugins/seo/skills/seo-ecommerce/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-flow",
+      "command": "flow",
+      "id": "seo:flow",
+      "legacy_invocation": "/seo:flow",
+      "normalized_sha256": "831440da5e59be392f5cdafe951b13ecf4f87ed37387c0f77e8a31b189d762a7",
+      "plugin": "seo",
+      "skill_invocation": "$seo-flow",
+      "skill_name": "seo-flow",
+      "source_path": "plugins/seo/commands/flow.md",
+      "source_sha256": "e97a26934cff8bf0c250b29cd4b06533945fdfe94d1b27e4aa644ba9db6d4bf0",
+      "target_path": "plugins/seo/skills/seo-flow/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-geo",
+      "command": "geo",
+      "id": "seo:geo",
+      "legacy_invocation": "/seo:geo",
+      "normalized_sha256": "88c3e3edefa9ca9871b394e2a184fac7ea07a950fa283a34e11eab4333526ffe",
+      "plugin": "seo",
+      "skill_invocation": "$seo-geo",
+      "skill_name": "seo-geo",
+      "source_path": "plugins/seo/commands/geo.md",
+      "source_sha256": "e71a41fcf178b6129cbf7bbc624f72660d99deafd1f08d1c4289a13adf2f5446",
+      "target_path": "plugins/seo/skills/seo-geo/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-google",
+      "command": "google",
+      "id": "seo:google",
+      "legacy_invocation": "/seo:google",
+      "normalized_sha256": "a42ce10a65e956479d7fa8eb57dc0631fac0969278446b62701127bf5132afde",
+      "plugin": "seo",
+      "skill_invocation": "$seo-google",
+      "skill_name": "seo-google",
+      "source_path": "plugins/seo/commands/google.md",
+      "source_sha256": "fbe29273cf397c20fba8a65bdca5d8256bc4f0a9d2791050a381c8abbe9f3b93",
+      "target_path": "plugins/seo/skills/seo-google/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-hreflang",
+      "command": "hreflang",
+      "id": "seo:hreflang",
+      "legacy_invocation": "/seo:hreflang",
+      "normalized_sha256": "cf51632cbaedbd37df6f22b5498f5121bb2b98291ca50d77ea5f51bbe8f6f784",
+      "plugin": "seo",
+      "skill_invocation": "$seo-hreflang",
+      "skill_name": "seo-hreflang",
+      "source_path": "plugins/seo/commands/hreflang.md",
+      "source_sha256": "b5f2d37fd65a0b45b75e961afe87c4da2e0347a13ec52538af94d3a99ff68ffa",
+      "target_path": "plugins/seo/skills/seo-hreflang/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-images",
+      "command": "images",
+      "id": "seo:images",
+      "legacy_invocation": "/seo:images",
+      "normalized_sha256": "e6c2e0bd5cfabfafe24f957d828a980817821b8d4acfda984ce5aa4f31fce65a",
+      "plugin": "seo",
+      "skill_invocation": "$seo-images",
+      "skill_name": "seo-images",
+      "source_path": "plugins/seo/commands/images.md",
+      "source_sha256": "e3ebdeaabe9a41c618c6f83d6e306de4ad659ae36410c2f611f2653a80d541b9",
+      "target_path": "plugins/seo/skills/seo-images/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-local",
+      "command": "local",
+      "id": "seo:local",
+      "legacy_invocation": "/seo:local",
+      "normalized_sha256": "fdc8e5205c02d19afa0c6524dc1eac91d96bbf64d13d8c9e8a2c6d22559c7d00",
+      "plugin": "seo",
+      "skill_invocation": "$seo-local",
+      "skill_name": "seo-local",
+      "source_path": "plugins/seo/commands/local.md",
+      "source_sha256": "4abe69dc97e249116378c0ee3bed4d4da7848db9638889d90eb76c289a64755a",
+      "target_path": "plugins/seo/skills/seo-local/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-maps",
+      "command": "maps",
+      "id": "seo:maps",
+      "legacy_invocation": "/seo:maps",
+      "normalized_sha256": "e1b3c56d6daf74dba9b4ab7d7c08911e49a979a226073259def5647d2ff85089",
+      "plugin": "seo",
+      "skill_invocation": "$seo-maps",
+      "skill_name": "seo-maps",
+      "source_path": "plugins/seo/commands/maps.md",
+      "source_sha256": "9c483de9772e0e0dd849786b5d7b10d890aefc7f850f887efd419ef4faa7f085",
+      "target_path": "plugins/seo/skills/seo-maps/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-page",
+      "command": "page",
+      "id": "seo:page",
+      "legacy_invocation": "/seo:page",
+      "normalized_sha256": "e93441970ea18584d18276c67d1a04f3e39b060df875403ee355fdc4e600728c",
+      "plugin": "seo",
+      "skill_invocation": "$seo-page",
+      "skill_name": "seo-page",
+      "source_path": "plugins/seo/commands/page.md",
+      "source_sha256": "3e8619820af834ecae50b73ebe3b822b5807268ce6fc123e7f3a49049e3755a0",
+      "target_path": "plugins/seo/skills/seo-page/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-plan",
+      "command": "plan",
+      "id": "seo:plan",
+      "legacy_invocation": "/seo:plan",
+      "normalized_sha256": "52b6ea08cb60395c3229e863c32c87a3afad7e27dbbd1e29e9d83023b69a321a",
+      "plugin": "seo",
+      "skill_invocation": "$seo-plan",
+      "skill_name": "seo-plan",
+      "source_path": "plugins/seo/commands/plan.md",
+      "source_sha256": "20a6ab51182ff5a3142cd88e90a6d295d73a0b30d78b5ed55886c34a4b596917",
+      "target_path": "plugins/seo/skills/seo-plan/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-programmatic",
+      "command": "programmatic",
+      "id": "seo:programmatic",
+      "legacy_invocation": "/seo:programmatic",
+      "normalized_sha256": "aa21388e853518a4f587ecd7c001ad39516e44fa252153fc5fd030cf0ebebea9",
+      "plugin": "seo",
+      "skill_invocation": "$seo-programmatic",
+      "skill_name": "seo-programmatic",
+      "source_path": "plugins/seo/commands/programmatic.md",
+      "source_sha256": "5cb520b9af55f4b7671c30750b7d66dd4aa102f65ee2fcd235b3a319f6df472b",
+      "target_path": "plugins/seo/skills/seo-programmatic/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-schema",
+      "command": "schema",
+      "id": "seo:schema",
+      "legacy_invocation": "/seo:schema",
+      "normalized_sha256": "620302d84ef0b0273d4eb68e722566aabda1bd8ad185b98c0f7874e2a31719e8",
+      "plugin": "seo",
+      "skill_invocation": "$seo-schema",
+      "skill_name": "seo-schema",
+      "source_path": "plugins/seo/commands/schema.md",
+      "source_sha256": "fb1e35d6d6ad6225d2f82fd90432045df106efac89dd0efdcb3e38cbf35ce77b",
+      "target_path": "plugins/seo/skills/seo-schema/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-sitemap",
+      "command": "sitemap",
+      "id": "seo:sitemap",
+      "legacy_invocation": "/seo:sitemap",
+      "normalized_sha256": "5e801f3a5f70e29f2a338284c1b9e75f5836af56c32037aecbb187d5d9dc8dd9",
+      "plugin": "seo",
+      "skill_invocation": "$seo-sitemap",
+      "skill_name": "seo-sitemap",
+      "source_path": "plugins/seo/commands/sitemap.md",
+      "source_sha256": "2b20743bb9b8ddd315d07f7225115674470ff837608e883f784f731e80aba0de",
+      "target_path": "plugins/seo/skills/seo-sitemap/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-sxo",
+      "command": "sxo",
+      "id": "seo:sxo",
+      "legacy_invocation": "/seo:sxo",
+      "normalized_sha256": "4650c34d478cea25e80b830b19d9784da0a9648c4f011ebe44206907a187c8b6",
+      "plugin": "seo",
+      "skill_invocation": "$seo-sxo",
+      "skill_name": "seo-sxo",
+      "source_path": "plugins/seo/commands/sxo.md",
+      "source_sha256": "45071f0a704b35b13a8fd2c8882a6f92aa88c34e881c2fc5c530341731c7a16e",
+      "target_path": "plugins/seo/skills/seo-sxo/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$seo-technical",
+      "command": "technical",
+      "id": "seo:technical",
+      "legacy_invocation": "/seo:technical",
+      "normalized_sha256": "ccd1c595e2da2d8b0cc26f8229f3bc9ab412f6aecedbe79c8ae278ec5f8e94e2",
+      "plugin": "seo",
+      "skill_invocation": "$seo-technical",
+      "skill_name": "seo-technical",
+      "source_path": "plugins/seo/commands/technical.md",
+      "source_sha256": "6ec6c011312754246af983adb9ff4cd8a87884e0b30bda4ebbd05f0225cfd0c1",
+      "target_path": "plugins/seo/skills/seo-technical/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-a11y",
+      "command": "a11y",
+      "id": "site-doctor:a11y",
+      "legacy_invocation": "/site-doctor:a11y",
+      "normalized_sha256": "d63ec5d2c10ff0f855d8ea65c3fea97f775aa5ab3c65b5d14ba15000e6477104",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-a11y",
+      "skill_name": "site-doctor-a11y",
+      "source_path": "plugins/site-doctor/commands/a11y.md",
+      "source_sha256": "b4331aa2a3eada9d16c61a73a723e63d2182ef994f6bae519f0fa2c72e86163d",
+      "target_path": "plugins/site-doctor/skills/site-doctor-a11y/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-animation",
+      "command": "animation",
+      "id": "site-doctor:animation",
+      "legacy_invocation": "/site-doctor:animation",
+      "normalized_sha256": "aaf8926829a34126c63390e861850fd94962156d06976c2695e05a4af96ee111",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-animation",
+      "skill_name": "site-doctor-animation",
+      "source_path": "plugins/site-doctor/commands/animation.md",
+      "source_sha256": "e01c2a2a4381d3fab61b42334c3a26f93260f855d5dc7435030e861f18a2e278",
+      "target_path": "plugins/site-doctor/skills/site-doctor-animation/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-analytics",
+      "command": "audit-analytics",
+      "id": "site-doctor:audit-analytics",
+      "legacy_invocation": "/site-doctor:audit-analytics",
+      "normalized_sha256": "f93d0671b1c66f237868af39b39452d184692f5c4912a919eb12cab56277da17",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-analytics",
+      "skill_name": "site-doctor-audit-analytics",
+      "source_path": "plugins/site-doctor/commands/audit-analytics.md",
+      "source_sha256": "b6709a652202a6bb56b4986d3f75f0e0b0750909bb4c10c089744d5c76717d75",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-analytics/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-api",
+      "command": "audit-api",
+      "id": "site-doctor:audit-api",
+      "legacy_invocation": "/site-doctor:audit-api",
+      "normalized_sha256": "93dafa5e02c524e86c9b483f4c47450ef92ae871f414be4f1b02261d5c3ec62d",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-api",
+      "skill_name": "site-doctor-audit-api",
+      "source_path": "plugins/site-doctor/commands/audit-api.md",
+      "source_sha256": "8346ba8240d2af88994046f3e1fc433bb98453eb7f915303d50d24f1939a4ac4",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-api/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-content",
+      "command": "audit-content",
+      "id": "site-doctor:audit-content",
+      "legacy_invocation": "/site-doctor:audit-content",
+      "normalized_sha256": "9800a7cf2ef920efa53663f33039334409234713d57e9e88d4f6f3cdc56361be",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-content",
+      "skill_name": "site-doctor-audit-content",
+      "source_path": "plugins/site-doctor/commands/audit-content.md",
+      "source_sha256": "01fc79551ae91fd66a973f3b15f6cc029996a30605662a1af6320e14d8720403",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-content/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-db",
+      "command": "audit-db",
+      "id": "site-doctor:audit-db",
+      "legacy_invocation": "/site-doctor:audit-db",
+      "normalized_sha256": "060be7ab0b4c30bc90534cf9217ea540857c224047ed3542744c069d811540b8",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-db",
+      "skill_name": "site-doctor-audit-db",
+      "source_path": "plugins/site-doctor/commands/audit-db.md",
+      "source_sha256": "978dd4719b0644503e4ad3863a022969bb4c46cdf0c4198c2cdf87ff58ccdf84",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-db/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-deps",
+      "command": "audit-deps",
+      "id": "site-doctor:audit-deps",
+      "legacy_invocation": "/site-doctor:audit-deps",
+      "normalized_sha256": "81a0bc150dde488ba80d58669be750f9a0ede56879da3d0194970900c3337e8d",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-deps",
+      "skill_name": "site-doctor-audit-deps",
+      "source_path": "plugins/site-doctor/commands/audit-deps.md",
+      "source_sha256": "8dbcfadff85826231adeb01005ef3552aef902125006a23f6c5f3c708b648223",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-deps/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-forms",
+      "command": "audit-forms",
+      "id": "site-doctor:audit-forms",
+      "legacy_invocation": "/site-doctor:audit-forms",
+      "normalized_sha256": "b8f2205fb9cfb0b553f5eab914c40b969355375df3c489f6ee4d62261dd2c66f",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-forms",
+      "skill_name": "site-doctor-audit-forms",
+      "source_path": "plugins/site-doctor/commands/audit-forms.md",
+      "source_sha256": "503b8701bc5c3de45726ff94f81bc214872b9a1e3b71d650ce85275ac0ba9990",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-forms/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-infra",
+      "command": "audit-infra",
+      "id": "site-doctor:audit-infra",
+      "legacy_invocation": "/site-doctor:audit-infra",
+      "normalized_sha256": "3bb60aac041310f61e0bbfb3d9d74b64b85d8e54e95f6255cd19924c2d7d5b52",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-infra",
+      "skill_name": "site-doctor-audit-infra",
+      "source_path": "plugins/site-doctor/commands/audit-infra.md",
+      "source_sha256": "288af88d7acadec0f31ef7623bcbb4e735cddc0d4acaf70577ade9289f03eb69",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-infra/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-mobile",
+      "command": "audit-mobile",
+      "id": "site-doctor:audit-mobile",
+      "legacy_invocation": "/site-doctor:audit-mobile",
+      "normalized_sha256": "efa77930155eb2f483dd23cccfbf34ef3738095087c8260bd1cc308b292387d7",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-mobile",
+      "skill_name": "site-doctor-audit-mobile",
+      "source_path": "plugins/site-doctor/commands/audit-mobile.md",
+      "source_sha256": "81f58ea871d363088e1d611e35866fe5135d2d127fb29ae26915ae6ffce061fb",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-mobile/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-audit-site",
+      "command": "audit-site",
+      "id": "site-doctor:audit-site",
+      "legacy_invocation": "/site-doctor:audit-site",
+      "normalized_sha256": "c4d98343b2f9dee8473269d5483077faeb76561f326261e36ba77509e5247321",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-audit-site",
+      "skill_name": "site-doctor-audit-site",
+      "source_path": "plugins/site-doctor/commands/audit-site.md",
+      "source_sha256": "9570c4f81d54d8fdeefa0e721b2b02297e2c8aa597bbe3948142294ac5d5b11d",
+      "target_path": "plugins/site-doctor/skills/site-doctor-audit-site/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-backups",
+      "command": "backups",
+      "id": "site-doctor:backups",
+      "legacy_invocation": "/site-doctor:backups",
+      "normalized_sha256": "f04d1b154049d3ab1e7f98bd0863ddd0eabfdededef33932f81808f2081a0221",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-backups",
+      "skill_name": "site-doctor-backups",
+      "source_path": "plugins/site-doctor/commands/backups.md",
+      "source_sha256": "5e67897a5349789c811dadee8975fdb9e2c9c7476c6aec53caf174af6306b7c2",
+      "target_path": "plugins/site-doctor/skills/site-doctor-backups/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-compliance",
+      "command": "compliance",
+      "id": "site-doctor:compliance",
+      "legacy_invocation": "/site-doctor:compliance",
+      "normalized_sha256": "54aae8e2fff27da3091b5541dc9c050b6428546642db176752f605f94f1aaae9",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-compliance",
+      "skill_name": "site-doctor-compliance",
+      "source_path": "plugins/site-doctor/commands/compliance.md",
+      "source_sha256": "b4d577b164541708d5d2b452de90e84eb3359a8e50799a7a0f2175cb3bd49f5d",
+      "target_path": "plugins/site-doctor/skills/site-doctor-compliance/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-cost",
+      "command": "cost",
+      "id": "site-doctor:cost",
+      "legacy_invocation": "/site-doctor:cost",
+      "normalized_sha256": "72a555670158ebad5b4f69419075f1b25121004dddb5e9119df955b3e70b1f2c",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-cost",
+      "skill_name": "site-doctor-cost",
+      "source_path": "plugins/site-doctor/commands/cost.md",
+      "source_sha256": "7dbf3c96a8c4aee57b0cefac6ea1aac06a4d6a7df458683c63963158b8e2b3fb",
+      "target_path": "plugins/site-doctor/skills/site-doctor-cost/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-debug",
+      "command": "debug",
+      "id": "site-doctor:debug",
+      "legacy_invocation": "/site-doctor:debug",
+      "normalized_sha256": "8b49307b9084ff3e5f6e3f8d222da96c35567a2269d1aa2fea2958c6ff08e0b3",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-debug",
+      "skill_name": "site-doctor-debug",
+      "source_path": "plugins/site-doctor/commands/debug.md",
+      "source_sha256": "529ca6c29760b283712f4cb9cf08e67df8aeeed6baf371c67ed9fbf60dd05f61",
+      "target_path": "plugins/site-doctor/skills/site-doctor-debug/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-email-check",
+      "command": "email-check",
+      "id": "site-doctor:email-check",
+      "legacy_invocation": "/site-doctor:email-check",
+      "normalized_sha256": "fee75246cf234139f6b62d08db0e15c0a5c7c4e8253da5865e078fcae20423d7",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-email-check",
+      "skill_name": "site-doctor-email-check",
+      "source_path": "plugins/site-doctor/commands/email-check.md",
+      "source_sha256": "28ea2bc6650f156625f72f5fd7918c300de274cd729599ffe73a22be01b87330",
+      "target_path": "plugins/site-doctor/skills/site-doctor-email-check/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-full-checkup",
+      "command": "full-checkup",
+      "id": "site-doctor:full-checkup",
+      "legacy_invocation": "/site-doctor:full-checkup",
+      "normalized_sha256": "ec493cb2ba77370f9315cc47b252ce7b2433e3879598deea4df9a5a7e0cc3d32",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-full-checkup",
+      "skill_name": "site-doctor-full-checkup",
+      "source_path": "plugins/site-doctor/commands/full-checkup.md",
+      "source_sha256": "01b0cf55e65e38890570396195c0675072e035777036b05f1c1279733baff1f8",
+      "target_path": "plugins/site-doctor/skills/site-doctor-full-checkup/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-incident",
+      "command": "incident",
+      "id": "site-doctor:incident",
+      "legacy_invocation": "/site-doctor:incident",
+      "normalized_sha256": "49cf474e2e36e3052cf1744126f4e602dba04eefadfaab4e09d3fa67cf84dbeb",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-incident",
+      "skill_name": "site-doctor-incident",
+      "source_path": "plugins/site-doctor/commands/incident.md",
+      "source_sha256": "4514ae7d4b6971a0b4cde9a3dd4b91133d343c95968e4a8a0e17d68383fca86f",
+      "target_path": "plugins/site-doctor/skills/site-doctor-incident/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-load-test",
+      "command": "load-test",
+      "id": "site-doctor:load-test",
+      "legacy_invocation": "/site-doctor:load-test",
+      "normalized_sha256": "9b4678a0da84a53520e88359b9f9dc8b6e31f8953390ed736626f118181c6844",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-load-test",
+      "skill_name": "site-doctor-load-test",
+      "source_path": "plugins/site-doctor/commands/load-test.md",
+      "source_sha256": "c26278d128f5ab4a121ffa5474fedb2a0803f7f98b7b2444be5ca3c6de5fc504",
+      "target_path": "plugins/site-doctor/skills/site-doctor-load-test/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-migrate-data",
+      "command": "migrate-data",
+      "id": "site-doctor:migrate-data",
+      "legacy_invocation": "/site-doctor:migrate-data",
+      "normalized_sha256": "d6b3c605e1dbb1f5e52e692a93c377cac6c0111635e18c1f7bc4a5a48056c601",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-migrate-data",
+      "skill_name": "site-doctor-migrate-data",
+      "source_path": "plugins/site-doctor/commands/migrate-data.md",
+      "source_sha256": "8d3148f35e8a0fc42b05bda44cd5f8df2408a51e12cb76a0d5735c45e75c0fb0",
+      "target_path": "plugins/site-doctor/skills/site-doctor-migrate-data/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-monitoring",
+      "command": "monitoring",
+      "id": "site-doctor:monitoring",
+      "legacy_invocation": "/site-doctor:monitoring",
+      "normalized_sha256": "448282684843607d28bdd436fee44b88905978e9a00a311aa3f1c4ac73afa459",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-monitoring",
+      "skill_name": "site-doctor-monitoring",
+      "source_path": "plugins/site-doctor/commands/monitoring.md",
+      "source_sha256": "5c506456400d9645df3128c161f88268ca9d0921315e10636afe31730ee95e9f",
+      "target_path": "plugins/site-doctor/skills/site-doctor-monitoring/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-perf",
+      "command": "perf",
+      "id": "site-doctor:perf",
+      "legacy_invocation": "/site-doctor:perf",
+      "normalized_sha256": "e1a41e382103c474372301226d5a78e79f0bf603a46466e038344b687ff30268",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-perf",
+      "skill_name": "site-doctor-perf",
+      "source_path": "plugins/site-doctor/commands/perf.md",
+      "source_sha256": "76f5f18e27e996d31c01ad08762e94eff074a6ade35163a60044f70b82104277",
+      "target_path": "plugins/site-doctor/skills/site-doctor-perf/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-review-deploy",
+      "command": "review-deploy",
+      "id": "site-doctor:review-deploy",
+      "legacy_invocation": "/site-doctor:review-deploy",
+      "normalized_sha256": "b96df894160082e7011625dfd68e3e5c266593231fc5a2c8b70301579ccdfc9f",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-review-deploy",
+      "skill_name": "site-doctor-review-deploy",
+      "source_path": "plugins/site-doctor/commands/review-deploy.md",
+      "source_sha256": "c1f135b586a9dfc8bdd25f6ceb7d38faeca82ef49c42295fc37d5076763f2591",
+      "target_path": "plugins/site-doctor/skills/site-doctor-review-deploy/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-security-scan",
+      "command": "security-scan",
+      "id": "site-doctor:security-scan",
+      "legacy_invocation": "/site-doctor:security-scan",
+      "normalized_sha256": "6ab74b435211b580fc60b7c808214a3cdf1b30327aaed116cf5b82414dc170c5",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-security-scan",
+      "skill_name": "site-doctor-security-scan",
+      "source_path": "plugins/site-doctor/commands/security-scan.md",
+      "source_sha256": "19a057d968e4deb08839359f99b3521024a346e34b07828a66254b82938aaed7",
+      "target_path": "plugins/site-doctor/skills/site-doctor-security-scan/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$site-doctor-seo",
+      "command": "seo",
+      "id": "site-doctor:seo",
+      "legacy_invocation": "/site-doctor:seo",
+      "normalized_sha256": "dbe7b75b80286e3f8e7a08d5de306a6d556f0e7d15e4210d34d072ffaa7ce87d",
+      "plugin": "site-doctor",
+      "skill_invocation": "$site-doctor-seo",
+      "skill_name": "site-doctor-seo",
+      "source_path": "plugins/site-doctor/commands/seo.md",
+      "source_sha256": "9080f09fc5600fe9200893da58f5f3b3cbfe68e71b09d6ec6d46e53395bd7321",
+      "target_path": "plugins/site-doctor/skills/site-doctor-seo/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-end-session",
+      "command": "end-session",
+      "id": "solo:end-session",
+      "legacy_invocation": "/solo:end-session",
+      "normalized_sha256": "b486a73aa7a2ad260b8a5a67c48d3d61fe0df5a76ff6307e238fbb1b9a68bb54",
+      "plugin": "solo",
+      "skill_invocation": "$solo-end-session",
+      "skill_name": "solo-end-session",
+      "source_path": "plugins/solo/commands/end-session.md",
+      "source_sha256": "4b09dbf8e7053cc2fbecaa815d07f9603dc54b8b687dfee8f41586975911871a",
+      "target_path": "plugins/solo/skills/solo-end-session/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-full-team-dev",
+      "command": "full-team-dev",
+      "id": "solo:full-team-dev",
+      "legacy_invocation": "/solo:full-team-dev",
+      "normalized_sha256": "d604d34b94b9042c9a8edabbb920693a73917701f8099ce67160a9c722438507",
+      "plugin": "solo",
+      "skill_invocation": "$solo-full-team-dev",
+      "skill_name": "solo-full-team-dev",
+      "source_path": "plugins/solo/commands/full-team-dev.md",
+      "source_sha256": "25d6b1c51f6b67ef9e84c20a7faabb3f02b8e55e1e3623c715d50a4204c74d20",
+      "target_path": "plugins/solo/skills/solo-full-team-dev/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-handoff-memory",
+      "command": "handoff-memory",
+      "id": "solo:handoff-memory",
+      "legacy_invocation": "/solo:handoff-memory",
+      "normalized_sha256": "5d1f8f1fb1cd7148b5397c80fd3160f384bc6c48d21302466ae607073940173b",
+      "plugin": "solo",
+      "skill_invocation": "$solo-handoff-memory",
+      "skill_name": "solo-handoff-memory",
+      "source_path": "plugins/solo/commands/handoff-memory.md",
+      "source_sha256": "4b98afb4843fb83f3940c95643388065f4fe2a38a8ea2984612ba7dfdcabcff7",
+      "target_path": "plugins/solo/skills/solo-handoff-memory/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-next-step",
+      "command": "next-step",
+      "id": "solo:next-step",
+      "legacy_invocation": "/solo:next-step",
+      "normalized_sha256": "ad771937179ab836cb2810d73860a2f73928781d63ec7c189944ba74c0ac0505",
+      "plugin": "solo",
+      "skill_invocation": "$solo-next-step",
+      "skill_name": "solo-next-step",
+      "source_path": "plugins/solo/commands/next-step.md",
+      "source_sha256": "006c5cd32d6aa08ef2751939e902b705147f142307976df2bd3f479c8e7d2b5d",
+      "target_path": "plugins/solo/skills/solo-next-step/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-project-status",
+      "command": "project-status",
+      "id": "solo:project-status",
+      "legacy_invocation": "/solo:project-status",
+      "normalized_sha256": "a19fc1ef3fcbe3d103fd85b066150dfe84712dd27392a68123495c6339676014",
+      "plugin": "solo",
+      "skill_invocation": "$solo-project-status",
+      "skill_name": "solo-project-status",
+      "source_path": "plugins/solo/commands/project-status.md",
+      "source_sha256": "55666744eccd1d62445c85d5579adb69bfa210d49372a37f2c14276cf156b386",
+      "target_path": "plugins/solo/skills/solo-project-status/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-run-cycle",
+      "command": "run-cycle",
+      "id": "solo:run-cycle",
+      "legacy_invocation": "/solo:run-cycle",
+      "normalized_sha256": "7de433a02d8134ba5e20ba4232f1bf14d8799977aad1265b735bd7811d9b5fc2",
+      "plugin": "solo",
+      "skill_invocation": "$solo-run-cycle",
+      "skill_name": "solo-run-cycle",
+      "source_path": "plugins/solo/commands/run-cycle.md",
+      "source_sha256": "c14f21ce0e65bcb847c679068ae4997ff7084f6ec1f9b58cc4167695aac41731",
+      "target_path": "plugins/solo/skills/solo-run-cycle/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-self-check",
+      "command": "self-check",
+      "id": "solo:self-check",
+      "legacy_invocation": "/solo:self-check",
+      "normalized_sha256": "c9076e4e0189e9cc29228256fa670b33d8ee657d22c0a6a9720db723f0325db7",
+      "plugin": "solo",
+      "skill_invocation": "$solo-self-check",
+      "skill_name": "solo-self-check",
+      "source_path": "plugins/solo/commands/self-check.md",
+      "source_sha256": "c12aa7c45b330065bd1e61d1e30ba35e2852284c690586b9c08dba439c076910",
+      "target_path": "plugins/solo/skills/solo-self-check/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-start-session",
+      "command": "start-session",
+      "id": "solo:start-session",
+      "legacy_invocation": "/solo:start-session",
+      "normalized_sha256": "a019265df067a726e22dd4dfb402ba43a7096eb0cfba49a96dc490a943cfc7a9",
+      "plugin": "solo",
+      "skill_invocation": "$solo-start-session",
+      "skill_name": "solo-start-session",
+      "source_path": "plugins/solo/commands/start-session.md",
+      "source_sha256": "36d8ce4a9afa159589fb863e1129cd7dc8615c11a748eeef8024d3869214267a",
+      "target_path": "plugins/solo/skills/solo-start-session/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-sync-grafana",
+      "command": "sync-grafana",
+      "id": "solo:sync-grafana",
+      "legacy_invocation": "/solo:sync-grafana",
+      "normalized_sha256": "263b43b5d6dae2f2986b689c9fb277e05ee599e2d2e49dc4b99163bec6b8058e",
+      "plugin": "solo",
+      "skill_invocation": "$solo-sync-grafana",
+      "skill_name": "solo-sync-grafana",
+      "source_path": "plugins/solo/commands/sync-grafana.md",
+      "source_sha256": "f28c99b4365cde4b62895e553dc0bec9c127a06e0b32b461fc8494f8fd68a4db",
+      "target_path": "plugins/solo/skills/solo-sync-grafana/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$solo-sync-obsidian",
+      "command": "sync-obsidian",
+      "id": "solo:sync-obsidian",
+      "legacy_invocation": "/solo:sync-obsidian",
+      "normalized_sha256": "8b459f32c0100ee485d10e8360d2d7e8185a1561ad6f9e521cec155f23ed7821",
+      "plugin": "solo",
+      "skill_invocation": "$solo-sync-obsidian",
+      "skill_name": "solo-sync-obsidian",
+      "source_path": "plugins/solo/commands/sync-obsidian.md",
+      "source_sha256": "02fc77a76ae43b18eae385d8331b6b74ca6ffc2e4bee6688fc58e13258b927ff",
+      "target_path": "plugins/solo/skills/solo-sync-obsidian/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$spec-acceptance",
+      "command": "acceptance",
+      "id": "spec:acceptance",
+      "legacy_invocation": "/spec:acceptance",
+      "normalized_sha256": "ea4455f2e464f5e41ed4dbbb7a9279339f45b6b2dfc14de00ae01a0da9c69dd2",
+      "plugin": "spec",
+      "skill_invocation": "$spec-acceptance",
+      "skill_name": "spec-acceptance",
+      "source_path": "plugins/spec/commands/acceptance.md",
+      "source_sha256": "f2dcc670c9fd7b01d76a6d88cd12f811599fd84a06a73888336768e643bd949a",
+      "target_path": "plugins/spec/skills/spec-acceptance/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$spec-api-contract",
+      "command": "api-contract",
+      "id": "spec:api-contract",
+      "legacy_invocation": "/spec:api-contract",
+      "normalized_sha256": "39dbfb9b4f88661f6ff2aac48b780aa982f64c99300d4b4d9850ec3c59df9e26",
+      "plugin": "spec",
+      "skill_invocation": "$spec-api-contract",
+      "skill_name": "spec-api-contract",
+      "source_path": "plugins/spec/commands/api-contract.md",
+      "source_sha256": "369bbb1ebbbcd21449b3eb1408892e3fcb00ab5dbd5aba3a9091f40954490c08",
+      "target_path": "plugins/spec/skills/spec-api-contract/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$spec-data-contract",
+      "command": "data-contract",
+      "id": "spec:data-contract",
+      "legacy_invocation": "/spec:data-contract",
+      "normalized_sha256": "a1321a2907d8bc8ec4d800e7de2619eab1f8003a7db5d1a1ee46f30829550e54",
+      "plugin": "spec",
+      "skill_invocation": "$spec-data-contract",
+      "skill_name": "spec-data-contract",
+      "source_path": "plugins/spec/commands/data-contract.md",
+      "source_sha256": "be415e1bf732fb7b239cd53ba3c9830f08ab9a026b9cdd08b2f6df27495a7312",
+      "target_path": "plugins/spec/skills/spec-data-contract/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$spec-env-contract",
+      "command": "env-contract",
+      "id": "spec:env-contract",
+      "legacy_invocation": "/spec:env-contract",
+      "normalized_sha256": "683769e374244c6115148565cb43adfddc917a01ef7da0780fa52a9b19d263e8",
+      "plugin": "spec",
+      "skill_invocation": "$spec-env-contract",
+      "skill_name": "spec-env-contract",
+      "source_path": "plugins/spec/commands/env-contract.md",
+      "source_sha256": "435f6b29d840775da74fe3fad0faaa42a3ec3204360bc03506507d10e73576a1",
+      "target_path": "plugins/spec/skills/spec-env-contract/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$spec-feature-brief",
+      "command": "feature-brief",
+      "id": "spec:feature-brief",
+      "legacy_invocation": "/spec:feature-brief",
+      "normalized_sha256": "48a8a992565dd3b430b8d16e6e1f5a1458f2b3dd656ec31c9497bb2727e196b0",
+      "plugin": "spec",
+      "skill_invocation": "$spec-feature-brief",
+      "skill_name": "spec-feature-brief",
+      "source_path": "plugins/spec/commands/feature-brief.md",
+      "source_sha256": "60db42bbb870a8344d47ad58cfde3038a7505b6fd9d510ed089ec8efa65ae5da",
+      "target_path": "plugins/spec/skills/spec-feature-brief/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-audit-cloudflare",
+      "command": "audit-cloudflare",
+      "id": "stack:audit-cloudflare",
+      "legacy_invocation": "/stack:audit-cloudflare",
+      "normalized_sha256": "cb79bffb138fd1cd7fc9b8985a1ba16fb54b0a0d14a3f775e2d8191ef5e0ec78",
+      "plugin": "stack",
+      "skill_invocation": "$stack-audit-cloudflare",
+      "skill_name": "stack-audit-cloudflare",
+      "source_path": "plugins/stack/commands/audit-cloudflare.md",
+      "source_sha256": "fdebab92fc6e5e925a83c4b167a48d653219b10bc2422afbdb9261b4cfc8b095",
+      "target_path": "plugins/stack/skills/stack-audit-cloudflare/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-audit-payments",
+      "command": "audit-payments",
+      "id": "stack:audit-payments",
+      "legacy_invocation": "/stack:audit-payments",
+      "normalized_sha256": "51bd1878b77a3005e5fe836bcafa24a4f6840c45136f74e0721f03a3f9fdc7d1",
+      "plugin": "stack",
+      "skill_invocation": "$stack-audit-payments",
+      "skill_name": "stack-audit-payments",
+      "source_path": "plugins/stack/commands/audit-payments.md",
+      "source_sha256": "aa43dd10a910bc2571d4ee539dbbbf7a0f7ce7680e4a95293814245d72703a3f",
+      "target_path": "plugins/stack/skills/stack-audit-payments/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-audit-supabase",
+      "command": "audit-supabase",
+      "id": "stack:audit-supabase",
+      "legacy_invocation": "/stack:audit-supabase",
+      "normalized_sha256": "ba7b0eccdaa2649c5ed12d015a0df6e36ba684f755799ffbefdb57373643c5f4",
+      "plugin": "stack",
+      "skill_invocation": "$stack-audit-supabase",
+      "skill_name": "stack-audit-supabase",
+      "source_path": "plugins/stack/commands/audit-supabase.md",
+      "source_sha256": "60c9c9158c9dcb0858592f82c95c2a95e25288d08b0285f61da8ecba6c8bdde8",
+      "target_path": "plugins/stack/skills/stack-audit-supabase/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-audit-tags",
+      "command": "audit-tags",
+      "id": "stack:audit-tags",
+      "legacy_invocation": "/stack:audit-tags",
+      "normalized_sha256": "b4b075cbf005a5fb60ef538189115d9f623fd45817f822a0c536e0546b6923b8",
+      "plugin": "stack",
+      "skill_invocation": "$stack-audit-tags",
+      "skill_name": "stack-audit-tags",
+      "source_path": "plugins/stack/commands/audit-tags.md",
+      "source_sha256": "34380c113c3fc4f06d8529e3cc06a6355908d1dc7c226bbf0b01e8b8442bd663",
+      "target_path": "plugins/stack/skills/stack-audit-tags/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-audit-vercel",
+      "command": "audit-vercel",
+      "id": "stack:audit-vercel",
+      "legacy_invocation": "/stack:audit-vercel",
+      "normalized_sha256": "4601e6ab9412d3f06e14097b01156fa40d3820832fb0cbc64e5060e1eca1c570",
+      "plugin": "stack",
+      "skill_invocation": "$stack-audit-vercel",
+      "skill_name": "stack-audit-vercel",
+      "source_path": "plugins/stack/commands/audit-vercel.md",
+      "source_sha256": "4841ab59dd6f056ba986c86798f981afb33d428bdbd45afb6e19afa90c16f28b",
+      "target_path": "plugins/stack/skills/stack-audit-vercel/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-connector-check",
+      "command": "connector-check",
+      "id": "stack:connector-check",
+      "legacy_invocation": "/stack:connector-check",
+      "normalized_sha256": "b2fb32979296686d8d29b33825189c77bcc6dec2e2673d4a88679d7029be22c0",
+      "plugin": "stack",
+      "skill_invocation": "$stack-connector-check",
+      "skill_name": "stack-connector-check",
+      "source_path": "plugins/stack/commands/connector-check.md",
+      "source_sha256": "5f08db6046c150338e7542838a0103b7d9a0e26360359425dac6497c9c4ccf78",
+      "target_path": "plugins/stack/skills/stack-connector-check/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$stack-intake",
+      "command": "intake",
+      "id": "stack:intake",
+      "legacy_invocation": "/stack:intake",
+      "normalized_sha256": "5a832b22941a8e9d2e3ab3b663aa1d2373c94948978cfd7340eb93352afafef9",
+      "plugin": "stack",
+      "skill_invocation": "$stack-intake",
+      "skill_name": "stack-intake",
+      "source_path": "plugins/stack/commands/intake.md",
+      "source_sha256": "42e66c65b1599dd97fe0570e79af336fb5a282acc489a44985172e8a05278f6e",
+      "target_path": "plugins/stack/skills/stack-intake/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$test-e2e",
+      "command": "e2e",
+      "id": "test:e2e",
+      "legacy_invocation": "/test:e2e",
+      "normalized_sha256": "2b1e90c8c61b76db6ca599526341d1b9493109fc3de35f8436cce48e51ff07b6",
+      "plugin": "test",
+      "skill_invocation": "$test-e2e",
+      "skill_name": "test-e2e",
+      "source_path": "plugins/test/commands/e2e.md",
+      "source_sha256": "eca5f86877401e7bf709fd16e249b5435e962baf2a6185a5e8bc485ddc30419d",
+      "target_path": "plugins/test/skills/test-e2e/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$test-edge-cases",
+      "command": "edge-cases",
+      "id": "test:edge-cases",
+      "legacy_invocation": "/test:edge-cases",
+      "normalized_sha256": "dff0cce4f074fcef3631205712a0b066ba9e661aa0f6f6bad46cb1fe3c8fcbbd",
+      "plugin": "test",
+      "skill_invocation": "$test-edge-cases",
+      "skill_name": "test-edge-cases",
+      "source_path": "plugins/test/commands/edge-cases.md",
+      "source_sha256": "da546209905343497c19e09fb022400fc508b4e44f1adf1fb8f7b01e654518b4",
+      "target_path": "plugins/test/skills/test-edge-cases/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$test-integration",
+      "command": "integration",
+      "id": "test:integration",
+      "legacy_invocation": "/test:integration",
+      "normalized_sha256": "b6b2092ead5cff01a9d3ec2e9d0619315ce958dab0293a931c879b2882a8509c",
+      "plugin": "test",
+      "skill_invocation": "$test-integration",
+      "skill_name": "test-integration",
+      "source_path": "plugins/test/commands/integration.md",
+      "source_sha256": "03994eabf03fffb58bf5a026e0e5f5d3114252e69f8cd0988907ce56cd8c0093",
+      "target_path": "plugins/test/skills/test-integration/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
+      "codex_invocation": "$test-unit",
+      "command": "unit",
+      "id": "test:unit",
+      "legacy_invocation": "/test:unit",
+      "normalized_sha256": "282b06e55bb9abe0f1b6c8a67f0a8f7cd428160a24bdba5dc5a58dd71ec5e17d",
+      "plugin": "test",
+      "skill_invocation": "$test-unit",
+      "skill_name": "test-unit",
+      "source_path": "plugins/test/commands/unit.md",
+      "source_sha256": "7deeac6cf908dc6a2bfe02a6419c5307873a159642f98dabf3336fd065aa8b3e",
+      "target_path": "plugins/test/skills/test-unit/SKILL.md"
+    }
+  ],
+  "companion_files": [
+    {
+      "kind": "shared-helper",
+      "path": "plugins/gate/lib/gate_policy.py",
+      "sha256": "a672e7c21d9e0c20996597e0f038c5374b856309c80f63fedc35e83c3fc2e83a"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/gate/skills/production-readiness-reviewer/schema/gate-evidence-v1.schema.json",
+      "sha256": "bd0508681d9e101644010f8b83d3d541e2292b0346ca90264d19cfd491bc59f6"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/gate/skills/production-readiness-reviewer/schema/run-state-v1.schema.json",
+      "sha256": "301a41ff738237220831ee7bd7dd03a9366bb0304674877b6de42096aa9d8e52"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/gate/skills/production-readiness-reviewer/scripts/check_evidence.py",
+      "sha256": "b3ccb2bc5fd6a4de00ccd6b3d51e889ff6bb820475f3f955c3b489546caf8099"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/gate/skills/production-readiness-reviewer/scripts/record_evidence.py",
+      "sha256": "628b389784af2d68885903ec94f976bc0d1af5616070e1731996effc95aac90e"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/gate/skills/production-readiness-reviewer/scripts/update_run_state.py",
+      "sha256": "dcaf0cf1f68e8981d357d6a95c744c5d6a8d53373ff13e62e5e9a67397d131a9"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/seo/skills/seo-schema/scripts/schema_check.py",
+      "sha256": "ffd88c284a01a5cf28eb6d3b45bd95d6ac6058610da28acc1d08130d7e25328b"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/seo/skills/seo-sitemap/scripts/sitemap_check.py",
+      "sha256": "a08fb34203c235ffa215c093b1bd75f7a4ea2d6b76bef03451f60e12cb20b5f2"
+    },
+    {
+      "kind": "shared-helper",
+      "path": "plugins/site-doctor/lib/url_guard.py",
+      "sha256": "d57b604c5b61a58b5a7e4299d181bd8471072636e1399413bbe7069811a367b0"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/animation-design-audit/scripts/animation_check.py",
+      "sha256": "104dbf079ae446c20e9f4d4f0c07cc5c79199b2bd959c18c61e33f6376d90d66"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/compliance-check/scripts/scan_trackers.py",
+      "sha256": "f4583379038dd466006a025c5c0d3d769aa81583d414f2b40d3834d5fb15ba07"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/database-audit/references/audit-queries.md",
+      "sha256": "0bd29bc21b39d766f2382a465cafe6717110badfc97c7ff2711092e2d1a767b4"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/dependency-audit/scripts/check_deps.py",
+      "sha256": "8d67872db758da3a6c39ca3b3b79a057002ed0e643cdb434dc04a628d7dafce0"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/email-deliverability/scripts/check_email_dns.py",
+      "sha256": "6df778a441d519685e83efcb1f0eb9de7613c2e7685e37424e905878279fc050"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/mobile-audit/scripts/check_mobile.py",
+      "sha256": "948dd9f563b9ce8ad6951f5543d4626840c2ef6e767e57e1c24c3b305a028402"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/security-review/scripts/scan_secrets.py",
+      "sha256": "7de5372b0826f6c2febed29cea0ba81a106ade37f7534362b2e4431e8636de9c"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/seo-optimization/scripts/extract_meta.py",
+      "sha256": "e5d246415099bc4eaeb65254a37f06e079b796089347cc98998940d12f87d728"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/website-audit/scripts/check_headers.py",
+      "sha256": "9edc7c1b2e3af096ef7b62fb1f5fcc28033c13b2436072984fd53e5a6e49ee8c"
+    },
+    {
+      "kind": "skill-companion",
+      "path": "plugins/site-doctor/skills/website-audit/scripts/check_links.py",
+      "sha256": "a52e4a567e1c7ab5ba451ea7fce329ad8bea89bbec423e34eb00f9b4cdcd4147"
+    }
+  ],
+  "counts": {
+    "plugins": 19,
+    "source_commands": 125,
+    "source_specialist_skills": 79,
+    "target_skills": 184
+  },
+  "normalization": [
+    "Claude/Codex frontmatter (disable-model-invocation is adapter metadata)",
+    "Claude command frontmatter/body to the deterministic Codex skill wrapper",
+    "slash command invocations to $plugin-command skill invocations",
+    "CLAUDE.md and Claude Code to AGENTS.md and Codex",
+    "${CLAUDE_PLUGIN_ROOT} helper paths to <skill-root> portable paths",
+    "narrow slash-command/skill-invocation wording only",
+    "legacy one-line and exact standardized Codex output-contract wrappers excluded"
+  ],
+  "plugins": [
+    {
+      "id": "ai",
+      "source_path": "plugins/ai/.claude-plugin/plugin.json",
+      "source_sha256": "dbca058a928b810a8080b3e61dda14dbec43027a25b40b3f240d9fecad8bb9d1",
+      "source_version": "2.5.5"
+    },
+    {
+      "id": "browser",
+      "source_path": "plugins/browser/.claude-plugin/plugin.json",
+      "source_sha256": "b154f27150c31f228d25846d904a1048823a4be994db94ec3b763015613aa817",
+      "source_version": "1.1.2"
+    },
+    {
+      "id": "design",
+      "source_path": "plugins/design/.claude-plugin/plugin.json",
+      "source_sha256": "500436674f75f9dabc0e6ccf5709be167ad2089dd973fc7fe452cbf827a532d5",
+      "source_version": "1.0.2"
+    },
+    {
+      "id": "dev",
+      "source_path": "plugins/dev/.claude-plugin/plugin.json",
+      "source_sha256": "17f559d288e18688966c783adaa6049f82ea00ea0c0525216b6e633df8b1a9b2",
+      "source_version": "1.0.3"
+    },
+    {
+      "id": "docs",
+      "source_path": "plugins/docs/.claude-plugin/plugin.json",
+      "source_sha256": "23698a6ce5a5d660a6bb6a8fdf564ab1d4725212228327c2f131912468948637",
+      "source_version": "1.1.2"
+    },
+    {
+      "id": "full-team",
+      "source_path": "plugins/full-team/.claude-plugin/plugin.json",
+      "source_sha256": "ee12878225ad6f6961c3968302ae368bcb285e32c36efb9f858080f788455d0b",
+      "source_version": "1.0.3"
+    },
+    {
+      "id": "gate",
+      "source_path": "plugins/gate/.claude-plugin/plugin.json",
+      "source_sha256": "615c346ab87b6199e505486344ea3e768018f352453542328ef0d9d8caf74b59",
+      "source_version": "2.5.5"
+    },
+    {
+      "id": "git",
+      "source_path": "plugins/git/.claude-plugin/plugin.json",
+      "source_sha256": "7b6eb99bc55a2a50201a094d842a5fd55355faba43c6f8c17182d290b543c91a",
+      "source_version": "1.1.2"
+    },
+    {
+      "id": "growth",
+      "source_path": "plugins/growth/.claude-plugin/plugin.json",
+      "source_sha256": "467ef7fc0959078ce125632757a22ddedb2b497a0ad475aa49bd4c2b1b03378c",
+      "source_version": "1.0.3"
+    },
+    {
+      "id": "project",
+      "source_path": "plugins/project/.claude-plugin/plugin.json",
+      "source_sha256": "21a3e515a15d69a97e86b46a128fd6c852e5d75a6f38b84bdb4fda173f6ff10e",
+      "source_version": "1.0.2"
+    },
+    {
+      "id": "release",
+      "source_path": "plugins/release/.claude-plugin/plugin.json",
+      "source_sha256": "553717fe951a59fcd591ece217f9712885836f93e1d112ce20f305b545d19336",
+      "source_version": "1.1.2"
+    },
+    {
+      "id": "repo",
+      "source_path": "plugins/repo/.claude-plugin/plugin.json",
+      "source_sha256": "c805d23547dace3c90d649c8b8453c7b542a89a93eee7ab8b0c945965b6d6f6b",
+      "source_version": "1.0.4"
+    },
+    {
+      "id": "security",
+      "source_path": "plugins/security/.claude-plugin/plugin.json",
+      "source_sha256": "d9d63b42f4e796b422eb6e99d4ad3005941b8a89bc686830cb52635b57e7de99",
+      "source_version": "1.1.3"
+    },
+    {
+      "id": "seo",
+      "source_path": "plugins/seo/.claude-plugin/plugin.json",
+      "source_sha256": "8b4b2380fd00c5ff6f0797af5b79b541b7130715c9fce5d54dfa29bf996a7e93",
+      "source_version": "1.0.0"
+    },
+    {
+      "id": "site-doctor",
+      "source_path": "plugins/site-doctor/.claude-plugin/plugin.json",
+      "source_sha256": "c68a0c9a7892ed7f2a6164d8e9dbafb97f966952ef1c03bdb07dee796acf79bd",
+      "source_version": "3.6.6"
+    },
+    {
+      "id": "solo",
+      "source_path": "plugins/solo/.claude-plugin/plugin.json",
+      "source_sha256": "cfbbb8a520d17dc6cd38d6d84189dd9273f8cf1d0eba744bef1ed24903274f25",
+      "source_version": "1.9.6"
+    },
+    {
+      "id": "spec",
+      "source_path": "plugins/spec/.claude-plugin/plugin.json",
+      "source_sha256": "ca9e64a1bffe6274f61260b39f572f0ddad8d65683d9b0b5c300ba0ddab58796",
+      "source_version": "1.0.2"
+    },
+    {
+      "id": "stack",
+      "source_path": "plugins/stack/.claude-plugin/plugin.json",
+      "source_sha256": "d563e0b90a5c85e9edb850f4bcca68d39f1d4135692f8be21e8d550c186bd862",
+      "source_version": "1.4.5"
+    },
+    {
+      "id": "test",
+      "source_path": "plugins/test/.claude-plugin/plugin.json",
+      "source_sha256": "9476b39c163887253c75b4072f1ebc9c113565a355b4294eb353cd87ccbae1fa",
+      "source_version": "1.0.3"
+    }
+  ],
+  "schema": "solo-suite/capability-parity-v1",
+  "specialist_skills": [
+    {
+      "adapter_waiver": "codex-native AgentRoom runtime and trust journal",
+      "id": "ai:agent-room-templates",
+      "normalized_sha256": "fed873f1e37532f8c04e7ae5782ba04909382c2f6a9948954ca63092236a629b",
+      "plugin": "ai",
+      "skill": "agent-room-templates",
+      "source_path": "plugins/ai/skills/agent-room-templates/SKILL.md",
+      "source_sha256": "7f7c0ca27eeaba82c93d5e92b86168881624a39c25c21814270c5ef27986757b",
+      "target_path": "plugins/ai/skills/agent-room-templates/SKILL.md"
+    },
+    {
+      "id": "ai:ai-output-auditor",
+      "normalized_sha256": "5066dac3ceabb955ddd34e344390e51f47fd1c528a6b279c07b492b1d7a4388c",
+      "plugin": "ai",
+      "skill": "ai-output-auditor",
+      "source_path": "plugins/ai/skills/ai-output-auditor/SKILL.md",
+      "source_sha256": "72ba081bb5c101f167af9f7ed0ddfb547c4d2c6ead42ebc8c041241a83246f27",
+      "target_path": "plugins/ai/skills/ai-output-auditor/SKILL.md"
+    },
+    {
+      "id": "browser:browser-qa-engineer",
+      "normalized_sha256": "d56852da7730abc82a09c87858b33b611383aff1e58518ee97b174d638070d1c",
+      "plugin": "browser",
+      "skill": "browser-qa-engineer",
+      "source_path": "plugins/browser/skills/browser-qa-engineer/SKILL.md",
+      "source_sha256": "6f024103daa726562080c99259fe053dbe6a7c07a4d532d8cdba0515e6d9195e",
+      "target_path": "plugins/browser/skills/browser-qa-engineer/SKILL.md"
+    },
+    {
+      "id": "design:ui-ux-designer",
+      "normalized_sha256": "0f24bfe4c7d38b79a74d50d9f00f65347746975084b8933fbffc0df80c04853d",
+      "plugin": "design",
+      "skill": "ui-ux-designer",
+      "source_path": "plugins/design/skills/ui-ux-designer/SKILL.md",
+      "source_sha256": "ee93fba7dceef5cfeb378ef90698b93e52e3280d66dc8680a5581bcb553b17e7",
+      "target_path": "plugins/design/skills/ui-ux-designer/SKILL.md"
+    },
+    {
+      "id": "dev:code-reviewer",
+      "normalized_sha256": "a478ccadc6e031423cc5e417a0c45847221ac02172928de2a852cc2e5b6da973",
+      "plugin": "dev",
+      "skill": "code-reviewer",
+      "source_path": "plugins/dev/skills/code-reviewer/SKILL.md",
+      "source_sha256": "c9627a1ebca22ed86ff41a7939bcdccc6b81f11385f54b05b8182ee9f37c8526",
+      "target_path": "plugins/dev/skills/code-reviewer/SKILL.md"
+    },
+    {
+      "id": "dev:fullstack-developer",
+      "normalized_sha256": "251624522597e8457a34ce6614e5d73c0c00e37ad72ca9dc12e1944033203474",
+      "plugin": "dev",
+      "skill": "fullstack-developer",
+      "source_path": "plugins/dev/skills/fullstack-developer/SKILL.md",
+      "source_sha256": "4ea425bde781dca5b9255245e63a51e27e6f3937bd9dc6550c83770564345960",
+      "target_path": "plugins/dev/skills/fullstack-developer/SKILL.md"
+    },
+    {
+      "id": "docs:documentation-writer",
+      "normalized_sha256": "a8bb6fa90a8e3b0b6e429b104a9e97d5c791ebb6e7486da6ca22aaec9c6c9af3",
+      "plugin": "docs",
+      "skill": "documentation-writer",
+      "source_path": "plugins/docs/skills/documentation-writer/SKILL.md",
+      "source_sha256": "3f90d140f18966a60be148743fb8e9ae369d21a997f326016ce11001b21be327",
+      "target_path": "plugins/docs/skills/documentation-writer/SKILL.md"
+    },
+    {
+      "id": "gate:production-readiness-reviewer",
+      "normalized_sha256": "d0d9c449e101ef2bf3c9a1d40c284a49a1d76748e48edbbdfa2b9161097d2f7c",
+      "plugin": "gate",
+      "skill": "production-readiness-reviewer",
+      "source_path": "plugins/gate/skills/production-readiness-reviewer/SKILL.md",
+      "source_sha256": "c67b37dcdbc0e0ee7d330e02c16c99cdb78255ebd7b1959fad27939135cb1c7a",
+      "target_path": "plugins/gate/skills/production-readiness-reviewer/SKILL.md"
+    },
+    {
+      "id": "gate:quality-gatekeeper",
+      "normalized_sha256": "5526f0c7c7f495ccd2f3047f1e437d44c0c4c8b7e82e9986af1b6ea2a4363b2a",
+      "plugin": "gate",
+      "skill": "quality-gatekeeper",
+      "source_path": "plugins/gate/skills/quality-gatekeeper/SKILL.md",
+      "source_sha256": "007edaa85c448f9703c5934e96620e48426d480d353c8c63f3f5ea641543714d",
+      "target_path": "plugins/gate/skills/quality-gatekeeper/SKILL.md"
+    },
+    {
+      "id": "git:git-workflow-manager",
+      "normalized_sha256": "f5f6096f194d4280f95777102fdb1776a6e3e290585117bdf4aae1561b5dd599",
+      "plugin": "git",
+      "skill": "git-workflow-manager",
+      "source_path": "plugins/git/skills/git-workflow-manager/SKILL.md",
+      "source_sha256": "2bf086b217d193e725440a746c187ec4f0871184d6cdc670f5dd8b0b032fc0ff",
+      "target_path": "plugins/git/skills/git-workflow-manager/SKILL.md"
+    },
+    {
+      "id": "growth:conversion-optimizer",
+      "normalized_sha256": "f6d22061957c06a92f40c8ccba338a5e69e01381be47dc1f3194ae97202c1b62",
+      "plugin": "growth",
+      "skill": "conversion-optimizer",
+      "source_path": "plugins/growth/skills/conversion-optimizer/SKILL.md",
+      "source_sha256": "710181d3bb8902b6781439a1c4e30c2600502150b67153ee71700c858a73522a",
+      "target_path": "plugins/growth/skills/conversion-optimizer/SKILL.md"
+    },
+    {
+      "id": "project:product-manager",
+      "normalized_sha256": "0f837d1a59ad5863cd34c84b44f77cbb25aab6158f5265830d5bdf6056320d84",
+      "plugin": "project",
+      "skill": "product-manager",
+      "source_path": "plugins/project/skills/product-manager/SKILL.md",
+      "source_sha256": "747de24389e552a45927a75b3de669821acfe500c3e12e6c4e6649ed8745d768",
+      "target_path": "plugins/project/skills/product-manager/SKILL.md"
+    },
+    {
+      "id": "project:software-architect",
+      "normalized_sha256": "79b57f45318f2435b3c29bd8d50396773d157cb300c0dae3790e26c45e9d96ef",
+      "plugin": "project",
+      "skill": "software-architect",
+      "source_path": "plugins/project/skills/software-architect/SKILL.md",
+      "source_sha256": "3947de966d1f61f4160dc6aad011c10776573ac826656a103d7e2f41b7c422f2",
+      "target_path": "plugins/project/skills/software-architect/SKILL.md"
+    },
+    {
+      "id": "release:devops-engineer",
+      "normalized_sha256": "78699e2b8f73d1e0b8288f52e8cf056ee0e05de2443786e2970688839ffe119f",
+      "plugin": "release",
+      "skill": "devops-engineer",
+      "source_path": "plugins/release/skills/devops-engineer/SKILL.md",
+      "source_sha256": "7afccb68f918c0e74157b3d5e2c703f88862002527e4715d4f7981a2f484cdad",
+      "target_path": "plugins/release/skills/devops-engineer/SKILL.md"
+    },
+    {
+      "id": "release:security-reviewer",
+      "normalized_sha256": "83261e5b79f84824e53ce420c65f7f1ce23d3e0830e1873b84abf5e90eb6968a",
+      "plugin": "release",
+      "skill": "security-reviewer",
+      "source_path": "plugins/release/skills/security-reviewer/SKILL.md",
+      "source_sha256": "eac2aa1d22d653aa2bf98c484ac606d05b50bf12c538a302650d254021e4b7bf",
+      "target_path": "plugins/release/skills/security-reviewer/SKILL.md"
+    },
+    {
+      "id": "repo:repo-analyzer",
+      "normalized_sha256": "233cfc3cb750f70c5bcbe7cc7534db5f8a9648328ca3cebd2d4d778dd027e96b",
+      "plugin": "repo",
+      "skill": "repo-analyzer",
+      "source_path": "plugins/repo/skills/repo-analyzer/SKILL.md",
+      "source_sha256": "06ae044db1a67ff1976b206249c8ae369eb8eae191b9a578c9a9e362a7eca6a7",
+      "target_path": "plugins/repo/skills/repo-analyzer/SKILL.md"
+    },
+    {
+      "id": "security:authz-security-reviewer",
+      "normalized_sha256": "244d203c59d25369f2f7df28242e316d81ae7704b5cc96a1ba48b66d940cbfb9",
+      "plugin": "security",
+      "skill": "authz-security-reviewer",
+      "source_path": "plugins/security/skills/authz-security-reviewer/SKILL.md",
+      "source_sha256": "60795c2f62a508f0753ce7526552d43572166503e6da8ee97077846b5403b019",
+      "target_path": "plugins/security/skills/authz-security-reviewer/SKILL.md"
+    },
+    {
+      "id": "seo:seo",
+      "normalized_sha256": "f77be45711576d03abcc1809d2a0eb4102a2cdea32cc0c97b98441950aaa1108",
+      "plugin": "seo",
+      "skill": "seo",
+      "source_path": "plugins/seo/skills/seo/SKILL.md",
+      "source_sha256": "e5dea32029fb05935bfcec144a8533ee99e36b3fd6b00727e43e5be246dc99ad",
+      "target_path": "plugins/seo/skills/seo/SKILL.md"
+    },
+    {
+      "id": "seo:seo-backlinks",
+      "normalized_sha256": "abb0855acf3e063e2353038f53758f0c2a61de3613842081729237f57c4a190e",
+      "plugin": "seo",
+      "skill": "seo-backlinks",
+      "source_path": "plugins/seo/skills/seo-backlinks/SKILL.md",
+      "source_sha256": "4d877c8827ad281a5b9378d0e0d066786eda4a929228d864a006d2624624583b",
+      "target_path": "plugins/seo/skills/seo-backlinks/SKILL.md"
+    },
+    {
+      "id": "seo:seo-cluster",
+      "normalized_sha256": "667abc6b938335cb0f864f88bb1a48400295791f533b843597cdf215b3c560ba",
+      "plugin": "seo",
+      "skill": "seo-cluster",
+      "source_path": "plugins/seo/skills/seo-cluster/SKILL.md",
+      "source_sha256": "7b0d85f6d47e63c31b4c98171798af9adbb1c56bd46f87a5277af59d4159d1a4",
+      "target_path": "plugins/seo/skills/seo-cluster/SKILL.md"
+    },
+    {
+      "id": "seo:seo-competitor-pages",
+      "normalized_sha256": "892f82751cd2f16028ab458dc9848ff70a3e022857743fc0b6760426a7a89bcf",
+      "plugin": "seo",
+      "skill": "seo-competitor-pages",
+      "source_path": "plugins/seo/skills/seo-competitor-pages/SKILL.md",
+      "source_sha256": "b20452d16e83e6120bbdc7f17345f73e43e852ff3bd51f8b275b036b3d6e0554",
+      "target_path": "plugins/seo/skills/seo-competitor-pages/SKILL.md"
+    },
+    {
+      "id": "seo:seo-content",
+      "normalized_sha256": "93eff4d443c99589dd91bc88b4e85224bc526f4cd362016244c2fdba61913395",
+      "plugin": "seo",
+      "skill": "seo-content",
+      "source_path": "plugins/seo/skills/seo-content/SKILL.md",
+      "source_sha256": "5a6bd225d98e554eb34b44946ae8ae9e54891032f80d464121ab6d921048a55d",
+      "target_path": "plugins/seo/skills/seo-content/SKILL.md"
+    },
+    {
+      "id": "seo:seo-content-brief",
+      "normalized_sha256": "2fae053892dbae1503353e650a7c120fc2fc8609cff30e5a437362305112363f",
+      "plugin": "seo",
+      "skill": "seo-content-brief",
+      "source_path": "plugins/seo/skills/seo-content-brief/SKILL.md",
+      "source_sha256": "477a16efdc2d75a13a85c5c660c01155afe609e258819e035a6a03fc55ddc010",
+      "target_path": "plugins/seo/skills/seo-content-brief/SKILL.md"
+    },
+    {
+      "id": "seo:seo-drift",
+      "normalized_sha256": "1380cced590d07d89c79287e047229593dfa0bf7132db8ed47227d936417312c",
+      "plugin": "seo",
+      "skill": "seo-drift",
+      "source_path": "plugins/seo/skills/seo-drift/SKILL.md",
+      "source_sha256": "9f89387d4eb4a5bc6f937eb5969542f6e9718bd336e8d3403fb3960c5eebf8b7",
+      "target_path": "plugins/seo/skills/seo-drift/SKILL.md"
+    },
+    {
+      "id": "seo:seo-ecommerce",
+      "normalized_sha256": "c8ec2b4f83d66611e0fa8288caf1cb095874d02749b216fa0b12060a2f1a5c03",
+      "plugin": "seo",
+      "skill": "seo-ecommerce",
+      "source_path": "plugins/seo/skills/seo-ecommerce/SKILL.md",
+      "source_sha256": "e40e2834d3d61f0b35bcc34c45afc6f051ee346b63e0a03d05c7922085f112af",
+      "target_path": "plugins/seo/skills/seo-ecommerce/SKILL.md"
+    },
+    {
+      "id": "seo:seo-flow",
+      "normalized_sha256": "9c30246a0adbfb82075b3d32febba5e5be2fccac06b0761678959ad8a6b0c9b8",
+      "plugin": "seo",
+      "skill": "seo-flow",
+      "source_path": "plugins/seo/skills/seo-flow/SKILL.md",
+      "source_sha256": "295dd8736c8dbaec5808de62403dc072346ceba26ae59f5d7a4892f889a7d2ef",
+      "target_path": "plugins/seo/skills/seo-flow/SKILL.md"
+    },
+    {
+      "id": "seo:seo-geo",
+      "normalized_sha256": "0461a32e68c16c629224e23f641dbc0356aef6884fdd2f7bbba2d560ae1277cb",
+      "plugin": "seo",
+      "skill": "seo-geo",
+      "source_path": "plugins/seo/skills/seo-geo/SKILL.md",
+      "source_sha256": "8bafd3182999154be86c6d443c3bc55b77cf7683ed2afd373bae5d6efb1adbe9",
+      "target_path": "plugins/seo/skills/seo-geo/SKILL.md"
+    },
+    {
+      "id": "seo:seo-google",
+      "normalized_sha256": "2232108bfb700e73d56a51028054ece769b15effe01c03fd6c79f8abc45c4450",
+      "plugin": "seo",
+      "skill": "seo-google",
+      "source_path": "plugins/seo/skills/seo-google/SKILL.md",
+      "source_sha256": "1c69455566b3dcd8e1a4106c520dddef840ad5ca49faa1d0bf94ff024c78ff85",
+      "target_path": "plugins/seo/skills/seo-google/SKILL.md"
+    },
+    {
+      "id": "seo:seo-hreflang",
+      "normalized_sha256": "b9a8a76e5de35a0f8daa9502c3461580da0b5ea055959492bcdea65c13923753",
+      "plugin": "seo",
+      "skill": "seo-hreflang",
+      "source_path": "plugins/seo/skills/seo-hreflang/SKILL.md",
+      "source_sha256": "3d465ffdd0f500cef3079aa89dc53a9aff84b3e147c3eba2a05fcbaaa29b9ca4",
+      "target_path": "plugins/seo/skills/seo-hreflang/SKILL.md"
+    },
+    {
+      "id": "seo:seo-images",
+      "normalized_sha256": "628b823e6f1d073ed7bfb2a817ac598b7c4405053f93f72399e2a95daa6c02ff",
+      "plugin": "seo",
+      "skill": "seo-images",
+      "source_path": "plugins/seo/skills/seo-images/SKILL.md",
+      "source_sha256": "d248ca5ce9d63f6c736913e1ebd3e9f25b4e7d16cfdb2b1e79a2aed102c537eb",
+      "target_path": "plugins/seo/skills/seo-images/SKILL.md"
+    },
+    {
+      "id": "seo:seo-local",
+      "normalized_sha256": "dfc8c562609d7956f2648bbb61d08892247f9d1e2d7750638412b9d3f4a640c8",
+      "plugin": "seo",
+      "skill": "seo-local",
+      "source_path": "plugins/seo/skills/seo-local/SKILL.md",
+      "source_sha256": "362c68c0a91bb3d3fa7c0928c8bdeed09f212e5bb9b6573cd60a67e623af264f",
+      "target_path": "plugins/seo/skills/seo-local/SKILL.md"
+    },
+    {
+      "id": "seo:seo-maps",
+      "normalized_sha256": "113b2af66bc0086f11827160242491315d397badb5fe323bdee86c33f7abeb48",
+      "plugin": "seo",
+      "skill": "seo-maps",
+      "source_path": "plugins/seo/skills/seo-maps/SKILL.md",
+      "source_sha256": "f5b4380e93fbe97dde7a2c98898c03e27ad1f20b9e362fe7c26cf9c1876c310b",
+      "target_path": "plugins/seo/skills/seo-maps/SKILL.md"
+    },
+    {
+      "id": "seo:seo-page",
+      "normalized_sha256": "22ff3464a31d7b80adc220abb401b622c1d6108a9ba6a28147bdd757d6073bce",
+      "plugin": "seo",
+      "skill": "seo-page",
+      "source_path": "plugins/seo/skills/seo-page/SKILL.md",
+      "source_sha256": "2933808d52370afced73bd761ef9a739f1e24024e1ae47fe4393e7440729b77e",
+      "target_path": "plugins/seo/skills/seo-page/SKILL.md"
+    },
+    {
+      "id": "seo:seo-plan",
+      "normalized_sha256": "250eeeb9a70394ad42f4dd477d493d35d6e82a6b5473d902b54761ad4ac0949f",
+      "plugin": "seo",
+      "skill": "seo-plan",
+      "source_path": "plugins/seo/skills/seo-plan/SKILL.md",
+      "source_sha256": "9e1cda1a560d8a0cda0940c753f31567e799737c7fa965646ec1f71237e3ddd7",
+      "target_path": "plugins/seo/skills/seo-plan/SKILL.md"
+    },
+    {
+      "id": "seo:seo-programmatic",
+      "normalized_sha256": "12a95e9762ad50524772e1f3d0ffb68cf6e238fcd83842c2b0a69cf4d51928f3",
+      "plugin": "seo",
+      "skill": "seo-programmatic",
+      "source_path": "plugins/seo/skills/seo-programmatic/SKILL.md",
+      "source_sha256": "e7e826852541b6d9200787692f011ebd9d02ed977da8678863c5ed56b6ac9097",
+      "target_path": "plugins/seo/skills/seo-programmatic/SKILL.md"
+    },
+    {
+      "id": "seo:seo-schema",
+      "normalized_sha256": "d226d4d21c552963c426d9c93727fcf0de91b513e0debdb816549f1e91d22ffd",
+      "plugin": "seo",
+      "skill": "seo-schema",
+      "source_path": "plugins/seo/skills/seo-schema/SKILL.md",
+      "source_sha256": "4ee70c6670c1d13bc722d5a5777c902bb4363a57bcba1c1d909fb03906d4d6a9",
+      "target_path": "plugins/seo/skills/seo-schema/SKILL.md"
+    },
+    {
+      "id": "seo:seo-sitemap",
+      "normalized_sha256": "7bd6f28eb9bc1382cdfe7bab20a5628745af18b933c1258af38fb2e569180b1a",
+      "plugin": "seo",
+      "skill": "seo-sitemap",
+      "source_path": "plugins/seo/skills/seo-sitemap/SKILL.md",
+      "source_sha256": "e7bc102952db9e938696e2c67a30e75b997ec2474bba5afb86fd1f13e180b95e",
+      "target_path": "plugins/seo/skills/seo-sitemap/SKILL.md"
+    },
+    {
+      "id": "seo:seo-sxo",
+      "normalized_sha256": "8a2fd72af9f84d2a592f24182973bf6c69897e6cc119d8dff2c8c3d811151732",
+      "plugin": "seo",
+      "skill": "seo-sxo",
+      "source_path": "plugins/seo/skills/seo-sxo/SKILL.md",
+      "source_sha256": "561859b537c265396e4722b21d4ae4aaf38f998f6417797014b5ca1f82b288c4",
+      "target_path": "plugins/seo/skills/seo-sxo/SKILL.md"
+    },
+    {
+      "id": "seo:seo-technical",
+      "normalized_sha256": "3cad723298c991cb4ee65721bb0f4da6943a85c7beffb994f34166d810568431",
+      "plugin": "seo",
+      "skill": "seo-technical",
+      "source_path": "plugins/seo/skills/seo-technical/SKILL.md",
+      "source_sha256": "abe90e7a6711bdb6e5bbf5692ca64dfbb0173bf818978d00183fb970becc5713",
+      "target_path": "plugins/seo/skills/seo-technical/SKILL.md"
+    },
+    {
+      "id": "site-doctor:accessibility-review",
+      "normalized_sha256": "77170e835186b6cc573339fb6439f01f7ddc55209a47e69f161606ae3c923a23",
+      "plugin": "site-doctor",
+      "skill": "accessibility-review",
+      "source_path": "plugins/site-doctor/skills/accessibility-review/SKILL.md",
+      "source_sha256": "130d45baef2e015db2c8427a8d31c0ab9e9e3d6a4996b8325484989c26f448a9",
+      "target_path": "plugins/site-doctor/skills/accessibility-review/SKILL.md"
+    },
+    {
+      "id": "site-doctor:analytics-audit",
+      "normalized_sha256": "910d1aa938afa0d7f7a3c9cda6e4595eeddf868491a1e97c9187b2e5125bd705",
+      "plugin": "site-doctor",
+      "skill": "analytics-audit",
+      "source_path": "plugins/site-doctor/skills/analytics-audit/SKILL.md",
+      "source_sha256": "785e41973392736444b63aff9060bb1e86dd84a0318edff9ac1c1e1fc0a606c6",
+      "target_path": "plugins/site-doctor/skills/analytics-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:animation-design-audit",
+      "normalized_sha256": "601409d7e4b679178305d9a5a774b61d129791dcabe01864d8eed765e9f41f28",
+      "plugin": "site-doctor",
+      "skill": "animation-design-audit",
+      "source_path": "plugins/site-doctor/skills/animation-design-audit/SKILL.md",
+      "source_sha256": "55e72d2b8169388b8daef8c155d4a39eebc36881fdf3ea4882b8273ce84b66dd",
+      "target_path": "plugins/site-doctor/skills/animation-design-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:api-audit",
+      "normalized_sha256": "57ab7bb357b1fed4aca357445f3186848e3d5ada69b1b84630523704ca52e052",
+      "plugin": "site-doctor",
+      "skill": "api-audit",
+      "source_path": "plugins/site-doctor/skills/api-audit/SKILL.md",
+      "source_sha256": "8bebff746ef5f0860eab787608e543553034d432d7d7b30097556af29520f1a0",
+      "target_path": "plugins/site-doctor/skills/api-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:backup-recovery",
+      "normalized_sha256": "93826dcc7a58bab596a64f449a5358ad2fa61ea842b0f3e698c67469752f26bc",
+      "plugin": "site-doctor",
+      "skill": "backup-recovery",
+      "source_path": "plugins/site-doctor/skills/backup-recovery/SKILL.md",
+      "source_sha256": "d6df89693c3dda8bb0e280902bd83b75d3424aa7af6645c92a2f0ade62cf31b9",
+      "target_path": "plugins/site-doctor/skills/backup-recovery/SKILL.md"
+    },
+    {
+      "id": "site-doctor:compliance-check",
+      "normalized_sha256": "ee2198aac3e52703414753ed2ce840f163f2bdd3361677d74ca1d4dc66adc365",
+      "plugin": "site-doctor",
+      "skill": "compliance-check",
+      "source_path": "plugins/site-doctor/skills/compliance-check/SKILL.md",
+      "source_sha256": "aa0e478024377293c57d4906986d09fa8d70db0d13c438bcfb1d0334810a7e29",
+      "target_path": "plugins/site-doctor/skills/compliance-check/SKILL.md"
+    },
+    {
+      "id": "site-doctor:content-audit",
+      "normalized_sha256": "8b34dd7e308b942e62a1269e16fbb253716fd2b9a3e691c4022b290bdfa484f5",
+      "plugin": "site-doctor",
+      "skill": "content-audit",
+      "source_path": "plugins/site-doctor/skills/content-audit/SKILL.md",
+      "source_sha256": "165027f6a7dbeff9cc8c7e6097f5a67930efd0b440b3fe9d3d72840bdd5bac06",
+      "target_path": "plugins/site-doctor/skills/content-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:cost-optimization",
+      "normalized_sha256": "72c892de662431116cfa42cfe2a9f6156e996fe546ea13ae2780ebf2c8f116ff",
+      "plugin": "site-doctor",
+      "skill": "cost-optimization",
+      "source_path": "plugins/site-doctor/skills/cost-optimization/SKILL.md",
+      "source_sha256": "95d12d3b6698f5d6e0b7512f800159dc38b2c91ec86c82a6032ed6d57fedbdf6",
+      "target_path": "plugins/site-doctor/skills/cost-optimization/SKILL.md"
+    },
+    {
+      "id": "site-doctor:data-migration",
+      "normalized_sha256": "a7a4cd1beeb425ef24687884c43666d903e10d90d5345fb4b660ba583f29814f",
+      "plugin": "site-doctor",
+      "skill": "data-migration",
+      "source_path": "plugins/site-doctor/skills/data-migration/SKILL.md",
+      "source_sha256": "163c2e29065a2059231770074b2147c1faf556ef7b7de097d9ed1582093dbbd5",
+      "target_path": "plugins/site-doctor/skills/data-migration/SKILL.md"
+    },
+    {
+      "id": "site-doctor:database-audit",
+      "normalized_sha256": "9285831b185a05a3ddb7b7c37cfd160fef5ea3bb81458f031473ca2687f6d6d3",
+      "plugin": "site-doctor",
+      "skill": "database-audit",
+      "source_path": "plugins/site-doctor/skills/database-audit/SKILL.md",
+      "source_sha256": "2ab7104a11fcc27d8107e9dc299473dfd09bb0de13c6033733c76d44e16f8f67",
+      "target_path": "plugins/site-doctor/skills/database-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:database-debug",
+      "normalized_sha256": "3e65c23ec2b5a4f8b9094be6df827511b423e14df74dcbf1f49067cbb6450d24",
+      "plugin": "site-doctor",
+      "skill": "database-debug",
+      "source_path": "plugins/site-doctor/skills/database-debug/SKILL.md",
+      "source_sha256": "021c988d4952f9c755bde5626531f0f28320b874400d51480a0487ac2498d462",
+      "target_path": "plugins/site-doctor/skills/database-debug/SKILL.md"
+    },
+    {
+      "id": "site-doctor:database-fix",
+      "normalized_sha256": "51186f34ceba07e64964f7dcf49f0ef5af3ff65881925b94bde40fa1608cac6b",
+      "plugin": "site-doctor",
+      "skill": "database-fix",
+      "source_path": "plugins/site-doctor/skills/database-fix/SKILL.md",
+      "source_sha256": "944574bdc78ccee674a1f116588f13c46a9a971c66e32df42dbd7caae1ca6c62",
+      "target_path": "plugins/site-doctor/skills/database-fix/SKILL.md"
+    },
+    {
+      "id": "site-doctor:dependency-audit",
+      "normalized_sha256": "48d92e016efa63bc12ad8cdee119c712694d3068b2147f3ad62ec620227729e1",
+      "plugin": "site-doctor",
+      "skill": "dependency-audit",
+      "source_path": "plugins/site-doctor/skills/dependency-audit/SKILL.md",
+      "source_sha256": "f4faa184e95828dc86f864a4eac6b130501307a83916d52f52a6476fdff00657",
+      "target_path": "plugins/site-doctor/skills/dependency-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:deployment-review",
+      "normalized_sha256": "49eb84e95cbb601acceef37450569c64b76ce5f4807ee9a94020afca2c04ad0b",
+      "plugin": "site-doctor",
+      "skill": "deployment-review",
+      "source_path": "plugins/site-doctor/skills/deployment-review/SKILL.md",
+      "source_sha256": "2d0a41cb7833390893ef4bd845089e7417981d7f037c6bd0b180e99ef7367fec",
+      "target_path": "plugins/site-doctor/skills/deployment-review/SKILL.md"
+    },
+    {
+      "id": "site-doctor:email-deliverability",
+      "normalized_sha256": "8f9d4693486264cfaf8bd67fbe9111edf8c9f90e7fb66d0a8194fd38b9d9b1d3",
+      "plugin": "site-doctor",
+      "skill": "email-deliverability",
+      "source_path": "plugins/site-doctor/skills/email-deliverability/SKILL.md",
+      "source_sha256": "292a2f7b31787af974340510663a50b13434d1befc11996d173faa17a1201bed",
+      "target_path": "plugins/site-doctor/skills/email-deliverability/SKILL.md"
+    },
+    {
+      "id": "site-doctor:forms-audit",
+      "normalized_sha256": "2ae7677acef9e1228c52057786894ba84707076e541aa9d625cd7a7509759d6c",
+      "plugin": "site-doctor",
+      "skill": "forms-audit",
+      "source_path": "plugins/site-doctor/skills/forms-audit/SKILL.md",
+      "source_sha256": "239c717b2631a9ba9a63428f5c06686f308981fe97c125405636b2fc07e34fe1",
+      "target_path": "plugins/site-doctor/skills/forms-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:incident-response",
+      "normalized_sha256": "95f442cdee1f901d26f60ea86efc71443ae3dcc14bcec0254ce1a6e99d3df10d",
+      "plugin": "site-doctor",
+      "skill": "incident-response",
+      "source_path": "plugins/site-doctor/skills/incident-response/SKILL.md",
+      "source_sha256": "0aeaa29e84f99dff78a5eb1a5a6d7b2dd9dba6d959e2928b5c53b0791df0c07b",
+      "target_path": "plugins/site-doctor/skills/incident-response/SKILL.md"
+    },
+    {
+      "id": "site-doctor:infrastructure-audit",
+      "normalized_sha256": "d12952f1ce5211549eed6d0b3e8ff0cffc5b76559fb077009315aa266b22b0cc",
+      "plugin": "site-doctor",
+      "skill": "infrastructure-audit",
+      "source_path": "plugins/site-doctor/skills/infrastructure-audit/SKILL.md",
+      "source_sha256": "245d7541740ba24dae33a91ee12cb8e7ba1b8f1a72588f854c1f291b2efef6a1",
+      "target_path": "plugins/site-doctor/skills/infrastructure-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:load-testing",
+      "normalized_sha256": "ec69794c17c92c1833044fa0905ba0b436ad8df994b81954128a61f888b6663f",
+      "plugin": "site-doctor",
+      "skill": "load-testing",
+      "source_path": "plugins/site-doctor/skills/load-testing/SKILL.md",
+      "source_sha256": "e2531e341592580ca91c0e000905bc743f7b7aff4b61d0d8dc90704499efa493",
+      "target_path": "plugins/site-doctor/skills/load-testing/SKILL.md"
+    },
+    {
+      "id": "site-doctor:mobile-audit",
+      "normalized_sha256": "dfe5788ac0f1cf449de41b99386a0961b3c81a510549b5dd0835cf7651d6d24a",
+      "plugin": "site-doctor",
+      "skill": "mobile-audit",
+      "source_path": "plugins/site-doctor/skills/mobile-audit/SKILL.md",
+      "source_sha256": "f07f31d96f5d1825e7737387ea3f33bc71e60e6b112fcc96880c8785406f3ccf",
+      "target_path": "plugins/site-doctor/skills/mobile-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:observability",
+      "normalized_sha256": "f712e86f26811cd7f57ec105987ee75c2eb3479ebc40fbe71870691838eb2426",
+      "plugin": "site-doctor",
+      "skill": "observability",
+      "source_path": "plugins/site-doctor/skills/observability/SKILL.md",
+      "source_sha256": "220a3c875994d5180f6825136787e6be7d897728e9f7c88c6ce9b32a2b428d94",
+      "target_path": "plugins/site-doctor/skills/observability/SKILL.md"
+    },
+    {
+      "id": "site-doctor:performance-tuning",
+      "normalized_sha256": "5eb876cbe292c912ce84d748c2d392cc102c4682f6e53af040d35a33e5d54cc7",
+      "plugin": "site-doctor",
+      "skill": "performance-tuning",
+      "source_path": "plugins/site-doctor/skills/performance-tuning/SKILL.md",
+      "source_sha256": "92d7640efe3133d7c15e848a1422791271529780919bab95a865f14d1f4689f3",
+      "target_path": "plugins/site-doctor/skills/performance-tuning/SKILL.md"
+    },
+    {
+      "id": "site-doctor:security-review",
+      "normalized_sha256": "20e1f74eecd73fce9a5e670ce4759aadb47b47ca02bf8a69e5f7373a707e70c6",
+      "plugin": "site-doctor",
+      "skill": "security-review",
+      "source_path": "plugins/site-doctor/skills/security-review/SKILL.md",
+      "source_sha256": "782ed3d61ea78bc46fdae917c2cd94bd4d0bec99c80a6051193259f70ce6ccdf",
+      "target_path": "plugins/site-doctor/skills/security-review/SKILL.md"
+    },
+    {
+      "id": "site-doctor:seo-optimization",
+      "normalized_sha256": "39dc7a6ae1364e5d2f40b4f273a85a1eb661c406f08dd98be5388bcefe1fa6f8",
+      "plugin": "site-doctor",
+      "skill": "seo-optimization",
+      "source_path": "plugins/site-doctor/skills/seo-optimization/SKILL.md",
+      "source_sha256": "24549e4dd642cb9921fe6d8a940d1a237e88009717ca74e01aad15ef8250a027",
+      "target_path": "plugins/site-doctor/skills/seo-optimization/SKILL.md"
+    },
+    {
+      "id": "site-doctor:website-audit",
+      "normalized_sha256": "fba29e547ff8b9da0a0a98929bafa6e06e728f59f42fd6fbb0e3fe25dd0373dc",
+      "plugin": "site-doctor",
+      "skill": "website-audit",
+      "source_path": "plugins/site-doctor/skills/website-audit/SKILL.md",
+      "source_sha256": "cfc70970606d5c912ef6e63a68e87de6cee061c0c4a106ecfd2911bab0645713",
+      "target_path": "plugins/site-doctor/skills/website-audit/SKILL.md"
+    },
+    {
+      "id": "site-doctor:website-debug",
+      "normalized_sha256": "d5225abcffe342b9bd323641b800b5f7194103612389822779da9fa26c243663",
+      "plugin": "site-doctor",
+      "skill": "website-debug",
+      "source_path": "plugins/site-doctor/skills/website-debug/SKILL.md",
+      "source_sha256": "77e7a210a9c4cfe0ac7c3a4123bdf7cebf37c5791356e9eecc88919201c4ed1c",
+      "target_path": "plugins/site-doctor/skills/website-debug/SKILL.md"
+    },
+    {
+      "id": "site-doctor:website-fix",
+      "normalized_sha256": "7b0aa2734c321241fbe5194612d049cfdc590c6288161b7b60ec0850d6f9f656",
+      "plugin": "site-doctor",
+      "skill": "website-fix",
+      "source_path": "plugins/site-doctor/skills/website-fix/SKILL.md",
+      "source_sha256": "67401e4350234486dc6b55f3ad4ee614bb956af7f177d8911569e7674c84d502",
+      "target_path": "plugins/site-doctor/skills/website-fix/SKILL.md"
+    },
+    {
+      "id": "solo:memory-sync",
+      "normalized_sha256": "9929e892765a79665899fd388856d68934bf8468a8b26ce7f16d6d991689e2b2",
+      "plugin": "solo",
+      "skill": "memory-sync",
+      "source_path": "plugins/solo/skills/memory-sync/SKILL.md",
+      "source_sha256": "59a22b8bc3c93d491156d51413474d0e0159453822f53135d1d4b1d56ad2d404",
+      "target_path": "plugins/solo/skills/memory-sync/SKILL.md"
+    },
+    {
+      "id": "solo:project-memory-manager",
+      "normalized_sha256": "95f3808e8af27bb307f06c85e22e9548d184025fcd6994cfc8978fb67d80eeb4",
+      "plugin": "solo",
+      "skill": "project-memory-manager",
+      "source_path": "plugins/solo/skills/project-memory-manager/SKILL.md",
+      "source_sha256": "34cad0cf9d18e8c256097ef9d43dd3b605515cb21eabc3edd98b045504fab27d",
+      "target_path": "plugins/solo/skills/project-memory-manager/SKILL.md"
+    },
+    {
+      "adapter_waiver": "Codex source-checkout/installed-plugin integrity checker",
+      "id": "solo:suite-integrity",
+      "normalized_sha256": "372cd774ff17bb291de328b5c53d8b69e4811ae049cba7a5b8d7feac837564ea",
+      "plugin": "solo",
+      "skill": "suite-integrity",
+      "source_path": "plugins/solo/skills/suite-integrity/SKILL.md",
+      "source_sha256": "bd90ff695ac7da306686660bacd8c2b597c878544ab359d3548c6ad47ead2871",
+      "target_path": "plugins/solo/skills/suite-integrity/SKILL.md"
+    },
+    {
+      "id": "spec:acceptance-criteria-writer",
+      "normalized_sha256": "5537a9c155b6341858bdb6bcc018a860d9b7ba701a4bc1f55047e82342d2c58e",
+      "plugin": "spec",
+      "skill": "acceptance-criteria-writer",
+      "source_path": "plugins/spec/skills/acceptance-criteria-writer/SKILL.md",
+      "source_sha256": "ca36e3ec6daae59ae2f45ad03d87e6b2bbcdbc2e8a2a4130e4af557b1e2f7925",
+      "target_path": "plugins/spec/skills/acceptance-criteria-writer/SKILL.md"
+    },
+    {
+      "id": "spec:api-contract-designer",
+      "normalized_sha256": "e2a42824412c7590b7ef168c4a03a7c504a8fee22e0bc3c8a424d127fcf2062d",
+      "plugin": "spec",
+      "skill": "api-contract-designer",
+      "source_path": "plugins/spec/skills/api-contract-designer/SKILL.md",
+      "source_sha256": "98c417347d7aa3307b51aad795ffc3569e1b13e3de5c23f32854a01728eadb29",
+      "target_path": "plugins/spec/skills/api-contract-designer/SKILL.md"
+    },
+    {
+      "id": "stack:cloudflare-audit",
+      "normalized_sha256": "197df34f88fe969ba19886174557061fda39f6256d8f66c4398770082e35a706",
+      "plugin": "stack",
+      "skill": "cloudflare-audit",
+      "source_path": "plugins/stack/skills/cloudflare-audit/SKILL.md",
+      "source_sha256": "4e21753ba73340d6717bab1610e80d6c1ca0d07e8fcafd93b86590f4521cfc3a",
+      "target_path": "plugins/stack/skills/cloudflare-audit/SKILL.md"
+    },
+    {
+      "id": "stack:connector-auditor",
+      "normalized_sha256": "7ff9ec1ac363cf9ac527da5a04568da265119b93b7c6110927532d7882390c88",
+      "plugin": "stack",
+      "skill": "connector-auditor",
+      "source_path": "plugins/stack/skills/connector-auditor/SKILL.md",
+      "source_sha256": "52da75c5e4243bf9e6c4a598ad458909f280c1c44ca9c60185bacf1e61e2045d",
+      "target_path": "plugins/stack/skills/connector-auditor/SKILL.md"
+    },
+    {
+      "id": "stack:payments-audit",
+      "normalized_sha256": "52fb062eee4b2bb572ad331f1ff0251ad39c49d0abff81d09b82b24040129031",
+      "plugin": "stack",
+      "skill": "payments-audit",
+      "source_path": "plugins/stack/skills/payments-audit/SKILL.md",
+      "source_sha256": "4bbec8c4d270f6f62ed05caafc2b5eb77ea980edebabbe9db1bab6647a071110",
+      "target_path": "plugins/stack/skills/payments-audit/SKILL.md"
+    },
+    {
+      "id": "stack:stack-advisor",
+      "normalized_sha256": "213237db38fbcb01b1aade1f9604ec3f05c0bc9b08c111155c9cfb1c65770b57",
+      "plugin": "stack",
+      "skill": "stack-advisor",
+      "source_path": "plugins/stack/skills/stack-advisor/SKILL.md",
+      "source_sha256": "3fe78ed1c7054dba278c7f7c7fe83db3c7f5e500556e20a4fde976eee524dbd7",
+      "target_path": "plugins/stack/skills/stack-advisor/SKILL.md"
+    },
+    {
+      "id": "stack:supabase-audit",
+      "normalized_sha256": "f15d79fea9b84b0a13c57db4669b2032a6be1333f67914e15b0670b8bf967919",
+      "plugin": "stack",
+      "skill": "supabase-audit",
+      "source_path": "plugins/stack/skills/supabase-audit/SKILL.md",
+      "source_sha256": "857b6e60cd339e0cff015d9ffcdf7ffab7b83bf97870bb93021b754db299eadb",
+      "target_path": "plugins/stack/skills/supabase-audit/SKILL.md"
+    },
+    {
+      "id": "stack:tag-audit",
+      "normalized_sha256": "c789a9dd8a67c8dd4882445152e5cfa80533839d3b07bb51a017a543258e62ec",
+      "plugin": "stack",
+      "skill": "tag-audit",
+      "source_path": "plugins/stack/skills/tag-audit/SKILL.md",
+      "source_sha256": "4ec93b645ebf9ad59d5978069702f130a462306559ca906f7cb396890d78a111",
+      "target_path": "plugins/stack/skills/tag-audit/SKILL.md"
+    },
+    {
+      "id": "stack:vercel-audit",
+      "normalized_sha256": "12e2edc55d2fd47fc3ce7fcd72699ca5d2f475ebb7567a005442202e2713f396",
+      "plugin": "stack",
+      "skill": "vercel-audit",
+      "source_path": "plugins/stack/skills/vercel-audit/SKILL.md",
+      "source_sha256": "65c2db7d9c29f68679dd6c830596f8c5680e3cd628a35bd9956422e338138172",
+      "target_path": "plugins/stack/skills/vercel-audit/SKILL.md"
+    },
+    {
+      "id": "test:qa-engineer",
+      "normalized_sha256": "327b7f865c57480d421404ba807ffdb17fe67421b9d3600c9ad4e4c34e8daff5",
+      "plugin": "test",
+      "skill": "qa-engineer",
+      "source_path": "plugins/test/skills/qa-engineer/SKILL.md",
+      "source_sha256": "255dc3d12f63394b0f09aeedc77a413eb0ea5ca23edef43bd9d6bd5ea79f0497",
+      "target_path": "plugins/test/skills/qa-engineer/SKILL.md"
+    }
+  ]
+}

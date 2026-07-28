@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design UX Flow"
+  short_description: "Run the Design UX Flow Codex workflow"
+  default_prompt: "Use $design-ux-flow to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

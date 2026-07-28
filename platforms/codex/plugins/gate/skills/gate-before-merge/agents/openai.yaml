@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gate Before Merge"
+  short_description: "Run the Gate Before Merge Codex workflow"
+  default_prompt: "Use $gate-before-merge to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

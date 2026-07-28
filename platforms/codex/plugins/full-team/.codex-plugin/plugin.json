@@ -1,0 +1,33 @@
+{
+  "name": "full-team",
+  "version": "1.0.27",
+  "description": "Meta-plugin that coordinates every Solo Suite role, verifies that all 18 component plugins are available, and runs profile-aware full-team delivery with evidence-based gates. Migrated workflows: $full-team-verify.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "full-team",
+    "orchestration",
+    "quality-gates",
+    "solo",
+    "solo-suite"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Suite Full Team",
+    "shortDescription": "Coordinate all Solo Suite engineering roles",
+    "longDescription": "Meta-plugin that coordinates every Solo Suite role, verifies that all 18 component plugins are available, and runs profile-aware full-team delivery with evidence-based gates. Migrated workflows: $full-team-verify. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Suite Full Team to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

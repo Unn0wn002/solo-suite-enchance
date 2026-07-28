@@ -1,0 +1,6 @@
+interface:
+  display_name: "Email Deliverability"
+  short_description: "Run the Email Deliverability workflow in Codex"
+  default_prompt: "Use $email-deliverability to help with this project."
+policy:
+  allow_implicit_invocation: false

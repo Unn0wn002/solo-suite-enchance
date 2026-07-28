@@ -1,0 +1,87 @@
+{
+  "artifact": "solo-suite-plugin-v1.0.27.zip",
+  "artifact_sha256": "e6ade834f95695766af5655a2444d49096ba3b0c49b4f1f726a119ef30848caa",
+  "version": "1.0.27",
+  "built_at": "2026-07-16T00:05:12Z",
+  "timestamp_basis": "source commit epoch or SOURCE_DATE_EPOCH; normalized for reproducibility, not wall-clock build execution time",
+  "builder": {
+    "tool": "release/build_release.py",
+    "python": "3.12.13",
+    "ci": "tests",
+    "selected_commit_blob_oid": "632857414338a2990f8f9eed2177048b5a4ab4d0",
+    "selected_workflow_blob_oid": "c39068dc79e65b15875fa1bcb9fb293d21c9d296"
+  },
+  "locked_release_toolchain": {
+    "source": "release/claude-cli/package-lock.json",
+    "lockfile_version": 3,
+    "lock_sha256": "c9d929057905559fc2c72dbb45443ab4950fcb788192faaac4d53b21258e370e",
+    "node_engine_requirement": ">=22.0.0",
+    "claude_cli": {
+      "package": "@anthropic-ai/claude-code",
+      "version": "2.1.205",
+      "resolved": "https://registry.npmjs.org/@anthropic-ai/claude-code/-/claude-code-2.1.205.tgz",
+      "integrity": "sha512-riShT8jUKjYFupfYtFJF8JelKmJzAm+fHDvqUadfEAjzRAJ3AatZm5gtzWT3pEBmSXPIjoIjOHOXBGzo5wpuCw==",
+      "sha512": "ae24a14fc8d42a3605ba97d8b45245f097a52a6273026f9f1c3bea51a75f1008f344027701ab599b982dcd64f7a440664973c88e8223387397046ce8e70a6e0b"
+    },
+    "resolved_package_count": 9
+  },
+  "ci_context": {
+    "repository": "Unn0wn002/solo-suite",
+    "workflow_ref": "Unn0wn002/solo-suite/.github/workflows/ci.yml@refs/tags/v1.0.27",
+    "run_id": "29465190154",
+    "run_attempt": "2",
+    "runner_os": "Linux",
+    "runner_arch": "X64",
+    "node": "v22.23.1",
+    "claude_cli": "2.1.205 (Claude Code)",
+    "cosign": null,
+    "github_cli": null
+  },
+  "materials": [
+    {
+      "uri": "git:commit",
+      "digest": {
+        "sha1": "a31be037edaee840479977585e33ac0e57088cb4"
+      }
+    },
+    {
+      "uri": "git:tree",
+      "digest": {
+        "sha1": "0517f8f10a5406f227eb3177b188b2b1103fcf47"
+      }
+    },
+    {
+      "uri": "requirements-dev.lock",
+      "digest": {
+        "sha256": "0cd91ded8f517c4a934128ada240e366f97f9b8b89e464bead472cc9f5a7b112"
+      }
+    },
+    {
+      "uri": "release/dependency-metadata.json",
+      "digest": {
+        "sha256": "e4b2349fd1b758ae49c6d647c27817b7bfa1744e4dcc5a269b7972b7e3f30e73"
+      }
+    },
+    {
+      "uri": "release/claude-cli/package-lock.json",
+      "digest": {
+        "sha256": "c9d929057905559fc2c72dbb45443ab4950fcb788192faaac4d53b21258e370e"
+      }
+    }
+  ],
+  "source_material": "immutable Git object tree",
+  "source_revision_requested": "HEAD",
+  "source_commit": "a31be037edaee840479977585e33ac0e57088cb4",
+  "source_tree_oid": "0517f8f10a5406f227eb3177b188b2b1103fcf47",
+  "source_object_format": "sha1",
+  "worktree_head_commit": "a31be037edaee840479977585e33ac0e57088cb4",
+  "source_dirty": false,
+  "source_dirty_scope": "diagnostic only: tracked changes plus non-generated, non-ignored untracked paths; worktree bytes are never release inputs",
+  "packaged_blob_manifest_sha256": "764ea49036247529515cd765b992e93ae5b8027787af8c5107c88bb11f4106b9",
+  "requirements_lock_sha256": "0cd91ded8f517c4a934128ada240e366f97f9b8b89e464bead472cc9f5a7b112",
+  "dependency_metadata_sha256": "e4b2349fd1b758ae49c6d647c27817b7bfa1744e4dcc5a269b7972b7e3f30e73",
+  "claude_cli_package_lock_sha256": "c9d929057905559fc2c72dbb45443ab4950fcb788192faaac4d53b21258e370e",
+  "packaged_blob_count": 275,
+  "staged_tree_sha256": "d9ac85251cc0673f45c9f9c58eea4d82000da416bb7c06468bf51c617d175d12",
+  "file_count": 275
+}

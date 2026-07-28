@@ -1,0 +1,6 @@
+interface:
+  display_name: "Git Workflow Manager"
+  short_description: "Run the Git Workflow Manager workflow in Codex"
+  default_prompt: "Use $git-workflow-manager to help with this project."
+policy:
+  allow_implicit_invocation: false

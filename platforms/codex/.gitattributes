@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+# Release assets must never pass through text normalization.
+*.docx binary
+*.zip binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary

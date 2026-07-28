@@ -1,0 +1,38 @@
+{
+  "name": "repo",
+  "version": "1.0.27",
+  "description": "Map repository structure, dependencies, risks, dead code, and onboarding context without mutation. Migrated workflows: $repo-dependency-map, $repo-find-dead-code, $repo-map, $repo-onboarding, $repo-risk-map.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "analysis",
+    "codebase",
+    "codex",
+    "dead-code",
+    "dependencies",
+    "map",
+    "onboarding",
+    "read-only",
+    "repo",
+    "risk",
+    "solo",
+    "solo-suite"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Repository Intelligence",
+    "shortDescription": "Map and understand unfamiliar repositories",
+    "longDescription": "Map repository structure, dependencies, risks, dead code, and onboarding context without mutation. Migrated workflows: $repo-dependency-map, $repo-find-dead-code, $repo-map, $repo-onboarding, $repo-risk-map. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "Use Solo Repository Intelligence to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

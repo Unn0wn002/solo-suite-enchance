@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Technical"
+  short_description: "Run the SEO Technical workflow in Codex"
+  default_prompt: "Use $seo-technical to help with this project."
+policy:
+  allow_implicit_invocation: false

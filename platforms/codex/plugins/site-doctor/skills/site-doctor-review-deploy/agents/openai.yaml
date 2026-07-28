@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Review Deploy"
+  short_description: "Run the Site Doctor Review Deploy Codex workflow"
+  default_prompt: "Use $site-doctor-review-deploy to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

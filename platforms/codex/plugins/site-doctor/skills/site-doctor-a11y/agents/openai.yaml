@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor A11y"
+  short_description: "Run the Site Doctor A11y Codex workflow"
+  default_prompt: "Use $site-doctor-a11y to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

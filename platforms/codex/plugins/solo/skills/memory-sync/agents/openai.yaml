@@ -1,0 +1,6 @@
+interface:
+  display_name: "Memory Sync"
+  short_description: "Run the Memory Sync workflow in Codex"
+  default_prompt: "Use $memory-sync to help with this project."
+policy:
+  allow_implicit_invocation: false

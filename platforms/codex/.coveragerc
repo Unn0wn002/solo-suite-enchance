@@ -1,0 +1,5 @@
+[run]
+parallel = True
+source =
+    ${COVERAGE_SOURCE_ROOT}/plugins
+    ${COVERAGE_SOURCE_ROOT}/tools

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Data Migration"
+  short_description: "Run the Data Migration workflow in Codex"
+  default_prompt: "Use $data-migration to help with this project."
+policy:
+  allow_implicit_invocation: false

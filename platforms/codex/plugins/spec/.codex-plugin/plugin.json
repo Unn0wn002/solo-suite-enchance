@@ -1,0 +1,38 @@
+{
+  "name": "spec",
+  "version": "1.0.27",
+  "description": "Define feature briefs, acceptance criteria, API contracts, data contracts, and environment contracts. Migrated workflows: $spec-acceptance, $spec-api-contract, $spec-data-contract, $spec-env-contract, $spec-feature-brief.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "acceptance-criteria",
+    "api-contract",
+    "codex",
+    "data-contract",
+    "env-contract",
+    "feature-brief",
+    "planning",
+    "requirements",
+    "solo",
+    "solo-suite",
+    "spec"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Specifications",
+    "shortDescription": "Define testable product and API contracts",
+    "longDescription": "Define feature briefs, acceptance criteria, API contracts, data contracts, and environment contracts. Migrated workflows: $spec-acceptance, $spec-api-contract, $spec-data-contract, $spec-env-contract, $spec-feature-brief. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Specifications to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

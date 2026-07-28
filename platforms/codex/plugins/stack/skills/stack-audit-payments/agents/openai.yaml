@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Audit Payments"
+  short_description: "Run the Stack Audit Payments Codex workflow"
+  default_prompt: "Use $stack-audit-payments to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

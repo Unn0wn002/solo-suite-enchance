@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo Self Check"
+  short_description: "Run the Solo Self Check Codex workflow"
+  default_prompt: "Use $solo-self-check to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

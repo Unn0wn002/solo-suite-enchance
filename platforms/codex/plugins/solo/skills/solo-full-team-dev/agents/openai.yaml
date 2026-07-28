@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo Full Team Dev"
+  short_description: "Run the Solo Full Team Dev Codex workflow"
+  default_prompt: "Use $solo-full-team-dev to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

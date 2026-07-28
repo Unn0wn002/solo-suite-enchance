@@ -1,0 +1,244 @@
+{
+  "$schema": "../schema/agentroom-v1.schema.json",
+  "schema": "solo-suite/agentroom-v1",
+  "name": "bug-fix-loop",
+  "version": 1,
+  "prepared": false,
+  "run_id": "template-bug-fix-loop-v1",
+  "description": "Reproduce, repair, review, and verify a bug with a bounded retry loop and an evidence-complete merge gate.",
+  "based_on_room": "Build and QA rooms with a bounded repair loop",
+  "profile": "profile-selected-at-runtime",
+  "memory_dir": ".solo/",
+  "rules": [
+    "The adapter replaces the template run_id with a unique id before execution.",
+    "Only memory_steward writes .solo files; every other seat returns declared proposals.",
+    "Each worktree and evidence artifact has one owner and one lock.",
+    "The repair loop stops after three retries and escalates instead of looping forever."
+  ],
+  "memory_steward": {
+    "seat_id": "memory_steward",
+    "task_id_pattern": "^T[0-9]+$",
+    "proposal_merge_policy": "Allocate task IDs, merge proposals after each stage, and preserve append-only decisions.",
+    "conflict_policy": "Stop the stage, report conflicting proposals, and require an explicit resolution before writing shared memory."
+  },
+  "tasks": [],
+  "workspaces": [
+    {"id": "shared_memory", "type": "shared-memory", "path": ".solo/", "owner": "memory_steward"},
+    {"id": "reproducer_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/reproducer", "owner": "reproducer"},
+    {"id": "fixer_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/fixer", "owner": "fixer"},
+    {"id": "verifier_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/verifier", "owner": "verifier"},
+    {"id": "reviewer_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/reviewer", "owner": "reviewer"},
+    {"id": "security_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/security", "owner": "security"},
+    {"id": "gatekeeper_workspace", "type": "worktree", "path": "worktrees/bug-fix-loop/gatekeeper", "owner": "gatekeeper"}
+  ],
+  "artifact_locks": [
+    {"artifact": ".solo/tasks.md", "owner": "memory_steward"},
+    {"artifact": ".solo/decisions.md", "owner": "memory_steward"},
+    {"artifact": ".solo/handoff.md", "owner": "memory_steward"},
+    {"artifact": ".solo/bugs.md", "owner": "memory_steward"},
+    {"artifact": ".solo/tests.md", "owner": "memory_steward"},
+    {"artifact": ".solo/risks.md", "owner": "memory_steward"},
+    {"artifact": "artifacts/bug-fix-loop/reproduction.md", "owner": "reproducer"},
+    {"artifact": "artifacts/bug-fix-loop/change-set.patch", "owner": "fixer"},
+    {"artifact": "artifacts/bug-fix-loop/rollback.md", "owner": "fixer"},
+    {"artifact": "artifacts/bug-fix-loop/testing.md", "owner": "verifier"},
+    {"artifact": "artifacts/bug-fix-loop/review.md", "owner": "reviewer"},
+    {"artifact": "artifacts/bug-fix-loop/security.md", "owner": "security"},
+    {"artifact": "artifacts/gates/bug-fix-before-merge.json", "owner": "gatekeeper"}
+  ],
+  "stages": [
+    {"id": "reproduce", "seats": ["memory_steward", "reproducer"]},
+    {"id": "diagnose_and_fix", "seats": ["memory_steward", "fixer"]},
+    {"id": "verify", "seats": ["memory_steward", "verifier"]},
+    {"id": "review", "seats": ["memory_steward", "reviewer"]},
+    {"id": "security_review", "seats": ["memory_steward", "security"]},
+    {"id": "merge_gate", "seats": ["memory_steward", "gatekeeper"]}
+  ],
+  "seats": [
+    {
+      "id": "memory_steward",
+      "kind": "memory-steward",
+      "persistent": true,
+      "role": "Memory Steward",
+      "model_hint": "strong-reasoning",
+      "workspace": "shared_memory",
+      "memory_access": "direct",
+      "reads": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/bugs.md", ".solo/tests.md", ".solo/risks.md"],
+      "writes": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/bugs.md", ".solo/tests.md", ".solo/risks.md"],
+      "proposals": [],
+      "commands": [],
+      "deliverable": "Conflict-checked shared-memory merges and unique task IDs after every stage.",
+      "handoff_to": null,
+      "handoff_check": null,
+      "task_ids": []
+    },
+    {
+      "id": "reproducer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Browser QA Engineer",
+      "model_hint": "balanced",
+      "workspace": "reproducer_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/bugs.md", ".solo/handoff.md"],
+      "writes": ["artifacts/bug-fix-loop/reproduction.md"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/bugs.md", ".solo/tests.md"],
+      "commands": ["$browser-smoke-test", "$browser-console-errors"],
+      "deliverable": "Deterministic reproduction steps and sanitized browser evidence.",
+      "handoff_to": "fixer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "fixer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Debugger and Developer",
+      "model_hint": "strong-coding",
+      "workspace": "fixer_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/bugs.md", ".solo/architecture.md", ".solo/handoff.md", "artifacts/bug-fix-loop/reproduction.md"],
+      "writes": ["artifacts/bug-fix-loop/change-set.patch", "artifacts/bug-fix-loop/rollback.md"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/bugs.md"],
+      "commands": ["$repo-map", "$dev-fix-bug"],
+      "deliverable": "Minimal fix, root-cause evidence, and an explicit rollback note.",
+      "handoff_to": "verifier",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "verifier",
+      "kind": "worker",
+      "persistent": false,
+      "role": "QA Engineer",
+      "model_hint": "strong-coding",
+      "workspace": "verifier_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/bugs.md", ".solo/tests.md", ".solo/handoff.md", "artifacts/bug-fix-loop/reproduction.md", "artifacts/bug-fix-loop/change-set.patch"],
+      "writes": ["artifacts/bug-fix-loop/testing.md"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/tests.md", ".solo/bugs.md"],
+      "commands": ["$test-unit", "$test-integration", "$test-edge-cases", "$browser-smoke-test"],
+      "deliverable": "Regression evidence showing failure before, success after, and edge-case coverage.",
+      "handoff_to": "reviewer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "reviewer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Independent Code and AI Output Reviewer",
+      "model_hint": "deep-reasoning",
+      "workspace": "reviewer_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/bugs.md", ".solo/tests.md", ".solo/handoff.md", "artifacts/bug-fix-loop/change-set.patch", "artifacts/bug-fix-loop/testing.md"],
+      "writes": ["artifacts/bug-fix-loop/review.md"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/risks.md"],
+      "commands": ["$dev-code-review", "$ai-review-output"],
+      "deliverable": "Independent review verdict tied to the exact change set.",
+      "handoff_to": "security",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "security",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Security Engineer",
+      "model_hint": "deep-reasoning",
+      "workspace": "security_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/architecture.md", ".solo/bugs.md", ".solo/handoff.md", "artifacts/bug-fix-loop/change-set.patch", "artifacts/bug-fix-loop/review.md"],
+      "writes": ["artifacts/bug-fix-loop/security.md"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/risks.md"],
+      "commands": ["$security-threat-model"],
+      "deliverable": "Change-scoped security verdict and blocker list.",
+      "handoff_to": "gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Before-Merge Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [".solo/handoff.md", "artifacts/bug-fix-loop/review.md", "artifacts/bug-fix-loop/security.md", "artifacts/bug-fix-loop/testing.md", "artifacts/bug-fix-loop/rollback.md"],
+      "writes": ["artifacts/gates/bug-fix-before-merge.json"],
+      "proposals": [".solo/tasks.md", ".solo/decisions.md", ".solo/handoff.md", ".solo/risks.md"],
+      "commands": ["$gate-before-merge"],
+      "deliverable": "GO or NO-GO backed by review, security, test, and rollback evidence.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    }
+  ],
+  "gates": [
+    {
+      "id": "before_merge",
+      "command": "$gate-before-merge",
+      "stage": "merge_gate",
+      "seat": "gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Review",
+          "artifact": "artifacts/bug-fix-loop/review.md",
+          "producer_commands": ["$ai-review-output", "$dev-code-review"]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/bug-fix-loop/security.md",
+          "producer_commands": ["$security-threat-model"]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/bug-fix-loop/testing.md",
+          "producer_commands": [
+            "$browser-smoke-test", "$test-edge-cases", "$test-integration", "$test-unit"
+          ]
+        },
+        {
+          "category": "Rollback",
+          "artifact": "artifacts/bug-fix-loop/rollback.md",
+          "producer_commands": ["$dev-fix-bug", "$repo-map"]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/bug-fix-before-merge.json",
+        "schema": "solo-suite/phase-gate-evidence-v1",
+        "required_fields": ["schema", "room_digest", "run_id", "gate_id", "project", "commit_sha", "environment", "timestamp", "expires_at", "reviewer", "decision", "checks", "blockers"],
+        "freshness": {"run_id": "exact", "commit": "exact", "environment": "exact", "max_age_hours": 24}
+      },
+      "transitions": {
+        "status_field": "decision",
+        "routes": [
+          {"statuses": ["GO"], "action": "complete"},
+          {"statuses": ["NO-GO"], "next_stage": "diagnose_and_fix"}
+        ],
+        "default_action": "stop"
+      }
+    }
+  ],
+  "exit_gate": "$gate-before-merge",
+  "exit_criteria": "The bounded loop has passed and the before-merge gate returns GO with review, security, testing, and rollback evidence.",
+  "loop": {
+    "from_stage": "merge_gate",
+    "to_stage": "diagnose_and_fix",
+    "max_iterations": 3,
+    "trigger": {
+      "gate_ids": ["before_merge"],
+      "statuses": ["NO-GO"],
+      "match": "any"
+    },
+    "exit": {
+      "gate_ids": ["before_merge"],
+      "statuses": ["GO"],
+      "match": "all"
+    },
+    "until": "The original reproduction no longer occurs and all regression and edge-case tests pass.",
+    "on_exhaustion": "Stop, preserve all evidence, and run $ai-repair-cycle with human review before another attempt.",
+    "on_exhaustion_action": "stop"
+  }
+}

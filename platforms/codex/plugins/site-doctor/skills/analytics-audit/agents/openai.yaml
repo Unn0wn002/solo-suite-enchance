@@ -1,0 +1,6 @@
+interface:
+  display_name: "Analytics Audit"
+  short_description: "Run the Analytics Audit workflow in Codex"
+  default_prompt: "Use $analytics-audit to help with this project."
+policy:
+  allow_implicit_invocation: false

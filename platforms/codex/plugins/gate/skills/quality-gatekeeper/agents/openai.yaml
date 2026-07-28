@@ -1,0 +1,6 @@
+interface:
+  display_name: "Quality Gatekeeper"
+  short_description: "Run the Quality Gatekeeper workflow in Codex"
+  default_prompt: "Use $quality-gatekeeper to help with this project."
+policy:
+  allow_implicit_invocation: false

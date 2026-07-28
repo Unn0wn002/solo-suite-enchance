@@ -1,0 +1,6 @@
+interface:
+  display_name: "Release CI Setup"
+  short_description: "Run the Release CI Setup Codex workflow"
+  default_prompt: "Use $release-ci-setup to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

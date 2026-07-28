@@ -1,0 +1,6 @@
+interface:
+  display_name: "Backup Recovery"
+  short_description: "Run the Backup Recovery workflow in Codex"
+  default_prompt: "Use $backup-recovery to help with this project."
+policy:
+  allow_implicit_invocation: false

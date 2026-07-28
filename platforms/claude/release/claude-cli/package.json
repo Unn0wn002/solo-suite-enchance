@@ -1,0 +1,10 @@
+{
+  "name": "solo-suite-release-toolchain",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hash-locked Claude CLI used only for Solo Suite validation.",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "2.1.205"
+  }
+}

@@ -1,0 +1,4 @@
+# Supply-chain audit tooling. Run this lock only under Python 3.10+; CI uses 3.12.
+-c requirements-dev.txt
+pip==26.1.2
+pip-audit==2.10.1

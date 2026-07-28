@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Advisor"
+  short_description: "Run the Stack Advisor workflow in Codex"
+  default_prompt: "Use $stack-advisor to help with this project."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,37 @@
+{
+  "name": "docs",
+  "version": "1.0.27",
+  "description": "Create and maintain accurate API, setup, runbook, and repository documentation. Migrated workflows: $docs-api, $docs-runbook, $docs-setup-guide, $docs-update.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "api-docs",
+    "codex",
+    "documentation",
+    "onboarding",
+    "operations",
+    "readme",
+    "runbook",
+    "setup-guide",
+    "solo",
+    "solo-suite"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Documentation",
+    "shortDescription": "Create accurate engineering documentation",
+    "longDescription": "Create and maintain accurate API, setup, runbook, and repository documentation. Migrated workflows: $docs-api, $docs-runbook, $docs-setup-guide, $docs-update. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Documentation",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Documentation to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

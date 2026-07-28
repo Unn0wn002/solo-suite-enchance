@@ -1,0 +1,36 @@
+{
+  "name": "release",
+  "version": "1.0.27",
+  "description": "Prepare CI, release preflight, recoverable deployment plans, and rollback plans. Migrated workflows: $release-ci-setup, $release-deploy-plan, $release-preflight, $release-rollback-plan.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "deployment",
+    "devops",
+    "preflight",
+    "release",
+    "rollback",
+    "security",
+    "solo",
+    "solo-suite"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Release",
+    "shortDescription": "Plan secure releases and recoverable deploys",
+    "longDescription": "Prepare CI, release preflight, recoverable deployment plans, and rollback plans. Migrated workflows: $release-ci-setup, $release-deploy-plan, $release-preflight, $release-rollback-plan. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Release to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

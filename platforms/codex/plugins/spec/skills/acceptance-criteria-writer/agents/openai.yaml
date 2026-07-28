@@ -1,0 +1,6 @@
+interface:
+  display_name: "Acceptance Criteria Writer"
+  short_description: "Run the Acceptance Criteria Writer workflow in Codex"
+  default_prompt: "Use $acceptance-criteria-writer to help with this project."
+policy:
+  allow_implicit_invocation: false

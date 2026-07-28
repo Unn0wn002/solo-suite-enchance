@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design Component System"
+  short_description: "Run the Design Component System Codex workflow"
+  default_prompt: "Use $design-component-system to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

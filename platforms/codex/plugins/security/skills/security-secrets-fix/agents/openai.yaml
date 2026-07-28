@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security Secrets Fix"
+  short_description: "Run the Security Secrets Fix Codex workflow"
+  default_prompt: "Use $security-secrets-fix to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

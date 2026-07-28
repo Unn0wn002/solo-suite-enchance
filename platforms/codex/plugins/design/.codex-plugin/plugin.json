@@ -1,0 +1,36 @@
+{
+  "name": "design",
+  "version": "1.0.27",
+  "description": "Design UX flows and component systems, then review the implemented interface. Migrated workflows: $design-component-system, $design-ui-review, $design-ux-flow.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "component-system",
+    "design",
+    "design-tokens",
+    "solo",
+    "solo-suite",
+    "ui",
+    "usability",
+    "ux"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Design",
+    "shortDescription": "Review UX, UI, and component systems",
+    "longDescription": "Design UX flows and component systems, then review the implemented interface. Migrated workflows: $design-component-system, $design-ui-review, $design-ux-flow. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Design",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Design to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

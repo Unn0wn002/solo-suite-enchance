@@ -1,0 +1,34 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "solo",
+  "displayName": "solo-suite solo",
+  "version": "1.9.6",
+  "description": "The heart of the solo workflow: persistent .solo/ project memory across sessions, outward sync, whole-suite self-check, and full-team orchestration.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "memory",
+    "context",
+    "handoff",
+    "session",
+    "start-session",
+    "end-session",
+    "run-cycle",
+    "sync",
+    "obsidian",
+    "grafana",
+    "project-status",
+    "next-step",
+    "solo",
+    "workflow",
+    "self-check",
+    "full-team-dev",
+    "orchestrator",
+    "integrity"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "security",
+  "version": "1.0.27",
+  "description": "Threat-model systems and review authorization, RLS, secrets, and abuse cases. Migrated workflows: $security-abuse-cases, $security-authz-matrix, $security-rls-test, $security-secrets-fix, $security-threat-model.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "abuse-cases",
+    "authorization",
+    "authz",
+    "codex",
+    "owasp",
+    "rls",
+    "secrets",
+    "security",
+    "solo",
+    "solo-suite",
+    "supabase",
+    "threat-model"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Security",
+    "shortDescription": "Threat-model and test authorization controls",
+    "longDescription": "Threat-model systems and review authorization, RLS, secrets, and abuse cases. Migrated workflows: $security-abuse-cases, $security-authz-matrix, $security-rls-test, $security-secrets-fix, $security-threat-model. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Security",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Security to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

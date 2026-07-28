@@ -1,0 +1,505 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "solo-suite-codex-v1.0.27",
+  "documentNamespace": "urn:solo-suite:spdx:1.0.27:unbound-source-template",
+  "creationInfo": {
+    "created": "2026-07-18T11:57:55Z",
+    "creators": [
+      "Tool: solo-suite/tools/package_release.py"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-Package"
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package",
+      "name": "solo-suite-codex",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-ai",
+      "name": "ai",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-browser",
+      "name": "browser",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-design",
+      "name": "design",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-dev",
+      "name": "dev",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-docs",
+      "name": "docs",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-full-team",
+      "name": "full-team",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-gate",
+      "name": "gate",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-git",
+      "name": "git",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-growth",
+      "name": "growth",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-project",
+      "name": "project",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-release",
+      "name": "release",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-repo",
+      "name": "repo",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-security",
+      "name": "security",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-seo",
+      "name": "seo",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-site-doctor",
+      "name": "site-doctor",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-solo",
+      "name": "solo",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-spec",
+      "name": "spec",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-stack",
+      "name": "stack",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Plugin-test",
+      "name": "test",
+      "versionInfo": "1.0.27",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright 2026 Sakura Yukihira",
+      "primaryPackagePurpose": "APPLICATION"
+    },
+    {
+      "SPDXID": "SPDXRef-Python-attrs",
+      "name": "attrs",
+      "versionInfo": "25.3.0",
+      "downloadLocation": "https://pypi.org/project/attrs/25.3.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-coverage",
+      "name": "coverage",
+      "versionInfo": "7.6.12",
+      "downloadLocation": "https://pypi.org/project/coverage/7.6.12/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-jsonschema",
+      "name": "jsonschema",
+      "versionInfo": "4.23.0",
+      "downloadLocation": "https://pypi.org/project/jsonschema/4.23.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-jsonschema-specifications",
+      "name": "jsonschema-specifications",
+      "versionInfo": "2024.10.1",
+      "downloadLocation": "https://pypi.org/project/jsonschema-specifications/2024.10.1/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-pip",
+      "name": "pip",
+      "versionInfo": "26.1.2",
+      "downloadLocation": "https://pypi.org/project/pip/26.1.2/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned vulnerability-audit tooling dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-pip-audit",
+      "name": "pip-audit",
+      "versionInfo": "2.10.1",
+      "downloadLocation": "https://pypi.org/project/pip-audit/2.10.1/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned vulnerability-audit tooling dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-PyYAML",
+      "name": "PyYAML",
+      "versionInfo": "6.0.2",
+      "downloadLocation": "https://pypi.org/project/PyYAML/6.0.2/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Runtime dependency of the structural self-check."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-referencing",
+      "name": "referencing",
+      "versionInfo": "0.36.2",
+      "downloadLocation": "https://pypi.org/project/referencing/0.36.2/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-rpds-py",
+      "name": "rpds-py",
+      "versionInfo": "0.27.1",
+      "downloadLocation": "https://pypi.org/project/rpds-py/0.27.1/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    },
+    {
+      "SPDXID": "SPDXRef-Python-typing-extensions",
+      "name": "typing_extensions",
+      "versionInfo": "4.15.0",
+      "downloadLocation": "https://pypi.org/project/typing_extensions/4.15.0/",
+      "filesAnalyzed": false,
+      "licenseConcluded": "PSF-2.0",
+      "licenseDeclared": "PSF-2.0",
+      "copyrightText": "NOASSERTION",
+      "primaryPackagePurpose": "LIBRARY",
+      "comment": "Pinned development and release-validation dependency."
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-ai"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-browser"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-design"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-dev"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-docs"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-full-team"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-gate"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-git"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-growth"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-project"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-release"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-repo"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-security"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-seo"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-site-doctor"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-solo"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-spec"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-stack"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-Plugin-test"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-attrs",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-coverage",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-jsonschema",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-jsonschema-specifications",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-pip",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-pip-audit",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package",
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Python-PyYAML"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-referencing",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-rpds-py",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    },
+    {
+      "spdxElementId": "SPDXRef-Python-typing-extensions",
+      "relationshipType": "DEV_DEPENDENCY_OF",
+      "relatedSpdxElement": "SPDXRef-Package"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Full Team Verify"
+  short_description: "Run the Full Team Verify Codex workflow"
+  default_prompt: "Use $full-team-verify to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

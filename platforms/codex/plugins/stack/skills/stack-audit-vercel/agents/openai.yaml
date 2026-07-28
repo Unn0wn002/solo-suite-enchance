@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Audit Vercel"
+  short_description: "Run the Stack Audit Vercel Codex workflow"
+  default_prompt: "Use $stack-audit-vercel to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

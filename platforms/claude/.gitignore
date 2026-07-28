@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.coverage
+coverage.xml
+.pytest_cache/
+.venv/
+venv/
+dist/
+.docx-qa/
+.codex-tmp/
+scan.json

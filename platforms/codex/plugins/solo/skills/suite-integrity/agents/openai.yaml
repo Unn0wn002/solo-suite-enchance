@@ -1,0 +1,6 @@
+interface:
+  display_name: "Suite Integrity"
+  short_description: "Run the Suite Integrity workflow in Codex"
+  default_prompt: "Use $suite-integrity to help with this project."
+policy:
+  allow_implicit_invocation: false

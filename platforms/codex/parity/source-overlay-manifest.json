@@ -1,0 +1,126 @@
+{
+  "schema": "solo-suite/source-overlay-manifest-v1",
+  "target_release": "solo-suite-codex-v1.0.27",
+  "top_level_folder": "solo-suite-plugin-v1.0.27",
+  "base_archive": "solo-suite-plugin-v1.0.27.zip",
+  "base_archive_sha256": "e6ade834f95695766af5655a2444d49096ba3b0c49b4f1f726a119ef30848caa",
+  "base_git_commit": "a31be037edaee840479977585e33ac0e57088cb4",
+  "base_git_commit_authenticated": true,
+  "base_tag": "v1.0.27",
+  "base_tag_object": "7495f3ac2c4da972f0f4435028ed468da3135475",
+  "base_tag_signed": false,
+  "base_tree_oid": "0517f8f10a5406f227eb3177b188b2b1103fcf47",
+  "base_repository": "https://github.com/Unn0wn002/solo-suite",
+  "base_release_url": "https://github.com/Unn0wn002/solo-suite/releases/tag/v1.0.27",
+  "base_asset_url": "https://github.com/Unn0wn002/solo-suite/releases/download/v1.0.27/solo-suite-plugin-v1.0.27.zip",
+  "base_provenance_url": "https://github.com/Unn0wn002/solo-suite/releases/download/v1.0.27/provenance.json",
+  "base_provenance_sha256": "a6d59e91229d38dfb284c130957c138a2718912dcd23fea4917670f9b875633b",
+  "overlay_source_commits": {
+    "canonical_tag_commit": "a31be037edaee840479977585e33ac0e57088cb4",
+    "codex_target_sync": "16d3bba2503c1698d770cc52b3fe53be39ab6e09"
+  },
+  "canonical_archive": "solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip",
+  "canonical_archive_sha256": "7dde7bbe44e7534e3f1890ddb1c5feba5554d60127c4dd7ef2095b31cafb03aa",
+  "target_sync_commit": "16d3bba2503c1698d770cc52b3fe53be39ab6e09",
+  "capabilities_sha256": "3f03cfe3cb25cff447dcfcba028df832288e9212c0fe816b9f702b7a1038f5ec",
+  "working_tree_capabilities_sha256": "7d0fd32bbb6de7f357f1642595c729c2e8b48f39c96184c4c76ce0f046a6b7bd",
+  "working_tree_parity_sha256": "a0b79be1ba2d7b0ce0b027c59c501849481974d7a11a9bd0b6718b9cbb8215d5",
+  "provenance_status": "authenticated-tag-reproducible-overlay",
+  "provenance_caveat": "The Claude v1.0.27 annotated tag, commit, tree, and public release asset are pinned; the checked-in provenance JSON is the exact public release CI record and is digest-pinned rather than locally rebuilt. The tag is not cryptographically signed (base_tag_signed=false). The Codex result differs from that base only at the ten paths declared here; those are reviewed adapter or generated-verifier overlays, not an assertion of byte identity with the unmodified Claude archive.",
+  "changes": [
+    {
+      "path": "PARITY-SOURCE.json",
+      "change": "add",
+      "category": "generated-provenance",
+      "base_sha256": null,
+      "result_sha256": "c47e652756b04d47cb7b4d40cace36494549ff2af7c89762d1f1a22c04feec7b",
+      "origin": null
+    },
+    {
+      "path": "parity/capabilities.json",
+      "change": "add",
+      "category": "generated-parity-manifest",
+      "base_sha256": null,
+      "result_sha256": "3f03cfe3cb25cff447dcfcba028df832288e9212c0fe816b9f702b7a1038f5ec",
+      "origin": null
+    },
+    {
+      "path": "plugins/full-team/commands/verify.md",
+      "change": "replace",
+      "category": "reviewed-command-source",
+      "base_sha256": "6b5ecc525d219ad6c1ecb5b60ef34f6a48b8e78c026f14bf9092fc6c252b892f",
+      "result_sha256": "9da5fadb4b102487563393ce67bb9520cfa4bf034bf851932a42b57544cb8c6f",
+      "origin": "parity/canonical-source-overrides/plugins/full-team/commands/verify.md",
+      "provenance_role": "reviewed-adapter-command-source"
+    },
+    {
+      "path": "plugins/gate/lib/gate_policy.py",
+      "change": "replace",
+      "category": "synchronized-gate-policy",
+      "base_sha256": "ce2123ae5ef6d6170af07dfb76a899df7919bc8d0587e04aa1bd7d5617be16c8",
+      "result_sha256": "a672e7c21d9e0c20996597e0f038c5374b856309c80f63fedc35e83c3fc2e83a",
+      "origin": "parity/canonical-source-overrides/plugins/gate/lib/gate_policy.py",
+      "provenance_role": "synchronized-gate-policy-source"
+    },
+    {
+      "path": "plugins/gate/skills/production-readiness-reviewer/SKILL.md",
+      "change": "replace",
+      "category": "synchronized-gate-policy",
+      "base_sha256": "fa878b586a06ce58c210af66331f27dcbde9d9b76fecddd2b19df731a0f13e94",
+      "result_sha256": "c67b37dcdbc0e0ee7d330e02c16c99cdb78255ebd7b1959fad27939135cb1c7a",
+      "origin": "parity/canonical-source-overrides/plugins/gate/skills/production-readiness-reviewer/SKILL.md",
+      "provenance_role": "synchronized-gate-policy-source"
+    },
+    {
+      "path": "plugins/gate/skills/production-readiness-reviewer/scripts/check_evidence.py",
+      "change": "replace",
+      "category": "synchronized-gate-policy",
+      "base_sha256": "a73752268fddc657fc8c53409536e255d259a1c3fd612cdd61742dce586158ad",
+      "result_sha256": "b3ccb2bc5fd6a4de00ccd6b3d51e889ff6bb820475f3f955c3b489546caf8099",
+      "origin": "parity/canonical-source-overrides/plugins/gate/skills/production-readiness-reviewer/scripts/check_evidence.py",
+      "provenance_role": "synchronized-gate-policy-source"
+    },
+    {
+      "path": "plugins/release/commands/deploy-plan.md",
+      "change": "replace",
+      "category": "reviewed-command-source",
+      "base_sha256": "0bc1b01efb123fcabe72139d0af6fdd17c23486bc1d8c459d8d807e73c30080c",
+      "result_sha256": "de3001f609c49b0f1ff17bafacfe6308595e54823947c60eb3929d18f0ff1fea",
+      "origin": "parity/canonical-source-overrides/plugins/release/commands/deploy-plan.md",
+      "provenance_role": "reviewed-adapter-command-source"
+    },
+    {
+      "path": "plugins/release/commands/rollback-plan.md",
+      "change": "replace",
+      "category": "reviewed-command-source",
+      "base_sha256": "862de8f743a8460fcc25c58d534a9c81ef8a0e71d93e30785a8a08fcc5db2a08",
+      "result_sha256": "4e1709bba5068613596201a00127003fa3a6cec119fe8e29e918309de87f3f75",
+      "origin": "parity/canonical-source-overrides/plugins/release/commands/rollback-plan.md",
+      "provenance_role": "reviewed-adapter-command-source"
+    },
+    {
+      "path": "plugins/solo/commands/full-team-dev.md",
+      "change": "replace",
+      "category": "reviewed-command-source",
+      "base_sha256": "c53c3a1ad7c7c4b9d5d5fb24cb6a54bd8981b0bcd6486ef69fee71ecbc5f6168",
+      "result_sha256": "25d6b1c51f6b67ef9e84c20a7faabb3f02b8e55e1e3623c715d50a4204c74d20",
+      "origin": "parity/canonical-source-overrides/plugins/solo/commands/full-team-dev.md",
+      "provenance_role": "reviewed-adapter-command-source"
+    },
+    {
+      "path": "tools/parity.py",
+      "change": "add",
+      "category": "generated-verifier",
+      "base_sha256": null,
+      "result_sha256": "1d83b55d3fe84a8b5b6142f8538c75c73d89abf53c0e78ae39f95565d16c6175",
+      "origin": null,
+      "provenance_role": "canonical-parity-checker",
+      "provenance_origin": "tools/parity.py"
+    }
+  ],
+  "verification": [
+    "python tools/verify_source_overlay.py --base-archive parity/artifacts/solo-suite-plugin-v1.0.27.zip --base-provenance parity/artifacts/solo-suite-plugin-v1.0.27.provenance.json --canonical-source-archive parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip",
+    "python tools/verify_source_overlay.py --canonical-only --canonical-source-archive parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip",
+    "python tools/parity.py check --source <current-claude-source> --target ."
+  ]
+}

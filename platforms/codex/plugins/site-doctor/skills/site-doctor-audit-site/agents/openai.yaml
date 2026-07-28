@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Audit Site"
+  short_description: "Run the Site Doctor Audit Site Codex workflow"
+  default_prompt: "Use $site-doctor-audit-site to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

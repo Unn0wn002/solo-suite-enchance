@@ -1,0 +1,38 @@
+{
+  "name": "growth",
+  "version": "1.0.27",
+  "description": "Audit conversion journeys and activation only when the project profile makes growth review relevant. Migrated workflows: $growth-conversion-audit.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "activation",
+    "analytics",
+    "codex",
+    "conversion",
+    "cro",
+    "drop-off",
+    "forms",
+    "funnel",
+    "growth",
+    "solo",
+    "solo-suite"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Growth",
+    "shortDescription": "Audit conversion journeys and activation",
+    "longDescription": "Audit conversion journeys and activation only when the project profile makes growth review relevant. Migrated workflows: $growth-conversion-audit. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Growth to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

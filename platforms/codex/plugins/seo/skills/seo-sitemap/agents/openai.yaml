@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Sitemap"
+  short_description: "Run the SEO Sitemap workflow in Codex"
+  default_prompt: "Use $seo-sitemap to help with this project."
+policy:
+  allow_implicit_invocation: false

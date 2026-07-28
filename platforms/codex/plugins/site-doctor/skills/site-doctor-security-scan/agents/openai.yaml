@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Security Scan"
+  short_description: "Run the Site Doctor Security Scan Codex workflow"
+  default_prompt: "Use $site-doctor-security-scan to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

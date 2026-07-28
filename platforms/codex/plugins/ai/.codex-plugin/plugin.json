@@ -1,0 +1,43 @@
+{
+  "name": "ai",
+  "version": "1.0.27",
+  "description": "Review AI output, improve prompts, validate handoffs, and prepare declarative AgentRooms plans. Migrated workflows: $ai-agent-rooms, $ai-compare-models, $ai-handoff-check, $ai-prompt-improve, $ai-repair-cycle, $ai-review-output.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "agent-rooms",
+    "agents",
+    "ai",
+    "claude",
+    "codex",
+    "gemini",
+    "hallucination",
+    "handoff",
+    "model-routing",
+    "multi-agent",
+    "prompt",
+    "review",
+    "rooms",
+    "solo",
+    "solo-suite",
+    "templates"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo AI",
+    "shortDescription": "Review and coordinate AI coding work",
+    "longDescription": "Review AI output, improve prompts, validate handoffs, and prepare declarative AgentRooms plans. Migrated workflows: $ai-agent-rooms, $ai-compare-models, $ai-handoff-check, $ai-prompt-improve, $ai-repair-cycle, $ai-review-output. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "AI",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo AI to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

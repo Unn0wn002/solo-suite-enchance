@@ -1,0 +1,46 @@
+{
+  "name": "Solo Suite Enchance",
+  "slug": "solo-suite-enchance",
+  "scope": {
+    "current": "advanced website delivery",
+    "next": [
+      "SaaS applications",
+      "e-commerce",
+      "internal applications",
+      "APIs and services",
+      "libraries and packages"
+    ]
+  },
+  "platforms": {
+    "claude": {
+      "path": "platforms/claude",
+      "version": "1.0.30",
+      "plugins": 19,
+      "skills": 79,
+      "commands": 125,
+      "validation": "self-check 14/14; targeted tests 156 pass"
+    },
+    "codex": {
+      "path": "platforms/codex",
+      "version": "1.0.27",
+      "plugins": 19,
+      "skills": 184,
+      "commands": 125,
+      "validation": "self-check 6/6; portable validation 19/19; AgentRooms 4/4; targeted tests 99 pass"
+    },
+    "antigravity": {
+      "path": "platforms/antigravity",
+      "version": "1.0.30",
+      "plugins": 19,
+      "skills": 79,
+      "commands": 125,
+      "validation": "self-check 14/14; targeted tests 156 pass"
+    }
+  },
+  "notes": [
+    "Platform folders are isolated copies of the read-only source distributions.",
+    "Codex keeps its native skill and AgentRoom runtime rather than pretending to be a Claude command runtime.",
+    "Antigravity uses the validated Claude-compatible trees and documented Google/Gemini config directories.",
+    "Validation is structural plus selected runtime coverage; long-running end-to-end suites remain separate."
+  ]
+}

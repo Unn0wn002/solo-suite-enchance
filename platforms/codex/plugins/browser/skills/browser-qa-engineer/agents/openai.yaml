@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser Qa Engineer"
+  short_description: "Run the Browser Qa Engineer workflow in Codex"
+  default_prompt: "Use $browser-qa-engineer to help with this project."
+policy:
+  allow_implicit_invocation: false

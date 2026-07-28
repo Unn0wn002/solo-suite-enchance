@@ -1,0 +1,832 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:solo-suite:schema:agentroom-v1",
+  "title": "Solo Suite AgentRoom v1",
+  "description": "Declarative, runner-independent contract for a bounded multi-agent room.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema",
+    "name",
+    "version",
+    "prepared",
+    "run_id",
+    "description",
+    "profile",
+    "memory_dir",
+    "rules",
+    "memory_steward",
+    "tasks",
+    "workspaces",
+    "artifact_locks",
+    "stages",
+    "seats",
+    "gates",
+    "exit_gate",
+    "exit_criteria"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema": {
+      "const": "solo-suite/agentroom-v1"
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,63}$"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "prepared": {
+      "type": "boolean"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9._-]{1,62}[a-z0-9])$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "based_on_room": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "enum": [
+        "public-marketing-site",
+        "saas-application",
+        "e-commerce",
+        "internal-application",
+        "api-service",
+        "library-package",
+        "profile-selected-at-runtime"
+      ]
+    },
+    "runtime_trust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "suite_digest",
+        "skill_count",
+        "validators",
+        "runtime"
+      ],
+      "properties": {
+        "schema": {
+          "const": "solo-suite/agentroom-runtime-trust-v2"
+        },
+        "suite_digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "skill_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "validators": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["phase", "production"],
+          "properties": {
+            "phase": {
+              "$ref": "#/$defs/phaseValidatorTrust"
+            },
+            "production": {
+              "$ref": "#/$defs/productionValidatorTrust"
+            }
+          }
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "gate_policy",
+            "git_trust",
+            "prepare_run",
+            "run_room",
+            "runtime_trust",
+            "state_journal",
+            "validate_rooms"
+          ],
+          "properties": {
+            "gate_policy": {"$ref": "#/$defs/runtimeFileTrust"},
+            "git_trust": {"$ref": "#/$defs/runtimeFileTrust"},
+            "prepare_run": {"$ref": "#/$defs/runtimeFileTrust"},
+            "run_room": {"$ref": "#/$defs/runtimeFileTrust"},
+            "runtime_trust": {"$ref": "#/$defs/runtimeFileTrust"},
+            "state_journal": {"$ref": "#/$defs/runtimeFileTrust"},
+            "validate_rooms": {"$ref": "#/$defs/runtimeFileTrust"}
+          }
+        }
+      }
+    },
+    "memory_dir": {
+      "const": ".solo/"
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "memory_steward": {
+      "$ref": "#/$defs/memorySteward"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+    "workspaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/workspace"
+      }
+    },
+    "artifact_locks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/artifactLock"
+      }
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/stage"
+      }
+    },
+    "seats": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/seat"
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/gate"
+      }
+    },
+    "exit_gate": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/command"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "exit_gate_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exit_criteria": {
+      "type": "string",
+      "minLength": 1
+    },
+    "loop": {
+      "$ref": "#/$defs/loop"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "prepared": {"const": true}
+        },
+        "required": ["prepared"]
+      },
+      "then": {
+        "required": ["runtime_trust"]
+      },
+      "else": {
+        "not": {
+          "required": ["runtime_trust"]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "runtimeFileTrust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "phaseValidatorTrust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest"],
+      "properties": {
+        "path": {
+          "const": "plugins/gate/skills/quality-gatekeeper/scripts/validate_phase_gate_evidence.py"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "productionValidatorTrust": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest"],
+      "properties": {
+        "path": {
+          "const": "plugins/gate/skills/production-readiness-reviewer/scripts/validate_gate_evidence.py"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+    },
+    "artifact": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "command": {
+      "type": "string",
+      "pattern": "^\\$[a-z][a-z0-9-]*$"
+    },
+    "memorySteward": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "seat_id",
+        "task_id_pattern",
+        "proposal_merge_policy",
+        "conflict_policy"
+      ],
+      "properties": {
+        "seat_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "task_id_pattern": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposal_merge_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conflict_policy": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "owner",
+        "allocated_by"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^T[0-9]+$"
+        },
+        "owner": {
+          "$ref": "#/$defs/identifier"
+        },
+        "allocated_by": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "workspace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "path",
+        "owner"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "type": {
+          "enum": [
+            "shared-memory",
+            "worktree",
+            "read-only"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/artifact"
+        },
+        "owner": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "artifactLock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact",
+        "owner"
+      ],
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "owner": {
+          "$ref": "#/$defs/identifier"
+        }
+      }
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "seats"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "seats": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/identifier"
+          }
+        }
+      }
+    },
+    "seat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "persistent",
+        "role",
+        "model_hint",
+        "workspace",
+        "memory_access",
+        "reads",
+        "writes",
+        "proposals",
+        "commands",
+        "deliverable",
+        "handoff_to",
+        "handoff_check",
+        "task_ids"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "kind": {
+          "enum": [
+            "worker",
+            "gatekeeper",
+            "memory-steward"
+          ]
+        },
+        "persistent": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_hint": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workspace": {
+          "$ref": "#/$defs/identifier"
+        },
+        "memory_access": {
+          "enum": [
+            "direct",
+            "propose-only",
+            "read-only"
+          ]
+        },
+        "reads": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "writes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "proposals": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/artifact"
+          }
+        },
+        "commands": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/command"
+          }
+        },
+        "deliverable": {
+          "type": "string",
+          "minLength": 1
+        },
+        "handoff_to": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/identifier"
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "$ref": "#/$defs/identifier"
+              }
+            }
+          ]
+        },
+        "handoff_check": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/command"
+            }
+          ]
+        },
+        "task_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^T[0-9]+$"
+          }
+        }
+      }
+    },
+    "gatePrerequisite": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "artifact",
+        "producer_commands"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "producer_commands": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/command"
+          }
+        }
+      }
+    },
+    "gateEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifact",
+        "schema",
+        "required_fields",
+        "freshness"
+      ],
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/artifact"
+        },
+        "schema": {
+          "enum": [
+            "solo-suite/phase-gate-evidence-v1",
+            "solo-suite/score-evidence-v1",
+            "solo-suite/gate-evidence-v1"
+          ]
+        },
+        "required_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "freshness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "run_id",
+            "commit",
+            "environment",
+            "max_age_hours"
+          ],
+          "properties": {
+            "run_id": {
+              "const": "exact"
+            },
+            "commit": {
+              "const": "exact"
+            },
+            "environment": {
+              "const": "exact"
+            },
+            "max_age_hours": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "gateTransitionRoute": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statuses"
+      ],
+      "properties": {
+        "statuses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "next_stage": {
+          "$ref": "#/$defs/identifier"
+        },
+        "action": {
+          "enum": [
+            "stop",
+            "complete"
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "next_stage"
+          ],
+          "not": {
+            "required": [
+              "action"
+            ]
+          }
+        },
+        {
+          "required": [
+            "action"
+          ],
+          "not": {
+            "required": [
+              "next_stage"
+            ]
+          }
+        }
+      ]
+    },
+    "gateTransitions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status_field",
+        "routes",
+        "default_action"
+      ],
+      "properties": {
+        "status_field": {
+          "enum": [
+            "decision",
+            "assessment_status",
+            "launch_status"
+          ]
+        },
+        "routes": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "$ref": "#/$defs/gateTransitionRoute"
+          }
+        },
+        "default_action": {
+          "const": "stop"
+        }
+      }
+    },
+    "gateResultFreshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "run_id",
+        "commit",
+        "environment",
+        "latest"
+      ],
+      "properties": {
+        "run_id": {
+          "const": "exact"
+        },
+        "commit": {
+          "const": "exact"
+        },
+        "environment": {
+          "const": "exact"
+        },
+        "latest": {
+          "const": true
+        }
+      }
+    },
+    "gateResultRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "status",
+        "freshness"
+      ],
+      "properties": {
+        "gate_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "freshness": {
+          "$ref": "#/$defs/gateResultFreshness"
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "command",
+        "stage",
+        "seat",
+        "prerequisites",
+        "evidence",
+        "transitions"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "command": {
+          "$ref": "#/$defs/command"
+        },
+        "stage": {
+          "$ref": "#/$defs/identifier"
+        },
+        "seat": {
+          "$ref": "#/$defs/identifier"
+        },
+        "prerequisites": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/gatePrerequisite"
+          }
+        },
+        "evidence": {
+          "$ref": "#/$defs/gateEvidence"
+        },
+        "transitions": {
+          "$ref": "#/$defs/gateTransitions"
+        },
+        "required_gate_results": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/gateResultRequirement"
+          }
+        }
+      }
+    },
+    "loop": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from_stage",
+        "to_stage",
+        "max_iterations",
+        "trigger",
+        "exit",
+        "until",
+        "on_exhaustion",
+        "on_exhaustion_action"
+      ],
+      "properties": {
+        "from_stage": {
+          "$ref": "#/$defs/identifier"
+        },
+        "to_stage": {
+          "$ref": "#/$defs/identifier"
+        },
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "trigger": {
+          "$ref": "#/$defs/loopSignal"
+        },
+        "exit": {
+          "$ref": "#/$defs/loopSignal"
+        },
+        "until": {
+          "type": "string",
+          "minLength": 1
+        },
+        "on_exhaustion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "on_exhaustion_action": {
+          "const": "stop"
+        }
+      }
+    },
+    "loopSignal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_ids", "statuses", "match"],
+      "properties": {
+        "gate_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/identifier"}
+        },
+        "statuses": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "match": {"enum": ["any", "all"]}
+      }
+    }
+  }
+}

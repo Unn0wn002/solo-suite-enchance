@@ -1,0 +1,24 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "docs",
+  "displayName": "solo-suite docs",
+  "version": "1.1.2",
+  "description": "Documentation for solo developers: README and docs upkeep, API reference, and a from-scratch setup guide, kept matched to code reality rather than to intent.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "documentation",
+    "readme",
+    "api-docs",
+    "setup-guide",
+    "onboarding",
+    "solo",
+    "runbook",
+    "operations"
+  ]
+}

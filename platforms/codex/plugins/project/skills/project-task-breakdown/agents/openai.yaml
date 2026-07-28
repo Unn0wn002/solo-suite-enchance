@@ -1,0 +1,6 @@
+interface:
+  display_name: "Project Task Breakdown"
+  short_description: "Run the Project Task Breakdown Codex workflow"
+  default_prompt: "Use $project-task-breakdown to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

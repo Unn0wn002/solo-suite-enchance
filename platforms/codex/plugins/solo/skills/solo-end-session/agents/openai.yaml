@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo End Session"
+  short_description: "Run the Solo End Session Codex workflow"
+  default_prompt: "Use $solo-end-session to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

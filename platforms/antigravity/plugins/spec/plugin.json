@@ -1,0 +1,25 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "spec",
+  "displayName": "solo-suite spec",
+  "version": "1.0.3",
+  "description": "Spec and planning: turn rough ideas into clear briefs, testable acceptance criteria, and API, data, and environment contracts before you build.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "spec",
+    "planning",
+    "acceptance-criteria",
+    "feature-brief",
+    "api-contract",
+    "data-contract",
+    "env-contract",
+    "requirements",
+    "solo"
+  ]
+}

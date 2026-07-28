@@ -1,0 +1,6 @@
+interface:
+  display_name: "Spec Acceptance"
+  short_description: "Run the Spec Acceptance Codex workflow"
+  default_prompt: "Use $spec-acceptance to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

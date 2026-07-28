@@ -1,0 +1,70 @@
+{
+  "name": "site-doctor",
+  "version": "1.0.27",
+  "description": "Audit websites, services, databases, infrastructure, security, performance, SEO, and operations. Migrated workflows: $site-doctor-a11y, $site-doctor-animation, $site-doctor-audit-analytics, $site-doctor-audit-api, $site-doctor-audit-content, $site-doctor-audit-db, $site-doctor-audit-deps, $site-doctor-audit-forms, $site-doctor-audit-infra, $site-doctor-audit-mobile, $site-doctor-audit-site, $site-doctor-backups, $site-doctor-compliance, $site-doctor-cost, $site-doctor-debug, $site-doctor-email-check, $site-doctor-full-checkup, $site-doctor-incident, $site-doctor-load-test, $site-doctor-migrate-data, $site-doctor-monitoring, $site-doctor-perf, $site-doctor-review-deploy, $site-doctor-security-scan, $site-doctor-seo.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "accessibility",
+    "analytics",
+    "animation",
+    "api",
+    "audit",
+    "backup",
+    "codex",
+    "compliance",
+    "content",
+    "cost",
+    "database",
+    "debug",
+    "dependencies",
+    "deployment",
+    "devops",
+    "disaster-recovery",
+    "email",
+    "evidence-based",
+    "fix",
+    "forms",
+    "gdpr",
+    "gsap",
+    "incident-response",
+    "infrastructure",
+    "load-testing",
+    "migration",
+    "mobile",
+    "motion-design",
+    "mysql",
+    "observability",
+    "owasp",
+    "performance",
+    "postgres",
+    "project-memory",
+    "pwa",
+    "security",
+    "seo",
+    "solo-suite",
+    "solo-team",
+    "spf-dkim-dmarc",
+    "sqlite",
+    "supply-chain",
+    "website"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Site Doctor",
+    "shortDescription": "Audit websites, services, and databases",
+    "longDescription": "Audit websites, services, databases, infrastructure, security, performance, SEO, and operations. Migrated workflows: $site-doctor-a11y, $site-doctor-animation, $site-doctor-audit-analytics, $site-doctor-audit-api, $site-doctor-audit-content, $site-doctor-audit-db, $site-doctor-audit-deps, $site-doctor-audit-forms, $site-doctor-audit-infra, $site-doctor-audit-mobile, $site-doctor-audit-site, $site-doctor-backups, $site-doctor-compliance, $site-doctor-cost, $site-doctor-debug, $site-doctor-email-check, $site-doctor-full-checkup, $site-doctor-incident, $site-doctor-load-test, $site-doctor-migrate-data, $site-doctor-monitoring, $site-doctor-perf, $site-doctor-review-deploy, $site-doctor-security-scan, $site-doctor-seo. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Site Doctor to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

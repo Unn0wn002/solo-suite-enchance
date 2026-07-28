@@ -1,0 +1,23 @@
+{
+  "schema": "solo-suite/component-requirements-v1",
+  "components": [
+    {"plugin": "ai", "minimum_version": "1.0.27", "representative_skill": "agent-room-templates"},
+    {"plugin": "browser", "minimum_version": "1.0.27", "representative_skill": "browser-qa-engineer"},
+    {"plugin": "design", "minimum_version": "1.0.27", "representative_skill": "ui-ux-designer"},
+    {"plugin": "dev", "minimum_version": "1.0.27", "representative_skill": "fullstack-developer"},
+    {"plugin": "docs", "minimum_version": "1.0.27", "representative_skill": "documentation-writer"},
+    {"plugin": "gate", "minimum_version": "1.0.27", "representative_skill": "production-readiness-reviewer"},
+    {"plugin": "git", "minimum_version": "1.0.27", "representative_skill": "git-workflow-manager"},
+    {"plugin": "growth", "minimum_version": "1.0.27", "representative_skill": "conversion-optimizer"},
+    {"plugin": "project", "minimum_version": "1.0.27", "representative_skill": "product-manager"},
+    {"plugin": "release", "minimum_version": "1.0.27", "representative_skill": "devops-engineer"},
+    {"plugin": "repo", "minimum_version": "1.0.27", "representative_skill": "repo-analyzer"},
+    {"plugin": "security", "minimum_version": "1.0.27", "representative_skill": "authz-security-reviewer"},
+    {"plugin": "seo", "minimum_version": "1.0.27", "representative_skill": "seo"},
+    {"plugin": "site-doctor", "minimum_version": "1.0.27", "representative_skill": "website-audit"},
+    {"plugin": "solo", "minimum_version": "1.0.27", "representative_skill": "project-memory-manager"},
+    {"plugin": "spec", "minimum_version": "1.0.27", "representative_skill": "acceptance-criteria-writer"},
+    {"plugin": "stack", "minimum_version": "1.0.27", "representative_skill": "stack-advisor"},
+    {"plugin": "test", "minimum_version": "1.0.27", "representative_skill": "qa-engineer"}
+  ]
+}

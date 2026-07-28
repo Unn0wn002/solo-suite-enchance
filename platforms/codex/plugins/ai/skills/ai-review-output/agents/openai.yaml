@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Review Output"
+  short_description: "Run the AI Review Output Codex workflow"
+  default_prompt: "Use $ai-review-output to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

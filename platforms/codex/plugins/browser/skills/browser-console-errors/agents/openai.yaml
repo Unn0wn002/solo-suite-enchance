@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser Console Errors"
+  short_description: "Run the Browser Console Errors Codex workflow"
+  default_prompt: "Use $browser-console-errors to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Audit Supabase"
+  short_description: "Run the Stack Audit Supabase Codex workflow"
+  default_prompt: "Use $stack-audit-supabase to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

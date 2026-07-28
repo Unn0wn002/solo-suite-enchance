@@ -1,0 +1,40 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "stack",
+  "displayName": "solo-suite stack",
+  "version": "1.4.5",
+  "description": "Stack-aware auditing for Cloudflare, Vercel, Supabase, analytics tags, and payments. /stack:connector-check probes read-only and writes only local project memory.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "stack",
+    "intake",
+    "cloudflare",
+    "vercel",
+    "supabase",
+    "analytics",
+    "tags",
+    "gtm",
+    "ga4",
+    "rls",
+    "payments",
+    "stripe",
+    "xendit",
+    "midtrans",
+    "paypal",
+    "webhooks",
+    "vendor-audit",
+    "solo",
+    "connector",
+    "connector-auditor",
+    "live-data",
+    "connector-mode",
+    "manual-mode",
+    "evidence"
+  ]
+}

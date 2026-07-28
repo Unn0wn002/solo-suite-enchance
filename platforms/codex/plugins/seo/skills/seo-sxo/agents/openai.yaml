@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Sxo"
+  short_description: "Run the SEO Sxo workflow in Codex"
+  default_prompt: "Use $seo-sxo to help with this project."
+policy:
+  allow_implicit_invocation: false

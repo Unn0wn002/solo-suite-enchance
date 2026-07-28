@@ -1,0 +1,322 @@
+name: publish-attested-release
+
+"on":
+  push:
+    tags:
+      - "v*"
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  PYTHONUTF8: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+  COVERAGE_FILE: ${{ github.workspace }}/dist/.coverage
+  COVERAGE_PROCESS_START: ${{ github.workspace }}/.coveragerc
+  COVERAGE_SOURCE_ROOT: ${{ github.workspace }}
+  PYTHONPATH: ${{ github.workspace }}/.github/coverage-bootstrap
+
+jobs:
+  build:
+    name: Validate and package immutable assets
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: read
+    outputs:
+      archive: ${{ steps.release.outputs.archive }}
+    steps:
+      - name: Check out the immutable release tag
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: |
+            requirements-dev.lock
+            requirements-audit.lock
+
+      - name: Validate tag and release metadata
+        id: release
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import re
+
+          version = json.loads(Path("RELEASE.json").read_text(encoding="utf-8"))["version"]
+          if not isinstance(version, str) or re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version) is None:
+              raise SystemExit("RELEASE.json contains an invalid semantic version")
+          expected_tag = f"v{version}"
+          if os.environ["RELEASE_TAG"] != expected_tag:
+              raise SystemExit(
+                  f"release tag {os.environ['RELEASE_TAG']!r} does not match {expected_tag!r}"
+              )
+          archive = f"solo-suite-codex-v{version}.zip"
+          with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8", newline="\n") as output:
+              output.write(f"version={version}\narchive={archive}\n")
+          PY
+
+      - name: Bind the tag to the protected default-branch head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_COMMIT: ${{ github.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          REF_PROTECTED: ${{ github.ref_protected }}
+        run: |
+          python -c "import os, sys; sys.exit(0 if os.environ['REF_PROTECTED'] == 'true' else 'release tag is not protected by an active ruleset')"
+          python tools/verify_release_ref.py \
+            --repo "$GITHUB_REPOSITORY" \
+            --tag "$RELEASE_TAG" \
+            --expected-commit "$RELEASE_COMMIT" \
+            --default-branch "$DEFAULT_BRANCH" \
+            --check-local-head
+
+      - name: Install hash-locked validation dependencies
+        run: python -m pip install --require-hashes --requirement requirements-dev.lock
+
+      - name: Compile Python sources
+        run: python -m compileall -q plugins tests tools
+
+      - name: Validate every Codex plugin directory
+        run: |
+          python -c "from pathlib import Path; Path('dist').mkdir(exist_ok=True)"
+          coverage erase
+          coverage run --parallel-mode --source=plugins,tools tools/validate_plugins.py --official-if-available --report dist/plugin-validation-v1.0.27.json
+
+      - name: Verify checked-in canonical overlay offline
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/verify_source_overlay.py --canonical-only
+          --canonical-source-archive
+          parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+          --target .
+
+      - name: Rebuild and verify the public canonical source overlay
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/build_canonical_source.py --fetch-public-base
+          --output dist/rebuilt-canonical-source.zip
+
+      - name: Run checked-in parity and authoring-contract validators
+        run: |
+          python -m zipfile -e parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip dist/parity-source
+          coverage run --parallel-mode --source=plugins,tools tools/parity.py --check --source dist/parity-source/solo-suite-plugin-v1.0.27 --target .
+          coverage run --parallel-mode --source=plugins,tools tools/build_agentrooms.py --check-docs
+          coverage run --parallel-mode --source=plugins,tools tools/normalize_skill_contracts.py --check
+          coverage run --parallel-mode --source=plugins,tools tools/native_install_smoke.py --suite-root . --if-available --no-self-check --report dist/native-install-validation.json
+
+      - name: Run unit and regression tests
+        run: coverage run --parallel-mode --source=plugins,tools -m unittest discover -s tests -t . -v
+
+      - name: Run structural and AgentRooms validation
+        run: |
+          coverage run --parallel-mode --source=plugins,tools plugins/solo/skills/suite-integrity/scripts/self_check.py . -
+          coverage run --parallel-mode --source=plugins,tools plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py --suite .
+
+      - name: Scan repository for secrets
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          plugins/site-doctor/scripts/run_helper.py
+          security-review/scan-secrets . --json
+
+      - name: Install hash-locked vulnerability-audit tooling
+        run: python -m pip install --require-hashes --requirement requirements-audit.lock
+
+      - name: Audit hash-locked Python dependencies
+        run: |
+          python -m pip check
+          python -m pip_audit --strict --progress-spinner off --disable-pip --no-deps --require-hashes --requirement requirements-dev.lock --format json --output dist/dependency-audit-dev-v1.0.27.json
+          python -m pip_audit --strict --progress-spinner off --disable-pip --no-deps --require-hashes --requirement requirements-audit.lock --format json --output dist/dependency-audit-tools-v1.0.27.json
+
+      - name: Build and smoke-test deterministic release package
+        env:
+          ARCHIVE_NAME: ${{ steps.release.outputs.archive }}
+          CANONICAL_SOURCE: solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+        run: |
+          coverage run --parallel-mode --source=plugins,tools tools/package_release.py --output "dist/${ARCHIVE_NAME}" --validation-state validated --canonical-source-archive "parity/artifacts/${CANONICAL_SOURCE}"
+          coverage run --parallel-mode --source=plugins,tools tools/smoke_package.py "dist/${ARCHIVE_NAME}" --canonical-source-archive "parity/artifacts/${CANONICAL_SOURCE}"
+          cp "parity/artifacts/${CANONICAL_SOURCE}" "dist/${CANONICAL_SOURCE}"
+          cp "parity/artifacts/${CANONICAL_SOURCE}.sha256" "dist/${CANONICAL_SOURCE}.sha256"
+          cp parity/source-overlay-manifest.json dist/source-overlay-manifest-v1.0.27.json
+          python - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path
+
+          archive = Path("dist") / os.environ["ARCHIVE_NAME"]
+          digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+          sidecar = archive.with_name(f"{archive.name}.sha256")
+          # ``Path.write_text`` has no ``newline`` parameter on Python 3.9.
+          sidecar.write_bytes(f"{digest} *{archive.name}\n".encode("ascii"))
+          PY
+
+      - name: Combine executed-command coverage and enforce floor
+        run: |
+          coverage combine
+          coverage report --show-missing > dist/coverage-full.txt
+          coverage json -o dist/coverage-full.json
+          coverage report --show-missing --omit='tools/build_codex_metadata.py,tools/generate_skill_metadata.py,tools/normalize_skill_contracts.py,tools/sync_from_claude.py,tools/translate_references.py,tools/update_cheatsheet.py' --fail-under=68
+
+      - name: Verify packaging did not rewrite tracked source
+        run: |
+          git diff --exit-code
+          python -c 'import subprocess, sys; status = subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=all"], text=True); print(status, end=""); sys.exit(1 if status.strip() else 0)'
+
+      - name: Transfer validated assets to privileged jobs
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-assets-${{ github.run_id }}
+          path: |
+            dist/${{ steps.release.outputs.archive }}
+            dist/${{ steps.release.outputs.archive }}.sha256
+            dist/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+            dist/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip.sha256
+            dist/source-overlay-manifest-v1.0.27.json
+            dist/plugin-validation-v1.0.27.json
+            dist/dependency-audit-dev-v1.0.27.json
+            dist/dependency-audit-tools-v1.0.27.json
+          if-no-files-found: error
+          retention-days: 1
+
+  attest:
+    name: Generate GitHub build provenance
+    needs: build
+    if: github.event.repository.private == false || vars.ENABLE_PRIVATE_ATTESTATIONS == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      attestations: write
+      contents: read
+      id-token: write
+    steps:
+      - name: Download validated assets
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-assets-${{ github.run_id }}
+          path: dist
+
+      - name: Generate GitHub build provenance
+        uses: actions/attest@f6bf1532d7d6793fce74eac584813a8eee607999 # v4
+        with:
+          subject-path: |
+            dist/${{ needs.build.outputs.archive }}
+            dist/${{ needs.build.outputs.archive }}.sha256
+            dist/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+            dist/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip.sha256
+            dist/source-overlay-manifest-v1.0.27.json
+            dist/plugin-validation-v1.0.27.json
+            dist/dependency-audit-dev-v1.0.27.json
+            dist/dependency-audit-tools-v1.0.27.json
+
+  publish:
+    name: Publish validated immutable release
+    needs: [build, attest]
+    if: >-
+      always() && needs.build.result == 'success' &&
+      (needs.attest.result == 'success' || needs.attest.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the exact validated release commit
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+
+      - name: Download validated assets
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: release-assets-${{ github.run_id }}
+          path: dist
+
+      - name: Reverify the remote tag and default branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_COMMIT: ${{ github.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: >-
+          python tools/verify_release_ref.py
+          --repo "$GITHUB_REPOSITORY"
+          --tag "$RELEASE_TAG"
+          --expected-commit "$RELEASE_COMMIT"
+          --default-branch "$DEFAULT_BRANCH"
+
+      - name: Create private draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: >-
+          gh release create "$RELEASE_TAG"
+          --repo "$GITHUB_REPOSITORY"
+          --verify-tag
+          --draft
+          --title "Solo Suite Codex $RELEASE_TAG"
+          --generate-notes
+          --notes "Codex v1.0.27 is paired with a reproducible Claude v1.0.27 overlay. The annotated upstream tag is unsigned; the ten declared Codex adapter paths are listed in source-overlay-manifest.json."
+
+      - name: Upload immutable release assets to draft
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          ARCHIVE_PATH: dist/${{ needs.build.outputs.archive }}
+          CANONICAL_SOURCE_PATH: dist/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+        run: >-
+          gh release upload "$RELEASE_TAG"
+          "$ARCHIVE_PATH" "$ARCHIVE_PATH.sha256"
+          "$CANONICAL_SOURCE_PATH" "$CANONICAL_SOURCE_PATH.sha256"
+          "dist/source-overlay-manifest-v1.0.27.json"
+          "dist/plugin-validation-v1.0.27.json"
+          "dist/dependency-audit-dev-v1.0.27.json"
+          "dist/dependency-audit-tools-v1.0.27.json"
+          --repo "$GITHUB_REPOSITORY"
+
+      - name: Reverify release binding and uploaded asset bytes, then publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_COMMIT: ${{ github.sha }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          REF_PROTECTED: ${{ github.ref_protected }}
+          ARCHIVE_NAME: ${{ needs.build.outputs.archive }}
+          CANONICAL_SOURCE: solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+        run: |
+          if [ "$REF_PROTECTED" != "true" ]; then
+            echo "::error::release tag is not protected by an active ruleset"
+            exit 1
+          fi
+          python tools/verify_release_ref.py \
+            --repo "$GITHUB_REPOSITORY" \
+            --tag "$RELEASE_TAG" \
+            --expected-commit "$RELEASE_COMMIT" \
+            --default-branch "$DEFAULT_BRANCH"
+          python tools/verify_release_assets.py \
+            --repo "$GITHUB_REPOSITORY" \
+            --tag "$RELEASE_TAG" \
+            --asset "dist/${ARCHIVE_NAME}" \
+            --asset "dist/${ARCHIVE_NAME}.sha256" \
+            --asset "dist/${CANONICAL_SOURCE}" \
+            --asset "dist/${CANONICAL_SOURCE}.sha256" \
+            --asset dist/source-overlay-manifest-v1.0.27.json \
+            --asset dist/plugin-validation-v1.0.27.json \
+            --asset dist/dependency-audit-dev-v1.0.27.json \
+            --asset dist/dependency-audit-tools-v1.0.27.json
+          gh release edit "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --draft=false \
+            --latest

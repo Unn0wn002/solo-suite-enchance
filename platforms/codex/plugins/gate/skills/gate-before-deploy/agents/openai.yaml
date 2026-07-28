@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gate Before Deploy"
+  short_description: "Run the Gate Before Deploy Codex workflow"
+  default_prompt: "Use $gate-before-deploy to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

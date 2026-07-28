@@ -1,0 +1,40 @@
+{
+  "name": "browser",
+  "version": "1.0.27",
+  "description": "Run safety-first browser QA for console, visual, mobile, smoke, and form workflows. Migrated workflows: $browser-console-errors, $browser-form-submit-test, $browser-mobile-test, $browser-smoke-test, $browser-visual-check.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "browser",
+    "codex",
+    "console",
+    "e2e",
+    "forms",
+    "hydration",
+    "mobile",
+    "network",
+    "qa",
+    "responsive",
+    "solo",
+    "solo-suite",
+    "testing"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Browser QA",
+    "shortDescription": "Run safety-first browser quality checks",
+    "longDescription": "Run safety-first browser QA for console, visual, mobile, smoke, and form workflows. Migrated workflows: $browser-console-errors, $browser-form-submit-test, $browser-mobile-test, $browser-smoke-test, $browser-visual-check. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Testing",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Browser QA to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

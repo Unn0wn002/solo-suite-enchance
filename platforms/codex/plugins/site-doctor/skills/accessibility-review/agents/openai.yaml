@@ -1,0 +1,6 @@
+interface:
+  display_name: "Accessibility Review"
+  short_description: "Run the Accessibility Review workflow in Codex"
+  default_prompt: "Use $accessibility-review to help with this project."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Compliance"
+  short_description: "Run the Site Doctor Compliance Codex workflow"
+  default_prompt: "Use $site-doctor-compliance to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,36 @@
+{
+  "name": "test",
+  "version": "1.0.27",
+  "description": "Design and evaluate unit, integration, end-to-end, and edge-case tests. Migrated workflows: $test-e2e, $test-edge-cases, $test-integration, $test-unit.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "e2e",
+    "edge-cases",
+    "integration-tests",
+    "qa",
+    "solo",
+    "solo-suite",
+    "testing",
+    "unit-tests"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Testing",
+    "shortDescription": "Design unit, integration, and end-to-end tests",
+    "longDescription": "Design and evaluate unit, integration, end-to-end, and edge-case tests. Migrated workflows: $test-e2e, $test-edge-cases, $test-integration, $test-unit. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Testing",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Testing to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

@@ -1,0 +1,145 @@
+name: validate-release
+
+"on":
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: solo-suite-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONUTF8: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+  COVERAGE_FILE: ${{ github.workspace }}/dist/.coverage
+  COVERAGE_PROCESS_START: ${{ github.workspace }}/.coveragerc
+  COVERAGE_SOURCE_ROOT: ${{ github.workspace }}
+  PYTHONPATH: ${{ github.workspace }}/.github/coverage-bootstrap
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.9", "3.12"]
+    steps:
+      - name: Check out source
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: |
+            requirements-dev.lock
+            requirements-audit.lock
+
+      - name: Install hash-locked validation dependencies
+        run: python -m pip install --require-hashes --requirement requirements-dev.lock
+
+      - name: Compile Python sources
+        run: python -m compileall -q plugins tests tools
+
+      - name: Validate every Codex plugin directory
+        run: |
+          python -c "from pathlib import Path; Path('dist').mkdir(exist_ok=True)"
+          coverage erase
+          coverage run --parallel-mode --source=plugins,tools tools/validate_plugins.py --official-if-available --report dist/plugin-validation-v1.0.27.json
+
+      - name: Verify checked-in canonical overlay offline
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/verify_source_overlay.py --canonical-only
+          --canonical-source-archive
+          parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+          --target .
+
+      - name: Rebuild and verify the public canonical source overlay
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/build_canonical_source.py --fetch-public-base
+          --output dist/rebuilt-canonical-source.zip
+
+      - name: Run checked-in parity and authoring-contract validators
+        run: |
+          python -m zipfile -e parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip dist/parity-source
+          coverage run --parallel-mode --source=plugins,tools tools/parity.py --check --source dist/parity-source/solo-suite-plugin-v1.0.27 --target .
+          coverage run --parallel-mode --source=plugins,tools tools/build_agentrooms.py --check-docs
+          coverage run --parallel-mode --source=plugins,tools tools/normalize_skill_contracts.py --check
+          coverage run --parallel-mode --source=plugins,tools tools/native_install_smoke.py --suite-root . --if-available --no-self-check --report dist/native-install-validation.json
+
+      - name: Unit and regression tests
+        run: coverage run --parallel-mode --source=plugins,tools -m unittest discover -s tests -t . -v
+
+      - name: Structural suite self-check
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          plugins/solo/skills/suite-integrity/scripts/self_check.py . -
+
+      - name: AgentRooms schema and semantic validation
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py --suite .
+
+      - name: Secret-output regressions
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools -m unittest
+          tests.test_runtime_security_v111.SecretScannerRegression -v
+
+      - name: Installed-CWD regressions
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools -m unittest
+          tests.test_runtime_security_v111.InstalledPathRegression -v
+
+      - name: Repository secret scan
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          plugins/site-doctor/scripts/run_helper.py
+          security-review/scan-secrets . --json
+
+      - name: Install hash-locked vulnerability-audit tooling
+        if: matrix.python-version == '3.12'
+        run: python -m pip install --require-hashes --requirement requirements-audit.lock
+
+      - name: Audit hash-locked Python dependencies
+        if: matrix.python-version == '3.12'
+        run: |
+          python -m pip check
+          python -m pip_audit --strict --progress-spinner off --disable-pip --no-deps --require-hashes --requirement requirements-dev.lock --format json --output dist/dependency-audit-dev-v1.0.27.json
+          python -m pip_audit --strict --progress-spinner off --disable-pip --no-deps --require-hashes --requirement requirements-audit.lock --format json --output dist/dependency-audit-tools-v1.0.27.json
+
+      - name: Build deterministic release package
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/package_release.py
+          --output dist/solo-suite-codex-v1.0.27.zip
+          --validation-state ci
+          --canonical-source-archive parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+
+      - name: Verify packaging did not rewrite tracked source
+        run: |
+          git diff --exit-code
+          python -c 'import subprocess, sys; status = subprocess.check_output(["git", "status", "--porcelain", "--untracked-files=all"], text=True); print(status, end=""); sys.exit(1 if status.strip() else 0)'
+
+      - name: Packaged ZIP clean-room smoke test
+        run: >-
+          coverage run --parallel-mode --source=plugins,tools
+          tools/smoke_package.py dist/solo-suite-codex-v1.0.27.zip
+          --canonical-source-archive parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip
+
+      - name: Combine executed-command coverage and enforce floor
+        run: |
+          coverage combine
+          coverage report --show-missing > dist/coverage-full.txt
+          coverage json -o dist/coverage-full.json
+          coverage report --show-missing --omit='tools/build_codex_metadata.py,tools/generate_skill_metadata.py,tools/normalize_skill_contracts.py,tools/sync_from_claude.py,tools/translate_references.py,tools/update_cheatsheet.py' --fail-under=68

@@ -1,0 +1,13 @@
+# Release inventories hash exact bytes. Keep text checkouts byte-stable on
+# Windows, macOS, and Linux so component-version drift checks are portable.
+* text=auto eol=lf
+
+# Binary release assets must never pass through newline conversion.
+*.docx binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary

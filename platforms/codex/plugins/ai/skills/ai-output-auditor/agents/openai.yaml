@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ai Output Auditor"
+  short_description: "Run the Ai Output Auditor workflow in Codex"
+  default_prompt: "Use $ai-output-auditor to help with this project."
+policy:
+  allow_implicit_invocation: false

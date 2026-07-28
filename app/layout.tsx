@@ -13,23 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Solo Suite — The developer operating system",
+  title: "Solo Suite Enchance — The developer operating system",
   description:
-    "Full-team development for focused builders. One operating rhythm for Claude, Codex, and Antigravity.",
+    "Solo Suite Enchance is the larger-project developer operating system for Claude, Codex, and Antigravity.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   openGraph: {
-    title: "Solo Suite — The developer operating system",
+    title: "Solo Suite Enchance — The developer operating system",
     description:
-      "Full-team development for focused builders. One operating rhythm for Claude, Codex, and Antigravity.",
-    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Solo Suite — Ship like a company. Think like a solo." }],
+      "Solo Suite Enchance is the larger-project developer operating system for Claude, Codex, and Antigravity.",
+    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Solo Suite Enchance — Ship like a company. Think like a solo." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Solo Suite — The developer operating system",
+    title: "Solo Suite Enchance — The developer operating system",
     description:
-      "Full-team development for focused builders. One operating rhythm for Claude, Codex, and Antigravity.",
+      "Solo Suite Enchance is the larger-project developer operating system for Claude, Codex, and Antigravity.",
     images: ["/og.png"],
   },
   icons: {

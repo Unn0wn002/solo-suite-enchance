@@ -1,0 +1,6 @@
+interface:
+  display_name: "Full Team Orchestrator"
+  short_description: "Coordinate every Solo Suite engineering role"
+  default_prompt: "Use $full-team-orchestrator to coordinate this project from discovery through production readiness."
+policy:
+  allow_implicit_invocation: false

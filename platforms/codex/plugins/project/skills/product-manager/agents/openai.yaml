@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product Manager"
+  short_description: "Run the Product Manager workflow in Codex"
+  default_prompt: "Use $product-manager to help with this project."
+policy:
+  allow_implicit_invocation: false

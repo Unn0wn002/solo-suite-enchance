@@ -1,0 +1,31 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "ai",
+  "displayName": "solo-suite ai",
+  "version": "2.5.5",
+  "description": "AI coding workflow: sharpen prompts, check agent handoffs, review AI-generated code for hallucinations, route tasks to the right model, and run rooms with 24 room-* agents.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "prompt",
+    "handoff",
+    "review",
+    "hallucination",
+    "model-routing",
+    "claude",
+    "codex",
+    "gemini",
+    "solo",
+    "agent-rooms",
+    "multi-agent",
+    "rooms",
+    "templates"
+  ]
+}

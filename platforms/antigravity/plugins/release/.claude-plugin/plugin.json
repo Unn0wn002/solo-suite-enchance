@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "release",
+  "displayName": "solo-suite release",
+  "version": "1.1.2",
+  "description": "Release for solo developers: pre-launch preflight, a safe ordered deploy plan, and a rollback plan prepared before deploying rather than during an incident.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "release",
+    "deployment",
+    "devops",
+    "preflight",
+    "rollback",
+    "security",
+    "solo"
+  ]
+}

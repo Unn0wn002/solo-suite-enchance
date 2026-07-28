@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Backlinks"
+  short_description: "Run the SEO Backlinks workflow in Codex"
+  default_prompt: "Use $seo-backlinks to help with this project."
+policy:
+  allow_implicit_invocation: false

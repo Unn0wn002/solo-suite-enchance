@@ -1,0 +1,6 @@
+interface:
+  display_name: "Performance Tuning"
+  short_description: "Run the Performance Tuning workflow in Codex"
+  default_prompt: "Use $performance-tuning to help with this project."
+policy:
+  allow_implicit_invocation: false

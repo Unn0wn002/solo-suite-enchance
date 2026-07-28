@@ -1,0 +1,6 @@
+interface:
+  display_name: "Spec Data Contract"
+  short_description: "Run the Spec Data Contract Codex workflow"
+  default_prompt: "Use $spec-data-contract to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

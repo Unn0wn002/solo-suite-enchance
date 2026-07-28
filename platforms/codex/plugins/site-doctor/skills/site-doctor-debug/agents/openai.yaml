@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Debug"
+  short_description: "Run the Site Doctor Debug Codex workflow"
+  default_prompt: "Use $site-doctor-debug to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

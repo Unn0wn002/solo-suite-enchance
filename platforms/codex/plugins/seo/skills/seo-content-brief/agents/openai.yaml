@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Content Brief"
+  short_description: "Run the SEO Content Brief workflow in Codex"
+  default_prompt: "Use $seo-content-brief to help with this project."
+policy:
+  allow_implicit_invocation: false

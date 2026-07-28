@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Migrate Data"
+  short_description: "Run the Site Doctor Migrate Data Codex workflow"
+  default_prompt: "Use $site-doctor-migrate-data to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser Mobile Test"
+  short_description: "Run the Browser Mobile Test Codex workflow"
+  default_prompt: "Use $browser-mobile-test to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

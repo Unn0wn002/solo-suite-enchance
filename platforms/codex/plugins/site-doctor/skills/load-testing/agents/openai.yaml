@@ -1,0 +1,6 @@
+interface:
+  display_name: "Load Testing"
+  short_description: "Run the Load Testing workflow in Codex"
+  default_prompt: "Use $load-testing to help with this project."
+policy:
+  allow_implicit_invocation: false

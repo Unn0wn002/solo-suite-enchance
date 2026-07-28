@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test Unit"
+  short_description: "Run the Test Unit Codex workflow"
+  default_prompt: "Use $test-unit to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

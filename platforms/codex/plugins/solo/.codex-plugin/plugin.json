@@ -1,0 +1,47 @@
+{
+  "name": "solo",
+  "version": "1.0.27",
+  "description": "Manage shared project memory, session handoffs, synchronization, integrity checks, and orchestration. Migrated workflows: $solo-end-session, $solo-full-team-dev, $solo-handoff-memory, $solo-next-step, $solo-project-status, $solo-run-cycle, $solo-self-check, $solo-start-session, $solo-sync-grafana, $solo-sync-obsidian.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "context",
+    "end-session",
+    "full-team-dev",
+    "grafana",
+    "handoff",
+    "integrity",
+    "memory",
+    "next-step",
+    "obsidian",
+    "orchestrator",
+    "project-status",
+    "run-cycle",
+    "self-check",
+    "session",
+    "solo",
+    "solo-suite",
+    "start-session",
+    "sync",
+    "workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Suite Core",
+    "shortDescription": "Coordinate project memory and team workflows",
+    "longDescription": "Manage shared project memory, session handoffs, synchronization, integrity checks, and orchestration. Migrated workflows: $solo-end-session, $solo-full-team-dev, $solo-handoff-memory, $solo-next-step, $solo-project-status, $solo-run-cycle, $solo-self-check, $solo-start-session, $solo-sync-grafana, $solo-sync-obsidian. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Suite Core to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

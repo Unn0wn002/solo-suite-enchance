@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Full Checkup"
+  short_description: "Run the Site Doctor Full Checkup Codex workflow"
+  default_prompt: "Use $site-doctor-full-checkup to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

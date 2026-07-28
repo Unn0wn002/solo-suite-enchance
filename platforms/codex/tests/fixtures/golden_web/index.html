@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Golden Web Signup</title>
+</head>
+<body>
+  <header><nav aria-label="Primary"><a href="#signup">Join</a></nav></header>
+  <main>
+    <h1>Golden Web Signup</h1>
+    <form id="signup" novalidate>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <button type="submit">Create account</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "design",
+  "displayName": "solo-suite design",
+  "version": "1.0.2",
+  "description": "Design for solo developers: UX flows, UI review, and a lightweight component system. UI/UX-designer skill; complements site-doctor's accessibility, mobile, and forms audits.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "design",
+    "ux",
+    "ui",
+    "usability",
+    "component-system",
+    "design-tokens",
+    "solo"
+  ]
+}

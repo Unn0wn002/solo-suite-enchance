@@ -1,0 +1,6 @@
+interface:
+  display_name: "Docs API"
+  short_description: "Run the Docs API Codex workflow"
+  default_prompt: "Use $docs-api to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

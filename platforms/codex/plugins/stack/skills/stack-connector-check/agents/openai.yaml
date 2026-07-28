@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Connector Check"
+  short_description: "Run the Stack Connector Check Codex workflow"
+  default_prompt: "Use $stack-connector-check to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

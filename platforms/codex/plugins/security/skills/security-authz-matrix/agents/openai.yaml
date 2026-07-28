@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security AuthZ Matrix"
+  short_description: "Run the Security AuthZ Matrix Codex workflow"
+  default_prompt: "Use $security-authz-matrix to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO"
+  short_description: "Run the SEO workflow in Codex"
+  default_prompt: "Use $seo to help with this project."
+policy:
+  allow_implicit_invocation: false

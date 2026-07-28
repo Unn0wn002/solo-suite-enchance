@@ -60,9 +60,9 @@ export default function Home() {
   return (
     <main className="site-shell">
       <nav className="topbar">
-        <button className="brand" onClick={() => scrollTo("top")} aria-label="Solo Suite home">
+        <button className="brand" onClick={() => scrollTo("top")} aria-label="Solo Suite Enchance home">
           <span className="brand-mark">S</span>
-          <span>SOLO SUITE</span>
+          <span>SOLO SUITE ENCHANCE</span>
         </button>
         <div className={`nav-links ${menuOpen ? "is-open" : ""}`}>
           <button onClick={() => scrollTo("system")}>System</button>
@@ -89,8 +89,9 @@ export default function Home() {
           <p className="eyebrow"><span className="eyebrow-dot" /> THE SOLO DEVELOPER OPERATING SYSTEM</p>
           <h1>Ship like a company.<br /><em>Think like a solo.</em></h1>
           <p className="hero-lede">
-            Solo Suite connects the full product team — from first brief to safe release — inside one
-            shared memory layer built for Claude, Codex, and Antigravity.
+            Solo Suite Enchance connects the full product team — from first brief to safe release — inside one
+            shared memory layer built for Claude, Codex, and Antigravity. Start with websites today; scale the
+            same operating rhythm to bigger products tomorrow.
           </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => setRunStarted(true)}>
@@ -105,7 +106,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flight-deck" aria-label="Solo Suite live run preview">
+        <div className="flight-deck" aria-label="Solo Suite Enchance live run preview">
           <div className="deck-topline">
             <span>FULL-TEAM / WEBSITE</span>
             <span className="deck-live"><span className="live-dot" /> LIVE RUN</span>
@@ -157,7 +158,7 @@ export default function Home() {
         <div className="section-intro">
           <p className="eyebrow">01 / THE SYSTEM</p>
           <h2>Your whole product team,<br /><em>in one operating rhythm.</em></h2>
-          <p>Solo Suite keeps the work moving in the right order — and keeps the decisions attached to the work that follows.</p>
+          <p>Solo Suite Enchance keeps the work moving in the right order — and keeps the decisions attached to the work that follows.</p>
         </div>
         <div className="system-grid">
           <div className="system-card system-card-large">
@@ -232,7 +233,7 @@ export default function Home() {
             <p className="eyebrow">03 / THE ROOMS</p>
             <h2>Specialists that<br /><em>move as one.</em></h2>
           </div>
-          <div className="module-tabs" role="tablist" aria-label="Solo Suite modules">
+          <div className="module-tabs" role="tablist" aria-label="Solo Suite Enchance modules">
             {modules.map((module, index) => (
               <button
                 key={module.kicker}
@@ -293,16 +294,16 @@ export default function Home() {
         <div className="start-inner">
           <p className="eyebrow">READY WHEN YOU ARE</p>
           <h2>Make your next<br /><em>big thing inevitable.</em></h2>
-          <p>Bring the ambition. Solo Suite brings the operating system.</p>
+          <p>Bring the ambition. Solo Suite Enchance brings the operating system.</p>
           <button className="button button-primary button-large" onClick={() => setRunStarted(true)}>
-            {runStarted ? "Your first run is queued ✓" : "Start building with Solo Suite"} <span aria-hidden="true">↗</span>
+            {runStarted ? "Your first run is queued ✓" : "Start building with Solo Suite Enchance"} <span aria-hidden="true">↗</span>
           </button>
           <div className="start-orbit" aria-hidden="true"><span /><span /><span /></div>
         </div>
       </section>
 
       <footer className="footer">
-        <div className="footer-brand"><span className="brand-mark">S</span><span>SOLO SUITE</span></div>
+        <div className="footer-brand"><span className="brand-mark">S</span><span>SOLO SUITE ENCHANCE</span></div>
         <p>Full-team development for focused builders.</p>
         <span className="footer-meta">v1.0.27 / EST. 2026</span>
       </footer>

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Spec Env Contract"
+  short_description: "Run the Spec Env Contract Codex workflow"
+  default_prompt: "Use $spec-env-contract to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

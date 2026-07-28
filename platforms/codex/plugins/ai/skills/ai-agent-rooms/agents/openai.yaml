@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Agent Rooms"
+  short_description: "Run the AI Agent Rooms Codex workflow"
+  default_prompt: "Use $ai-agent-rooms to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

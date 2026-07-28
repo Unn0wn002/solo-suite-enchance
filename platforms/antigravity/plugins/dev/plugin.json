@@ -1,0 +1,22 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "dev",
+  "displayName": "solo-suite dev",
+  "version": "1.0.3",
+  "description": "Development for solo developers: implement features, fix bugs by root cause, refactor safely, and review code. Routes deep database and security work to site-doctor.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "development",
+    "implementation",
+    "bug-fix",
+    "refactor",
+    "code-review",
+    "solo"
+  ]
+}

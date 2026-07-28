@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo Project Status"
+  short_description: "Run the Solo Project Status Codex workflow"
+  default_prompt: "Use $solo-project-status to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

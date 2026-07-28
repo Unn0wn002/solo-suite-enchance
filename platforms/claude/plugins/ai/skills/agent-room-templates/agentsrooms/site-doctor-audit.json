@@ -1,0 +1,145 @@
+{
+  "schema": "solo-suite/agentroom-v1",
+  "name": "site-doctor-audit",
+  "version": 4,
+  "description": "Parallel site + vendor audit, then triage into a fix order. The triager is the memory steward: the parallel auditors submit shared-memory proposals (including the stack.md connector update); only the triager writes tasks/decisions/handoff/stack/project.",
+  "memory_dir": ".solo/",
+  "run": {
+    "id_prefix": "sda",
+    "id_required": true
+  },
+  "rules": [
+    "auditors write only their own artifact (bugs.md / risks.md) directly; everything destined for tasks/decisions/handoff/stack goes through proposals to the triager — both auditors READ the pre-existing stack.md, so no same-stage read-after-write exists",
+    "vendor audits run only for providers recorded in .solo/stack.md; skipped vendors are N/A with evidence",
+    "no evidence, no finding"
+  ],
+  "stages": [
+    {
+      "id": "audit",
+      "seats": [
+        "site_auditor",
+        "stack_auditor"
+      ]
+    },
+    {
+      "id": "triage",
+      "seats": [
+        "triager"
+      ]
+    }
+  ],
+  "memory_steward": {
+    "seat": "triager",
+    "owns": [
+      ".solo/tasks.md",
+      ".solo/decisions.md",
+      ".solo/handoff.md",
+      ".solo/stack.md"
+    ],
+    "allocates_task_ids": true,
+    "merge_policy": "single writer for shared memory: parallel seats submit proposals (.solo/proposals/<seat>-<run_id>.md); the steward merges them, allocates unique T-IDs, merges decisions/handoffs, and reports conflicts"
+  },
+  "locks": {
+    ".solo/tasks.md": "triager",
+    ".solo/decisions.md": "triager",
+    ".solo/handoff.md": "triager",
+    ".solo/stack.md": "triager"
+  },
+  "seats": [
+    {
+      "id": "site_auditor",
+      "role": "Site Doctor",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/stack.md",
+        ".solo/monitoring.md"
+      ],
+      "writes": [
+        ".solo/bugs.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "agent": "room-site-doctor",
+      "commands": [
+        "/site-doctor:full-checkup"
+      ],
+      "deliverable": "Evidence-based site findings in bugs.md; fix-list/decisions/handoff submitted as proposals",
+      "handoff_to": "triager",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "stack_auditor",
+      "role": "Stack Auditor",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/stack.md",
+        ".solo/env-contract.md"
+      ],
+      "writes": [
+        ".solo/risks.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/stack.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "agent": "room-site-doctor",
+      "agent_note": "vendor auditing is the site-doctor agent pointed at the stack layer",
+      "commands": [
+        "/stack:connector-check",
+        "/stack:audit-vercel",
+        "/stack:audit-supabase",
+        "/stack:audit-cloudflare",
+        "/stack:audit-tags",
+        "/stack:audit-payments"
+      ],
+      "deliverable": "Connector tiers recorded (as a stack.md proposal the triager merges); vendor audits (/stack:audit-*) per stack.md with N/A reasons for the rest; risks in risks.md",
+      "handoff_to": "triager",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "triager",
+      "role": "Triage Lead + Memory Steward",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/bugs.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/proposals/ (auditor proposals)"
+      ],
+      "writes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/stack.md",
+        ".solo/risks.md",
+        ".solo/project.md"
+      ],
+      "agent": "room-memory-steward",
+      "agent_note": "triage IS the steward's merge duty plus /gate:score-project scoring",
+      "commands": [
+        "/gate:score-project",
+        "/solo:next-step"
+      ],
+      "deliverable": "Merged, deduplicated fix order with unique T-IDs; connector update merged into stack.md; project score recorded; conflicts flagged",
+      "handoff_to": null,
+      "handoff_check": "/ai:handoff-check"
+    }
+  ],
+  "exit_gate": "/gate:score-project",
+  "gate_requires": [
+    ".solo/bugs.md",
+    ".solo/risks.md",
+    ".solo/stack.md"
+  ],
+  "exit_criteria": "all findings triaged into tasks.md with unique T-IDs and a recorded 14-category score",
+  "assumes_preexisting": {
+    ".solo/stack.md": "recorded by /stack:intake in an earlier session — the audit is stack-conditional and reads it first",
+    ".solo/monitoring.md": "recorded by an earlier release/DevOps session; the site auditor reads what monitoring exists",
+    ".solo/env-contract.md": "produced by the contracts phase of an earlier room/session; read by the stack auditor"
+  }
+}

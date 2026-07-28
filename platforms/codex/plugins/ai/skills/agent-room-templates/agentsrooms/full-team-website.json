@@ -1,0 +1,2506 @@
+{
+  "$schema": "../schema/agentroom-v1.schema.json",
+  "schema": "solo-suite/agentroom-v1",
+  "name": "full-team-website",
+  "version": 1,
+  "prepared": false,
+  "run_id": "template-full-team-website-v1",
+  "description": "Profile-aware full-team delivery from discovery through a 14-category production gate, with isolated worktrees and centralized memory writes.",
+  "based_on_room": "Solo Suite full-team development workflow",
+  "profile": "profile-selected-at-runtime",
+  "memory_dir": ".solo/",
+  "rules": [
+    "Replace the template run_id with a unique run id before execution.",
+    "Only memory_steward writes .solo files; every other seat submits declared proposals.",
+    "Run seats in isolated worktrees and enforce every artifact lock.",
+    "Require exact run, commit, and environment matches; reject expired gate evidence.",
+    "Evaluate gate transitions from validated machine-readable status fields; unknown or missing statuses stop the run.",
+    "Execute provider-specific checks only when .solo/stack.md records that provider.",
+    "For profile-inapplicable work, record an evidence-backed N/A reason instead of silently skipping it.",
+    "Run $design-ui-review after implementation, not only during planning.",
+    "Run $ai-review-output between implementation and QA.",
+    "Run growth review only for conversion-oriented profiles; otherwise record N/A evidence.",
+    "Run each $stack-audit-* provider task only when .solo/stack.md records that provider; otherwise emit a provider-specific, evidence-backed N/A artifact and never silently skip the task.",
+    "Accessibility, visual/cross-browser, forms/privacy, dependency/SBOM, and performance/load checks are mandatory; use an evidence-backed N/A only when the selected profile proves a check structurally inapplicable.",
+    "A before-merge or before-deploy NO-GO routes to the bounded repair/retest decision; never continue to production with stale or failed evidence.",
+    "Every production category record must cite the detailed web evidence artifacts and their exact-commit digests where relevant."
+  ],
+  "memory_steward": {
+    "seat_id": "memory_steward",
+    "task_id_pattern": "^T[0-9]+$",
+    "proposal_merge_policy": "Allocate task IDs centrally and merge conflict-free proposals after each stage while preserving append-only decisions.",
+    "conflict_policy": "Stop the stage and require an explicit resolution before any conflicting shared-memory proposal is committed."
+  },
+  "tasks": [],
+  "workspaces": [
+    {
+      "id": "shared_memory",
+      "type": "shared-memory",
+      "path": ".solo/",
+      "owner": "memory_steward"
+    },
+    {
+      "id": "repo_analyst_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/repo_analyst",
+      "owner": "repo_analyst"
+    },
+    {
+      "id": "product_manager_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/product_manager",
+      "owner": "product_manager"
+    },
+    {
+      "id": "software_architect_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/software_architect",
+      "owner": "software_architect"
+    },
+    {
+      "id": "database_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/database_engineer",
+      "owner": "database_engineer"
+    },
+    {
+      "id": "ui_ux_designer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/ui_ux_designer",
+      "owner": "ui_ux_designer"
+    },
+    {
+      "id": "before_code_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/before_code_gatekeeper",
+      "owner": "before_code_gatekeeper"
+    },
+    {
+      "id": "frontend_developer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/frontend_developer",
+      "owner": "frontend_developer"
+    },
+    {
+      "id": "backend_developer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/backend_developer",
+      "owner": "backend_developer"
+    },
+    {
+      "id": "design_reviewer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/design_reviewer",
+      "owner": "design_reviewer"
+    },
+    {
+      "id": "ai_agent_reviewer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/ai_agent_reviewer",
+      "owner": "ai_agent_reviewer"
+    },
+    {
+      "id": "qa_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/qa_engineer",
+      "owner": "qa_engineer"
+    },
+    {
+      "id": "browser_qa_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/browser_qa_engineer",
+      "owner": "browser_qa_engineer"
+    },
+    {
+      "id": "security_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/security_engineer",
+      "owner": "security_engineer"
+    },
+    {
+      "id": "site_doctor_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/site_doctor",
+      "owner": "site_doctor"
+    },
+    {
+      "id": "devops_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/devops_engineer",
+      "owner": "devops_engineer"
+    },
+    {
+      "id": "growth_conversion_reviewer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/growth_conversion_reviewer",
+      "owner": "growth_conversion_reviewer"
+    },
+    {
+      "id": "before_merge_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/before_merge_gatekeeper",
+      "owner": "before_merge_gatekeeper"
+    },
+    {
+      "id": "documentation_writer_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/documentation_writer",
+      "owner": "documentation_writer"
+    },
+    {
+      "id": "git_pr_manager_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/git_pr_manager",
+      "owner": "git_pr_manager"
+    },
+    {
+      "id": "release_manager_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/release_manager",
+      "owner": "release_manager"
+    },
+    {
+      "id": "handoff_coordinator_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/handoff_coordinator",
+      "owner": "handoff_coordinator"
+    },
+    {
+      "id": "before_deploy_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/before_deploy_gatekeeper",
+      "owner": "before_deploy_gatekeeper"
+    },
+    {
+      "id": "repair_retest_coordinator_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/repair_retest_coordinator",
+      "owner": "repair_retest_coordinator"
+    },
+    {
+      "id": "production_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/full-team-website/production_gatekeeper",
+      "owner": "production_gatekeeper"
+    }
+  ],
+  "artifact_locks": [
+    {
+      "artifact": ".solo/api-contract.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/architecture.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/bugs.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/data-contract.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/decisions.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/design.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/env-contract.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/handoff.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/monitoring.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/prd.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/project.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/release.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/risks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/stack.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/tasks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/tests.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": "artifacts/full-team/accessibility.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/ai-code-review.json",
+      "owner": "ai_agent_reviewer"
+    },
+    {
+      "artifact": "artifacts/full-team/browser-qa.json",
+      "owner": "browser_qa_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/analytics.json",
+      "owner": "growth_conversion_reviewer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/architecture.json",
+      "owner": "software_architect"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/backend.json",
+      "owner": "backend_developer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/database.json",
+      "owner": "database_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/deployment.json",
+      "owner": "devops_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/design.json",
+      "owner": "design_reviewer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/documentation.json",
+      "owner": "documentation_writer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/frontend.json",
+      "owner": "frontend_developer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/monitoring.json",
+      "owner": "devops_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/performance.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/product.json",
+      "owner": "product_manager"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/security.json",
+      "owner": "security_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/seo.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/categories/testing.json",
+      "owner": "qa_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/contract-verification.json",
+      "owner": "backend_developer"
+    },
+    {
+      "artifact": "artifacts/full-team/dependency-sbom.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/design-spec.json",
+      "owner": "ui_ux_designer"
+    },
+    {
+      "artifact": "artifacts/full-team/environment-readiness.json",
+      "owner": "devops_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/forms-privacy.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/handoff-finalization.json",
+      "owner": "handoff_coordinator"
+    },
+    {
+      "artifact": "artifacts/full-team/lint-types.json",
+      "owner": "qa_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/migration-verification.json",
+      "owner": "database_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/performance-load.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/pr-release.json",
+      "owner": "git_pr_manager"
+    },
+    {
+      "artifact": "artifacts/full-team/project-profile.json",
+      "owner": "product_manager"
+    },
+    {
+      "artifact": "artifacts/full-team/release-management.json",
+      "owner": "release_manager"
+    },
+    {
+      "artifact": "artifacts/full-team/repair-retest-plan.json",
+      "owner": "repair_retest_coordinator"
+    },
+    {
+      "artifact": "artifacts/full-team/repo-analysis.md",
+      "owner": "repo_analyst"
+    },
+    {
+      "artifact": "artifacts/full-team/rollback.json",
+      "owner": "devops_engineer"
+    },
+    {
+      "artifact": "artifacts/full-team/vendor-audits/analytics-tag.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/vendor-audits/cloudflare.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/vendor-audits/payments.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/vendor-audits/supabase.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/vendor-audits/vercel.json",
+      "owner": "site_doctor"
+    },
+    {
+      "artifact": "artifacts/full-team/visual-cross-browser.json",
+      "owner": "browser_qa_engineer"
+    },
+    {
+      "artifact": "artifacts/gates/full-team-before-code.json",
+      "owner": "before_code_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/gates/full-team-before-deploy.json",
+      "owner": "before_deploy_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/gates/full-team-before-merge.json",
+      "owner": "before_merge_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/gates/full-team-production.json",
+      "owner": "production_gatekeeper"
+    }
+  ],
+  "stages": [
+    {
+      "id": "discovery",
+      "seats": [
+        "memory_steward",
+        "repo_analyst",
+        "product_manager"
+      ]
+    },
+    {
+      "id": "architecture",
+      "seats": [
+        "memory_steward",
+        "software_architect"
+      ]
+    },
+    {
+      "id": "database_architecture",
+      "seats": [
+        "memory_steward",
+        "database_engineer"
+      ]
+    },
+    {
+      "id": "design",
+      "seats": [
+        "memory_steward",
+        "ui_ux_designer"
+      ]
+    },
+    {
+      "id": "before_code",
+      "seats": [
+        "memory_steward",
+        "before_code_gatekeeper"
+      ]
+    },
+    {
+      "id": "implementation",
+      "seats": [
+        "memory_steward",
+        "frontend_developer",
+        "backend_developer"
+      ]
+    },
+    {
+      "id": "post_implementation_review",
+      "seats": [
+        "memory_steward",
+        "design_reviewer",
+        "ai_agent_reviewer"
+      ]
+    },
+    {
+      "id": "qa",
+      "seats": [
+        "memory_steward",
+        "qa_engineer",
+        "browser_qa_engineer"
+      ]
+    },
+    {
+      "id": "hardening",
+      "seats": [
+        "memory_steward",
+        "security_engineer",
+        "site_doctor",
+        "devops_engineer",
+        "growth_conversion_reviewer"
+      ]
+    },
+    {
+      "id": "before_merge",
+      "seats": [
+        "memory_steward",
+        "before_merge_gatekeeper"
+      ]
+    },
+    {
+      "id": "release_and_docs",
+      "seats": [
+        "memory_steward",
+        "documentation_writer",
+        "git_pr_manager"
+      ]
+    },
+    {
+      "id": "release_management",
+      "seats": [
+        "memory_steward",
+        "release_manager",
+        "handoff_coordinator"
+      ]
+    },
+    {
+      "id": "before_deploy",
+      "seats": [
+        "memory_steward",
+        "before_deploy_gatekeeper"
+      ]
+    },
+    {
+      "id": "repair_retest",
+      "seats": [
+        "memory_steward",
+        "repair_retest_coordinator"
+      ]
+    },
+    {
+      "id": "production",
+      "seats": [
+        "memory_steward",
+        "production_gatekeeper"
+      ]
+    }
+  ],
+  "seats": [
+    {
+      "id": "memory_steward",
+      "kind": "memory-steward",
+      "persistent": true,
+      "role": "Memory Steward",
+      "model_hint": "strong-reasoning",
+      "workspace": "shared_memory",
+      "memory_access": "direct",
+      "reads": [
+        ".solo/api-contract.md",
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/data-contract.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/env-contract.md",
+        ".solo/handoff.md",
+        ".solo/monitoring.md",
+        ".solo/prd.md",
+        ".solo/project.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "writes": [
+        ".solo/api-contract.md",
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/data-contract.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/env-contract.md",
+        ".solo/handoff.md",
+        ".solo/monitoring.md",
+        ".solo/prd.md",
+        ".solo/project.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "proposals": [],
+      "commands": [],
+      "deliverable": "Allocate unique task IDs; merge proposals into tasks, decisions, and handoffs; reject conflicting shared-memory updates.",
+      "handoff_to": null,
+      "handoff_check": null,
+      "task_ids": []
+    },
+    {
+      "id": "repo_analyst",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Repo Analyst",
+      "model_hint": "balanced",
+      "workspace": "repo_analyst_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/handoff.md"
+      ],
+      "writes": [
+        "artifacts/full-team/repo-analysis.md"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$repo-map",
+        "$repo-risk-map",
+        "$repo-dependency-map"
+      ],
+      "deliverable": "Repository map, risk map, and implementation constraints.",
+      "handoff_to": "software_architect",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "product_manager",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Product Manager",
+      "model_hint": "balanced",
+      "workspace": "product_manager_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/project.md",
+        ".solo/stack.md"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/project-profile.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/prd.md",
+        ".solo/stack.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$stack-intake",
+        "$stack-connector-check",
+        "$project-prd",
+        "$spec-feature-brief",
+        "$spec-acceptance",
+        "$project-task-breakdown"
+      ],
+      "deliverable": "Stack intake, product evidence, acceptance criteria, project profile, and scoped tasks.",
+      "handoff_to": "software_architect",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "software_architect",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Software Architect",
+      "model_hint": "deep-reasoning",
+      "workspace": "software_architect_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/repo-analysis.md"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/architecture.json"
+      ],
+      "proposals": [
+        ".solo/api-contract.md",
+        ".solo/architecture.md",
+        ".solo/decisions.md",
+        ".solo/env-contract.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$project-architecture",
+        "$spec-api-contract",
+        "$spec-env-contract"
+      ],
+      "deliverable": "Architecture evidence with boundaries, contracts, and risks.",
+      "handoff_to": "database_engineer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "database_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Database Engineer",
+      "model_hint": "balanced",
+      "workspace": "database_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/product.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/database.json",
+        "artifacts/full-team/migration-verification.json"
+      ],
+      "proposals": [
+        ".solo/data-contract.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$spec-data-contract",
+        "$site-doctor-audit-db"
+      ],
+      "deliverable": "Database schema, integrity, index, backup, and migration dry-run/rollback evidence; record a profile-backed N/A when no database exists.",
+      "handoff_to": "ui_ux_designer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "ui_ux_designer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "UI/UX Designer",
+      "model_hint": "balanced",
+      "workspace": "ui_ux_designer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/product.json"
+      ],
+      "writes": [
+        "artifacts/full-team/design-spec.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$design-ux-flow",
+        "$design-component-system"
+      ],
+      "deliverable": "Pre-code UX flows, states, accessibility constraints, and component plan.",
+      "handoff_to": "before_code_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "before_code_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Before-Code Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "before_code_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/design-spec.json"
+      ],
+      "writes": [
+        "artifacts/gates/full-team-before-code.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-before-code"
+      ],
+      "deliverable": "GO or NO-GO tied to product, architecture, and design evidence.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "frontend_developer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Frontend Developer",
+      "model_hint": "strong-coding",
+      "workspace": "frontend_developer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/design-spec.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/frontend.json"
+      ],
+      "proposals": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$dev-implement-feature",
+        "$browser-smoke-test"
+      ],
+      "deliverable": "Frontend implementation evidence and affected-flow inventory.",
+      "handoff_to": [
+        "design_reviewer",
+        "ai_agent_reviewer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "backend_developer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Backend Developer",
+      "model_hint": "strong-coding",
+      "workspace": "backend_developer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/api-contract.md",
+        ".solo/data-contract.md",
+        ".solo/env-contract.md",
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/database.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/contract-verification.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$dev-implement-feature",
+        "$test-integration"
+      ],
+      "deliverable": "Backend implementation evidence plus API, data, and environment contract verification; record a profile-backed N/A for a frontend-only site.",
+      "handoff_to": [
+        "design_reviewer",
+        "ai_agent_reviewer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "design_reviewer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "UI/UX Designer - Implementation Review",
+      "model_hint": "balanced",
+      "workspace": "design_reviewer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/frontend.json",
+        "artifacts/full-team/design-spec.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/design.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$design-ui-review"
+      ],
+      "deliverable": "Post-implementation UI/UX review evidence.",
+      "handoff_to": [
+        "qa_engineer",
+        "browser_qa_engineer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "ai_agent_reviewer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "AI Agent Reviewer",
+      "model_hint": "deep-reasoning",
+      "workspace": "ai_agent_reviewer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/categories/frontend.json"
+      ],
+      "writes": [
+        "artifacts/full-team/ai-code-review.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$ai-review-output",
+        "$dev-code-review"
+      ],
+      "deliverable": "Independent code and AI-output review with hallucination checks.",
+      "handoff_to": [
+        "qa_engineer",
+        "browser_qa_engineer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "qa_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "QA Engineer",
+      "model_hint": "strong-coding",
+      "workspace": "qa_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/ai-code-review.json",
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/categories/frontend.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/lint-types.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$test-unit",
+        "$test-integration",
+        "$test-e2e",
+        "$test-edge-cases"
+      ],
+      "deliverable": "Test evidence mapped to acceptance criteria and edge cases, plus repository-defined lint and static-type command results.",
+      "handoff_to": [
+        "security_engineer",
+        "site_doctor",
+        "devops_engineer",
+        "growth_conversion_reviewer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "browser_qa_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Browser QA Engineer",
+      "model_hint": "balanced",
+      "workspace": "browser_qa_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/frontend.json",
+        "artifacts/full-team/design-spec.json"
+      ],
+      "writes": [
+        "artifacts/full-team/browser-qa.json",
+        "artifacts/full-team/visual-cross-browser.json"
+      ],
+      "proposals": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$browser-smoke-test",
+        "$browser-console-errors",
+        "$browser-mobile-test",
+        "$browser-visual-check"
+      ],
+      "deliverable": "Safety-scoped smoke, console, viewport, visual-regression, and supported-browser evidence using synthetic data and no production writes.",
+      "handoff_to": [
+        "security_engineer",
+        "site_doctor",
+        "devops_engineer",
+        "growth_conversion_reviewer"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "security_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Security Engineer",
+      "model_hint": "deep-reasoning",
+      "workspace": "security_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/categories/database.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/security.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$security-threat-model",
+        "$security-authz-matrix",
+        "$security-rls-test"
+      ],
+      "deliverable": "Threat, authorization, secret, and data-access evidence.",
+      "handoff_to": "before_merge_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "site_doctor",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Site Doctor",
+      "model_hint": "balanced",
+      "workspace": "site_doctor_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/stack.md",
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/categories/frontend.json"
+      ],
+      "writes": [
+        "artifacts/full-team/accessibility.json",
+        "artifacts/full-team/categories/performance.json",
+        "artifacts/full-team/categories/seo.json",
+        "artifacts/full-team/dependency-sbom.json",
+        "artifacts/full-team/forms-privacy.json",
+        "artifacts/full-team/performance-load.json",
+        "artifacts/full-team/vendor-audits/analytics-tag.json",
+        "artifacts/full-team/vendor-audits/cloudflare.json",
+        "artifacts/full-team/vendor-audits/payments.json",
+        "artifacts/full-team/vendor-audits/supabase.json",
+        "artifacts/full-team/vendor-audits/vercel.json"
+      ],
+      "proposals": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$site-doctor-full-checkup",
+        "$site-doctor-a11y",
+        "$site-doctor-audit-forms",
+        "$site-doctor-compliance",
+        "$site-doctor-audit-deps",
+        "$site-doctor-perf",
+        "$site-doctor-load-test",
+        "$site-doctor-animation",
+        "$site-doctor-seo",
+        "$seo-audit",
+        "$stack-audit-vercel",
+        "$stack-audit-supabase",
+        "$stack-audit-cloudflare",
+        "$stack-audit-tags",
+        "$stack-audit-payments"
+      ],
+      "deliverable": "Mandatory profile-aware accessibility, forms/privacy, dependency/SBOM, performance/load, animation, and SEO evidence. Run both the Site Doctor animation audit and the dedicated SEO audit, plus one explicit Vercel, Supabase, Cloudflare, tag, and payments task. Run each provider task only when .solo/stack.md records that provider; otherwise record an evidence-backed N/A artifact.",
+      "handoff_to": "before_merge_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "devops_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "DevOps Engineer",
+      "model_hint": "balanced",
+      "workspace": "devops_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/env-contract.md",
+        ".solo/stack.md",
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/testing.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/monitoring.json",
+        "artifacts/full-team/environment-readiness.json",
+        "artifacts/full-team/rollback.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/monitoring.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$release-ci-setup",
+        "$release-preflight",
+        "$release-deploy-plan",
+        "$release-rollback-plan",
+        "$site-doctor-monitoring"
+      ],
+      "deliverable": "Exact-environment readiness, deployment, monitoring, backup, and rollback evidence without launching.",
+      "handoff_to": "before_merge_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "growth_conversion_reviewer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Growth/Conversion Reviewer",
+      "model_hint": "balanced",
+      "workspace": "growth_conversion_reviewer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/frontend.json",
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/project-profile.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/analytics.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$growth-conversion-audit",
+        "$analytics-audit"
+      ],
+      "deliverable": "Conversion and analytics evidence, or an evidence-backed profile N/A reason.",
+      "handoff_to": "before_merge_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "before_merge_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Before-Merge Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "before_merge_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/accessibility.json",
+        "artifacts/full-team/ai-code-review.json",
+        "artifacts/full-team/browser-qa.json",
+        "artifacts/full-team/categories/security.json",
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/contract-verification.json",
+        "artifacts/full-team/dependency-sbom.json",
+        "artifacts/full-team/forms-privacy.json",
+        "artifacts/full-team/lint-types.json",
+        "artifacts/full-team/migration-verification.json",
+        "artifacts/full-team/performance-load.json",
+        "artifacts/full-team/rollback.json",
+        "artifacts/full-team/vendor-audits/analytics-tag.json",
+        "artifacts/full-team/vendor-audits/cloudflare.json",
+        "artifacts/full-team/vendor-audits/payments.json",
+        "artifacts/full-team/vendor-audits/supabase.json",
+        "artifacts/full-team/vendor-audits/vercel.json",
+        "artifacts/full-team/visual-cross-browser.json"
+      ],
+      "writes": [
+        "artifacts/gates/full-team-before-merge.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-before-merge"
+      ],
+      "deliverable": "GO or NO-GO tied to review, security, testing, browser, web-quality, contract, migration, and rollback evidence.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "documentation_writer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Documentation Writer",
+      "model_hint": "balanced",
+      "workspace": "documentation_writer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/testing.json"
+      ],
+      "writes": [
+        "artifacts/full-team/categories/documentation.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$docs-update",
+        "$docs-setup-guide",
+        "$docs-runbook"
+      ],
+      "deliverable": "Documentation evidence verified against the implementation.",
+      "handoff_to": [
+        "release_manager",
+        "handoff_coordinator"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "git_pr_manager",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Git/PR Manager",
+      "model_hint": "balanced",
+      "workspace": "git_pr_manager_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/ai-code-review.json",
+        "artifacts/full-team/categories/security.json",
+        "artifacts/full-team/categories/testing.json"
+      ],
+      "writes": [
+        "artifacts/full-team/pr-release.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$git-commit-plan",
+        "$git-pr-review",
+        "$git-release-notes"
+      ],
+      "deliverable": "PR and release-note evidence without publishing or merging.",
+      "handoff_to": [
+        "release_manager",
+        "handoff_coordinator"
+      ],
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "release_manager",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Release Manager",
+      "model_hint": "balanced",
+      "workspace": "release_manager_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/monitoring.json",
+        "artifacts/full-team/environment-readiness.json",
+        "artifacts/full-team/pr-release.json",
+        "artifacts/full-team/rollback.json"
+      ],
+      "writes": [
+        "artifacts/full-team/release-management.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$release-preflight"
+      ],
+      "deliverable": "Release sequencing, ownership, and rollback go/no-go evidence.",
+      "handoff_to": "before_deploy_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "handoff_coordinator",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Project Handoff Coordinator",
+      "model_hint": "balanced",
+      "workspace": "handoff_coordinator_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/documentation.json",
+        "artifacts/full-team/categories/monitoring.json",
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/categories/security.json",
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/pr-release.json"
+      ],
+      "writes": [
+        "artifacts/full-team/handoff-finalization.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$solo-handoff-memory"
+      ],
+      "deliverable": "A pre-freeze project-memory handoff proposal covering completed work, open tasks, decisions, risks, tests, release state, and next ownership; the memory steward performs the shared .solo/ merge.",
+      "handoff_to": "before_deploy_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "before_deploy_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Before-Deploy Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "before_deploy_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/accessibility.json",
+        "artifacts/full-team/browser-qa.json",
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/monitoring.json",
+        "artifacts/full-team/categories/security.json",
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/contract-verification.json",
+        "artifacts/full-team/dependency-sbom.json",
+        "artifacts/full-team/environment-readiness.json",
+        "artifacts/full-team/forms-privacy.json",
+        "artifacts/full-team/handoff-finalization.json",
+        "artifacts/full-team/lint-types.json",
+        "artifacts/full-team/migration-verification.json",
+        "artifacts/full-team/performance-load.json",
+        "artifacts/full-team/release-management.json",
+        "artifacts/full-team/rollback.json",
+        "artifacts/full-team/vendor-audits/analytics-tag.json",
+        "artifacts/full-team/vendor-audits/cloudflare.json",
+        "artifacts/full-team/vendor-audits/payments.json",
+        "artifacts/full-team/vendor-audits/supabase.json",
+        "artifacts/full-team/vendor-audits/vercel.json",
+        "artifacts/full-team/visual-cross-browser.json",
+        "artifacts/gates/full-team-before-merge.json"
+      ],
+      "writes": [
+        "artifacts/gates/full-team-before-deploy.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-before-deploy"
+      ],
+      "deliverable": "GO or NO-GO from exact-commit, exact-environment deployment evidence; no deploy action is performed.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "repair_retest_coordinator",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Repair and Retest Coordinator",
+      "model_hint": "deep-reasoning",
+      "workspace": "repair_retest_coordinator_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/browser-qa.json",
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/lint-types.json",
+        "artifacts/gates/full-team-before-deploy.json",
+        "artifacts/gates/full-team-before-merge.json"
+      ],
+      "writes": [
+        "artifacts/full-team/repair-retest-plan.json"
+      ],
+      "proposals": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$ai-repair-cycle",
+        "$dev-fix-bug"
+      ],
+      "deliverable": "A minimal owner-assigned repair plan, or proof that all current gate evidence is GO; never exceed the declared loop bound.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "production_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Production Readiness Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "production_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/full-team/categories/analytics.json",
+        "artifacts/full-team/categories/architecture.json",
+        "artifacts/full-team/categories/backend.json",
+        "artifacts/full-team/categories/database.json",
+        "artifacts/full-team/categories/deployment.json",
+        "artifacts/full-team/categories/design.json",
+        "artifacts/full-team/categories/documentation.json",
+        "artifacts/full-team/categories/frontend.json",
+        "artifacts/full-team/categories/monitoring.json",
+        "artifacts/full-team/categories/performance.json",
+        "artifacts/full-team/categories/product.json",
+        "artifacts/full-team/categories/security.json",
+        "artifacts/full-team/categories/seo.json",
+        "artifacts/full-team/categories/testing.json",
+        "artifacts/full-team/project-profile.json",
+        "artifacts/gates/full-team-before-deploy.json"
+      ],
+      "writes": [
+        "artifacts/gates/full-team-production.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-production-ready"
+      ],
+      "deliverable": "BLOCKED, SAFE WITH WARNINGS, or SAFE TO LAUNCH with all 14 categories.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    }
+  ],
+  "gates": [
+    {
+      "id": "before_code",
+      "command": "$gate-before-code",
+      "stage": "before_code",
+      "seat": "before_code_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Product",
+          "artifact": "artifacts/full-team/categories/product.json",
+          "producer_commands": [
+            "$project-prd",
+            "$project-task-breakdown",
+            "$spec-acceptance",
+            "$spec-feature-brief",
+            "$stack-connector-check",
+            "$stack-intake"
+          ]
+        },
+        {
+          "category": "Architecture",
+          "artifact": "artifacts/full-team/categories/architecture.json",
+          "producer_commands": [
+            "$project-architecture",
+            "$spec-api-contract",
+            "$spec-env-contract"
+          ]
+        },
+        {
+          "category": "Design",
+          "artifact": "artifacts/full-team/design-spec.json",
+          "producer_commands": [
+            "$design-component-system",
+            "$design-ux-flow"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/full-team-before-code.json",
+        "schema": "solo-suite/phase-gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "decision",
+          "checks",
+          "blockers"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 24
+        }
+      },
+      "transitions": {
+        "status_field": "decision",
+        "routes": [
+          {
+            "statuses": [
+              "GO"
+            ],
+            "next_stage": "implementation"
+          },
+          {
+            "statuses": [
+              "NO-GO"
+            ],
+            "action": "stop"
+          }
+        ],
+        "default_action": "stop"
+      }
+    },
+    {
+      "id": "before_merge",
+      "command": "$gate-before-merge",
+      "stage": "before_merge",
+      "seat": "before_merge_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Review",
+          "artifact": "artifacts/full-team/ai-code-review.json",
+          "producer_commands": [
+            "$ai-review-output",
+            "$dev-code-review"
+          ]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/full-team/categories/security.json",
+          "producer_commands": [
+            "$security-authz-matrix",
+            "$security-rls-test",
+            "$security-threat-model"
+          ]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/full-team/categories/testing.json",
+          "producer_commands": [
+            "$test-e2e",
+            "$test-edge-cases",
+            "$test-integration",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Rollback",
+          "artifact": "artifacts/full-team/rollback.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Accessibility",
+          "artifact": "artifacts/full-team/accessibility.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Browser QA",
+          "artifact": "artifacts/full-team/browser-qa.json",
+          "producer_commands": [
+            "$browser-console-errors",
+            "$browser-mobile-test",
+            "$browser-smoke-test",
+            "$browser-visual-check"
+          ]
+        },
+        {
+          "category": "Contracts",
+          "artifact": "artifacts/full-team/contract-verification.json",
+          "producer_commands": [
+            "$dev-implement-feature",
+            "$test-integration"
+          ]
+        },
+        {
+          "category": "Dependency and SBOM",
+          "artifact": "artifacts/full-team/dependency-sbom.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Forms and privacy",
+          "artifact": "artifacts/full-team/forms-privacy.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Lint and types",
+          "artifact": "artifacts/full-team/lint-types.json",
+          "producer_commands": [
+            "$test-e2e",
+            "$test-edge-cases",
+            "$test-integration",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Migration verification",
+          "artifact": "artifacts/full-team/migration-verification.json",
+          "producer_commands": [
+            "$site-doctor-audit-db",
+            "$spec-data-contract"
+          ]
+        },
+        {
+          "category": "Performance and load",
+          "artifact": "artifacts/full-team/performance-load.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Visual and cross-browser",
+          "artifact": "artifacts/full-team/visual-cross-browser.json",
+          "producer_commands": [
+            "$browser-console-errors",
+            "$browser-mobile-test",
+            "$browser-smoke-test",
+            "$browser-visual-check"
+          ]
+        },
+        {
+          "category": "Vercel audit",
+          "artifact": "artifacts/full-team/vendor-audits/vercel.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Supabase audit",
+          "artifact": "artifacts/full-team/vendor-audits/supabase.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Cloudflare audit",
+          "artifact": "artifacts/full-team/vendor-audits/cloudflare.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Analytics/tag audit",
+          "artifact": "artifacts/full-team/vendor-audits/analytics-tag.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Payments audit",
+          "artifact": "artifacts/full-team/vendor-audits/payments.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/full-team-before-merge.json",
+        "schema": "solo-suite/phase-gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "decision",
+          "checks",
+          "blockers"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 24
+        }
+      },
+      "transitions": {
+        "status_field": "decision",
+        "routes": [
+          {
+            "statuses": [
+              "GO"
+            ],
+            "next_stage": "release_and_docs"
+          },
+          {
+            "statuses": [
+              "NO-GO"
+            ],
+            "next_stage": "repair_retest"
+          }
+        ],
+        "default_action": "stop"
+      }
+    },
+    {
+      "id": "before_deploy",
+      "command": "$gate-before-deploy",
+      "stage": "before_deploy",
+      "seat": "before_deploy_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Before-merge gate",
+          "artifact": "artifacts/gates/full-team-before-merge.json",
+          "producer_commands": [
+            "$gate-before-merge"
+          ]
+        },
+        {
+          "category": "Accessibility",
+          "artifact": "artifacts/full-team/accessibility.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Browser QA",
+          "artifact": "artifacts/full-team/browser-qa.json",
+          "producer_commands": [
+            "$browser-console-errors",
+            "$browser-mobile-test",
+            "$browser-smoke-test",
+            "$browser-visual-check"
+          ]
+        },
+        {
+          "category": "Contracts",
+          "artifact": "artifacts/full-team/contract-verification.json",
+          "producer_commands": [
+            "$dev-implement-feature",
+            "$test-integration"
+          ]
+        },
+        {
+          "category": "Dependency and SBOM",
+          "artifact": "artifacts/full-team/dependency-sbom.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Forms and privacy",
+          "artifact": "artifacts/full-team/forms-privacy.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Lint and types",
+          "artifact": "artifacts/full-team/lint-types.json",
+          "producer_commands": [
+            "$test-e2e",
+            "$test-edge-cases",
+            "$test-integration",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Migration verification",
+          "artifact": "artifacts/full-team/migration-verification.json",
+          "producer_commands": [
+            "$site-doctor-audit-db",
+            "$spec-data-contract"
+          ]
+        },
+        {
+          "category": "Performance and load",
+          "artifact": "artifacts/full-team/performance-load.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Visual and cross-browser",
+          "artifact": "artifacts/full-team/visual-cross-browser.json",
+          "producer_commands": [
+            "$browser-console-errors",
+            "$browser-mobile-test",
+            "$browser-smoke-test",
+            "$browser-visual-check"
+          ]
+        },
+        {
+          "category": "Vercel audit",
+          "artifact": "artifacts/full-team/vendor-audits/vercel.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Supabase audit",
+          "artifact": "artifacts/full-team/vendor-audits/supabase.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Cloudflare audit",
+          "artifact": "artifacts/full-team/vendor-audits/cloudflare.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Analytics/tag audit",
+          "artifact": "artifacts/full-team/vendor-audits/analytics-tag.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Payments audit",
+          "artifact": "artifacts/full-team/vendor-audits/payments.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/full-team/categories/security.json",
+          "producer_commands": [
+            "$security-authz-matrix",
+            "$security-rls-test",
+            "$security-threat-model"
+          ]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/full-team/categories/testing.json",
+          "producer_commands": [
+            "$test-e2e",
+            "$test-edge-cases",
+            "$test-integration",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "artifact": "artifacts/full-team/categories/deployment.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Monitoring",
+          "artifact": "artifacts/full-team/categories/monitoring.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Rollback",
+          "artifact": "artifacts/full-team/rollback.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Environment",
+          "artifact": "artifacts/full-team/environment-readiness.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Release",
+          "artifact": "artifacts/full-team/release-management.json",
+          "producer_commands": [
+            "$release-preflight"
+          ]
+        },
+        {
+          "category": "Project handoff",
+          "artifact": "artifacts/full-team/handoff-finalization.json",
+          "producer_commands": [
+            "$solo-handoff-memory"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/full-team-before-deploy.json",
+        "schema": "solo-suite/phase-gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "decision",
+          "checks",
+          "blockers"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 12
+        }
+      },
+      "transitions": {
+        "status_field": "decision",
+        "routes": [
+          {
+            "statuses": [
+              "GO"
+            ],
+            "next_stage": "production"
+          },
+          {
+            "statuses": [
+              "NO-GO"
+            ],
+            "next_stage": "repair_retest"
+          }
+        ],
+        "default_action": "stop"
+      }
+    },
+    {
+      "id": "production",
+      "command": "$gate-production-ready",
+      "stage": "production",
+      "seat": "production_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Product",
+          "artifact": "artifacts/full-team/categories/product.json",
+          "producer_commands": [
+            "$project-prd",
+            "$project-task-breakdown",
+            "$spec-acceptance",
+            "$spec-feature-brief",
+            "$stack-connector-check",
+            "$stack-intake"
+          ]
+        },
+        {
+          "category": "Architecture",
+          "artifact": "artifacts/full-team/categories/architecture.json",
+          "producer_commands": [
+            "$project-architecture",
+            "$spec-api-contract",
+            "$spec-env-contract"
+          ]
+        },
+        {
+          "category": "Design",
+          "artifact": "artifacts/full-team/categories/design.json",
+          "producer_commands": [
+            "$design-ui-review"
+          ]
+        },
+        {
+          "category": "Frontend",
+          "artifact": "artifacts/full-team/categories/frontend.json",
+          "producer_commands": [
+            "$browser-smoke-test",
+            "$dev-implement-feature"
+          ]
+        },
+        {
+          "category": "Backend",
+          "artifact": "artifacts/full-team/categories/backend.json",
+          "producer_commands": [
+            "$dev-implement-feature",
+            "$test-integration"
+          ]
+        },
+        {
+          "category": "Database",
+          "artifact": "artifacts/full-team/categories/database.json",
+          "producer_commands": [
+            "$site-doctor-audit-db",
+            "$spec-data-contract"
+          ]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/full-team/categories/security.json",
+          "producer_commands": [
+            "$security-authz-matrix",
+            "$security-rls-test",
+            "$security-threat-model"
+          ]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/full-team/categories/testing.json",
+          "producer_commands": [
+            "$test-e2e",
+            "$test-edge-cases",
+            "$test-integration",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Performance",
+          "artifact": "artifacts/full-team/categories/performance.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "SEO",
+          "artifact": "artifacts/full-team/categories/seo.json",
+          "producer_commands": [
+            "$seo-audit",
+            "$site-doctor-a11y",
+            "$site-doctor-animation",
+            "$site-doctor-audit-deps",
+            "$site-doctor-audit-forms",
+            "$site-doctor-compliance",
+            "$site-doctor-full-checkup",
+            "$site-doctor-load-test",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel"
+          ]
+        },
+        {
+          "category": "Analytics",
+          "artifact": "artifacts/full-team/categories/analytics.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$growth-conversion-audit"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "artifact": "artifacts/full-team/categories/deployment.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Monitoring",
+          "artifact": "artifacts/full-team/categories/monitoring.json",
+          "producer_commands": [
+            "$release-ci-setup",
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan",
+            "$site-doctor-monitoring"
+          ]
+        },
+        {
+          "category": "Documentation",
+          "artifact": "artifacts/full-team/categories/documentation.json",
+          "producer_commands": [
+            "$docs-runbook",
+            "$docs-setup-guide",
+            "$docs-update"
+          ]
+        },
+        {
+          "category": "Project profile",
+          "artifact": "artifacts/full-team/project-profile.json",
+          "producer_commands": [
+            "$project-prd",
+            "$project-task-breakdown",
+            "$spec-acceptance",
+            "$spec-feature-brief",
+            "$stack-connector-check",
+            "$stack-intake"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/full-team-production.json",
+        "schema": "solo-suite/gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project_profile",
+          "profile_artifact",
+          "profile_artifact_digest",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "categories",
+          "total_score",
+          "normalized_score",
+          "launch_status",
+          "blockers",
+          "warnings"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 12
+        }
+      },
+      "transitions": {
+        "status_field": "launch_status",
+        "routes": [
+          {
+            "statuses": [
+              "SAFE TO LAUNCH"
+            ],
+            "action": "complete"
+          },
+          {
+            "statuses": [
+              "SAFE WITH WARNINGS"
+            ],
+            "action": "stop"
+          },
+          {
+            "statuses": [
+              "BLOCKED"
+            ],
+            "action": "stop"
+          }
+        ],
+        "default_action": "stop"
+      },
+      "required_gate_results": [
+        {
+          "gate_id": "before_deploy",
+          "status": "GO",
+          "freshness": {
+            "run_id": "exact",
+            "commit": "exact",
+            "environment": "exact",
+            "latest": true
+          }
+        }
+      ]
+    }
+  ],
+  "exit_gate": "$gate-production-ready",
+  "exit_criteria": "All 14 production categories have current evidence from the exact commit and environment, the exact-current before-deploy result is GO, and the production result is SAFE TO LAUNCH.",
+  "loop": {
+    "from_stage": "repair_retest",
+    "to_stage": "implementation",
+    "max_iterations": 3,
+    "trigger": {
+      "gate_ids": [
+        "before_merge",
+        "before_deploy"
+      ],
+      "statuses": [
+        "NO-GO"
+      ],
+      "match": "any"
+    },
+    "exit": {
+      "gate_ids": [
+        "before_merge",
+        "before_deploy"
+      ],
+      "statuses": [
+        "GO"
+      ],
+      "match": "all"
+    },
+    "until": "Before-merge and before-deploy evidence are GO for the exact commit and environment, and every mandatory profile-aware web check passes or has an approved evidence-backed N/A.",
+    "on_exhaustion": "Set production status to BLOCKED, preserve all evidence and open owner-assigned tasks; do not deploy, merge, or publish.",
+    "on_exhaustion_action": "stop"
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security RLS Test"
+  short_description: "Run the Security RLS Test Codex workflow"
+  default_prompt: "Use $security-rls-test to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

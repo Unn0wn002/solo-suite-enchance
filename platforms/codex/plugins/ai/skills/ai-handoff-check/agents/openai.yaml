@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Handoff Check"
+  short_description: "Run the AI Handoff Check Codex workflow"
+  default_prompt: "Use $ai-handoff-check to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Website Audit"
+  short_description: "Run the Website Audit workflow in Codex"
+  default_prompt: "Use $website-audit to help with this project."
+policy:
+  allow_implicit_invocation: false

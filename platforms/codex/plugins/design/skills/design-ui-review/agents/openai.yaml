@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design UI Review"
+  short_description: "Run the Design UI Review Codex workflow"
+  default_prompt: "Use $design-ui-review to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

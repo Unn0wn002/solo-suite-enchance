@@ -1,0 +1,9 @@
+{
+  "name": "solo-suite-antigravity",
+  "displayName": "Solo Suite Enchance for Antigravity (Google DeepMind)",
+  "version": "1.0.30",
+  "description": "Solo Suite Enchance adapter for Antigravity AI Coding Assistant - 19 plugins, 79 skills, 125 slash commands.",
+  "targetPlatform": "antigravity",
+  "installedSkillsDir": "C:\\Users\\unn0w\\.gemini\\config\\skills",
+  "installedPluginsDir": "C:\\Users\\unn0w\\.gemini\\config\\plugins"
+}

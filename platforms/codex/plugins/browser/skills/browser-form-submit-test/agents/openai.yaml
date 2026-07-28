@@ -1,0 +1,6 @@
+interface:
+  display_name: "Browser Form Submit Test"
+  short_description: "Run the Browser Form Submit Test Codex workflow"
+  default_prompt: "Use $browser-form-submit-test to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

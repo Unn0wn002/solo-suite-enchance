@@ -1,0 +1,536 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/unn0wn002/solo-suite/plugins/ai/skills/agent-room-templates/schema/agentroom-v1.schema.json",
+  "title": "solo-suite/agentroom-v1",
+  "description": "A multi-agent 'room': staged seats with explicit reads/writes/proposals over .solo/ shared memory, a memory steward for shared-file governance, mandatory run identity, bounded loops, a worktree execution contract for isolated builders, and an evidence-gated exit executed by EXACTLY ONE seat. validate_rooms.py applies this schema FIRST, then the semantic rules JSON Schema cannot express (graph reachability to the exit seat, one-writer-per-artifact-per-stage, implicit command writes, category-specific gate-evidence producers, worktree contract staging).",
+  "type": "object",
+  "required": [
+    "schema",
+    "name",
+    "stages",
+    "seats",
+    "exit_criteria",
+    "run"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "solo-suite/agentroom-v1"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "based_on_room": {
+      "type": "string"
+    },
+    "memory_dir": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "profiles": {
+      "description": "Project profiles this room adapts to; seats may declare applies_to.",
+      "type": "array",
+      "items": {
+        "enum": [
+          "public-marketing-site",
+          "saas-application",
+          "e-commerce",
+          "internal-application",
+          "api-service",
+          "library-package"
+        ]
+      }
+    },
+    "run": {
+      "description": "REQUIRED run-identity policy: every execution of the room gets a unique run id; proposals, evidence records, and task allocations are tagged with it.",
+      "type": "object",
+      "required": [
+        "id_prefix",
+        "id_required"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id_prefix": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{0,15}$"
+        },
+        "id_required": {
+          "const": true
+        }
+      }
+    },
+    "stages": {
+      "description": "Ordered stages. Preferred form: objects with unique ids. Legacy form (array of seat-id arrays) remains accepted; ids are auto-assigned stage-1..n.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "seats"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9-]*$"
+              },
+              "seats": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "seats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "role",
+          "reads",
+          "writes",
+          "commands",
+          "deliverable",
+          "handoff_check"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model_hint": {
+            "type": "string"
+          },
+          "reads": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "writes": {
+            "description": "Artifacts this seat writes DIRECTLY. Shared memory files owned by the steward must go under 'proposes' instead when the seat runs in a parallel stage.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "proposes": {
+            "description": "Shared-memory artifacts this seat submits as proposals; only the memory steward merges them into the real files. Read-only seats return an exact structured payload for the trusted runner to materialize verbatim.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "commands": {
+            "description": "Commands the runner may assign to this agent seat. Manual-only commands must never appear here; use the structured human_handoff contract instead.",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^/[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$"
+            }
+          },
+          "human_handoff": {
+            "description": "A manual-only command returned to the user rather than assigned to the agent. The runner pauses after presenting the command preview and resumes only after the user confirms and executes it successfully.",
+            "type": "object",
+            "required": [
+              "command",
+              "executor",
+              "preview_required",
+              "confirmation_required",
+              "resume_on"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "command": {
+                "type": "string",
+                "pattern": "^/[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$"
+              },
+              "executor": {
+                "const": "user"
+              },
+              "preview_required": {
+                "const": true
+              },
+              "confirmation_required": {
+                "const": true
+              },
+              "resume_on": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "deliverable": {
+            "type": "string"
+          },
+          "handoff_to": {
+            "description": "Seat id, LIST of seat ids (fan-out into a parallel stage), or null (permitted only on the exit-gate executor).",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "handoff_check": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "workspace": {
+            "description": "Owned workspace/worktree for code-writing seats; parallel code writers must own distinct workspaces. 'worktree:*' values activate the room-level worktrees execution contract.",
+            "type": "string"
+          },
+          "applies_to": {
+            "description": "Profiles for which this seat runs. Omitted = always. MUST be non-empty when present, and every entry must also appear in the room-level 'profiles'.",
+            "type": "array",
+            "items": {
+              "enum": [
+                "public-marketing-site",
+                "saas-application",
+                "e-commerce",
+                "internal-application",
+                "api-service",
+                "library-package"
+              ]
+            },
+            "minItems": 1
+          },
+          "agent": {
+            "description": "Name of the shipped agent definition (plugins/ai/agents/<agent>.md) that runs this seat. validate_rooms.py fails the room when the file does not exist.",
+            "type": "string"
+          },
+          "agent_note": {
+            "description": "Explicit mapping note when the agent is reused for a differently-named duty (or no 1:1 agent exists). Every seat needs 'agent' or 'agent_note'.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "memory_steward": {
+      "description": "The single seat that owns shared-memory writes: receives proposals from parallel seats, merges decisions/handoffs, allocates unique task IDs, and detects conflicts. Exempt from stage placement (runs after every stage UP THROUGH active_through_stage; in evidence-lifecycle rooms it NEVER runs at or after the finalize stage).",
+      "type": "object",
+      "required": [
+        "seat",
+        "owns",
+        "allocates_task_ids"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "seat": {
+          "type": "string"
+        },
+        "owns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "allocates_task_ids": {
+          "const": true
+        },
+        "merge_policy": {
+          "type": "string"
+        },
+        "active_through_stage": {
+          "type": "string",
+          "description": "LAST stage id after which the steward may still run. REQUIRED (validator-enforced) when the room has an evidence lifecycle: it must name a stage STRICTLY BEFORE the finalizer's stage, so the runner can never invoke the steward at or after finalize."
+        }
+      }
+    },
+    "locks": {
+      "description": "Artifact locks: artifact path -> the only seat id allowed to write it anywhere in the room.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "worktrees": {
+      "description": "EXECUTION CONTRACT for rooms with isolated worktree builders. Claude worktree agents branch from the DEFAULT branch, NOT the parent session HEAD — so the base SHA must be recorded before spawning and every builder fast-forwards/rebases onto it before doing work. Run SHAs (BASE/INTEGRATION/FINAL) are transported through UNTRACKED .solo/run-state/ files, never tracked ones. Seats verify the SHA their band actually has: verify_at_integration_sha for the review→release band, verify_at_final_sha for finalize/gate.",
+      "type": "object",
+      "required": [
+        "base_sha",
+        "builder_payload",
+        "proposal_transport",
+        "integration",
+        "verify_at_integration_sha"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "base_sha": {
+          "type": "object",
+          "required": [
+            "recorded_by",
+            "rule",
+            "stored_in"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "recorded_by": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Who records `git rev-parse HEAD` in the parent session BEFORE spawning builders (and where it is written)."
+            },
+            "rule": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The rule every builder follows first (e.g. 'git merge --ff-only <BASE_SHA>; verify with git merge-base'). Required because platform worktree agents branch from the default branch."
+            },
+            "stored_in": {
+              "type": "string",
+              "pattern": "^\\.solo/run-state/",
+              "description": "UNTRACKED runtime-state file carrying BASE_SHA (e.g. .solo/run-state/<run_id>.json). A commit cannot contain its own SHA, so run SHAs never live in tracked files."
+            }
+          }
+        },
+        "builder_payload": {
+          "description": "Fields every builder MUST return. Must include: worktree_path, branch, commit_sha (clean tree — git status --porcelain empty), tests, proposal.",
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "string"
+          }
+        },
+        "proposal_transport": {
+          "type": "string",
+          "minLength": 1,
+          "description": "How proposal payloads cross isolated worktrees (e.g. committed as .solo/proposals/<seat>-<run_id>.json inside the builder branch; branches/refs are visible to the integrator through the shared object store)."
+        },
+        "integration": {
+          "type": "object",
+          "required": [
+            "seat",
+            "mode",
+            "ref"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "seat": {
+              "type": "string"
+            },
+            "mode": {
+              "enum": [
+                "merge-exact-shas",
+                "checkout-exact-sha"
+              ]
+            },
+            "ref": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "verify_at_integration_sha": {
+          "description": "Seats that must verify `git rev-parse HEAD` equals the recorded INTEGRATION SHA before doing their work (review/QA/hardening/release band). In rooms WITHOUT an evidence lifecycle this list must include the exit-gate executor; in evidence-lifecycle rooms the finalize/gate seats belong in verify_at_final_sha instead — at their stage HEAD equals FINAL_SHA, so an INTEGRATION_SHA requirement would be unsatisfiable.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "verify_at_final_sha": {
+          "description": "Seats that must verify `git rev-parse HEAD` equals the recorded FINAL_SHA (from untracked .solo/run-state/) before doing their work. REQUIRED (validator-enforced) for worktree rooms with an evidence lifecycle; must include the evidence finalizer and the exit-gate executor.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "exit_gate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^/[a-z][a-z0-9-]*:[a-z][a-z0-9-]*$"
+    },
+    "exit_gate_note": {
+      "type": "string"
+    },
+    "exit_criteria": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gate_requires": {
+      "description": "Evidence artifacts the gate-executing seat must read. validate_rooms.py fails the room if the executor cannot read any of them or if a requirement has no earlier producer.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "gate_evidence_map": {
+      "description": "Which artifact evidences which gate category. Keys must be gate categories; values must be path-like (no spaces or prose). With exit gate /gate:production-ready the map must cover all 14 categories and the room's evidence.finalizer must write each concrete .solo/gate-evidence/<category>.json.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 3,
+        "pattern": "^[A-Za-z0-9_.\\-/*]+$"
+      }
+    },
+    "loop": {
+      "type": "object",
+      "required": [
+        "repeat_stages",
+        "until",
+        "max_iterations"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "repeat_stages": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "until": {
+          "type": "string",
+          "minLength": 1
+        },
+        "max_iterations": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "on_max_iterations": {
+          "type": "string"
+        }
+      }
+    },
+    "assumes_preexisting": {
+      "description": "Artifacts a gate requires that are produced by EARLIER rooms/sessions, not by this room — each mapped to the documented reason. validate_rooms.py otherwise requires an in-room producer in a stage before the gate.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "evidence": {
+      "description": "EVIDENCE LIFECYCLE contract, required for rooms whose exit gate is /gate:production-ready: specialists produce raw artifacts and N/A candidates only; the orchestrator performs the structured freeze (evidence.freeze) and records FINAL_SHA in untracked run-state; the single finalizer seat re-runs every applicable category command at FINAL_SHA and mints all 14 records; the gatekeeper is output-only; .solo/gate-evidence/ stays untracked.",
+      "type": "object",
+      "required": [
+        "finalizer",
+        "freeze",
+        "final_sha_recorded_in",
+        "workflow"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "finalizer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "final_sha_recorded_in": {
+          "type": "string",
+          "pattern": "^\\.solo/run-state/",
+          "description": "UNTRACKED runtime-state file carrying FINAL_SHA. Tracked files are structurally impossible carriers: a commit cannot contain its own SHA."
+        },
+        "workflow": {
+          "const": "untracked",
+          "description": "The only supported evidence workflow: records are untracked/gitignored and generated after FINAL_SHA."
+        },
+        "freeze": {
+          "description": "Structured RELEASE-FREEZE contract: after after_stage and before before_stage (the finalizer's stage), the ORCHESTRATOR commits every tracked release/docs/project-memory change, verifies a clean tree, computes FINAL_SHA = `git rev-parse HEAD`, and writes it to the untracked run-state file. Seats never perform the freeze.",
+          "type": "object",
+          "required": [
+            "producer",
+            "after_stage",
+            "before_stage",
+            "commits",
+            "verifies",
+            "records",
+            "stored_in"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "producer": {
+              "enum": [
+                "orchestrator"
+              ],
+              "description": "Only the orchestrator (parent session/runner) performs the freeze — never a seat."
+            },
+            "after_stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "before_stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "commits": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What the freeze commit must contain."
+            },
+            "verifies": {
+              "type": "string",
+              "minLength": 1,
+              "description": "The clean-tree verification the orchestrator performs."
+            },
+            "records": {
+              "type": "string",
+              "minLength": 1,
+              "description": "What is recorded (FINAL_SHA = git rev-parse HEAD)."
+            },
+            "stored_in": {
+              "type": "string",
+              "pattern": "^\\.solo/run-state/",
+              "description": "UNTRACKED runtime-state file carrying FINAL_SHA — must equal evidence.final_sha_recorded_in."
+            }
+          }
+        }
+      }
+    }
+  }
+}

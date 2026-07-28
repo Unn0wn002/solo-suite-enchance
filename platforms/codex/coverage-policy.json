@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "full_tree": {
+    "source": ["plugins/", "tools/"],
+    "report": "dist/coverage-full.txt",
+    "status": "informational",
+    "reason": "The full report keeps every Python file visible, including authoring and migration utilities that are not runtime code."
+  },
+  "gated_runtime": {
+    "floor_percent": 68,
+    "omitted_authoring_helpers": [
+      "tools/build_codex_metadata.py",
+      "tools/generate_skill_metadata.py",
+      "tools/normalize_skill_contracts.py",
+      "tools/sync_from_claude.py",
+      "tools/translate_references.py",
+      "tools/update_cheatsheet.py"
+    ],
+    "rationale": "These six files are release-authoring, migration, or documentation generators. They are not invoked by an installed plugin at runtime; compileall and deterministic validation still run over them. No AgentRoom, gate, security, network, parity, packaging, or install-smoke file is omitted."
+  }
+}

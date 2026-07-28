@@ -1,0 +1,6 @@
+interface:
+  display_name: "Authz Security Reviewer"
+  short_description: "Run the Authz Security Reviewer workflow in Codex"
+  default_prompt: "Use $authz-security-reviewer to help with this project."
+policy:
+  allow_implicit_invocation: false

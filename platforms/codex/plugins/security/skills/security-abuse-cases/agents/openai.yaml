@@ -1,0 +1,6 @@
+interface:
+  display_name: "Security Abuse Cases"
+  short_description: "Run the Security Abuse Cases Codex workflow"
+  default_prompt: "Use $security-abuse-cases to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

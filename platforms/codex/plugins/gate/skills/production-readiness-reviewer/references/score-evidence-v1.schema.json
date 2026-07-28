@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:solo-suite:score-evidence-v1",
+  "title": "Solo Suite readiness score evidence v1",
+  "description": "A 14-category readiness score that deliberately carries no production launch verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_id",
+    "gate_id",
+    "project",
+    "commit_sha",
+    "environment",
+    "timestamp",
+    "expires_at",
+    "reviewer",
+    "categories",
+    "total_score",
+    "normalized_score",
+    "assessment_status",
+    "risks"
+  ],
+  "properties": {
+    "schema": {"const": "solo-suite/score-evidence-v1"},
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9._-]{1,62}[a-z0-9])$"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+    },
+    "project": {"type": "string", "minLength": 1},
+    "commit_sha": {"type": "string", "pattern": "^[0-9a-fA-F]{7,64}$"},
+    "environment": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "reviewer": {"type": "string", "minLength": 1},
+    "categories": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {"$ref": "#/$defs/categoryEvidence"}
+    },
+    "total_score": {"type": "integer", "minimum": 0, "maximum": 140},
+    "normalized_score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "assessment_status": {"enum": ["SCORED", "INSUFFICIENT EVIDENCE"]},
+    "risks": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "not": {
+    "anyOf": [
+      {"required": ["launch_status"]},
+      {"required": ["decision"]}
+    ]
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "producer", "source_reference", "generated_at"],
+      "properties": {
+        "source_kind": {
+          "enum": ["ci", "local-tool", "manual-review", "repository-record"]
+        },
+        "producer": {"type": "string", "minLength": 1},
+        "source_reference": {"type": "string", "minLength": 1},
+        "generated_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "categoryEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project", "run_id", "gate_id", "commit_sha", "environment", "timestamp", "expires_at",
+        "category", "score", "applicability", "command_executed", "exit_code",
+        "evidence_type", "provenance", "evidence_artifact", "artifact_digest",
+        "reviewer"
+      ],
+      "properties": {
+        "project": {"type": "string", "minLength": 1},
+        "run_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9](?:[a-z0-9._-]{1,62}[a-z0-9])$"
+        },
+        "gate_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+        },
+        "commit_sha": {"type": "string", "pattern": "^[0-9a-fA-F]{7,64}$"},
+        "environment": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "expires_at": {"type": "string", "format": "date-time"},
+        "category": {
+          "enum": [
+            "Product", "Architecture", "Design", "Frontend", "Backend",
+            "Database", "Security", "Testing", "Performance", "SEO",
+            "Analytics", "Deployment", "Monitoring", "Documentation"
+          ]
+        },
+        "score": {"type": "integer", "minimum": 0, "maximum": 10},
+        "applicability": {"enum": ["applicable", "not-applicable"]},
+        "na_reason": {"type": "string", "minLength": 1},
+        "command_executed": {
+          "type": "string",
+          "pattern": "^\\$[a-z][a-z0-9-]*$"
+        },
+        "exit_code": {"type": "integer"},
+        "evidence_type": {
+          "enum": [
+            "ci-report", "tool-report", "manual-observation",
+            "narrative-assertion", "applicability-record"
+          ]
+        },
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "evidence_artifact": {"type": "string", "minLength": 1},
+        "artifact_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "reviewer": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"applicability": {"const": "not-applicable"}},
+            "required": ["applicability"]
+          },
+          "then": {
+            "required": ["na_reason"],
+            "properties": {
+              "score": {"const": 0},
+              "evidence_type": {"const": "applicability-record"}
+            }
+          }
+        }
+      ]
+    }
+  }
+}

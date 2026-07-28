@@ -1,0 +1,193 @@
+{
+  "schema": "solo-suite/agentroom-v1",
+  "name": "bug-fix-loop",
+  "version": 4,
+  "description": "Reproduce -> fix -> verify, looping (bounded) until the repro dies; before-merge gate receives review, security, test, and rollback evidence.",
+  "memory_dir": ".solo/",
+  "run": {
+    "id_prefix": "bfl",
+    "id_required": true
+  },
+  "rules": [
+    "sequential stages — each seat writes its declared files directly (no parallel writers, so no steward needed)",
+    "the fixer works in an isolated worktree under the room's `worktrees` contract (BASE_SHA is computed after the repro commit and carried in untracked .solo/run-state/<run_id>.json — worktree agents branch from the DEFAULT branch), and logs the fix rationale AND a revert plan in decisions/release, and a security-impact note in risks — the gate refuses to run without them",
+    "the verifier MUST test the fixer's exact commit: check out the returned commit_sha, prove `git rev-parse HEAD` equals it in tests.md, and only then run the repro + regression tests — verifying the unchanged main workspace is a contract violation the gatekeeper rejects",
+    "state-changing browser tests are manual-only; the reproducer uses console/read-only evidence and asks the human to run /browser:smoke-test when needed"
+  ],
+  "stages": [
+    {
+      "id": "reproduce",
+      "seats": [
+        "reproducer"
+      ]
+    },
+    {
+      "id": "fix",
+      "seats": [
+        "fixer"
+      ]
+    },
+    {
+      "id": "verify",
+      "seats": [
+        "verifier"
+      ]
+    },
+    {
+      "id": "gate",
+      "seats": [
+        "gatekeeper"
+      ]
+    }
+  ],
+  "seats": [
+    {
+      "id": "reproducer",
+      "role": "Bug Reproducer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/bugs.md"
+      ],
+      "writes": [
+        ".solo/bugs.md",
+        ".solo/run-state/<run_id>.json",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-bug-reproducer",
+      "commands": [
+        "/browser:console-errors"
+      ],
+      "deliverable": "Commits the deterministic reproduction to .solo/bugs.md FIRST, then invokes update_run_state.py --root . --run-id <run_id> advance base so the trusted helper derives BASE_SHA from git and atomically records it in untracked .solo/run-state/<run_id>.json; it NEVER types a caller-supplied SHA and NEVER asks for or checks out a fixer commit",
+      "handoff_to": "fixer",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "fixer",
+      "role": "Bug Fixer",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/bugs.md",
+        ".solo/architecture.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/decisions.md",
+        ".solo/bugs.md",
+        ".solo/risks.md",
+        ".solo/release.md",
+        ".solo/tasks.md"
+      ],
+      "workspace": "worktree:bugfix",
+      "agent": "room-bug-fixer",
+      "commands": [
+        "/repo:map",
+        "/dev:fix-bug"
+      ],
+      "deliverable": "Minimal fix in an isolated worktree + rationale in decisions.md, security-impact note in risks.md, revert plan in release.md; returns the builder payload (worktree_path, branch, clean commit_sha, tests, proposal) per the room worktrees contract",
+      "handoff_to": "verifier",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "verifier",
+      "role": "Fix Verifier",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/bugs.md",
+        ".solo/tests.md",
+        ".solo/decisions.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/tests.md",
+        ".solo/bugs.md",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-qa-engineer",
+      "commands": [
+        "/test:unit",
+        "/test:integration"
+      ],
+      "deliverable": "Checks out the FIXER'S EXACT COMMIT (git checkout <commit_sha> from the fixer's payload — never the unchanged main workspace), records `git rev-parse HEAD` == commit_sha in tests.md as proof, then: original repro no longer reproduces; regression test added; results in tests.md",
+      "handoff_to": "gatekeeper",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "gatekeeper",
+      "role": "Merge Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/tests.md",
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/risks.md",
+        ".solo/release.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/tasks.md",
+        ".solo/risks.md",
+        ".solo/decisions.md"
+      ],
+      "agent": "room-git-pr-manager",
+      "agent_note": "the before-merge gate is the Git/PR manager's call; it also runs the code review commands",
+      "commands": [
+        "/dev:code-review",
+        "/ai:review-output",
+        "/gate:before-merge"
+      ],
+      "deliverable": "GO/NO-GO with review, security, test, and rollback evidence attached",
+      "handoff_to": null,
+      "handoff_check": "/ai:handoff-check"
+    }
+  ],
+  "exit_gate": "/gate:before-merge",
+  "gate_requires": [
+    ".solo/tests.md",
+    ".solo/bugs.md",
+    ".solo/decisions.md",
+    ".solo/risks.md",
+    ".solo/release.md"
+  ],
+  "exit_criteria": "verifier reports PASS, the original repro fails to reproduce, and /gate:before-merge returns GO on the full evidence set",
+  "loop": {
+    "repeat_stages": [
+      [
+        "fixer"
+      ],
+      [
+        "verifier"
+      ]
+    ],
+    "until": "verifier reports PASS and the original repro fails to reproduce",
+    "max_iterations": 3,
+    "on_max_iterations": "stop and run /ai:repair-cycle on the fixer's prompt before continuing"
+  },
+  "worktrees": {
+    "base_sha": {
+      "recorded_by": "the reproducer COMMITS the reproduction (.solo/bugs.md) FIRST, then runs the gate plugin helper `update_run_state.py --root . --run-id <run_id> advance base`; the helper derives BASE_SHA from `git rev-parse HEAD`, enforces a clean tree, validates run-state-v1, and atomically writes UNTRACKED .solo/run-state/<run_id>.json — the reproducer never types or writes a caller-supplied SHA",
+      "rule": "the fixer's worktree branches from the DEFAULT branch, not the parent session HEAD — the fixer first fast-forwards onto BASE_SHA (`git merge --ff-only <BASE_SHA>`, or rebases) and verifies `git merge-base --is-ancestor <BASE_SHA> HEAD` before touching code",
+      "stored_in": ".solo/run-state/<run_id>.json"
+    },
+    "builder_payload": [
+      "worktree_path",
+      "branch",
+      "commit_sha",
+      "tests",
+      "proposal"
+    ],
+    "proposal_transport": "the fixer COMMITS its payload as .solo/proposals/fixer-<run_id>.json inside its branch (clean tree; commit_sha = git rev-parse HEAD); the verifier reads the branch and payload through the shared git object store",
+    "integration": {
+      "seat": "verifier",
+      "mode": "checkout-exact-sha",
+      "ref": "the fixer's branch at the returned commit_sha"
+    },
+    "verify_at_integration_sha": [
+      "verifier",
+      "gatekeeper"
+    ]
+  },
+  "assumes_preexisting": {
+    ".solo/bugs.md": "the bug report under investigation — filed by an earlier QA/browser session or the user; the reproducer reads it before writing its repro",
+    ".solo/architecture.md": "produced by the architecture phase of an earlier room/session; read by the fixer for context"
+  }
+}

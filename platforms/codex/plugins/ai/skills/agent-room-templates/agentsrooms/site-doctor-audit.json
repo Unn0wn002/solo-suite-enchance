@@ -1,0 +1,364 @@
+{
+  "$schema": "../schema/agentroom-v1.schema.json",
+  "schema": "solo-suite/agentroom-v1",
+  "name": "site-doctor-audit",
+  "version": 1,
+  "prepared": false,
+  "run_id": "template-site-doctor-audit-v1",
+  "description": "Run site and provider audits in parallel, then triage through one memory steward.",
+  "based_on_room": "Solo Suite Site Doctor and stack audit rooms",
+  "profile": "profile-selected-at-runtime",
+  "memory_dir": ".solo/",
+  "rules": [
+    "Replace the template run_id with a unique run id before execution.",
+    "Only memory_steward writes .solo files; every other seat submits declared proposals.",
+    "Run seats in isolated worktrees and enforce every artifact lock.",
+    "Require exact run, commit, and environment matches; reject expired gate evidence.",
+    "Evaluate gate transitions from validated machine-readable status fields; unknown or missing statuses stop the run.",
+    "Execute provider-specific checks only when .solo/stack.md records that provider.",
+    "For profile-inapplicable work, record an evidence-backed N/A reason instead of silently skipping it."
+  ],
+  "memory_steward": {
+    "seat_id": "memory_steward",
+    "task_id_pattern": "^T[0-9]+$",
+    "proposal_merge_policy": "Allocate task IDs centrally and merge conflict-free proposals after each stage while preserving append-only decisions.",
+    "conflict_policy": "Stop the stage and require an explicit resolution before any conflicting shared-memory proposal is committed."
+  },
+  "tasks": [],
+  "workspaces": [
+    {
+      "id": "shared_memory",
+      "type": "shared-memory",
+      "path": ".solo/",
+      "owner": "memory_steward"
+    },
+    {
+      "id": "site_auditor_workspace",
+      "type": "worktree",
+      "path": "worktrees/site-doctor-audit/site_auditor",
+      "owner": "site_auditor"
+    },
+    {
+      "id": "stack_auditor_workspace",
+      "type": "worktree",
+      "path": "worktrees/site-doctor-audit/stack_auditor",
+      "owner": "stack_auditor"
+    },
+    {
+      "id": "triager_workspace",
+      "type": "worktree",
+      "path": "worktrees/site-doctor-audit/triager",
+      "owner": "triager"
+    },
+    {
+      "id": "score_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/site-doctor-audit/score_gatekeeper",
+      "owner": "score_gatekeeper"
+    }
+  ],
+  "artifact_locks": [
+    {
+      "artifact": ".solo/bugs.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/decisions.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/handoff.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/risks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/stack.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/tasks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": "artifacts/gates/site-doctor-score.json",
+      "owner": "score_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/site-doctor-audit/site-audit.json",
+      "owner": "site_auditor"
+    },
+    {
+      "artifact": "artifacts/site-doctor-audit/stack-audit.json",
+      "owner": "stack_auditor"
+    },
+    {
+      "artifact": "artifacts/site-doctor-audit/triage.json",
+      "owner": "triager"
+    }
+  ],
+  "stages": [
+    {
+      "id": "audit",
+      "seats": [
+        "memory_steward",
+        "site_auditor",
+        "stack_auditor"
+      ]
+    },
+    {
+      "id": "triage",
+      "seats": [
+        "memory_steward",
+        "triager"
+      ]
+    },
+    {
+      "id": "score",
+      "seats": [
+        "memory_steward",
+        "score_gatekeeper"
+      ]
+    }
+  ],
+  "seats": [
+    {
+      "id": "memory_steward",
+      "kind": "memory-steward",
+      "persistent": true,
+      "role": "Memory Steward",
+      "model_hint": "strong-reasoning",
+      "workspace": "shared_memory",
+      "memory_access": "direct",
+      "reads": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md"
+      ],
+      "writes": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md"
+      ],
+      "proposals": [],
+      "commands": [],
+      "deliverable": "Allocate unique task IDs; merge proposals into tasks, decisions, and handoffs; reject conflicting shared-memory updates.",
+      "handoff_to": null,
+      "handoff_check": null,
+      "task_ids": []
+    },
+    {
+      "id": "site_auditor",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Site Doctor",
+      "model_hint": "balanced",
+      "workspace": "site_auditor_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/handoff.md",
+        ".solo/stack.md"
+      ],
+      "writes": [
+        "artifacts/site-doctor-audit/site-audit.json"
+      ],
+      "proposals": [
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$site-doctor-full-checkup"
+      ],
+      "deliverable": "Website, API, database, security, performance, and SEO audit evidence.",
+      "handoff_to": "triager",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "stack_auditor",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Stack Auditor",
+      "model_hint": "balanced",
+      "workspace": "stack_auditor_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/handoff.md",
+        ".solo/stack.md"
+      ],
+      "writes": [
+        "artifacts/site-doctor-audit/stack-audit.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$stack-connector-check",
+        "$stack-audit-vercel",
+        "$stack-audit-supabase",
+        "$stack-audit-cloudflare",
+        "$stack-audit-tags",
+        "$stack-audit-payments"
+      ],
+      "deliverable": "Provider evidence only for providers recorded in .solo/stack.md.",
+      "handoff_to": "triager",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "triager",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Audit Triage Lead",
+      "model_hint": "balanced",
+      "workspace": "triager_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/site-doctor-audit/site-audit.json",
+        "artifacts/site-doctor-audit/stack-audit.json"
+      ],
+      "writes": [
+        "artifacts/site-doctor-audit/triage.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$ai-review-output"
+      ],
+      "deliverable": "Deduplicated severity-ranked findings and conflict-checked task proposals.",
+      "handoff_to": "score_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "score_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Project Score Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "score_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/site-doctor-audit/site-audit.json",
+        "artifacts/site-doctor-audit/stack-audit.json",
+        "artifacts/site-doctor-audit/triage.json"
+      ],
+      "writes": [
+        "artifacts/gates/site-doctor-score.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-score-project"
+      ],
+      "deliverable": "Evidence-backed project score without a launch action.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    }
+  ],
+  "gates": [
+    {
+      "id": "score",
+      "command": "$gate-score-project",
+      "stage": "score",
+      "seat": "score_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Site audit",
+          "artifact": "artifacts/site-doctor-audit/site-audit.json",
+          "producer_commands": [
+            "$site-doctor-full-checkup"
+          ]
+        },
+        {
+          "category": "Stack audit",
+          "artifact": "artifacts/site-doctor-audit/stack-audit.json",
+          "producer_commands": [
+            "$stack-audit-cloudflare",
+            "$stack-audit-payments",
+            "$stack-audit-supabase",
+            "$stack-audit-tags",
+            "$stack-audit-vercel",
+            "$stack-connector-check"
+          ]
+        },
+        {
+          "category": "Triage",
+          "artifact": "artifacts/site-doctor-audit/triage.json",
+          "producer_commands": [
+            "$ai-review-output"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/site-doctor-score.json",
+        "schema": "solo-suite/score-evidence-v1",
+        "required_fields": [
+          "schema",
+          "run_id",
+          "gate_id",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "categories",
+          "total_score",
+          "normalized_score",
+          "assessment_status",
+          "risks"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 24
+        }
+      },
+      "transitions": {
+        "status_field": "assessment_status",
+        "routes": [
+          {
+            "statuses": [
+              "SCORED"
+            ],
+            "action": "complete"
+          },
+          {
+            "statuses": [
+              "INSUFFICIENT EVIDENCE"
+            ],
+            "action": "stop"
+          }
+        ],
+        "default_action": "stop"
+      }
+    }
+  ],
+  "exit_gate": "$gate-score-project",
+  "exit_criteria": "All findings are deduplicated, evidenced, prioritized, and proposed with unique task IDs."
+}

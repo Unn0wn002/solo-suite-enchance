@@ -1,0 +1,6 @@
+interface:
+  display_name: "Git Sync Issues"
+  short_description: "Run the Git Sync Issues Codex workflow"
+  default_prompt: "Use $git-sync-issues to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

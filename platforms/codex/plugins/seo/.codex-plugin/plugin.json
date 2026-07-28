@@ -1,0 +1,48 @@
+{
+  "name": "seo",
+  "version": "1.0.27",
+  "description": "Audit technical SEO, content quality, structured data, search experience, AI-search readiness, local, ecommerce, and international visibility. Migrated workflows: $seo-audit, $seo-backlinks, $seo-cluster, $seo-competitor-pages, $seo-content, $seo-content-brief, $seo-drift, $seo-ecommerce, $seo-flow, $seo-geo, $seo-google, $seo-hreflang, $seo-images, $seo-local, $seo-maps, $seo-page, $seo-plan, $seo-programmatic, $seo-schema, $seo-sitemap, $seo-sxo, $seo-technical.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "ai-search",
+    "backlinks",
+    "codex",
+    "connector-mode",
+    "content-quality",
+    "core-web-vitals",
+    "drift-monitoring",
+    "e-e-a-t",
+    "ecommerce-seo",
+    "geo",
+    "hreflang",
+    "local-seo",
+    "manual-mode",
+    "schema-markup",
+    "semantic-clustering",
+    "seo",
+    "sitemap",
+    "solo",
+    "solo-suite",
+    "sxo",
+    "technical-seo"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo SEO",
+    "shortDescription": "Run technical, content, and vertical SEO audits",
+    "longDescription": "Audit technical SEO, content quality, structured data, search experience, AI-search readiness, local, ecommerce, and international visibility. Migrated workflows: $seo-audit, $seo-backlinks, $seo-cluster, $seo-competitor-pages, $seo-content, $seo-content-brief, $seo-drift, $seo-ecommerce, $seo-flow, $seo-geo, $seo-google, $seo-hreflang, $seo-images, $seo-local, $seo-maps, $seo-page, $seo-plan, $seo-programmatic, $seo-schema, $seo-sitemap, $seo-sxo, $seo-technical. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo SEO to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

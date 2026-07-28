@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "test",
+  "displayName": "solo-suite test",
+  "version": "1.0.3",
+  "description": "Testing for solo developers: unit, integration, e2e, and edge-case hunting. QA-engineer skill that tests against PRD acceptance criteria and keeps the test pyramid balanced.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "testing",
+    "qa",
+    "unit-tests",
+    "integration-tests",
+    "e2e",
+    "edge-cases",
+    "solo"
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gate Before Code"
+  short_description: "Run the Gate Before Code Codex workflow"
+  default_prompt: "Use $gate-before-code to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

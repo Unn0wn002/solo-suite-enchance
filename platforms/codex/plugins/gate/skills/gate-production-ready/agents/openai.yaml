@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gate Production Ready"
+  short_description: "Run the Gate Production Ready Codex workflow"
+  default_prompt: "Use $gate-production-ready to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

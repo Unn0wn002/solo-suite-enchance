@@ -1,0 +1,6 @@
+interface:
+  display_name: "Cost Optimization"
+  short_description: "Run the Cost Optimization workflow in Codex"
+  default_prompt: "Use $cost-optimization to help with this project."
+policy:
+  allow_implicit_invocation: false

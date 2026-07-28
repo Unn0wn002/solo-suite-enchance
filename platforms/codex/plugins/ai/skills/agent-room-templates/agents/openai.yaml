@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agent Room Templates"
+  short_description: "Run the Agent Room Templates workflow in Codex"
+  default_prompt: "Use $agent-room-templates to help with this project."
+policy:
+  allow_implicit_invocation: false

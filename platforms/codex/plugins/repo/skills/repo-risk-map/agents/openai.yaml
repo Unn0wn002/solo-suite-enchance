@@ -1,0 +1,6 @@
+interface:
+  display_name: "Repo Risk Map"
+  short_description: "Run the Repo Risk Map Codex workflow"
+  default_prompt: "Use $repo-risk-map to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

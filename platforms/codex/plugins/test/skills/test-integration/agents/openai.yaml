@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test Integration"
+  short_description: "Run the Test Integration Codex workflow"
+  default_prompt: "Use $test-integration to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

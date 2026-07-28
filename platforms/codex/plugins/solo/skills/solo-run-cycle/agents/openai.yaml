@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo Run Cycle"
+  short_description: "Run the Solo Run Cycle Codex workflow"
+  default_prompt: "Use $solo-run-cycle to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

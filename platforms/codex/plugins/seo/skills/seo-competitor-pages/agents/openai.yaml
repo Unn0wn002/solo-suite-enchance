@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Competitor Pages"
+  short_description: "Run the SEO Competitor Pages workflow in Codex"
+  default_prompt: "Use $seo-competitor-pages to help with this project."
+policy:
+  allow_implicit_invocation: false

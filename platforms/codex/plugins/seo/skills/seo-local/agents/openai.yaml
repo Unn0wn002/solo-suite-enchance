@@ -1,0 +1,6 @@
+interface:
+  display_name: "SEO Local"
+  short_description: "Run the SEO Local workflow in Codex"
+  default_prompt: "Use $seo-local to help with this project."
+policy:
+  allow_implicit_invocation: false

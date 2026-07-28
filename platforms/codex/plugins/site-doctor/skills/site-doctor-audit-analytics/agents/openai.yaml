@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Audit Analytics"
+  short_description: "Run the Site Doctor Audit Analytics Codex workflow"
+  default_prompt: "Use $site-doctor-audit-analytics to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

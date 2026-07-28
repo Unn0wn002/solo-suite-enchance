@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "project",
+  "displayName": "solo-suite project",
+  "version": "1.0.2",
+  "description": "Planning for solo developers: PRD, architecture, and task breakdown. Product-manager and software-architect skills that write to shared .solo/ project memory.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "planning",
+    "prd",
+    "requirements",
+    "architecture",
+    "product-management",
+    "tasks",
+    "solo"
+  ]
+}

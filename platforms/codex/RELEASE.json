@@ -1,0 +1,20 @@
+{
+  "name": "solo-suite-codex",
+  "version": "1.0.27",
+  "previous_version": "1.0.12",
+  "source_archive": "solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip",
+  "source_archive_sha256": "7dde7bbe44e7534e3f1890ddb1c5feba5554d60127c4dd7ef2095b31cafb03aa",
+  "source_archive_required_for_build": false,
+  "source_archive_required_for_validation": true,
+  "historical_source_archive": "solo-suite-plugin-v1.0.26.zip",
+  "historical_source_archive_sha256": "b691905f8ade4c2fb7e0084a46f537c9be8d7b2bf0f4d160c38c5e930aed1d43",
+  "counts": {
+    "plugins": 19,
+    "skills": 184,
+    "commands": 125,
+    "scripts": 28
+  },
+  "format": "codex-plugin-marketplace",
+  "top_level_folder": "solo-suite-codex-v1.0.27",
+  "validation_state": "preflight"
+}

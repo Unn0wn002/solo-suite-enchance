@@ -1,0 +1,6 @@
+interface:
+  display_name: "Production Readiness Reviewer"
+  short_description: "Run the Production Readiness Reviewer workflow in Codex"
+  default_prompt: "Use $production-readiness-reviewer to help with this project."
+policy:
+  allow_implicit_invocation: false

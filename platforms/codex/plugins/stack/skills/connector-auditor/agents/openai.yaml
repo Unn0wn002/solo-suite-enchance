@@ -1,0 +1,6 @@
+interface:
+  display_name: "Connector Auditor"
+  short_description: "Run the Connector Auditor workflow in Codex"
+  default_prompt: "Use $connector-auditor to help with this project."
+policy:
+  allow_implicit_invocation: false

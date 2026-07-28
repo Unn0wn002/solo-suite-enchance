@@ -1,0 +1,6 @@
+interface:
+  display_name: "Incident Response"
+  short_description: "Run the Incident Response workflow in Codex"
+  default_prompt: "Use $incident-response to help with this project."
+policy:
+  allow_implicit_invocation: false

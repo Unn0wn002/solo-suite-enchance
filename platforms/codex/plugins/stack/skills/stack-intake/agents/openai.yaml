@@ -1,0 +1,6 @@
+interface:
+  display_name: "Stack Intake"
+  short_description: "Run the Stack Intake Codex workflow"
+  default_prompt: "Use $stack-intake to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

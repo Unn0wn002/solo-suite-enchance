@@ -1,0 +1,6 @@
+interface:
+  display_name: "Deployment Review"
+  short_description: "Run the Deployment Review workflow in Codex"
+  default_prompt: "Use $deployment-review to help with this project."
+policy:
+  allow_implicit_invocation: false

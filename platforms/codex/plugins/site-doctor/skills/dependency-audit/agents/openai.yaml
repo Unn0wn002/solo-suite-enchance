@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dependency Audit"
+  short_description: "Run the Dependency Audit workflow in Codex"
+  default_prompt: "Use $dependency-audit to help with this project."
+policy:
+  allow_implicit_invocation: false

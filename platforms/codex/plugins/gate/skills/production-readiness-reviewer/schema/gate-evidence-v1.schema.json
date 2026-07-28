@@ -1,0 +1,281 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/unn0wn002/solo-suite/plugins/gate/skills/production-readiness-reviewer/schema/gate-evidence-v1.schema.json",
+  "title": "solo-suite/gate-evidence-v1",
+  "description": "One machine-readable record backing one gate category verdict: EITHER a verified evidence record created through the canonical record_evidence.py workflow (policy-validated command, captured exit code, git-derived HEAD + committed-tree digest, hashed artifact) OR a not-applicable record created through its canonical --not-applicable workflow (git-derived commit, validated matrix cell, mandatory-category rejection, generated timestamps) and justified against the applicability matrix. TRUST MODEL: these are SELF-ATTESTED LOCAL EVIDENCE records — unsigned JSON that makes honest workflows mechanically checkable; they are NOT cryptographic attestations. The required recorder field is a copyable format label, not proof of which process created a record, so a manually constructed record that satisfies every content check cannot be distinguished cryptographically from helper output. A trusted CI identity/signature is the upgrade path. The single supported workflow keeps .solo/gate-evidence/ untracked/gitignored; records tracked in HEAD are an unsupported state both tools refuse. The matrix (normative copy in plugins/gate/lib/gate_policy.py): design/frontend N/A only for api-service|library-package; backend/database N/A only for public-marketing-site|library-package; performance N/A only for library-package; seo/analytics N/A only for internal-application|api-service|library-package; product, architecture, security, testing, deployment, monitoring, documentation may NEVER be N/A. A gate must reject records that are expired, from a different HEAD or committed tree, or from a different environment or project.",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/verifiedEvidence"
+    },
+    {
+      "$ref": "#/definitions/notApplicable"
+    }
+  ],
+  "definitions": {
+    "isoTimestamp": {
+      "type": "string",
+      "minLength": 10,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}[Tt ]\\d{2}:\\d{2}"
+    },
+    "gitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{7,40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "category": {
+      "enum": [
+        "product",
+        "architecture",
+        "design",
+        "frontend",
+        "backend",
+        "database",
+        "security",
+        "testing",
+        "performance",
+        "seo",
+        "analytics",
+        "deployment",
+        "monitoring",
+        "documentation"
+      ]
+    },
+    "naCategory": {
+      "description": "Categories that CAN be N/A under at least one profile. The seven mandatory categories are structurally excluded here.",
+      "enum": [
+        "design",
+        "frontend",
+        "backend",
+        "database",
+        "performance",
+        "seo",
+        "analytics"
+      ]
+    },
+    "profile": {
+      "enum": [
+        "public-marketing-site",
+        "saas-application",
+        "e-commerce",
+        "internal-application",
+        "api-service",
+        "library-package"
+      ]
+    },
+    "verifiedEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "status",
+        "recorder",
+        "project",
+        "commit",
+        "tree_digest",
+        "environment",
+        "timestamp",
+        "category",
+        "command",
+        "command_argv",
+        "command_id",
+        "resolved_executable",
+        "exit_code",
+        "artifact",
+        "artifact_sha256",
+        "reviewer",
+        "expires"
+      ],
+      "properties": {
+        "schema": {
+          "const": "solo-suite/gate-evidence-v1"
+        },
+        "status": {
+          "const": "verified"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Project or repository identifier."
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "description": "Full 40-hex HEAD derived by the recorder via `git rev-parse HEAD` — the checker re-derives HEAD itself and requires EXACT equality."
+        },
+        "tree_digest": {
+          "$ref": "#/definitions/sha256",
+          "description": "SHA-256 over the COMMITTED tree at HEAD (path + blob sha from `git ls-tree -r HEAD`, excluding .solo/gate-evidence/**) — derived from git objects, so mutating working-tree bytes cannot change it. The checker recomputes and requires equality."
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Target environment (production, staging, preview, ...)."
+        },
+        "timestamp": {
+          "$ref": "#/definitions/isoTimestamp",
+          "description": "ISO-8601 UTC time the evidence was gathered."
+        },
+        "category": {
+          "$ref": "#/definitions/category"
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical display of the executed argv - MUST equal ' '.join(command_argv); the checker enforces equality."
+        },
+        "command_argv": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "description": "Exact argv executed by record_evidence.py (no shell). The checker RE-VALIDATES this against the shared per-category command policy in gate_policy.py."
+        },
+        "exit_code": {
+          "type": "integer",
+          "description": "Exit code captured by the canonical record_evidence.py workflow. The checker rejects nonzero values and re-validates the command policy, but unsigned JSON cannot cryptographically prove which process captured the value."
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "artifact": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Path (inside the project root) of the captured stdout/stderr artifact, optionally with #anchor."
+        },
+        "artifact_sha256": {
+          "$ref": "#/definitions/sha256",
+          "description": "SHA-256 digest of the artifact content at evidence time; the checker recomputes it."
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expires": {
+          "$ref": "#/definitions/isoTimestamp",
+          "description": "ISO-8601 UTC expiry; stale evidence is rejected."
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recorder": {
+          "const": "record_evidence.py/v1",
+          "description": "Identifies the producing tool. This is self-attestation, not proof of origin."
+        },
+        "command_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Canonical policy-entry id the argv matched (e.g. 'pytest', 'verify-artifact product')."
+        },
+        "resolved_executable": {
+          "type": "string",
+          "minLength": 1,
+          "description": "ABSOLUTE path of argv[0] after canonical PATH resolution (gate_policy.resolve_executable). The recorder executes THIS path, never the bare token; the checker re-resolves argv[0] and requires equality, rejecting unresolvable or project-local executables."
+        }
+      }
+    },
+    "notApplicable": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "status",
+        "recorder",
+        "project",
+        "commit",
+        "environment",
+        "timestamp",
+        "category",
+        "profile",
+        "reason",
+        "applicability",
+        "reviewer",
+        "expires"
+      ],
+      "properties": {
+        "schema": {
+          "const": "solo-suite/gate-evidence-v1"
+        },
+        "status": {
+          "const": "not-applicable"
+        },
+        "recorder": {
+          "const": "record_evidence.py/v1",
+          "description": "Required format label for the canonical record_evidence.py --not-applicable workflow. A record missing it fails schema validation, but the string is copyable and does not prove process origin; this branch remains self-attested local evidence."
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$",
+          "description": "Full 40-hex HEAD — must exactly equal the HEAD the checker derives."
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "$ref": "#/definitions/isoTimestamp"
+        },
+        "category": {
+          "$ref": "#/definitions/naCategory"
+        },
+        "profile": {
+          "$ref": "#/definitions/profile"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Substantive justification (>= 20 chars and >= 4 words; the checker also enforces the word count). One character fails."
+        },
+        "applicability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "matrix",
+            "profile_source",
+            "checked"
+          ],
+          "properties": {
+            "matrix": {
+              "type": "string",
+              "pattern": "^(design|frontend|backend|database|performance|seo|analytics):(public-marketing-site|saas-application|e-commerce|internal-application|api-service|library-package)$",
+              "description": "The '<category>:<profile>' matrix cell this N/A claims; the checker verifies the cell is permitted."
+            },
+            "profile_source": {
+              "const": ".solo/project.md",
+              "description": "Canonical committed source for the project profile. The recorder and checker read the single `Project profile: <recognized-slug>` field from HEAD:.solo/project.md; caller-selected sources are forbidden."
+            },
+            "checked": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "What was actually inspected to conclude non-applicability."
+            }
+          }
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expires": {
+          "$ref": "#/definitions/isoTimestamp"
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

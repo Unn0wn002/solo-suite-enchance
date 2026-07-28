@@ -1,0 +1,40 @@
+{
+  "name": "git",
+  "version": "1.0.27",
+  "description": "Plan safe branches, commits, pull requests, release notes, and issue synchronization. Migrated workflows: $git-commit-plan, $git-create-branch, $git-pr-review, $git-release-notes, $git-sync-issues.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "branch",
+    "codex",
+    "commit",
+    "git",
+    "github",
+    "issues",
+    "pr",
+    "pull-request",
+    "release-notes",
+    "review",
+    "solo",
+    "solo-suite",
+    "version-control"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Git Workflow",
+    "shortDescription": "Plan safe Git, pull request, and release work",
+    "longDescription": "Plan safe branches, commits, pull requests, release notes, and issue synchronization. Migrated workflows: $git-commit-plan, $git-create-branch, $git-pr-review, $git-release-notes, $git-sync-issues. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Git Workflow to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

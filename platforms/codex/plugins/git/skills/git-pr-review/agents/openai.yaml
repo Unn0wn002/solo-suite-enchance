@@ -1,0 +1,6 @@
+interface:
+  display_name: "Git Pr Review"
+  short_description: "Run the Git Pr Review Codex workflow"
+  default_prompt: "Use $git-pr-review to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

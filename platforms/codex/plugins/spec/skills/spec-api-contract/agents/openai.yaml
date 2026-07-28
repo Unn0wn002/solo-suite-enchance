@@ -1,0 +1,6 @@
+interface:
+  display_name: "Spec API Contract"
+  short_description: "Run the Spec API Contract Codex workflow"
+  default_prompt: "Use $spec-api-contract to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

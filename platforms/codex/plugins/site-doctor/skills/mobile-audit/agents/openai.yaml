@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mobile Audit"
+  short_description: "Run the Mobile Audit workflow in Codex"
+  default_prompt: "Use $mobile-audit to help with this project."
+policy:
+  allow_implicit_invocation: false

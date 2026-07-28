@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dev Implement Feature"
+  short_description: "Run the Dev Implement Feature Codex workflow"
+  default_prompt: "Use $dev-implement-feature to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

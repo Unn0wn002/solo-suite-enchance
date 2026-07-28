@@ -1,0 +1,363 @@
+{
+  "name": "solo-suite",
+  "owner": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com",
+    "url": "https://github.com/unn0wn002/solo-suite"
+  },
+  "metadata": {
+    "description": "The complete solo developer system: a full product team, a production audit/debug/fix toolkit (site-doctor), a dedicated SEO specialist layer (seo), a stack-aware layer, and a workflow layer (git, spec, repo intelligence, security, browser QA, quality gates, AI-agent orchestration with AgentRooms schema + memory steward, growth), unified by the standard 16-file .solo/ project memory that can sync out to Obsidian and Grafana (tokens via environment variables only; external writes are dry-run first and manual-only). 19 plugins (18 components + the full-team meta-plugin), 79 skills, 125 slash commands, 16 stdlib helper scripts, 24 room-* agents covering intake -> spec -> plan -> design -> build -> review -> test -> browser-QA -> audit -> gate -> release -> operate -> document -> sync, with /solo:full-team-dev running the whole 18-role cycle, /solo:self-check verifying the suite, strict evidence-based gates (/gate:production-ready scores 14 categories with an N/A-aware denominator (normalized /100) and machine-readable, self-attested, stale-rejecting gate evidence; /gate:score-project for the trend metric), and two-mode (connector/manual) vendor audits for Cloudflare, Vercel, Supabase, tags, and payments that run only for providers recorded in .solo/stack.md.",
+    "version": "1.0.30"
+  },
+  "plugins": [
+    {
+      "name": "solo",
+      "displayName": "solo-suite solo",
+      "source": "./plugins/solo",
+      "description": "The heart of the solo workflow: persistent .solo/ project memory across sessions, outward sync, whole-suite self-check, and full-team orchestration.",
+      "category": "workflow",
+      "tags": [
+        "memory",
+        "handoff",
+        "session",
+        "start-session",
+        "end-session",
+        "run-cycle",
+        "sync",
+        "obsidian",
+        "grafana",
+        "solo",
+        "workflow"
+      ]
+    },
+    {
+      "name": "stack",
+      "displayName": "solo-suite stack",
+      "source": "./plugins/stack",
+      "description": "Stack-aware auditing for Cloudflare, Vercel, Supabase, analytics tags, and payments. /stack:connector-check probes read-only and writes only local project memory.",
+      "category": "development",
+      "tags": [
+        "stack",
+        "intake",
+        "cloudflare",
+        "vercel",
+        "supabase",
+        "analytics",
+        "tags",
+        "payments",
+        "stripe",
+        "vendor-audit",
+        "solo"
+      ]
+    },
+    {
+      "name": "project",
+      "displayName": "solo-suite project",
+      "source": "./plugins/project",
+      "description": "Planning for solo developers: PRD, architecture, and task breakdown. Product-manager and software-architect skills that write to shared .solo/ project memory.",
+      "category": "planning",
+      "tags": [
+        "planning",
+        "prd",
+        "architecture",
+        "tasks",
+        "solo"
+      ]
+    },
+    {
+      "name": "design",
+      "displayName": "solo-suite design",
+      "source": "./plugins/design",
+      "description": "Design for solo developers: UX flows, UI review, and a lightweight component system. UI/UX-designer skill; complements site-doctor's accessibility, mobile, and forms audits.",
+      "category": "design",
+      "tags": [
+        "design",
+        "ux",
+        "ui",
+        "component-system",
+        "solo"
+      ]
+    },
+    {
+      "name": "dev",
+      "displayName": "solo-suite dev",
+      "source": "./plugins/dev",
+      "description": "Development for solo developers: implement features, fix bugs by root cause, refactor safely, and review code. Routes deep database and security work to site-doctor.",
+      "category": "development",
+      "tags": [
+        "development",
+        "bug-fix",
+        "refactor",
+        "code-review",
+        "solo"
+      ]
+    },
+    {
+      "name": "test",
+      "displayName": "solo-suite test",
+      "source": "./plugins/test",
+      "description": "Testing for solo developers: unit, integration, e2e, and edge-case hunting. QA-engineer skill that tests against PRD acceptance criteria and keeps the test pyramid balanced.",
+      "category": "testing",
+      "tags": [
+        "testing",
+        "qa",
+        "e2e",
+        "edge-cases",
+        "solo"
+      ]
+    },
+    {
+      "name": "release",
+      "displayName": "solo-suite release",
+      "source": "./plugins/release",
+      "description": "Release for solo developers: pre-launch preflight, a safe ordered deploy plan, and a rollback plan prepared before deploying rather than during an incident.",
+      "category": "devops",
+      "tags": [
+        "release",
+        "deployment",
+        "devops",
+        "rollback",
+        "security",
+        "solo"
+      ]
+    },
+    {
+      "name": "docs",
+      "displayName": "solo-suite docs",
+      "source": "./plugins/docs",
+      "description": "Documentation for solo developers: README and docs upkeep, API reference, and a from-scratch setup guide, kept matched to code reality rather than to intent.",
+      "category": "documentation",
+      "tags": [
+        "documentation",
+        "readme",
+        "api-docs",
+        "setup-guide",
+        "solo"
+      ]
+    },
+    {
+      "name": "site-doctor",
+      "displayName": "solo-suite site-doctor",
+      "source": "./plugins/site-doctor",
+      "description": "Production toolkit to audit, debug, and fix websites and databases - 27 skills across security, SEO, performance, accessibility, API, observability, and infrastructure.",
+      "category": "development",
+      "tags": [
+        "audit",
+        "debug",
+        "security",
+        "seo",
+        "performance",
+        "accessibility",
+        "api",
+        "observability",
+        "infrastructure",
+        "devops",
+        "compliance",
+        "database",
+        "monitoring",
+        "production",
+        "animation",
+        "motion-design",
+        "gsap"
+      ]
+    },
+    {
+      "name": "seo",
+      "displayName": "solo-suite seo",
+      "source": "./plugins/seo",
+      "description": "Dedicated SEO specialist layer: technical, content, schema, sitemap, hreflang, local, maps, GEO/AI-search, e-commerce, and programmatic SEO, with one command per skill.",
+      "category": "development",
+      "tags": [
+        "seo",
+        "seo-maps",
+        "seo-flow",
+        "technical-seo",
+        "content-quality",
+        "e-e-a-t",
+        "schema-markup",
+        "core-web-vitals",
+        "local-seo",
+        "geo",
+        "ai-search",
+        "sitemap",
+        "hreflang",
+        "backlinks",
+        "semantic-clustering",
+        "sxo",
+        "drift-monitoring",
+        "ecommerce-seo",
+        "solo",
+        "connector-mode",
+        "manual-mode"
+      ]
+    },
+    {
+      "name": "git",
+      "displayName": "solo-suite git",
+      "source": "./plugins/git",
+      "description": "Git and repository workflow: safe branch names, clean atomic commits, PR review, release notes, and GitHub issue sync against .solo/tasks.md.",
+      "category": "workflow",
+      "tags": [
+        "git",
+        "branch",
+        "commit",
+        "pr",
+        "pull-request",
+        "review",
+        "release-notes",
+        "github",
+        "issues",
+        "version-control",
+        "solo"
+      ]
+    },
+    {
+      "name": "spec",
+      "displayName": "solo-suite spec",
+      "source": "./plugins/spec",
+      "description": "Spec and planning: turn rough ideas into clear briefs, testable acceptance criteria, and API, data, and environment contracts before you build.",
+      "category": "planning",
+      "tags": [
+        "spec",
+        "planning",
+        "acceptance-criteria",
+        "feature-brief",
+        "api-contract",
+        "data-contract",
+        "env-contract",
+        "requirements",
+        "solo"
+      ]
+    },
+    {
+      "name": "repo",
+      "displayName": "solo-suite repo",
+      "source": "./plugins/repo",
+      "description": "Repo intelligence: understand a codebase before editing it - structure map, risk map, dependency map, dead-code finder, and onboarding guide. Read-only.",
+      "category": "analysis",
+      "tags": [
+        "repo",
+        "codebase",
+        "map",
+        "risk",
+        "dependencies",
+        "dead-code",
+        "onboarding",
+        "analysis",
+        "read-only",
+        "solo"
+      ]
+    },
+    {
+      "name": "security",
+      "displayName": "solo-suite security",
+      "source": "./plugins/security",
+      "description": "Security: threat modeling, role/permission matrices, static Supabase RLS review, manual-only live test planning, redacted secret detection, and abuse-case analysis.",
+      "category": "security",
+      "tags": [
+        "security",
+        "authorization",
+        "authz",
+        "rls",
+        "supabase",
+        "secrets",
+        "threat-model",
+        "abuse-cases",
+        "owasp",
+        "solo"
+      ]
+    },
+    {
+      "name": "browser",
+      "displayName": "solo-suite browser",
+      "source": "./plugins/browser",
+      "description": "Real-browser QA: smoke-test core flows, catch console/network/hydration errors, review layout and responsiveness, test mobile breakpoints, and test forms end to end.",
+      "category": "testing",
+      "tags": [
+        "browser",
+        "qa",
+        "testing",
+        "console",
+        "network",
+        "hydration",
+        "responsive",
+        "mobile",
+        "forms",
+        "e2e",
+        "solo"
+      ]
+    },
+    {
+      "name": "gate",
+      "displayName": "solo-suite gate",
+      "source": "./plugins/gate",
+      "description": "Gates over self-attested, copyable evidence - not proof: /gate:before-code, /gate:before-merge, /gate:before-deploy, /gate:finalize-evidence, /gate:production-ready, /gate:score-project",
+      "category": "quality",
+      "tags": [
+        "gate",
+        "quality",
+        "go-no-go",
+        "before-merge",
+        "before-deploy",
+        "production-ready",
+        "launch",
+        "checklist",
+        "readiness",
+        "solo"
+      ]
+    },
+    {
+      "name": "ai",
+      "displayName": "solo-suite ai",
+      "source": "./plugins/ai",
+      "description": "AI coding workflow: sharpen prompts, check agent handoffs, review AI-generated code for hallucinations, route tasks to the right model, and run rooms with 24 room-* agents.",
+      "category": "ai",
+      "tags": [
+        "ai",
+        "agents",
+        "prompt",
+        "handoff",
+        "review",
+        "hallucination",
+        "model-routing",
+        "claude",
+        "codex",
+        "gemini",
+        "solo"
+      ]
+    },
+    {
+      "name": "growth",
+      "displayName": "solo-suite growth",
+      "source": "./plugins/growth",
+      "description": "Growth: audit the conversion funnel and find where users drop off and why. Skill: conversion-optimizer (delegates measurement to site-doctor analytics/forms). Command: /growth:conversion-audit.",
+      "category": "growth",
+      "tags": [
+        "growth",
+        "conversion",
+        "cro",
+        "funnel",
+        "drop-off",
+        "activation",
+        "analytics",
+        "forms",
+        "solo"
+      ]
+    },
+    {
+      "name": "full-team",
+      "displayName": "solo-suite full-team",
+      "source": "./plugins/full-team",
+      "description": "Meta-plugin that installs the complete solo-suite team in one step, declaring all 18 component plugins as dependencies.",
+      "category": "workflow",
+      "tags": [
+        "meta",
+        "full-team",
+        "install-all",
+        "solo",
+        "workflow"
+      ]
+    }
+  ],
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json"
+}

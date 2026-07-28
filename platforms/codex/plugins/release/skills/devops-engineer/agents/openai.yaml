@@ -1,0 +1,6 @@
+interface:
+  display_name: "Devops Engineer"
+  short_description: "Run the Devops Engineer workflow in Codex"
+  default_prompt: "Use $devops-engineer to help with this project."
+policy:
+  allow_implicit_invocation: false

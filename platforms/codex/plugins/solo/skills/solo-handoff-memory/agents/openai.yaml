@@ -1,0 +1,6 @@
+interface:
+  display_name: "Solo Handoff Memory"
+  short_description: "Run the Solo Handoff Memory Codex workflow"
+  default_prompt: "Use $solo-handoff-memory to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

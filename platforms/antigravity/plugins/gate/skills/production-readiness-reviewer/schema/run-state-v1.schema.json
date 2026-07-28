@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/unn0wn002/solo-suite/plugins/gate/skills/production-readiness-reviewer/schema/run-state-v1.schema.json",
+  "title": "run-state-v1",
+  "description": "The FORMAL run-state contract (v1.0.17): the single machine-readable carrier for a run's BASE/INTEGRATION/FINAL SHAs, stored as UNTRACKED .solo/run-state/<run_id>.json (a commit cannot contain its own SHA, so tracked carriers are structurally impossible). Written ONLY by scripts/update_run_state.py, which derives every SHA from `git rev-parse HEAD` itself (callers can never supply one), enforces monotonic transitions (base_sha -> integration_sha -> final_sha; a set value never changes; an already-frozen final_sha can never be rewritten to another value), writes atomically, and validates the result against this schema. Keys are EXACTLY these lowercase names; SHAs are full 40-hex lowercase.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "run_id"
+  ],
+  "properties": {
+    "schema": {
+      "const": "run-state-v1"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+      "description": "The room/flow run identifier (e.g. ftw-123, prl-7). Must match the file name: .solo/run-state/<run_id>.json."
+    },
+    "base_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "OPTIONAL. HEAD when the orchestrator committed the planning memory, derived by update_run_state.py via `git rev-parse HEAD` — builders fast-forward onto this before writing code."
+    },
+    "integration_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "OPTIONAL. HEAD of the single integration commit (integration/<run_id>), derived by update_run_state.py — review/QA/hardening seats verify against it."
+    },
+    "final_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "OPTIONAL until the freeze, then FROZEN. HEAD of the orchestrator's freeze commit, derived by update_run_state.py — the finalizer and gatekeeper verify HEAD equals it exactly, and update_run_state.py refuses to rewrite it to a different value."
+    }
+  }
+}

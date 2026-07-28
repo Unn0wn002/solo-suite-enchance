@@ -1,0 +1,6 @@
+interface:
+  display_name: "Site Doctor Email Check"
+  short_description: "Run the Site Doctor Email Check Codex workflow"
+  default_prompt: "Use $site-doctor-email-check to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

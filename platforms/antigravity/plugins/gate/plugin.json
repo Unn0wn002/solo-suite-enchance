@@ -1,0 +1,30 @@
+{
+  "$schema": "https://www.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "gate",
+  "displayName": "solo-suite gate",
+  "version": "2.5.5",
+  "description": "Gates over self-attested, copyable evidence - not proof: /gate:before-code, /gate:before-merge, /gate:before-deploy, /gate:finalize-evidence, /gate:production-ready, /gate:score-project",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)",
+    "email": "ayakuminozomi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unn0wn002/solo-suite",
+  "homepage": "https://github.com/unn0wn002/solo-suite#readme",
+  "keywords": [
+    "gate",
+    "quality",
+    "go-no-go",
+    "before-merge",
+    "before-deploy",
+    "production-ready",
+    "launch",
+    "checklist",
+    "readiness",
+    "solo",
+    "scoring",
+    "launch-status",
+    "blockers",
+    "strict"
+  ]
+}

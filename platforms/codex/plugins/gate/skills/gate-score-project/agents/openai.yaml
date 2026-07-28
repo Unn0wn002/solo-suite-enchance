@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gate Score Project"
+  short_description: "Run the Gate Score Project Codex workflow"
+  default_prompt: "Use $gate-score-project to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

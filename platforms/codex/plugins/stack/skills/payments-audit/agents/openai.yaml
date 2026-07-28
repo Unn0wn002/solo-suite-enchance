@@ -1,0 +1,6 @@
+interface:
+  display_name: "Payments Audit"
+  short_description: "Run the Payments Audit workflow in Codex"
+  default_prompt: "Use $payments-audit to help with this project."
+policy:
+  allow_implicit_invocation: false

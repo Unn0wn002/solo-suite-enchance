@@ -1,0 +1,17 @@
+# Pinned CI test dependencies for solo-suite — the human-readable INPUT.
+# CI does NOT install this file directly any more (v1.0.17): it installs
+# the hash-locked requirements-dev.lock with
+#     python -m pip install --require-hashes -r requirements-dev.lock
+# which pins these same top-level packages PLUS their full transitive
+# closure with per-artifact sha256 hashes. Regenerate the lock from this
+# file with: pip-compile --generate-hashes --output-file=requirements-dev.lock ci-requirements.txt
+# Runtime needs NOTHING beyond the Python standard library — these pins are
+# for the CI test/validation environment only (see sbom.json "optional").
+# jsonschema: accelerates/cross-checks the built-in schema evaluators; the
+#             suite is also tested WITHOUT it (builtin-evaluator CI step).
+# coverage:   informational coverage report step.
+jsonschema==4.23.0
+coverage==7.6.1
+# PyYAML: optional richer frontmatter parsing in self_check.py (a strict
+# subset parser runs when absent).
+PyYAML==6.0.2

@@ -1,0 +1,848 @@
+{
+  "schema": "solo-suite/agentroom-v1",
+  "name": "full-team-website",
+  "version": 5,
+  "description": "Complete website build from idea to launch: the /solo:full-team-dev flow staffed with 21 staged seats plus the stage-independent memory steward — 22 seat definitions total across 15 stages including finalize; every staged persona/mechanical seat maps to a shipped room-* agent. Seats with applies_to run only for matching project profiles; every skipped seat needs an evidence-backed N/A reason (and a finalizer-minted N/A gate-evidence record) in the run report.",
+  "based_on_room": "Planning + Build + Integration + QA + Hardening + Growth + Launch rooms combined",
+  "memory_dir": ".solo/",
+  "profiles": [
+    "public-marketing-site",
+    "saas-application",
+    "e-commerce",
+    "internal-application",
+    "api-service",
+    "library-package"
+  ],
+  "run": {
+    "id_prefix": "ftw",
+    "id_required": true
+  },
+  "rules": [
+    "one writer per artifact per stage, computed over declared PLUS implicit command writes — shared memory (tasks/decisions/handoff) is written ONLY by the memory steward; every other seat submits proposals",
+    "context is explicit — each seat reads only its listed files, plus .solo/handoff.md",
+    "every seat ends with a handoff checked by /ai:handoff-check before the next stage starts",
+    "code-writing seats work in ISOLATED worktrees (their agents declare isolation: worktree) under the room's `worktrees` execution contract: BASE_SHA is recorded before spawning (worktree agents branch from the DEFAULT branch, not the parent HEAD), every builder returns worktree_path/branch/clean commit_sha/tests/proposal, and the integrator merges those EXACT SHAs into ONE integration commit (integration/<run_id>) BEFORE review — reviewers never review unmerged parallel work",
+    "every seat from review onward first verifies `git rev-parse HEAD` equals the appropriate SHA carried in untracked .solo/run-state/<run_id>.json (run-state-v1 contract, written only by update_run_state.py; INTEGRATION_SHA for review/QA/hardening, FINAL_SHA for finalize/gate — mechanically: `update_run_state.py verify integration|final`) before doing any work — evidence gathered at any other commit is invalid and check_evidence.py will reject it",
+    "EVIDENCE LIFECYCLE: specialists produce raw artifacts and N/A candidates only; ALL tracked memory updates (tasks, decisions, risks, /solo:handoff-memory) happen BEFORE the freeze; the ORCHESTRATOR executes the structured evidence.freeze contract (after the docs stage, before finalize): commits all tracked code, docs, release plans and project memory, verifies a clean tree, and records FINAL_SHA with update_run_state.py advance final (run-state-v1 — SHA derived from git by the helper, monotonic, frozen once set) in untracked .solo/run-state/<run_id>.json; after the freeze NOTHING tracked changes — the coordinator pauses for the user-invoked finalization command to create records (untracked), then verifies them; the gatekeeper is output-only and the memory steward never runs at or after the finalizer (memory_steward.active_through_stage = 'docs')",
+    "no specialist writes gate-evidence records mid-flow; after the freeze, the evidence_finalizer coordinator prepares the /gate:finalize-evidence preview and pauses — only the user may confirm and invoke that manual-only command; the coordinator then verifies the FULL set at FINAL_SHA before the gatekeeper runs check_evidence.py",
+    "vendor audits (/stack:audit-*) run only for providers recorded in .solo/stack.md; each skipped audit or profile-skipped seat is reported as N/A with the evidence for why",
+    "state-changing browser tests (/browser:smoke-test, /browser:form-submit-test) are manual-only — the browser_qa seat runs the read-only modes and returns an explicit human handoff for the rest; no manual-only command may appear in any seat commands list",
+    "no evidence, no finding — audits follow the evidence-based output format"
+  ],
+  "stages": [
+    {
+      "id": "discovery",
+      "seats": [
+        "pm",
+        "repo_analyst"
+      ]
+    },
+    {
+      "id": "architecture",
+      "seats": [
+        "architect"
+      ]
+    },
+    {
+      "id": "design",
+      "seats": [
+        "designer"
+      ]
+    },
+    {
+      "id": "build",
+      "seats": [
+        "frontend_dev",
+        "backend_dev",
+        "db_engineer"
+      ]
+    },
+    {
+      "id": "integrate",
+      "seats": [
+        "integrator"
+      ]
+    },
+    {
+      "id": "review",
+      "seats": [
+        "reviewer"
+      ]
+    },
+    {
+      "id": "ai-review",
+      "seats": [
+        "ai_reviewer"
+      ]
+    },
+    {
+      "id": "qa",
+      "seats": [
+        "tester",
+        "browser_qa"
+      ]
+    },
+    {
+      "id": "hardening",
+      "seats": [
+        "security",
+        "auditor"
+      ]
+    },
+    {
+      "id": "growth",
+      "seats": [
+        "growth"
+      ]
+    },
+    {
+      "id": "merge",
+      "seats": [
+        "git_manager"
+      ]
+    },
+    {
+      "id": "release",
+      "seats": [
+        "devops",
+        "release_manager"
+      ]
+    },
+    {
+      "id": "docs",
+      "seats": [
+        "docs"
+      ]
+    },
+    {
+      "id": "finalize",
+      "seats": [
+        "evidence_finalizer"
+      ]
+    },
+    {
+      "id": "launch-gate",
+      "seats": [
+        "gatekeeper"
+      ]
+    }
+  ],
+  "memory_steward": {
+    "seat": "steward",
+    "owns": [
+      ".solo/tasks.md",
+      ".solo/decisions.md",
+      ".solo/handoff.md"
+    ],
+    "allocates_task_ids": true,
+    "merge_policy": "single writer for shared memory: ordinary seats submit .solo/proposals/<seat>-<run_id>.md; worktree builders commit .solo/proposals/<seat>-<run_id>.json in their payload branches and the integrator transports those exact commits before the steward consumes them. The steward merges proposals, allocates unique T-IDs, merges decisions/handoffs, and reports conflicts; active_through_stage = 'docs' is the structured cutoff — the runner MUST NOT invoke it at or after finalize, and the LAST merge happens after docs and before the freeze",
+    "active_through_stage": "docs"
+  },
+  "locks": {
+    ".solo/tasks.md": "steward",
+    ".solo/decisions.md": "steward",
+    ".solo/handoff.md": "steward"
+  },
+  "seats": [
+    {
+      "id": "pm",
+      "role": "Product Manager",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/project.md"
+      ],
+      "writes": [
+        ".solo/stack.md",
+        ".solo/prd.md"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-product-manager",
+      "commands": [
+        "/stack:intake",
+        "/stack:connector-check",
+        "/project:prd",
+        "/spec:feature-brief",
+        "/spec:acceptance"
+      ],
+      "deliverable": "PRD with MVP scope, non-goals, testable acceptance criteria; stack recorded (raw artifacts only — all gate-evidence records are minted later by the evidence finalizer at FINAL_SHA)",
+      "handoff_to": "architect",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "repo_analyst",
+      "role": "Repo Analyst",
+      "model_hint": "balanced",
+      "reads": [
+        "repository tree (read-only)"
+      ],
+      "writes": [],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-repo-analyst",
+      "commands": [
+        "/repo:map",
+        "/repo:risk-map",
+        "/repo:dependency-map"
+      ],
+      "deliverable": "Codebase map + risk map for an existing repo (skipped with N/A reason for greenfield)",
+      "handoff_to": "architect",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "architect",
+      "role": "Software Architect",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/prd.md"
+      ],
+      "writes": [
+        ".solo/architecture.md",
+        ".solo/api-contract.md",
+        ".solo/data-contract.md",
+        ".solo/env-contract.md"
+      ],
+      "proposes": [
+        ".solo/decisions.md"
+      ],
+      "agent": "room-software-architect",
+      "commands": [
+        "/project:architecture",
+        "/spec:api-contract",
+        "/spec:data-contract",
+        "/spec:env-contract"
+      ],
+      "deliverable": "Architecture + API/data/env contracts (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "designer",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "designer",
+      "role": "UI/UX Designer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/prd.md",
+        ".solo/architecture.md"
+      ],
+      "writes": [
+        ".solo/design.md",
+        ".solo/risks.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md"
+      ],
+      "agent": "room-ui-ux-designer",
+      "commands": [
+        "/design:ux-flow",
+        "/design:component-system",
+        "/project:task-breakdown",
+        "/gate:before-code"
+      ],
+      "deliverable": "Core flows incl. empty/loading/error states, component system, task breakdown; before-code gate GO (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": [
+        "frontend_dev",
+        "backend_dev",
+        "db_engineer"
+      ],
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "frontend_dev",
+      "role": "Frontend Developer",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/tasks.md",
+        ".solo/api-contract.md",
+        ".solo/design.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        "frontend source (own worktree)"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/tasks.md"
+      ],
+      "workspace": "worktree:frontend",
+      "agent": "room-frontend-developer",
+      "commands": [
+        "/dev:implement-feature"
+      ],
+      "deliverable": "Working UI per task in an ISOLATED worktree; decisions proposed to steward",
+      "handoff_to": "integrator",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "backend_dev",
+      "role": "Backend Developer",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/tasks.md",
+        ".solo/api-contract.md",
+        ".solo/data-contract.md",
+        ".solo/env-contract.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        "backend source (own worktree)"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/tasks.md"
+      ],
+      "workspace": "worktree:backend",
+      "agent": "room-backend-developer",
+      "commands": [
+        "/dev:implement-feature"
+      ],
+      "deliverable": "Working API/services per task in an ISOLATED worktree; decisions proposed to steward",
+      "handoff_to": "integrator",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "db_engineer",
+      "role": "Database Engineer",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/data-contract.md",
+        ".solo/architecture.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        "migrations/schema (own worktree)"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/tasks.md"
+      ],
+      "workspace": "worktree:database",
+      "agent": "room-database-engineer",
+      "commands": [
+        "/dev:implement-feature"
+      ],
+      "deliverable": "Schema + reversible migrations matching the data contract in an ISOLATED worktree; decisions proposed to steward (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "integrator",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "integrator",
+      "role": "Worktree Integrator (Git)",
+      "model_hint": "strong-coding",
+      "reads": [
+        "frontend source (own worktree)",
+        "backend source (own worktree)",
+        "migrations/schema (own worktree)",
+        ".solo/proposals/<seat>-<run_id>.json (builder payloads via git show)",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        "integration branch (merged worktrees)",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "agent": "room-worktree-integrator",
+      "commands": [
+        "/git:commit-plan"
+      ],
+      "deliverable": "All three build worktrees merged into ONE integration branch — conflicts resolved, builds green; INTEGRATION_SHA recorded via update_run_state.py advance integration (run-state-v1, derived from HEAD by the helper) in untracked .solo/run-state/<run_id>.json — so review sees the combined change",
+      "handoff_to": [
+        "reviewer"
+      ],
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "reviewer",
+      "role": "Code Reviewer + UI Reviewer (different model than implementers)",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        "integration branch (merged worktrees)",
+        ".solo/tasks.md",
+        ".solo/api-contract.md",
+        ".solo/design.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/design.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md"
+      ],
+      "agent": "room-code-reviewer",
+      "commands": [
+        "/dev:code-review",
+        "/design:ui-review"
+      ],
+      "deliverable": "Review verdict on the MERGED integration branch + post-implementation UI review recorded only in the declared design artifact; actionable shared-memory findings proposed to the steward, with no implementation-source edits",
+      "handoff_to": "ai_reviewer",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "ai_reviewer",
+      "role": "AI Agent Reviewer",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/project.md",
+        ".solo/prd.md",
+        ".solo/architecture.md",
+        ".solo/api-contract.md",
+        ".solo/data-contract.md",
+        ".solo/env-contract.md",
+        ".solo/design.md",
+        ".solo/stack.md",
+        ".solo/decisions.md",
+        ".solo/tasks.md",
+        ".solo/proposals/ (planning and build proposals available at this stage)",
+        "integration branch (merged worktrees)",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [],
+      "proposes": [
+        ".solo/tasks.md"
+      ],
+      "agent": "room-ai-agent-reviewer",
+      "commands": [
+        "/ai:review-output",
+        "/ai:handoff-check"
+      ],
+      "deliverable": "Hallucination, missing-file, contradiction, and handoff audit of the planning/build outputs explicitly listed in reads and available at this review stage; later-stage output is not claimed as checked",
+      "handoff_to": [
+        "tester",
+        "browser_qa"
+      ],
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "tester",
+      "role": "QA Engineer",
+      "model_hint": "strong-coding",
+      "reads": [
+        ".solo/prd.md",
+        ".solo/tasks.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/tests.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md"
+      ],
+      "agent": "room-qa-engineer",
+      "commands": [
+        "/test:unit",
+        "/test:integration",
+        "/test:e2e",
+        "/test:edge-cases"
+      ],
+      "deliverable": "Tests passing incl. edge cases, results in .solo/tests.md (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "security",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "browser_qa",
+      "role": "Browser QA Engineer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/project.md",
+        ".solo/design.md",
+        ".solo/stack.md",
+        ".solo/env-contract.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/bugs.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md"
+      ],
+      "agent": "room-browser-qa-engineer",
+      "commands": [
+        "/browser:console-errors",
+        "/browser:visual-check",
+        "/browser:mobile-test"
+      ],
+      "deliverable": "Real-browser evidence: console, layout, 320/375/768; asks the human to run the manual-only smoke/form submission tests (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "auditor",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "security",
+      "role": "Security Engineer",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/architecture.md",
+        ".solo/api-contract.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/risks.md"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-security-engineer",
+      "commands": [
+        "/security:threat-model",
+        "/security:authz-matrix"
+      ],
+      "deliverable": "Threat model and authz matrix in .solo/risks.md; when RLS applies, include a human handoff for the manual-only /security:rls-test against a disposable test tenant (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "growth",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "auditor",
+      "role": "Site Doctor + Stack Auditor",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/stack.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "agent": "room-site-doctor",
+      "commands": [
+        "/site-doctor:full-checkup",
+        "/stack:audit-vercel",
+        "/stack:audit-supabase",
+        "/stack:audit-cloudflare",
+        "/stack:audit-tags",
+        "/stack:audit-payments"
+      ],
+      "deliverable": "Evidence-based findings with fix order; vendor audits (/stack:audit-*) run per stack.md; performance/SEO/analytics N/A CANDIDATES (profile evidence) handed to the evidence finalizer — records themselves are minted only by the finalizer at FINAL_SHA",
+      "handoff_to": "growth",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "growth",
+      "role": "Growth / Conversion Reviewer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/prd.md",
+        ".solo/stack.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [],
+      "proposes": [
+        ".solo/tasks.md"
+      ],
+      "applies_to": [
+        "public-marketing-site",
+        "e-commerce",
+        "saas-application"
+      ],
+      "agent": "room-growth-reviewer",
+      "commands": [
+        "/growth:conversion-audit"
+      ],
+      "deliverable": "Funnel/conversion audit for user-facing conversion-oriented sites",
+      "handoff_to": "git_manager",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "git_manager",
+      "role": "Git / PR Manager",
+      "model_hint": "balanced",
+      "reads": [
+        "integration branch (merged worktrees)",
+        ".solo/tests.md",
+        ".solo/risks.md",
+        ".solo/env-contract.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/risks.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md"
+      ],
+      "agent": "room-git-pr-manager",
+      "commands": [
+        "/git:commit-plan",
+        "/git:pr-review",
+        "/gate:before-merge"
+      ],
+      "deliverable": "Clean commits, PR review, before-merge gate GO",
+      "handoff_to": [
+        "devops",
+        "release_manager"
+      ],
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "devops",
+      "role": "DevOps Engineer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/env-contract.md",
+        ".solo/stack.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/monitoring.md"
+      ],
+      "proposes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "agent": "room-devops-engineer",
+      "commands": [
+        "/release:ci-setup",
+        "/site-doctor:monitoring"
+      ],
+      "deliverable": "CI pipeline + monitoring/alerting wired and recorded in .solo/monitoring.md (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "docs",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "release_manager",
+      "role": "Release Manager",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/env-contract.md",
+        ".solo/risks.md",
+        ".solo/tests.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/release.md",
+        ".solo/risks.md"
+      ],
+      "proposes": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "agent": "room-release-manager",
+      "commands": [
+        "/release:preflight",
+        "/release:deploy-plan",
+        "/release:rollback-plan",
+        "/gate:before-deploy"
+      ],
+      "deliverable": "Preflight, deploy + rollback plans, before-deploy gate GO (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "docs",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "docs",
+      "role": "Documentation Writer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/api-contract.md",
+        ".solo/env-contract.md",
+        ".solo/release.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        "docs/ (repo documentation)"
+      ],
+      "proposes": [
+        ".solo/handoff.md"
+      ],
+      "agent": "room-documentation-writer",
+      "commands": [
+        "/docs:update",
+        "/docs:setup-guide",
+        "/docs:runbook",
+        "/git:release-notes"
+      ],
+      "deliverable": "Docs matched to what actually ships (written AFTER release.md exists) + release notes; completion proposed to handoff (raw artifacts only — no gate-evidence records mid-flow)",
+      "handoff_to": "evidence_finalizer",
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "evidence_finalizer",
+      "role": "Evidence Finalizer",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/handoff.md",
+        ".solo/stack.md",
+        ".solo/project.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [
+        ".solo/gate-evidence/product.json",
+        ".solo/gate-evidence/architecture.json",
+        ".solo/gate-evidence/design.json",
+        ".solo/gate-evidence/frontend.json",
+        ".solo/gate-evidence/backend.json",
+        ".solo/gate-evidence/database.json",
+        ".solo/gate-evidence/security.json",
+        ".solo/gate-evidence/testing.json",
+        ".solo/gate-evidence/performance.json",
+        ".solo/gate-evidence/seo.json",
+        ".solo/gate-evidence/analytics.json",
+        ".solo/gate-evidence/deployment.json",
+        ".solo/gate-evidence/monitoring.json",
+        ".solo/gate-evidence/documentation.json"
+      ],
+      "agent_note": "coordination-only seat: prepares and verifies the preview, pauses for the user to invoke the manual-only command, then verifies the resulting records; it never invokes /gate:finalize-evidence itself",
+      "commands": [],
+      "human_handoff": {
+        "command": "/gate:finalize-evidence",
+        "executor": "user",
+        "preview_required": true,
+        "confirmation_required": true,
+        "resume_on": "the user reports successful command completion and the coordinator verifies all 14 records at FINAL_SHA"
+      },
+      "deliverable": "Reads FINAL_SHA from untracked .solo/run-state/<run_id>.json, verifies HEAD equals it, and prepares the exact user handoff inputs; pauses while the user invokes /gate:finalize-evidence, reviews the command-generated preview, and explicitly confirms execution, then verifies all 14 resulting records and hands off only on success; the coordinator never invokes the manual-only command or changes tracked files",
+      "handoff_to": "gatekeeper",
+      "handoff_check": "/ai:handoff-check",
+      "agent": "room-evidence-finalizer"
+    },
+    {
+      "id": "gatekeeper",
+      "role": "Production Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "reads": [
+        ".solo/project.md",
+        ".solo/stack.md",
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/data-contract.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/gate-evidence/*.json",
+        ".solo/handoff.md",
+        ".solo/monitoring.md",
+        ".solo/prd.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/tasks.md",
+        ".solo/tests.md",
+        ".solo/run-state/<run_id>.json"
+      ],
+      "writes": [],
+      "agent": "room-production-gatekeeper",
+      "commands": [
+        "/gate:production-ready"
+      ],
+      "deliverable": "OUTPUT-ONLY after finalization: verifies git rev-parse HEAD equals the FINAL_SHA in untracked .solo/run-state/<run_id>.json, runs check_evidence.py (self-derived HEAD), and issues the verdict in its OUTPUT — zero tracked writes; blockers reopen work in the NEXT cycle before a new freeze",
+      "handoff_to": null,
+      "handoff_check": "/ai:handoff-check"
+    },
+    {
+      "id": "steward",
+      "role": "Memory Steward",
+      "model_hint": "balanced",
+      "reads": [
+        ".solo/proposals/ (all seat proposals)",
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "writes": [
+        ".solo/tasks.md",
+        ".solo/decisions.md",
+        ".solo/handoff.md"
+      ],
+      "agent": "room-memory-steward",
+      "commands": [
+        "/solo:handoff-memory"
+      ],
+      "deliverable": "After every stage: merge proposals into shared memory, allocate unique T-IDs, merge decisions/handoffs, flag conflicts",
+      "handoff_to": null,
+      "handoff_check": "/ai:handoff-check"
+    }
+  ],
+  "exit_gate": "/gate:production-ready",
+  "gate_requires": [
+    ".solo/project.md",
+    ".solo/stack.md",
+    ".solo/architecture.md",
+    ".solo/bugs.md",
+    ".solo/data-contract.md",
+    ".solo/decisions.md",
+    ".solo/design.md",
+    ".solo/gate-evidence/*.json",
+    ".solo/handoff.md",
+    ".solo/monitoring.md",
+    ".solo/prd.md",
+    ".solo/release.md",
+    ".solo/risks.md",
+    ".solo/tasks.md",
+    ".solo/tests.md"
+  ],
+  "gate_evidence_map": {
+    "product": ".solo/prd.md",
+    "architecture": ".solo/architecture.md",
+    "design": ".solo/design.md",
+    "frontend": ".solo/bugs.md",
+    "backend": ".solo/decisions.md",
+    "database": ".solo/data-contract.md",
+    "security": ".solo/risks.md",
+    "testing": ".solo/tests.md",
+    "performance": ".solo/tasks.md",
+    "seo": ".solo/tasks.md",
+    "analytics": ".solo/tasks.md",
+    "deployment": ".solo/release.md",
+    "monitoring": ".solo/monitoring.md",
+    "documentation": ".solo/handoff.md"
+  },
+  "exit_criteria": "check_evidence.py exits 0 (all 14 categories verified or recognized-N/A at the current commit + environment) and the production-ready gate returns SAFE TO LAUNCH (or SAFE WITH WARNINGS explicitly accepted by the user)",
+  "worktrees": {
+    "base_sha": {
+      "recorded_by": "the orchestrator (parent session) COMMITS the planning memory (.solo/ intake/PRD/architecture/contracts/design/tasks) FIRST, then records BASE_SHA with the gate plugin's update_run_state.py helper (`advance base` — the helper derives it from git rev-parse HEAD itself; run-state-v1, exact lowercase keys) into UNTRACKED .solo/run-state/<run_id>.json — never into a tracked file (a commit cannot contain its own SHA)",
+      "rule": "Claude worktree agents branch from the DEFAULT branch, not the parent session HEAD — every builder first fast-forwards onto the recorded base (`git merge --ff-only <BASE_SHA>`, or rebases) and verifies `git merge-base --is-ancestor <BASE_SHA> HEAD` before writing any code",
+      "stored_in": ".solo/run-state/<run_id>.json"
+    },
+    "builder_payload": [
+      "worktree_path",
+      "branch",
+      "commit_sha",
+      "tests",
+      "proposal"
+    ],
+    "proposal_transport": "each builder COMMITS its canonical payload as .solo/proposals/<seat>-<run_id>.json inside its own branch (clean tree; commit_sha = git rev-parse HEAD). The integrator reads each exact payload with `git show <commit_sha>:.solo/proposals/<seat>-<run_id>.json`, merges/cherry-picks the exact payload SHA, and exposes those transported JSON proposals on the integration branch. Only then does the steward merge their requested shared-memory entries; no cross-worktree file copying and no direct builder write to shared memory",
+    "integration": {
+      "seat": "integrator",
+      "mode": "merge-exact-shas",
+      "ref": "integration/<run_id>"
+    },
+    "verify_at_integration_sha": [
+      "reviewer",
+      "ai_reviewer",
+      "tester",
+      "browser_qa",
+      "security",
+      "auditor",
+      "git_manager",
+      "devops",
+      "release_manager",
+      "docs",
+      "growth"
+    ],
+    "verify_at_final_sha": [
+      "evidence_finalizer",
+      "gatekeeper"
+    ]
+  },
+  "evidence": {
+    "finalizer": "evidence_finalizer",
+    "freeze": {
+      "producer": "orchestrator",
+      "after_stage": "docs",
+      "before_stage": "finalize",
+      "commits": "all tracked code, CI config, release plans, docs/ and project memory (tasks/decisions/risks/handoff, merged by the steward's LAST run) in ONE freeze commit",
+      "verifies": "git status --porcelain is empty outside the untracked runtime dirs (.solo/gate-evidence/, .solo/run-state/) — a dirty tree aborts the freeze",
+      "records": "FINAL_SHA of the freeze commit, recorded with update_run_state.py advance final — the helper derives it from git rev-parse HEAD itself (run-state-v1; monotonic; frozen once set)",
+      "stored_in": ".solo/run-state/<run_id>.json"
+    },
+    "final_sha_recorded_in": ".solo/run-state/<run_id>.json",
+    "workflow": "untracked"
+  },
+  "assumes_preexisting": {
+    ".solo/project.md": "project profile + intake recorded by /solo:start-session and /stack:intake in an earlier session; read by the PM and the evidence finalizer, produced by neither"
+  }
+}

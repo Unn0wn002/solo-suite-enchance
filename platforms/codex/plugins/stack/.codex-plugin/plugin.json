@@ -1,0 +1,53 @@
+{
+  "name": "stack",
+  "version": "1.0.27",
+  "description": "Record the active stack, verify connector access, and run only applicable provider audits. Migrated workflows: $stack-audit-cloudflare, $stack-audit-payments, $stack-audit-supabase, $stack-audit-tags, $stack-audit-vercel, $stack-connector-check, $stack-intake.",
+  "author": {
+    "name": "Sakura Yukihira (Ayaya)"
+  },
+  "license": "MIT",
+  "keywords": [
+    "analytics",
+    "cloudflare",
+    "codex",
+    "connector",
+    "connector-auditor",
+    "connector-mode",
+    "evidence",
+    "ga4",
+    "gtm",
+    "intake",
+    "live-data",
+    "manual-mode",
+    "midtrans",
+    "payments",
+    "paypal",
+    "rls",
+    "solo",
+    "solo-suite",
+    "stack",
+    "stripe",
+    "supabase",
+    "tags",
+    "vendor-audit",
+    "vercel",
+    "webhooks",
+    "xendit"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Solo Stack Audits",
+    "shortDescription": "Audit configured cloud and SaaS providers",
+    "longDescription": "Record the active stack, verify connector access, and run only applicable provider audits. Migrated workflows: $stack-audit-cloudflare, $stack-audit-payments, $stack-audit-supabase, $stack-audit-tags, $stack-audit-vercel, $stack-connector-check, $stack-intake. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "developerName": "Sakura Yukihira (Ayaya)",
+    "category": "Development",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Solo Stack Audits to help with this project."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

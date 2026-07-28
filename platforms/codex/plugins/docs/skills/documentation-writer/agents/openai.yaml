@@ -1,0 +1,6 @@
+interface:
+  display_name: "Documentation Writer"
+  short_description: "Run the Documentation Writer workflow in Codex"
+  default_prompt: "Use $documentation-writer to help with this project."
+policy:
+  allow_implicit_invocation: false

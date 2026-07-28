@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test E2E"
+  short_description: "Run the Test E2E Codex workflow"
+  default_prompt: "Use $test-e2e to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,1071 @@
+{
+  "$schema": "../schema/agentroom-v1.schema.json",
+  "schema": "solo-suite/agentroom-v1",
+  "name": "production-release",
+  "version": 1,
+  "prepared": false,
+  "run_id": "template-production-release-v1",
+  "description": "Collect and validate release evidence without deploying or publishing.",
+  "based_on_room": "Solo Suite release and production-readiness rooms",
+  "profile": "profile-selected-at-runtime",
+  "memory_dir": ".solo/",
+  "rules": [
+    "Replace the template run_id with a unique run id before execution.",
+    "Only memory_steward writes .solo files; every other seat submits declared proposals.",
+    "Run seats in isolated worktrees and enforce every artifact lock.",
+    "Require exact run, commit, and environment matches; reject expired gate evidence.",
+    "Evaluate gate transitions from validated machine-readable status fields; unknown or missing statuses stop the run.",
+    "Execute provider-specific checks only when .solo/stack.md records that provider.",
+    "For profile-inapplicable work, record an evidence-backed N/A reason instead of silently skipping it."
+  ],
+  "memory_steward": {
+    "seat_id": "memory_steward",
+    "task_id_pattern": "^T[0-9]+$",
+    "proposal_merge_policy": "Allocate task IDs centrally and merge conflict-free proposals after each stage while preserving append-only decisions.",
+    "conflict_policy": "Stop the stage and require an explicit resolution before any conflicting shared-memory proposal is committed."
+  },
+  "tasks": [],
+  "workspaces": [
+    {
+      "id": "shared_memory",
+      "type": "shared-memory",
+      "path": ".solo/",
+      "owner": "memory_steward"
+    },
+    {
+      "id": "evidence_collector_workspace",
+      "type": "worktree",
+      "path": "worktrees/production-release/evidence_collector",
+      "owner": "evidence_collector"
+    },
+    {
+      "id": "devops_engineer_workspace",
+      "type": "worktree",
+      "path": "worktrees/production-release/devops_engineer",
+      "owner": "devops_engineer"
+    },
+    {
+      "id": "documentation_writer_workspace",
+      "type": "worktree",
+      "path": "worktrees/production-release/documentation_writer",
+      "owner": "documentation_writer"
+    },
+    {
+      "id": "before_deploy_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/production-release/before_deploy_gatekeeper",
+      "owner": "before_deploy_gatekeeper"
+    },
+    {
+      "id": "production_gatekeeper_workspace",
+      "type": "worktree",
+      "path": "worktrees/production-release/production_gatekeeper",
+      "owner": "production_gatekeeper"
+    }
+  ],
+  "artifact_locks": [
+    {
+      "artifact": ".solo/architecture.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/bugs.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/decisions.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/design.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/handoff.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/prd.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/project.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/release.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/risks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/stack.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/tasks.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": ".solo/tests.md",
+      "owner": "memory_steward"
+    },
+    {
+      "artifact": "artifacts/gates/production-release-before-deploy.json",
+      "owner": "before_deploy_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/gates/production-release.json",
+      "owner": "production_gatekeeper"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/analytics.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/architecture.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/backend.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/database.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/deployment.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/design.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/documentation.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/frontend.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/monitoring.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/performance.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/product.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/security.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/seo.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/categories/testing.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/project-profile.json",
+      "owner": "evidence_collector"
+    },
+    {
+      "artifact": "artifacts/production-release/release-docs.json",
+      "owner": "documentation_writer"
+    },
+    {
+      "artifact": "artifacts/production-release/release-plan.json",
+      "owner": "devops_engineer"
+    },
+    {
+      "artifact": "artifacts/production-release/rollback.json",
+      "owner": "devops_engineer"
+    }
+  ],
+  "stages": [
+    {
+      "id": "collect_evidence",
+      "seats": [
+        "memory_steward",
+        "evidence_collector"
+      ]
+    },
+    {
+      "id": "release_planning",
+      "seats": [
+        "memory_steward",
+        "devops_engineer"
+      ]
+    },
+    {
+      "id": "release_documentation",
+      "seats": [
+        "memory_steward",
+        "documentation_writer"
+      ]
+    },
+    {
+      "id": "before_deploy",
+      "seats": [
+        "memory_steward",
+        "before_deploy_gatekeeper"
+      ]
+    },
+    {
+      "id": "production_gate",
+      "seats": [
+        "memory_steward",
+        "production_gatekeeper"
+      ]
+    }
+  ],
+  "seats": [
+    {
+      "id": "memory_steward",
+      "kind": "memory-steward",
+      "persistent": true,
+      "role": "Memory Steward",
+      "model_hint": "strong-reasoning",
+      "workspace": "shared_memory",
+      "memory_access": "direct",
+      "reads": [
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/handoff.md",
+        ".solo/prd.md",
+        ".solo/project.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "writes": [
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/handoff.md",
+        ".solo/prd.md",
+        ".solo/project.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "proposals": [],
+      "commands": [],
+      "deliverable": "Allocate unique task IDs; merge proposals into tasks, decisions, and handoffs; reject conflicting shared-memory updates.",
+      "handoff_to": null,
+      "handoff_check": null,
+      "task_ids": []
+    },
+    {
+      "id": "evidence_collector",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Release Evidence Collector",
+      "model_hint": "balanced",
+      "workspace": "evidence_collector_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        ".solo/project.md",
+        ".solo/release.md",
+        ".solo/stack.md",
+        ".solo/tests.md"
+      ],
+      "writes": [
+        "artifacts/production-release/categories/analytics.json",
+        "artifacts/production-release/categories/architecture.json",
+        "artifacts/production-release/categories/backend.json",
+        "artifacts/production-release/categories/database.json",
+        "artifacts/production-release/categories/deployment.json",
+        "artifacts/production-release/categories/design.json",
+        "artifacts/production-release/categories/documentation.json",
+        "artifacts/production-release/categories/frontend.json",
+        "artifacts/production-release/categories/monitoring.json",
+        "artifacts/production-release/categories/performance.json",
+        "artifacts/production-release/categories/product.json",
+        "artifacts/production-release/categories/security.json",
+        "artifacts/production-release/categories/seo.json",
+        "artifacts/production-release/categories/testing.json",
+        "artifacts/production-release/project-profile.json"
+      ],
+      "proposals": [
+        ".solo/architecture.md",
+        ".solo/bugs.md",
+        ".solo/decisions.md",
+        ".solo/design.md",
+        ".solo/handoff.md",
+        ".solo/prd.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/stack.md",
+        ".solo/tasks.md",
+        ".solo/tests.md"
+      ],
+      "commands": [
+        "$stack-intake",
+        "$spec-acceptance",
+        "$project-architecture",
+        "$design-ui-review",
+        "$browser-smoke-test",
+        "$api-audit",
+        "$database-audit",
+        "$security-review",
+        "$test-unit",
+        "$site-doctor-perf",
+        "$site-doctor-seo",
+        "$analytics-audit",
+        "$release-preflight",
+        "$observability",
+        "$docs-update",
+        "$gate-score-project"
+      ],
+      "deliverable": "A project-profile applicability contract and fourteen normalized category evidence records tied to run, commit, and environment.",
+      "handoff_to": "devops_engineer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "devops_engineer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "DevOps Engineer",
+      "model_hint": "balanced",
+      "workspace": "devops_engineer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/production-release/categories/analytics.json",
+        "artifacts/production-release/categories/architecture.json",
+        "artifacts/production-release/categories/backend.json",
+        "artifacts/production-release/categories/database.json",
+        "artifacts/production-release/categories/deployment.json",
+        "artifacts/production-release/categories/design.json",
+        "artifacts/production-release/categories/documentation.json",
+        "artifacts/production-release/categories/frontend.json",
+        "artifacts/production-release/categories/monitoring.json",
+        "artifacts/production-release/categories/performance.json",
+        "artifacts/production-release/categories/product.json",
+        "artifacts/production-release/categories/security.json",
+        "artifacts/production-release/categories/seo.json",
+        "artifacts/production-release/categories/testing.json"
+      ],
+      "writes": [
+        "artifacts/production-release/release-plan.json",
+        "artifacts/production-release/rollback.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/release.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$release-preflight",
+        "$release-deploy-plan",
+        "$release-rollback-plan"
+      ],
+      "deliverable": "Preview-only release and rollback plans with owners and verification.",
+      "handoff_to": "documentation_writer",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "documentation_writer",
+      "kind": "worker",
+      "persistent": false,
+      "role": "Documentation Writer",
+      "model_hint": "balanced",
+      "workspace": "documentation_writer_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/production-release/release-plan.json"
+      ],
+      "writes": [
+        "artifacts/production-release/release-docs.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$docs-update",
+        "$docs-runbook",
+        "$git-release-notes"
+      ],
+      "deliverable": "Release documentation checked against the exact artifact set.",
+      "handoff_to": "before_deploy_gatekeeper",
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "before_deploy_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Before-Deploy Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "before_deploy_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/production-release/categories/deployment.json",
+        "artifacts/production-release/categories/monitoring.json",
+        "artifacts/production-release/categories/security.json",
+        "artifacts/production-release/categories/testing.json",
+        "artifacts/production-release/release-docs.json",
+        "artifacts/production-release/release-plan.json",
+        "artifacts/production-release/rollback.json"
+      ],
+      "writes": [
+        "artifacts/gates/production-release-before-deploy.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-before-deploy"
+      ],
+      "deliverable": "GO or NO-GO from exact-run, exact-commit, exact-environment release evidence.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    },
+    {
+      "id": "production_gatekeeper",
+      "kind": "gatekeeper",
+      "persistent": false,
+      "role": "Production Readiness Gatekeeper",
+      "model_hint": "deep-reasoning",
+      "workspace": "production_gatekeeper_workspace",
+      "memory_access": "propose-only",
+      "reads": [
+        "artifacts/gates/production-release-before-deploy.json",
+        "artifacts/production-release/categories/analytics.json",
+        "artifacts/production-release/categories/architecture.json",
+        "artifacts/production-release/categories/backend.json",
+        "artifacts/production-release/categories/database.json",
+        "artifacts/production-release/categories/deployment.json",
+        "artifacts/production-release/categories/design.json",
+        "artifacts/production-release/categories/documentation.json",
+        "artifacts/production-release/categories/frontend.json",
+        "artifacts/production-release/categories/monitoring.json",
+        "artifacts/production-release/categories/performance.json",
+        "artifacts/production-release/categories/product.json",
+        "artifacts/production-release/categories/security.json",
+        "artifacts/production-release/categories/seo.json",
+        "artifacts/production-release/categories/testing.json",
+        "artifacts/production-release/project-profile.json"
+      ],
+      "writes": [
+        "artifacts/gates/production-release.json"
+      ],
+      "proposals": [
+        ".solo/decisions.md",
+        ".solo/handoff.md",
+        ".solo/risks.md",
+        ".solo/tasks.md"
+      ],
+      "commands": [
+        "$gate-production-ready"
+      ],
+      "deliverable": "One of BLOCKED, SAFE WITH WARNINGS, or SAFE TO LAUNCH.",
+      "handoff_to": null,
+      "handoff_check": "$ai-handoff-check",
+      "task_ids": []
+    }
+  ],
+  "gates": [
+    {
+      "id": "before_deploy",
+      "command": "$gate-before-deploy",
+      "stage": "before_deploy",
+      "seat": "before_deploy_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Release plan",
+          "artifact": "artifacts/production-release/release-plan.json",
+          "producer_commands": [
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan"
+          ]
+        },
+        {
+          "category": "Rollback",
+          "artifact": "artifacts/production-release/rollback.json",
+          "producer_commands": [
+            "$release-deploy-plan",
+            "$release-preflight",
+            "$release-rollback-plan"
+          ]
+        },
+        {
+          "category": "Release documentation",
+          "artifact": "artifacts/production-release/release-docs.json",
+          "producer_commands": [
+            "$docs-runbook",
+            "$docs-update",
+            "$git-release-notes"
+          ]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/production-release/categories/security.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/production-release/categories/testing.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "artifact": "artifacts/production-release/categories/deployment.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Monitoring",
+          "artifact": "artifacts/production-release/categories/monitoring.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/production-release-before-deploy.json",
+        "schema": "solo-suite/phase-gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "decision",
+          "checks",
+          "blockers"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 12
+        }
+      },
+      "transitions": {
+        "status_field": "decision",
+        "routes": [
+          {
+            "statuses": [
+              "GO"
+            ],
+            "next_stage": "production_gate"
+          },
+          {
+            "statuses": [
+              "NO-GO"
+            ],
+            "action": "stop"
+          }
+        ],
+        "default_action": "stop"
+      }
+    },
+    {
+      "id": "production",
+      "command": "$gate-production-ready",
+      "stage": "production_gate",
+      "seat": "production_gatekeeper",
+      "prerequisites": [
+        {
+          "category": "Product",
+          "artifact": "artifacts/production-release/categories/product.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Architecture",
+          "artifact": "artifacts/production-release/categories/architecture.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Design",
+          "artifact": "artifacts/production-release/categories/design.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Frontend",
+          "artifact": "artifacts/production-release/categories/frontend.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Backend",
+          "artifact": "artifacts/production-release/categories/backend.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Database",
+          "artifact": "artifacts/production-release/categories/database.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Security",
+          "artifact": "artifacts/production-release/categories/security.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Testing",
+          "artifact": "artifacts/production-release/categories/testing.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Performance",
+          "artifact": "artifacts/production-release/categories/performance.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "SEO",
+          "artifact": "artifacts/production-release/categories/seo.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Analytics",
+          "artifact": "artifacts/production-release/categories/analytics.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Deployment",
+          "artifact": "artifacts/production-release/categories/deployment.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Monitoring",
+          "artifact": "artifacts/production-release/categories/monitoring.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Documentation",
+          "artifact": "artifacts/production-release/categories/documentation.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        },
+        {
+          "category": "Project profile",
+          "artifact": "artifacts/production-release/project-profile.json",
+          "producer_commands": [
+            "$analytics-audit",
+            "$api-audit",
+            "$browser-smoke-test",
+            "$database-audit",
+            "$design-ui-review",
+            "$docs-update",
+            "$gate-score-project",
+            "$observability",
+            "$project-architecture",
+            "$release-preflight",
+            "$security-review",
+            "$site-doctor-perf",
+            "$site-doctor-seo",
+            "$spec-acceptance",
+            "$stack-intake",
+            "$test-unit"
+          ]
+        }
+      ],
+      "evidence": {
+        "artifact": "artifacts/gates/production-release.json",
+        "schema": "solo-suite/gate-evidence-v1",
+        "required_fields": [
+          "schema",
+          "room_digest",
+          "run_id",
+          "gate_id",
+          "project_profile",
+          "profile_artifact",
+          "profile_artifact_digest",
+          "project",
+          "commit_sha",
+          "environment",
+          "timestamp",
+          "expires_at",
+          "reviewer",
+          "categories",
+          "total_score",
+          "normalized_score",
+          "launch_status",
+          "blockers",
+          "warnings"
+        ],
+        "freshness": {
+          "run_id": "exact",
+          "commit": "exact",
+          "environment": "exact",
+          "max_age_hours": 12
+        }
+      },
+      "transitions": {
+        "status_field": "launch_status",
+        "routes": [
+          {
+            "statuses": [
+              "SAFE TO LAUNCH"
+            ],
+            "action": "complete"
+          },
+          {
+            "statuses": [
+              "SAFE WITH WARNINGS"
+            ],
+            "action": "stop"
+          },
+          {
+            "statuses": [
+              "BLOCKED"
+            ],
+            "action": "stop"
+          }
+        ],
+        "default_action": "stop"
+      },
+      "required_gate_results": [
+        {
+          "gate_id": "before_deploy",
+          "status": "GO",
+          "freshness": {
+            "run_id": "exact",
+            "commit": "exact",
+            "environment": "exact",
+            "latest": true
+          }
+        }
+      ]
+    }
+  ],
+  "exit_gate": "$gate-production-ready",
+  "exit_criteria": "All 14 categories use fresh exact-run, exact-commit, and exact-environment evidence; before-deploy is GO and production is SAFE TO LAUNCH."
+}

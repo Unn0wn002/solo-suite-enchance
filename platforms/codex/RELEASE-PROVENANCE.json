@@ -1,0 +1,59 @@
+{
+  "schema": "solo-suite/release-provenance-v1",
+  "record_kind": "unbound-source-template",
+  "subject": {
+    "name": "solo-suite-codex-v1.0.27.zip",
+    "version": "1.0.27"
+  },
+  "builder": {
+    "id": "local-codex-workspace",
+    "tool": "tools/package_release.py"
+  },
+  "build_type": "unbound-source-template",
+  "build_timestamp": null,
+  "source_date_epoch": null,
+  "materials": [
+    {
+      "uri": "solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip",
+      "digest": {
+        "sha256": "7dde7bbe44e7534e3f1890ddb1c5feba5554d60127c4dd7ef2095b31cafb03aa"
+      },
+      "role": "canonical-parity-source",
+      "required_for_build": false,
+      "required_for_validation": true
+    },
+    {
+      "uri": "solo-suite-plugin-v1.0.26.zip",
+      "digest": {
+        "sha256": "b691905f8ade4c2fb7e0084a46f537c9be8d7b2bf0f4d160c38c5e930aed1d43"
+      },
+      "role": "historical-source-reference",
+      "required_for_build": false,
+      "required_for_validation": false
+    }
+  ],
+  "source_git_commit": null,
+  "source_git_dirty": null,
+  "source_identity_note": "This repository copy is an unbound source template; generated artifact provenance is written by the packager.",
+  "publisher": "Sakura Yukihira (Ayaya)",
+  "validation_state": "unbound",
+  "validation_commands": [
+    "python plugins/solo/skills/suite-integrity/scripts/self_check.py . -",
+    "python plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py --suite .",
+    "python tools/validate_plugins.py --official-if-available",
+    "python tools/smoke_package.py <release.zip> --canonical-source-archive <solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip>"
+  ],
+  "source_checkout_validation_commands": [
+    "python -m unittest discover -s tests -t . -v",
+    "python tools/verify_source_overlay.py --canonical-only --canonical-source-archive parity/artifacts/solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip --target .",
+    "git diff --exit-code",
+    "git status --short --untracked-files=all"
+  ],
+  "installed_package_validation_commands": [
+    "python plugins/solo/skills/suite-integrity/scripts/self_check.py . -",
+    "python plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py --suite .",
+    "python tools/validate_plugins.py --official-if-available",
+    "python tools/smoke_package.py <release.zip> --canonical-source-archive <solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip>"
+  ],
+  "artifact_digest_note": "The ZIP SHA-256 is stored beside the ZIP and in the outer release handoff; embedding it in this file would create a circular digest."
+}

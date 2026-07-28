@@ -1,0 +1,462 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:solo-suite:gate-evidence-v1",
+  "title": "Solo Suite production gate evidence v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "room_digest",
+    "run_id",
+    "gate_id",
+    "project_profile",
+    "profile_artifact",
+    "profile_artifact_digest",
+    "project",
+    "commit_sha",
+    "environment",
+    "timestamp",
+    "expires_at",
+    "reviewer",
+    "categories",
+    "total_score",
+    "normalized_score",
+    "launch_status",
+    "blockers",
+    "warnings"
+  ],
+  "properties": {
+    "schema": {"const": "solo-suite/gate-evidence-v1"},
+    "room_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9](?:[a-z0-9._-]{1,62}[a-z0-9])$"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+    },
+    "project_profile": {
+      "enum": [
+        "public-marketing-site", "saas-application", "e-commerce",
+        "internal-application", "api-service", "library-package"
+      ]
+    },
+    "profile_artifact": {"type": "string", "minLength": 1},
+    "profile_artifact_digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "project": {"type": "string", "minLength": 1},
+    "commit_sha": {"type": "string", "pattern": "^[0-9a-fA-F]{7,64}$"},
+    "environment": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "reviewer": {"type": "string", "minLength": 1},
+    "categories": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {"$ref": "#/$defs/categoryEvidence"}
+    },
+    "total_score": {"type": "integer", "minimum": 0, "maximum": 140},
+    "normalized_score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "launch_status": {
+      "enum": ["BLOCKED", "SAFE WITH WARNINGS", "SAFE TO LAUNCH"]
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "warnings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/warning"}
+    }
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_kind", "producer", "source_reference", "generated_at"],
+      "properties": {
+        "source_kind": {
+          "enum": ["ci", "local-tool", "manual-review", "repository-record"]
+        },
+        "producer": {"type": "string", "minLength": 1},
+        "source_reference": {"type": "string", "minLength": 1},
+        "generated_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "warning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["message", "category", "owner", "remediation", "verification"],
+      "properties": {
+        "message": {"type": "string", "minLength": 1},
+        "category": {
+          "enum": [
+            "Product", "Architecture", "Design", "Frontend", "Backend",
+            "Database", "Security", "Testing", "Performance", "SEO",
+            "Analytics", "Deployment", "Monitoring", "Documentation"
+          ]
+        },
+        "owner": {"type": "string", "minLength": 1},
+        "remediation": {"type": "string", "minLength": 1},
+        "verification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method", "success_criteria"],
+          "properties": {
+            "method": {"type": "string", "minLength": 1},
+            "success_criteria": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "categoryEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project",
+        "run_id",
+        "gate_id",
+        "commit_sha",
+        "environment",
+        "timestamp",
+        "expires_at",
+        "category",
+        "score",
+        "applicability",
+        "command_executed",
+        "exit_code",
+        "evidence_type",
+        "provenance",
+        "evidence_artifact",
+        "artifact_digest",
+        "reviewer"
+      ],
+      "properties": {
+        "project": {"type": "string", "minLength": 1},
+        "run_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9](?:[a-z0-9._-]{1,62}[a-z0-9])$"
+        },
+        "gate_id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_-]{1,63}$"
+        },
+        "commit_sha": {"type": "string", "pattern": "^[0-9a-fA-F]{7,64}$"},
+        "environment": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "expires_at": {"type": "string", "format": "date-time"},
+        "category": {
+          "enum": [
+            "Product", "Architecture", "Design", "Frontend", "Backend",
+            "Database", "Security", "Testing", "Performance", "SEO",
+            "Analytics", "Deployment", "Monitoring", "Documentation"
+          ]
+        },
+        "score": {"type": "integer", "minimum": 0, "maximum": 10},
+        "applicability": {"enum": ["applicable", "not-applicable"]},
+        "na_reason": {"type": "string", "minLength": 1},
+        "command_executed": {
+          "type": "string",
+          "pattern": "^\\$[a-z][a-z0-9-]*$"
+        },
+        "exit_code": {"type": "integer"},
+        "evidence_type": {
+          "enum": [
+            "ci-report",
+            "tool-report",
+            "manual-observation",
+            "narrative-assertion",
+            "applicability-record"
+          ]
+        },
+        "provenance": {"$ref": "#/$defs/provenance"},
+        "evidence_artifact": {"type": "string", "minLength": 1},
+        "artifact_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "reviewer": {"type": "string", "minLength": 1}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"applicability": {"const": "not-applicable"}},
+            "required": ["applicability"]
+          },
+          "then": {
+            "required": ["na_reason"],
+            "properties": {
+              "score": {"const": 0},
+              "evidence_type": {"const": "applicability-record"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "applicability-record"}},
+            "required": ["evidence_type"]
+          },
+          "then": {"properties": {"applicability": {"const": "not-applicable"}}}
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "ci-report"}},
+            "required": ["evidence_type"]
+          },
+          "then": {
+            "properties": {
+              "provenance": {
+                "properties": {"source_kind": {"const": "ci"}}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "tool-report"}},
+            "required": ["evidence_type"]
+          },
+          "then": {
+            "properties": {
+              "provenance": {
+                "properties": {"source_kind": {"const": "local-tool"}}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "manual-observation"}},
+            "required": ["evidence_type"]
+          },
+          "then": {
+            "properties": {
+              "provenance": {
+                "properties": {"source_kind": {"const": "manual-review"}}
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "narrative-assertion"}},
+            "required": ["evidence_type"]
+          },
+          "then": {
+            "properties": {
+              "provenance": {
+                "properties": {
+                  "source_kind": {"enum": ["manual-review", "repository-record"]}
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"evidence_type": {"const": "applicability-record"}},
+            "required": ["evidence_type"]
+          },
+          "then": {
+            "properties": {
+              "provenance": {
+                "properties": {"source_kind": {"const": "repository-record"}}
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Product"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$acceptance-criteria-writer", "$product-manager", "$project-prd",
+                  "$spec-acceptance", "$spec-feature-brief"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Architecture"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$project-architecture", "$repo-dependency-map", "$repo-risk-map",
+                  "$software-architect"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Design"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$accessibility-review", "$browser-visual-check",
+                  "$design-ui-review", "$design-ux-flow"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Frontend"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$browser-console-errors", "$browser-mobile-test",
+                  "$browser-qa-engineer", "$browser-smoke-test",
+                  "$site-doctor-a11y", "$test-e2e"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Backend"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$api-audit", "$authz-security-reviewer",
+                  "$site-doctor-audit-api", "$test-integration"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Database"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$backup-recovery", "$database-audit", "$security-rls-test",
+                  "$site-doctor-audit-db", "$stack-audit-supabase"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Security"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$authz-security-reviewer", "$dependency-audit",
+                  "$security-authz-matrix", "$security-review", "$security-reviewer",
+                  "$security-rls-test", "$security-threat-model",
+                  "$site-doctor-security-scan"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Testing"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$browser-qa-engineer", "$qa-engineer", "$test-e2e",
+                  "$test-edge-cases", "$test-integration", "$test-unit"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Performance"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$load-testing", "$performance-tuning", "$site-doctor-load-test",
+                  "$site-doctor-perf", "$website-audit"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "SEO"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$content-audit", "$seo-optimization", "$site-doctor-audit-content",
+                  "$site-doctor-seo", "$website-audit"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Analytics"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$analytics-audit", "$forms-audit", "$site-doctor-audit-analytics",
+                  "$stack-audit-tags", "$tag-audit"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Deployment"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$deployment-review", "$infrastructure-audit", "$release-deploy-plan",
+                  "$release-preflight", "$release-rollback-plan",
+                  "$site-doctor-review-deploy", "$stack-audit-cloudflare",
+                  "$stack-audit-vercel"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Monitoring"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$incident-response", "$observability", "$site-doctor-monitoring",
+                  "$solo-sync-grafana"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {"properties": {"category": {"const": "Documentation"}}},
+          "then": {
+            "properties": {
+              "command_executed": {
+                "enum": [
+                  "$docs-api", "$docs-runbook", "$docs-setup-guide", "$docs-update",
+                  "$documentation-writer", "$repo-onboarding"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

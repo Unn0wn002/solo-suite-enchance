@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Repair Cycle"
+  short_description: "Run the AI Repair Cycle Codex workflow"
+  default_prompt: "Use $ai-repair-cycle to run this workflow with the provided context."
+policy:
+  allow_implicit_invocation: false
