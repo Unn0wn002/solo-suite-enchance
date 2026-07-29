@@ -1,0 +1,55 @@
+{
+  "schema": "solo-suite/core-repository-intelligence-v2",
+  "purpose": "Approved repository-intelligence tools and local fallbacks for every Solo Suite platform.",
+  "policy": {
+    "installation": "Explicit opt-in only; never install from lifecycle hooks or overwrite global agent configuration.",
+    "secrets": "Never commit API keys or client configuration containing secrets.",
+    "activation": "Use Graphify only for relationship questions and Repomix only for bounded exports.",
+    "rejected": [
+      "aider",
+      "serena",
+      "context7",
+      "code-review-graph"
+    ]
+  },
+  "tools": [
+    {
+      "id": "graphify",
+      "name": "Graphify",
+      "responsibility": "Architecture, dependencies, and cross-file relationships",
+      "repository": "https://github.com/Graphify-Labs/graphify",
+      "sourceCommit": "0b2bd938c4a48e91d27f0ba09b96409e0a36c78a",
+      "package": "graphifyy",
+      "version": "0.9.27",
+      "requirementsLock": "agent-platform/tooling/graphify-requirements.txt",
+      "requirementsSha256": "8079d22eaaba7453c2f8149f72a2aa33a0aa0888c7beb141114250686e9b016e",
+      "command": "graphify",
+      "install": "python scripts/bootstrap-graphify.py --install",
+      "dryRun": "python scripts/bootstrap-graphify.py --dry-run",
+      "verify": "python scripts/bootstrap-graphify.py --check",
+      "scope": ".tools/graphify/venv when no audited PATH installation is available",
+      "projectIntegrations": {
+        "claude": "Use the generated repository skill mirror; do not install Graphify hooks.",
+        "codex": "Use AGENTS.md and the canonical repository routing skill.",
+        "antigravity": "Use .agents skills and rules; do not run a platform installer automatically."
+      }
+    },
+    {
+      "id": "repomix",
+      "name": "Repomix",
+      "responsibility": "Filtered repository snapshots, compression, and handoffs",
+      "repository": "https://github.com/yamadashy/repomix",
+      "package": "repomix",
+      "command": "repomix",
+      "install": "No automatic install; approve and pin separately before use.",
+      "verify": "repomix --version",
+      "availability": "optional"
+    }
+  ],
+  "fallbacks": {
+    "symbols": "Graphify query/explain/path, then bounded rg search and client-native workspace editing.",
+    "currentDocumentation": "Primary official documentation through reviewed host web access.",
+    "codingClient": "The active Codex, Claude, or Antigravity client.",
+    "graphReview": "Graphify only."
+  }
+}

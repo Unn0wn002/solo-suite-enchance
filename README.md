@@ -15,10 +15,12 @@ repeatable loop:
 | Surface | Location | Current state |
 | --- | --- | --- |
 | Website | `app/` | Production-ready Vinext/Sites landing experience |
-| Claude distribution | `platforms/claude/` | 19 plugins, 79 skills, 125 slash commands |
-| Codex distribution | `platforms/codex/` | 19 plugins, 184 skills, 125 migrated workflows |
-| Antigravity distribution | `platforms/antigravity/` | 19 plugins, 79 skills, 125 slash commands |
+| Claude distribution | `platforms/claude/` | 19 plugins, 80 skills, 126 slash commands |
+| Codex distribution | `platforms/codex/` | 19 plugins, 185 skills, 126 migrated workflows |
+| Antigravity distribution | `platforms/antigravity/` | 19 plugins, 80 skills, 126 slash commands |
 | Graphify map | `graphify-out/` | Code graph, report, and historical refreshes |
+| Learned capability map | `capability-inventory.json` + `CAPABILITY_ROADMAP.md` | Upstream-informed routing and implementation ideas |
+| Complete capability catalog | `CAPABILITY_CATALOG.md` | Every native skill, plugin, command, and learned-role mapping |
 
 The platform folders were copied from the three read-only source checkouts and
 kept isolated so their native manifests and validation tooling remain intact.
@@ -126,6 +128,33 @@ Use `platforms\codex\COMMAND-MAP.md` for the complete legacy-command to Codex
 skill mapping. Start a new Codex task after installing or updating plugins so
 the new skills are loaded.
 
+Use `$capability-routing` before a large task to select the smallest
+phase-owned set of plugins and skills. It writes `.solo/capability-plan.md`.
+
+## Install the recommended repository-intelligence core
+
+For architecture-aware and token-efficient work, use the approved tools and
+local fallbacks after cloning:
+
+- Graphify for architecture and cross-file relationships;
+- bounded native search for symbols and references;
+- primary official documentation for current library guidance;
+- Repomix for filtered repository snapshots.
+
+Aider, Serena, Context7, and code-review-graph are retained only as rejected
+audit evidence and are not installed or activated.
+
+Follow [`CORE_REPOSITORY_INTELLIGENCE.md`](CORE_REPOSITORY_INTELLIGENCE.md).
+The guide covers Claude, Codex, and Antigravity. Graphify installation is
+explicit, project-local, and user-controlled; cloning this repository never
+silently changes global agent configuration.
+
+```powershell
+node scripts\check-core-tooling.mjs
+```
+
+The check is read-only and reports which optional tools are available.
+
 ## Add it to Antigravity
 
 Antigravity does not expose a single standardized marketplace CLI in this
@@ -151,6 +180,9 @@ Restart Antigravity after copying. The adapter keeps the Claude-compatible
 `platforms\antigravity\ANTIGRAVITY.md` documents the target directories and
 platform-specific assumptions.
 
+Use `/project:capability-map` before a large task to select the smallest
+phase-owned set of plugins and commands.
+
 ## Website development
 
 The website lives in `app/` and deploys through the Sites project configured in
@@ -173,6 +205,8 @@ app/                         Solo Suite Enchance website
 platforms/claude/            Claude marketplace distribution
 platforms/codex/             Codex-native distribution
 platforms/antigravity/       Antigravity adapter distribution
+capability-inventory.json    Exact plugin, skill, command, and routing inventory
+CAPABILITY_ROADMAP.md        Upstream-informed implementation ideas and phases
 graphify-out/                Persistent code graph and reports
 public/og.png                Social preview card
 ```

@@ -2,6 +2,6 @@
   "schema": "solo-suite/legacy-command-source-paths-v1",
   "algorithm": "sha256",
   "canonicalization": "UTF-8 forward-slash paths, ordinal sort, one LF after every path",
-  "path_count": 125,
-  "sorted_paths_sha256": "cbb853ba7326f25fcb989d65e4a7d0c1947ecd4ed8f99c6fc8d2dd0b7b2037fa"
+  "path_count": 126,
+  "sorted_paths_sha256": "40d2b9a637d62da84d4e2760ec940021f51680d1c3bca69734bd4cf38a793348"
 }

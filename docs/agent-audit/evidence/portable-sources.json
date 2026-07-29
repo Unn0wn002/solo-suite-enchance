@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-07-28",
+  "audit_mode": "READ_ONLY_RETRY",
+  "safety": {
+    "external_content_treated_as_untrusted": true,
+    "executed_source_code": false,
+    "executed_installers": false,
+    "executed_lifecycle_scripts": false,
+    "executed_hooks": false,
+    "executed_mcp_servers": false,
+    "notes": "Evidence was collected by reading the already-isolated shallow clones and Git metadata only. Source-relative paths below are pinned to the recorded commit and intentionally do not require the temporary clones to remain after cleanup."
+  },
+  "sources": [
+    {
+      "source_id": "storymap-skill",
+      "source_url": "https://github.com/MartinForReal/storymap-skill",
+      "resolved_url": "https://github.com/MartinForReal/storymap-skill",
+      "owner": "MartinForReal",
+      "repository": "storymap-skill",
+      "default_branch": "main",
+      "pinned_commit": "35cf8a10fc240f809eb7c248c8f3a254e856c65f",
+      "commit_metadata": {
+        "author": "Fan Shangxiang <fanshangxiang@gmail.com>",
+        "date": "2026-06-28T10:03:11+08:00",
+        "subject": "Clarify framework design handoff",
+        "tag": "v0.0.6",
+        "evidence": "git -C .tmp/agent-extension-audit/storymap-skill log -1 and tag --contains HEAD"
+      },
+      "catalog_selected_paths": [
+        "skills/user-story-mapping"
+      ],
+      "license": {
+        "spdx": "MIT",
+        "copying_modification_redistribution_permitted": true,
+        "notice_required": true,
+        "evidence": [
+          "LICENSE:1-13",
+          ".claude-plugin/plugin.json:9-11"
+        ]
+      },
+      "root_configuration": {
+        "plugin_manifest": ".claude-plugin/plugin.json:1-34",
+        "package_manifests": [],
+        "lock_files": [],
+        "lifecycle_scripts": [],
+        "git_or_agent_hook_configuration": [],
+        "mcp_server_configuration": [],
+        "evidence": [
+          ".claude-plugin/plugin.json:1-34",
+          "README.md:35-64"
+        ]
+      },
+      "selected_component": {
+        "primary_type": "PORTABLE_AGENT_SKILL",
+        "files_reviewed": [
+          "skills/user-story-mapping/SKILL.md:1-130",
+          "skills/user-story-mapping/references/context-collection.md:1-349",
+          "skills/user-story-mapping/references/output-routing.md:1-142",
+          "skills/user-story-mapping/scripts/storymap_to_csv.py:1-196",
+          "skills/user-story-mapping/scripts/storymap_to_mermaid.py:1-127",
+          "skills/user-story-mapping/evals/evals.json:1-382"
+        ],
+        "portable_frontmatter_gap": "The source frontmatter contains host-specific fields including compatibility, metadata, and allowed-tools; canonical portable skills must retain only name and description.",
+        "evidence": [
+          "skills/user-story-mapping/SKILL.md:1-11",
+          "skills/user-story-mapping/SKILL.md:45-55"
+        ]
+      },
+      "security_surfaces": {
+        "network_behavior": {
+          "observed": "No network client is implemented in the reviewed scripts. The instructions may use a tracker or runtime MCP only when available and, for Memory MCP, when the user has opted in.",
+          "evidence": [
+            "skills/user-story-mapping/references/context-collection.md:267-285",
+            "skills/user-story-mapping/references/output-routing.md:87-91",
+            "README.md:175-181"
+          ]
+        },
+        "filesystem_behavior": {
+          "observed": "The bundled Python converters read a caller-selected storymap and can write to a caller-selected output path. They do not enforce a workspace boundary.",
+          "evidence": [
+            "skills/user-story-mapping/scripts/storymap_to_csv.py:31-36",
+            "skills/user-story-mapping/scripts/storymap_to_csv.py:173-196",
+            "skills/user-story-mapping/scripts/storymap_to_mermaid.py:10-17",
+            "skills/user-story-mapping/scripts/storymap_to_mermaid.py:112-127"
+          ]
+        },
+        "credentials_and_telemetry": {
+          "observed": "No credential requirement or telemetry implementation was found in the reviewed component. The documentation explicitly instructs against reading secret values and routes tracker access through a user-configured MCP.",
+          "evidence": [
+            "skills/user-story-mapping/references/context-collection.md:175-175",
+            "skills/user-story-mapping/references/context-collection.md:342-349",
+            "README.md:175-181"
+          ]
+        },
+        "prompt_and_tool_risk": {
+          "observed": "The source is untrusted instruction content. It asks hosts to use Bash, write files, invoke other skills, and potentially query MCP-backed trackers; it also contains broad framework-specific auto-trigger wording. None of these permissions is a reason to preserve the source instructions verbatim.",
+          "evidence": [
+            "skills/user-story-mapping/SKILL.md:3-10",
+            "skills/user-story-mapping/SKILL.md:32-43",
+            "skills/user-story-mapping/references/context-collection.md:91-112"
+          ]
+        },
+        "destructive_or_download_execute_risk": {
+          "observed": "No destructive command or download-and-execute pipeline was found in the reviewed selected component. README installation and test instructions are unexecuted documentation, including a Python bundle build command.",
+          "evidence": [
+            "README.md:35-64",
+            "README.md:141-149"
+          ]
+        }
+      },
+      "tests_and_determinism": {
+        "tests_present": true,
+        "runtime_executed": false,
+        "observed": "The repository has eval scenarios and benchmark infrastructure. The converters are deterministic for a supplied input, while LLM workflow output is instruction-dependent.",
+        "evidence": [
+          "README.md:141-166",
+          "skills/user-story-mapping/evals/evals.json:1-24",
+          "skills/user-story-mapping/scripts/storymap_to_csv.py:1-37"
+        ]
+      },
+      "risk_level": "LOW",
+      "classification": "PORTABLE_AGENT_SKILL",
+      "compatibility": {
+        "chatgpt": "PORTABLE",
+        "codex": "PORTABLE",
+        "claude": "PORTABLE",
+        "antigravity": "PORTABLE",
+        "antigravity_cli": "PORTABLE"
+      },
+      "recommendation": "ADAPTED. Keep the repository-local product-discovery skill as an original concise implementation. Preserve MIT attribution in notices; do not copy source frontmatter, auto-trigger rules, MCP routing, or scripts without a workspace-bound wrapper and explicit user approval for external services."
+    },
+    {
+      "source_id": "gsap-skills",
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "resolved_url": "https://github.com/greensock/gsap-skills",
+      "owner": "greensock",
+      "repository": "gsap-skills",
+      "default_branch": "main",
+      "pinned_commit": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "commit_metadata": {
+        "author": "jackdoyle <jack@greensock.com>",
+        "date": "2026-04-21T18:47:02-05:00",
+        "subject": "Added Google Antigravity Support",
+        "tag": null,
+        "evidence": "git -C .tmp/agent-extension-audit/gsap-skills log -1 and tag --contains HEAD"
+      },
+      "catalog_selected_paths": [
+        "skills/gsap-core",
+        "skills/gsap-timeline",
+        "skills/gsap-scrolltrigger",
+        "skills/gsap-plugins",
+        "skills/gsap-utils",
+        "skills/gsap-react",
+        "skills/gsap-performance",
+        "skills/gsap-frameworks"
+      ],
+      "license": {
+        "spdx": "MIT",
+        "copying_modification_redistribution_permitted": true,
+        "notice_required": true,
+        "evidence": [
+          "LICENSE:1-13"
+        ]
+      },
+      "root_configuration": {
+        "plugin_manifests": [
+          ".claude-plugin/marketplace.json:1-20",
+          ".claude-plugin/plugin.json:1-6"
+        ],
+        "package_manifests": [],
+        "lock_files": [],
+        "lifecycle_scripts": [],
+        "git_or_agent_hook_configuration": [],
+        "mcp_server_configuration": [],
+        "evidence": [
+          "AGENTS.md:3-16",
+          "README.md:35-70"
+        ]
+      },
+      "selected_component": {
+        "primary_type": "PORTABLE_AGENT_SKILL",
+        "component_count": 8,
+        "observed": "Each selected directory contains a SKILL.md documentation asset; no reviewed selected directory contains executable code, hook configuration, MCP definition, package manifest, or lock file.",
+        "evidence": [
+          "AGENTS.md:5-16",
+          "skills/gsap-core/SKILL.md:1-19",
+          "skills/gsap-performance/SKILL.md:1-34",
+          "skills/gsap-plugins/SKILL.md:1-36"
+        ]
+      },
+      "security_surfaces": {
+        "network_behavior": {
+          "observed": "No network client is included in the reviewed skill files. The files link to official GSAP documentation; these links are references, not automatic network actions.",
+          "evidence": [
+            "skills/gsap-core/SKILL.md:3-15",
+            "skills/gsap-plugins/SKILL.md:15-20"
+          ]
+        },
+        "filesystem_behavior": {
+          "observed": "No filesystem operation is implemented by the reviewed selected skills.",
+          "evidence": [
+            "AGENTS.md:5-16",
+            "skills/gsap-performance/SKILL.md:1-34"
+          ]
+        },
+        "credentials_and_telemetry": {
+          "observed": "No credential collection, telemetry implementation, or MCP server was found in the reviewed selected skills. The plugins skill explicitly advises against generating an auth-token npm configuration.",
+          "evidence": [
+            "skills/gsap-plugins/SKILL.md:15-20"
+          ]
+        },
+        "installation_and_prompt_risk": {
+          "observed": "README installation examples include npx and npm commands; they were not run. The canonical system must not auto-install GSAP or the skills CLI. The source also recommends GSAP broadly, so the adapter must respect an existing user-selected animation library.",
+          "evidence": [
+            "README.md:33-49",
+            "README.md:61-70",
+            "skills/gsap-core/SKILL.md:9-15"
+          ]
+        },
+        "destructive_or_hook_risk": {
+          "observed": "No destructive command, hook, lifecycle script, or MCP definition was found in the reviewed selected components.",
+          "evidence": [
+            ".claude-plugin/plugin.json:1-6",
+            "AGENTS.md:5-16"
+          ]
+        }
+      },
+      "tests_and_determinism": {
+        "tests_present": false,
+        "runtime_executed": false,
+        "observed": "The source is instruction-only. Generated implementation is model- and project-dependent; the guidance itself is deterministic text.",
+        "evidence": [
+          "README.md:21-25",
+          "AGENTS.md:10-22"
+        ]
+      },
+      "risk_level": "LOW",
+      "classification": "PORTABLE_AGENT_SKILL",
+      "compatibility": {
+        "chatgpt": "PORTABLE",
+        "codex": "PORTABLE",
+        "claude": "PORTABLE",
+        "antigravity": "PORTABLE",
+        "antigravity_cli": "PORTABLE"
+      },
+      "recommendation": "ADAPTED. Use the eight pinned skills only as licensed references, consolidate them under the single repository-local gsap-animation capability, retain attribution, and load the narrowest relevant topic at activation. Do not execute the README installation commands or copy broad product-preference instructions verbatim."
+    },
+    {
+      "source_id": "qa-orchestra",
+      "source_url": "https://github.com/Anasss/qa-orchestra",
+      "resolved_url": "https://github.com/Anasss/qa-orchestra",
+      "owner": "Anasss",
+      "repository": "qa-orchestra",
+      "default_branch": "main",
+      "pinned_commit": "5df9ad4012f78b9ff6ba551c36a3a0f583d26bf3",
+      "commit_metadata": {
+        "author": "Anass Rach <anass.rach@hilti.com>",
+        "date": "2026-04-20T11:27:57+02:00",
+        "subject": "Add --coherence mode: catch prose/JSON drift schema can't see",
+        "tag": null,
+        "evidence": "git -C .tmp/agent-extension-audit/qa-orchestra log -1 and tag --contains HEAD"
+      },
+      "catalog_selected_paths": [
+        "."
+      ],
+      "license": {
+        "spdx": "MIT",
+        "copying_modification_redistribution_permitted": true,
+        "notice_required": true,
+        "evidence": [
+          "LICENSE:1-13",
+          ".claude-plugin/plugin.json:9-11"
+        ]
+      },
+      "root_configuration": {
+        "plugin_manifests": [
+          ".claude-plugin/plugin.json:1-30",
+          ".claude-plugin/marketplace.json:1-22"
+        ],
+        "agent_definitions": ".claude/agents/*.md (10 files)",
+        "package_manifests": [],
+        "lock_files": [],
+        "lifecycle_scripts": [],
+        "hook_configuration": "No executable hook is shipped. An opt-in, non-versioned hook sketch exists in scripts/hooks/README.md.",
+        "mcp_server_configuration": "An example-only MCP configuration exists in examples/mcp.example.json; it is not activated by the plugin manifest.",
+        "evidence": [
+          ".claude-plugin/plugin.json:1-30",
+          ".claude-plugin/marketplace.json:10-20",
+          "scripts/hooks/README.md:1-8",
+          "examples/mcp.example.json:1-32"
+        ]
+      },
+      "selected_component": {
+        "primary_type": "COMMAND_OR_WORKFLOW",
+        "observed": "The package is Claude-specific: its manifest exposes ten .claude/agents rather than portable skills. It has deterministic Node validators, but its agent workflow depends on a model, project context, and optionally a live browser/MCP service.",
+        "evidence": [
+          ".claude-plugin/plugin.json:1-30",
+          "README.md:1-7",
+          "scripts/validate-agents.mjs:1-18",
+          "scripts/validate-qa-output.mjs:1-39"
+        ]
+      },
+      "security_surfaces": {
+        "mcp_and_credential_risk": {
+          "observed": "The optional example config uses npx -y with floating package references and accepts GitHub, Jira, and GitLab credentials. It must not be copied, installed, or enabled by this platform; treat each MCP as a separately reviewed external integration.",
+          "risk": "HIGH_COMPONENT_RISK",
+          "evidence": [
+            "examples/mcp.example.json:2-32",
+            "README.md:163-176",
+            "PRIVACY.md:23-30"
+          ]
+        },
+        "hook_risk": {
+          "observed": "The hook documentation is opt-in and warns that a bad hook can block every Write call. It is not active in the source clone and must remain disabled in adapters.",
+          "risk": "MEDIUM_COMPONENT_RISK",
+          "evidence": [
+            "scripts/hooks/README.md:3-8",
+            "scripts/hooks/README.md:20-47",
+            "scripts/hooks/README.md:49-55"
+          ]
+        },
+        "filesystem_and_command_risk": {
+          "observed": "Several source agents have Bash and write access. The environment manager instructs branch checkout, pull, dependency installation, migrations, seed data, service startup, and workspace restoration from a context file. Those operations exceed a portable read-only QA default.",
+          "risk": "HIGH_COMPONENT_RISK",
+          "evidence": [
+            ".claude/agents/automation-writer.md:1-39",
+            ".claude/agents/environment-manager.md:14-25",
+            ".claude/agents/environment-manager.md:38-86",
+            ".claude/agents/environment-manager.md:167-180"
+          ]
+        },
+        "network_and_telemetry": {
+          "observed": "The project privacy statement says the plugin itself makes no network request or telemetry call. That claim was only statically compared; Chrome MCP and user-configured MCP servers are expressly external services and can access browser/network or third-party systems.",
+          "evidence": [
+            "PRIVACY.md:7-30",
+            ".claude/agents/browser-validator.md:10-38",
+            ".claude/agents/browser-validator.md:41-60"
+          ]
+        },
+        "destructive_and_prompt_risk": {
+          "observed": "No confirmed destructive deletion or prompt-injection bypass instruction was found in the reviewed files. Untrusted agent instructions nevertheless ask to append project annotations and can run commands supplied through context, so imported role prompts must be normalized rather than copied.",
+          "evidence": [
+            ".claude/agents/functional-reviewer.md:25-35",
+            ".claude/agents/functional-reviewer.md:120-120",
+            ".claude/agents/manual-validator.md:20-40",
+            ".claude/agents/manual-validator.md:131-131"
+          ]
+        }
+      },
+      "tests_and_determinism": {
+        "tests_present": true,
+        "runtime_executed": false,
+        "observed": "The Node validators are zero-dependency structural checks using local reads. Reference tests are manual calibration material because LLM outputs are non-deterministic, not an automatic runtime suite.",
+        "evidence": [
+          "scripts/validate-agents.mjs:1-18",
+          "scripts/validate-qa-output.mjs:1-47",
+          "tests/README.md:1-20"
+        ]
+      },
+      "risk_level": "MEDIUM",
+      "classification": "COMMAND_OR_WORKFLOW",
+      "compatibility": {
+        "chatgpt": "ADAPTER_REQUIRED",
+        "codex": "ADAPTER_REQUIRED",
+        "claude": "NATIVE",
+        "antigravity": "ADAPTER_REQUIRED",
+        "antigravity_cli": "ADAPTER_REQUIRED"
+      },
+      "recommendation": "ADAPTED. Extract only the safe QA evidence and verification patterns into the repository-local qa-verification skill and platform-neutral role definition. Keep the original Claude agents, optional MCP example, browser validator, hooks, environment manager, and automation writer disabled unless separately reviewed for a target project and explicitly authorized."
+    }
+  ],
+  "limitations": [
+    "Only the catalog-selected paths plus root configuration, manifests, licenses, and test/validation surfaces were reviewed.",
+    "A shallow clone cannot prove ownership-transfer history or the behavior of external services.",
+    "No model output, MCP server, browser, package manager, installer, hook, benchmark, or test suite was executed during this source audit."
+  ]
+}

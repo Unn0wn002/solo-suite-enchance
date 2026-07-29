@@ -24,7 +24,7 @@ class CommandBodyParityTests(unittest.TestCase):
             (ROOT / "parity/capabilities.json").read_text(encoding="utf-8")
         )
         commands = manifest["commands"]
-        self.assertEqual(len(commands), 125)
+        self.assertEqual(len(commands), 126)
         for item in commands:
             with self.subTest(skill=item["skill_name"]):
                 if f"{item['plugin']}:{item['skill_name']}" in PARITY.BODY_ADAPTER_WAIVERS:

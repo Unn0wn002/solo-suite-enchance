@@ -28,7 +28,7 @@ bytes remain fully pinned and checked.
 The Codex canonical source is
 `solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip`. It is not claimed to
 be byte-identical to the unmodified Claude archive. The checked-in working-tree
-manifest records **19 plugins, 125 commands, 79 specialist skills, and 184
+manifest records **19 plugins, 126 commands, 80 specialist skills, and 185
 target skills** and is pinned separately from the historical archive manifest.
 It also records explicit body-adapter waivers for reviewed Codex-native wrappers
 and the SEO specialist/command merges; those waivers do not bypass source

@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "e4b96134e87a1f3190b8f78a9c0176446fb567b521a90eb237c97174a9429452"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/product-discovery"
+}

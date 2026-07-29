@@ -9,18 +9,34 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "vinext build && node --test tests/rendered-html.test.mjs",
+    "test": "vinext build && node --test tests/rendered-html.test.mjs tests/capability-inventory.test.mjs tests/core-tooling.test.mjs",
+    "capability:inventory": "node scripts/build-capability-inventory.mjs",
+    "capability:catalog": "node scripts/build-capability-catalog.mjs",
+    "core:check": "node scripts/check-core-tooling.mjs",
+    "agent:bootstrap": "python scripts/bootstrap-graphify.py --check",
+    "agent:bootstrap:install": "python scripts/bootstrap-graphify.py --install",
+    "agent:security:bootstrap": "python scripts/bootstrap-security-tools.py --check",
+    "agent:security:bootstrap:install": "python scripts/bootstrap-security-tools.py --install",
+    "agent:security:remediations": "python scripts/check-high-risk-remediations.py",
+    "agent:audit": "python scripts/run-agent-audit.py",
+    "agent:sync": "python scripts/sync-agent-skills.py",
+    "agent:validate": "python scripts/validate-agent-skills.py && python scripts/validate-agent-platform.py && python scripts/check-agent-licenses.py && python scripts/check-agent-links.py && python scripts/build-agent-audit.py --check && python scripts/agent-token-report.py --check",
+    "agent:security": "python scripts/agent-security.py --npm-audit --full-scanners --write-evidence",
+    "agent:compat": "python scripts/agent-compat.py --write",
+    "agent:token-report": "python scripts/agent-token-report.py --write",
+    "agent:update-check": "python scripts/agent-update-check.py",
+    "agent:clean-temp": "python scripts/agent-clean-temp.py",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
-    "next": "16.2.6",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/vite-plugin": "1.47.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
@@ -29,13 +45,23 @@
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
-    "react-server-dom-webpack": "19.2.6",
+    "eslint-config-next": "16.2.12",
+    "react-server-dom-webpack": "19.2.8",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
-    "vite": "8.0.13",
-    "wrangler": "4.92.0"
+    "vite": "8.1.5",
+    "wrangler": "4.114.0"
+  },
+  "overrides": {
+    "@babel/core": "7.29.7",
+    "brace-expansion": "5.0.8",
+    "esbuild": "0.28.1",
+    "fast-uri": "3.1.4",
+    "js-yaml": "4.3.0",
+    "minimatch": "10.2.5",
+    "postcss": "8.5.24",
+    "sharp": "0.35.2"
   },
   "type": "module"
 }

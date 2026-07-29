@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "audit": {
+    "source": "https://github.com/wshobson/agents",
+    "resolved_commit": "c4b82b0ad771190355eb8e204b1329732a18449a",
+    "audit_date": "2026-07-28",
+    "method": "read-only static inspection of the shallow, no-submodule audit clone; no source script, hook, installer, package lifecycle, MCP server, or test was executed",
+    "license": {
+      "identifier": "MIT",
+      "location": "LICENSE",
+      "copy_modify_redistribute": true,
+      "attribution_required": true
+    },
+    "scope": {
+      "catalog_rows": 53,
+      "unique_selected_plugin_paths": 41,
+      "duplicate_role_assignments": [
+        "accessibility-compliance",
+        "backend-api-security",
+        "backend-development",
+        "business-analytics",
+        "c4-architecture",
+        "cloud-infrastructure",
+        "data-validation-suite",
+        "deployment-validation",
+        "documentation-generation",
+        "javascript-typescript",
+        "startup-business-analyst"
+      ]
+    }
+  },
+  "repository_components": {
+    "marketplaces": [
+      ".claude-plugin/marketplace.json",
+      ".agents/plugins/marketplace.json",
+      ".cursor-plugin/marketplace.json"
+    ],
+    "selected_plugin_shape": "Every selected path contains a Claude manifest and a Codex manifest. Components are predominantly Markdown skills, commands, and agent definitions; they are instructions/configuration, not a conventional executable package.",
+    "package_manifests_in_selected_paths": [],
+    "package_lifecycle_scripts_in_selected_paths": [],
+    "selected_mcp_definitions": [],
+    "selected_hook_definitions": [
+      "plugins/protect-mcp/hooks/hooks.json"
+    ],
+    "selected_executable_files": [
+      "plugins/kubernetes-operations/skills/helm-chart-scaffolding/scripts/validate-chart.sh",
+      "plugins/protect-mcp/test/run-tests.sh",
+      "plugins/protect-mcp/test/verify-fixtures.sh",
+      "plugins/backend-development/skills/api-design-principles/assets/rest-api-template.py"
+    ]
+  },
+  "selected_components": [
+    {"path": "plugins/accessibility-compliance", "skills": 2, "commands": 1, "agents": 1, "hooks": 0},
+    {"path": "plugins/api-scaffolding", "skills": 1, "commands": 0, "agents": 4, "hooks": 0},
+    {"path": "plugins/api-testing-observability", "skills": 0, "commands": 1, "agents": 1, "hooks": 0},
+    {"path": "plugins/application-performance", "skills": 0, "commands": 1, "agents": 3, "hooks": 0},
+    {"path": "plugins/backend-api-security", "skills": 0, "commands": 0, "agents": 2, "hooks": 0},
+    {"path": "plugins/backend-development", "skills": 9, "commands": 1, "agents": 8, "hooks": 0},
+    {"path": "plugins/before-you-build", "skills": 1, "commands": 0, "agents": 0, "hooks": 0},
+    {"path": "plugins/block-no-verify", "skills": 1, "commands": 1, "agents": 0, "hooks": 0, "risk_override": "HIGH", "decision": "QUARANTINE_HOOK_INSTRUCTIONS"},
+    {"path": "plugins/brand-landingpage", "skills": 1, "commands": 0, "agents": 0, "hooks": 0},
+    {"path": "plugins/business-analytics", "skills": 2, "commands": 0, "agents": 1, "hooks": 0},
+    {"path": "plugins/c4-architecture", "skills": 0, "commands": 1, "agents": 4, "hooks": 0},
+    {"path": "plugins/cicd-automation", "skills": 4, "commands": 1, "agents": 5, "hooks": 0},
+    {"path": "plugins/cloud-infrastructure", "skills": 8, "commands": 0, "agents": 7, "hooks": 0, "risk_override": "HIGH", "decision": "ADAPT_ONLY_AFTER_REMOVING_INSTALL_SNIPPETS"},
+    {"path": "plugins/code-documentation", "skills": 0, "commands": 2, "agents": 3, "hooks": 0},
+    {"path": "plugins/conductor", "skills": 3, "commands": 6, "agents": 1, "hooks": 0, "risk_override": "MEDIUM", "decision": "ADAPT_WITH_PROJECT_SCOPED_DELETE_GUARD"},
+    {"path": "plugins/database-cloud-optimization", "skills": 0, "commands": 1, "agents": 4, "hooks": 0},
+    {"path": "plugins/database-design", "skills": 1, "commands": 0, "agents": 2, "hooks": 0},
+    {"path": "plugins/database-migrations", "skills": 0, "commands": 2, "agents": 2, "hooks": 0},
+    {"path": "plugins/data-engineering", "skills": 4, "commands": 2, "agents": 2, "hooks": 0},
+    {"path": "plugins/data-validation-suite", "skills": 0, "commands": 0, "agents": 1, "hooks": 0},
+    {"path": "plugins/deployment-strategies", "skills": 0, "commands": 0, "agents": 2, "hooks": 0},
+    {"path": "plugins/deployment-validation", "skills": 0, "commands": 1, "agents": 1, "hooks": 0},
+    {"path": "plugins/developer-essentials", "skills": 11, "commands": 0, "agents": 1, "hooks": 0, "risk_override": "MEDIUM", "decision": "ADAPT_WITH_SAFE_CLEANUP_ONLY"},
+    {"path": "plugins/documentation-generation", "skills": 3, "commands": 1, "agents": 5, "hooks": 0},
+    {"path": "plugins/documentation-standards", "skills": 1, "commands": 0, "agents": 0, "hooks": 0},
+    {"path": "plugins/frontend-mobile-development", "skills": 4, "commands": 1, "agents": 2, "hooks": 0},
+    {"path": "plugins/frontend-mobile-security", "skills": 0, "commands": 1, "agents": 3, "hooks": 0},
+    {"path": "plugins/full-stack-orchestration", "skills": 0, "commands": 1, "agents": 4, "hooks": 0},
+    {"path": "plugins/incident-response", "skills": 3, "commands": 2, "agents": 6, "hooks": 0},
+    {"path": "plugins/javascript-typescript", "skills": 4, "commands": 1, "agents": 2, "hooks": 0},
+    {"path": "plugins/kubernetes-operations", "skills": 4, "commands": 0, "agents": 1, "hooks": 0, "risk_override": "MEDIUM", "decision": "ADAPT_SCRIPT_AS_OPT_IN_VALIDATION_ONLY"},
+    {"path": "plugins/observability-monitoring", "skills": 4, "commands": 2, "agents": 4, "hooks": 0},
+    {"path": "plugins/performance-testing-review", "skills": 0, "commands": 2, "agents": 2, "hooks": 0},
+    {"path": "plugins/protect-mcp", "skills": 1, "commands": 2, "agents": 2, "hooks": 1, "risk_override": "CRITICAL", "decision": "QUARANTINE_AUTOMATIC_HOOK"},
+    {"path": "plugins/python-development", "skills": 16, "commands": 1, "agents": 3, "hooks": 0, "risk_override": "HIGH", "decision": "ADAPT_ONLY_AFTER_REMOVING_DOWNLOAD_AND_DELETE_SNIPPETS"},
+    {"path": "plugins/security-compliance", "skills": 0, "commands": 1, "agents": 1, "hooks": 0},
+    {"path": "plugins/security-scanning", "skills": 5, "commands": 3, "agents": 2, "hooks": 0},
+    {"path": "plugins/startup-business-analyst", "skills": 5, "commands": 3, "agents": 1, "hooks": 0},
+    {"path": "plugins/tdd-workflows", "skills": 0, "commands": 4, "agents": 2, "hooks": 0},
+    {"path": "plugins/ui-design", "skills": 9, "commands": 4, "agents": 3, "hooks": 0},
+    {"path": "plugins/unit-testing", "skills": 0, "commands": 1, "agents": 2, "hooks": 0}
+  ],
+  "focused_findings": {
+    "block_no_verify": {
+      "manifest": "plugins/block-no-verify/.claude-plugin/plugin.json and .codex-plugin/plugin.json",
+      "active_hook_file_present": false,
+      "implementation": "The skill and command instruct an agent to merge a PreToolUse Bash command into .claude/settings.json. It inspects TOOL_INPUT with grep and exits 2 when git --no-verify or --no-gpg-sign is found.",
+      "risks": [
+        "The documented --global option targets ~/.claude/settings.json, outside the repository.",
+        "The command edits automatic-hook configuration and can therefore alter future tool behavior.",
+        "The regex is a heuristic and must be independently tested for command-chain and quoting bypasses before adoption."
+      ],
+      "positive_controls": [
+        "It is designed to prevent rather than enable verification bypass.",
+        "The proposed hook uses printf instead of echo and limits inspection to git-related bypass flags.",
+        "It says to preserve and merge existing configuration."
+      ],
+      "tests": "No packaged automated test was found for the hook configuration.",
+      "recommendation": "Do not install or copy its command as an active hook. Retain only the policy intent in shared instructions; if a hook is later approved, use a project-local reviewed implementation and dedicated adversarial tests."
+    },
+    "protect_mcp": {
+      "manifest": "plugins/protect-mcp/.claude-plugin/plugin.json and .codex-plugin/plugin.json",
+      "active_hook_file": "plugins/protect-mcp/hooks/hooks.json",
+      "hook_behavior": "A matcher of .* runs npx protect-mcp@0.7.4 evaluate before every tool call and npx protect-mcp@0.7.4 sign after every tool call. Inputs and outputs are passed through environment variables; receipts and a signing key default to project-relative paths.",
+      "supply_chain_risk": "The hooks invoke npx on every tool call. Although hooks.json pins protect-mcp to 0.7.4, the setup skill and README use protect-mcp@latest. Neither package artifact was audited, installed, nor executed.",
+      "filesystem_and_data_risk": "PostToolUse records a receipt for every tool call, including tool input and output hashes/metadata; exact collection and key generation behavior belongs to the unaudited npm package. The test runner uses mktemp and removes only its generated temp directory.",
+      "network_risk": "npx --yes in hooks/tests can fetch packages from npm, and test execution also fetches @veritasacta/verify. This audit did not permit either networked execution.",
+      "tests": {
+        "static_fixture_checker": "test/verify-fixtures.sh is static and validates JSON/policy fixtures, but was not run.",
+        "integration_runner": "test/run-tests.sh includes allow/deny/tamper cases but executes npx --yes package downloads; it was not run.",
+        "coverage_gap": "No local lock file or vendored implementation proves that README behavior, hook behavior, and npm package behavior match."
+      },
+      "recommendation": "QUARANTINED. Do not activate, copy, or translate the hook. A separate approved, pinned, offline-reviewed dependency and privacy review would be required before any use."
+    }
+  },
+  "cross_cutting_findings": {
+    "credential_and_environment_references": {
+      "status": "PLACEHOLDER_AND_EXAMPLE_REFERENCES_FOUND",
+      "examples": ["OPENAI_API_KEY", "ANTHROPIC_API_KEY", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "GITHUB_TOKEN", "DATABASE_PASSWORD", "NPM_TOKEN", "PROTECT_MCP_KEY"],
+      "interpretation": "References occur in instructional templates and examples. No real credential values were recorded, and no selected plugin requires a credential through a package manifest. Any generated application configuration must use repository-local secret handling and never embed values."
+    },
+    "network_behavior": {
+      "status": "DOCUMENTED_OR_OPT_IN_ONLY",
+      "findings": [
+        "cloud-infrastructure contains a Linkerd curl-to-shell installation example.",
+        "python-development contains an Astral uv curl-to-shell installation example.",
+        "protect-mcp hooks/tests invoke npx and may contact npm."
+      ],
+      "recommendation": "Do not reproduce download-and-execute instructions in canonical skills. Replace with audited, user-approved, pinned tool prerequisites."
+    },
+    "filesystem_and_destructive_behavior": {
+      "status": "DOCUMENTED_AND_TEST_ONLY_REFERENCES_FOUND",
+      "findings": [
+        "conductor documents recursive removal of conductor track directories.",
+        "developer-essentials documents removal of node_modules.",
+        "python-development documents removal of caches and __pycache__ directories.",
+        "protect-mcp tests clean a mktemp-created work directory and deny rm -rf / in a fixture."
+      ],
+      "recommendation": "Never carry these commands into portable skills without a narrowly validated repository-relative target, dry-run behavior, and an explicit user-authorized cleanup workflow."
+    },
+    "prompt_injection_review": {
+      "status": "NO_DIRECT_IGNORE_POLICY_PATTERN_FOUND_IN_SELECTED_CONTENT",
+      "caveat": "Markdown skills, commands, references, templates, and agent files remain untrusted prompt material. No discovery result authorizes following their embedded commands."
+    },
+    "documentation_vs_implementation": {
+      "status": "PARTIAL_MATCH",
+      "finding": "Each selected plugin has metadata and declared instructional components. The two focused plugins' README/skill claims correspond to their supplied hook/configuration text, but the security-critical runtime for protect-mcp is an external npm package absent from the clone; its claims are not verified."
+    },
+    "default_disposition": "ADAPT_CONTENT_ONLY. Extract no code automatically. Do not enable marketplace entries, hooks, MCP definitions, or external tool installation paths by default."
+  }
+}

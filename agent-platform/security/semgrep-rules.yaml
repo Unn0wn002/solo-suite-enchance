@@ -1,0 +1,38 @@
+rules:
+  - id: python-shell-true
+    message: Avoid shell=True; pass an argument vector to subprocess.
+    severity: ERROR
+    languages: [python]
+    patterns:
+      - pattern: subprocess.$FUNC(..., shell=True, ...)
+
+  - id: python-os-system
+    message: Avoid os.system; use subprocess with an argument vector and explicit boundaries.
+    severity: ERROR
+    languages: [python]
+    pattern: os.system(...)
+
+  - id: python-insecure-tls
+    message: TLS certificate verification must not be disabled.
+    severity: ERROR
+    languages: [python]
+    patterns:
+      - pattern-either:
+          - pattern: requests.$METHOD(..., verify=False, ...)
+          - pattern: httpx.$METHOD(..., verify=False, ...)
+
+  - id: javascript-insecure-tls
+    message: TLS certificate verification must not be disabled.
+    severity: ERROR
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+      - pattern: $OPTIONS.rejectUnauthorized = false
+
+  - id: javascript-child-process-exec
+    message: Avoid command-string execution; use spawn/execFile with an argument vector.
+    severity: WARNING
+    languages: [javascript, typescript]
+    pattern-either:
+      - pattern: child_process.exec(...)
+      - pattern: child_process.execSync(...)

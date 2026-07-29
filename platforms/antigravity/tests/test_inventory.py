@@ -51,7 +51,7 @@ class Inventory(unittest.TestCase):
         command, script, or room agent is added or removed, this test and
         the marketplace metadata must both be updated deliberately."""
         self.assertEqual(self.real, {
-            "plugins": 19, "skills": 79, "commands": 125,
+            "plugins": 19, "skills": 80, "commands": 126,
             "scripts": 16, "agents": 24})
 
     def test_helper_script_and_agent_manifests(self):

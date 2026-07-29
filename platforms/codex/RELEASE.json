@@ -10,8 +10,8 @@
   "historical_source_archive_sha256": "b691905f8ade4c2fb7e0084a46f537c9be8d7b2bf0f4d160c38c5e930aed1d43",
   "counts": {
     "plugins": 19,
-    "skills": 184,
-    "commands": 125,
+    "skills": 185,
+    "commands": 126,
     "scripts": 28
   },
   "format": "codex-plugin-marketplace",

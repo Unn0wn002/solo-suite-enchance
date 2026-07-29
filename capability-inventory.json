@@ -1,0 +1,1593 @@
+{
+  "product": "Solo Suite Enchance",
+  "generatedAt": "2026-07-28T13:49:13.308Z",
+  "counts": {
+    "plugins": 19,
+    "claudeSkills": 80,
+    "claudeCommands": 126,
+    "codexSkillFiles": 185
+  },
+  "sourcePolicy": {
+    "upstreamCorpus": "C:/Users/unn0w/Downloads/EC Solo Suite Learns",
+    "attribution": "Review licenses and preserve upstream attribution before promotion.",
+    "activation": "Use phase-driven routing; do not activate every plugin for every task."
+  },
+  "plugins": [
+    {
+      "name": "ai",
+      "claude": {
+        "skills": [
+          "agent-room-templates/SKILL.md",
+          "ai-output-auditor/SKILL.md"
+        ],
+        "commands": [
+          "agent-rooms.md",
+          "compare-models.md",
+          "handoff-check.md",
+          "prompt-improve.md",
+          "repair-cycle.md",
+          "review-output.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 8
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Make AgentRooms, output auditing, and evidence contracts the governance layer for every multi-role run.",
+      "skillImplementationIdeas": [
+        {
+          "path": "agent-room-templates/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "ai-output-auditor/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "agent-rooms.md",
+          "invocation": "/ai:agent-rooms",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "compare-models.md",
+          "invocation": "/ai:compare-models",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "handoff-check.md",
+          "invocation": "/ai:handoff-check",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "prompt-improve.md",
+          "invocation": "/ai:prompt-improve",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "repair-cycle.md",
+          "invocation": "/ai:repair-cycle",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "review-output.md",
+          "invocation": "/ai:review-output",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "browser",
+      "claude": {
+        "skills": [
+          "browser-qa-engineer/SKILL.md"
+        ],
+        "commands": [
+          "console-errors.md",
+          "form-submit-test.md",
+          "mobile-test.md",
+          "smoke-test.md",
+          "visual-check.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Add a repeatable responsive, console, form, and accessibility smoke matrix for website changes.",
+      "skillImplementationIdeas": [
+        {
+          "path": "browser-qa-engineer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "console-errors.md",
+          "invocation": "/browser:console-errors",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "form-submit-test.md",
+          "invocation": "/browser:form-submit-test",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "mobile-test.md",
+          "invocation": "/browser:mobile-test",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "smoke-test.md",
+          "invocation": "/browser:smoke-test",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "visual-check.md",
+          "invocation": "/browser:visual-check",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "design",
+      "claude": {
+        "skills": [
+          "ui-ux-designer/SKILL.md"
+        ],
+        "commands": [
+          "component-system.md",
+          "ui-review.md",
+          "ux-flow.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 4
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Route design-system, interaction, responsive, and accessibility work from shared acceptance criteria.",
+      "skillImplementationIdeas": [
+        {
+          "path": "ui-ux-designer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "component-system.md",
+          "invocation": "/design:component-system",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "ui-review.md",
+          "invocation": "/design:ui-review",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "ux-flow.md",
+          "invocation": "/design:ux-flow",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": [
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/ui-design",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/accessibility-compliance",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/brand-landingpage",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/documentation-generation"
+      ]
+    },
+    {
+      "name": "dev",
+      "claude": {
+        "skills": [
+          "code-reviewer/SKILL.md",
+          "fullstack-developer/SKILL.md"
+        ],
+        "commands": [
+          "code-review.md",
+          "fix-bug.md",
+          "implement-feature.md",
+          "refactor-code.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Add frontend, backend, TypeScript, Python, and GSAP implementation adapters without duplicating role logic.",
+      "skillImplementationIdeas": [
+        {
+          "path": "code-reviewer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "fullstack-developer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "code-review.md",
+          "invocation": "/dev:code-review",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "fix-bug.md",
+          "invocation": "/dev:fix-bug",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "implement-feature.md",
+          "invocation": "/dev:implement-feature",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "refactor-code.md",
+          "invocation": "/dev:refactor-code",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": [
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/backend-development",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/javascript-typescript",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/frontend-mobile-development",
+        "EC Solo Suite Learns/repositories/gsap-skills"
+      ]
+    },
+    {
+      "name": "docs",
+      "claude": {
+        "skills": [
+          "documentation-writer/SKILL.md"
+        ],
+        "commands": [
+          "api.md",
+          "runbook.md",
+          "setup-guide.md",
+          "update.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 5
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Generate ADRs, OpenAPI, changelogs, setup guides, and runbooks from approved project artifacts.",
+      "skillImplementationIdeas": [
+        {
+          "path": "documentation-writer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "api.md",
+          "invocation": "/docs:api",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "runbook.md",
+          "invocation": "/docs:runbook",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "setup-guide.md",
+          "invocation": "/docs:setup-guide",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "update.md",
+          "invocation": "/docs:update",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "full-team",
+      "claude": {
+        "skills": [],
+        "commands": [
+          "verify.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 2
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Orchestrate phase-owned seats with explicit inputs, outputs, workspace rules, and handoff evidence.",
+      "skillImplementationIdeas": [],
+      "commandImplementationIdeas": [
+        {
+          "path": "verify.md",
+          "invocation": "/full-team:verify",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "gate",
+      "claude": {
+        "skills": [
+          "production-readiness-reviewer/SKILL.md",
+          "quality-gatekeeper/SKILL.md"
+        ],
+        "commands": [
+          "before-code.md",
+          "before-deploy.md",
+          "before-merge.md",
+          "finalize-evidence.md",
+          "production-ready.md",
+          "score-project.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 8
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Unify acceptance, security, performance, accessibility, and deployment evidence into one release decision.",
+      "skillImplementationIdeas": [
+        {
+          "path": "production-readiness-reviewer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "quality-gatekeeper/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "before-code.md",
+          "invocation": "/gate:before-code",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "before-deploy.md",
+          "invocation": "/gate:before-deploy",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "before-merge.md",
+          "invocation": "/gate:before-merge",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "finalize-evidence.md",
+          "invocation": "/gate:finalize-evidence",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "production-ready.md",
+          "invocation": "/gate:production-ready",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "score-project.md",
+          "invocation": "/gate:score-project",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "git",
+      "claude": {
+        "skills": [
+          "git-workflow-manager/SKILL.md"
+        ],
+        "commands": [
+          "commit-plan.md",
+          "create-branch.md",
+          "pr-review.md",
+          "release-notes.md",
+          "sync-issues.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Make branch, commit, review, issue sync, and release-note work respect the no-bypass safety contract.",
+      "skillImplementationIdeas": [
+        {
+          "path": "git-workflow-manager/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "commit-plan.md",
+          "invocation": "/git:commit-plan",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "create-branch.md",
+          "invocation": "/git:create-branch",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "pr-review.md",
+          "invocation": "/git:pr-review",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "release-notes.md",
+          "invocation": "/git:release-notes",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "sync-issues.md",
+          "invocation": "/git:sync-issues",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "growth",
+      "claude": {
+        "skills": [
+          "conversion-optimizer/SKILL.md"
+        ],
+        "commands": [
+          "conversion-audit.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 2
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Connect conversion audits and experiments to measurable hypotheses, events, and decision logs.",
+      "skillImplementationIdeas": [
+        {
+          "path": "conversion-optimizer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "conversion-audit.md",
+          "invocation": "/growth:conversion-audit",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "project",
+      "claude": {
+        "skills": [
+          "capability-routing/SKILL.md",
+          "product-manager/SKILL.md",
+          "software-architect/SKILL.md"
+        ],
+        "commands": [
+          "architecture.md",
+          "capability-map.md",
+          "prd.md",
+          "task-breakdown.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Add story-map and before-build risk checks before PRD, architecture, and task breakdown.",
+      "skillImplementationIdeas": [
+        {
+          "path": "capability-routing/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "product-manager/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "software-architect/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "architecture.md",
+          "invocation": "/project:architecture",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "capability-map.md",
+          "invocation": "/project:capability-map",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "prd.md",
+          "invocation": "/project:prd",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "task-breakdown.md",
+          "invocation": "/project:task-breakdown",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": [
+        "EC Solo Suite Learns/repositories/storymap-skill",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/before-you-build",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/conductor",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/business-analytics",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/startup-business-analyst"
+      ]
+    },
+    {
+      "name": "release",
+      "claude": {
+        "skills": [
+          "devops-engineer/SKILL.md",
+          "security-reviewer/SKILL.md"
+        ],
+        "commands": [
+          "ci-setup.md",
+          "deploy-plan.md",
+          "preflight.md",
+          "rollback-plan.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Attach reproducible build provenance, deployment strategy, rollback, and CI evidence to every release.",
+      "skillImplementationIdeas": [
+        {
+          "path": "devops-engineer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "security-reviewer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "ci-setup.md",
+          "invocation": "/release:ci-setup",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "deploy-plan.md",
+          "invocation": "/release:deploy-plan",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "preflight.md",
+          "invocation": "/release:preflight",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "rollback-plan.md",
+          "invocation": "/release:rollback-plan",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "repo",
+      "claude": {
+        "skills": [
+          "repo-analyzer/SKILL.md"
+        ],
+        "commands": [
+          "dependency-map.md",
+          "find-dead-code.md",
+          "map.md",
+          "onboarding.md",
+          "risk-map.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Route Graphify, bounded native search, primary official documentation, and filtered Repomix handoffs without activating rejected tools.",
+      "skillImplementationIdeas": [
+        {
+          "path": "repo-analyzer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "dependency-map.md",
+          "invocation": "/repo:dependency-map",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "find-dead-code.md",
+          "invocation": "/repo:find-dead-code",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "map.md",
+          "invocation": "/repo:map",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "onboarding.md",
+          "invocation": "/repo:onboarding",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "risk-map.md",
+          "invocation": "/repo:risk-map",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": [
+        "EC Solo Suite Learns/repositories/graphify",
+        "EC Solo Suite Learns/repositories/repomix"
+      ]
+    },
+    {
+      "name": "security",
+      "claude": {
+        "skills": [
+          "authz-security-reviewer/SKILL.md"
+        ],
+        "commands": [
+          "abuse-cases.md",
+          "authz-matrix.md",
+          "rls-test.md",
+          "secrets-fix.md",
+          "threat-model.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 6
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Run threat modeling, abuse cases, authorization matrices, secret checks, and RLS evidence before release.",
+      "skillImplementationIdeas": [
+        {
+          "path": "authz-security-reviewer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "abuse-cases.md",
+          "invocation": "/security:abuse-cases",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "authz-matrix.md",
+          "invocation": "/security:authz-matrix",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "rls-test.md",
+          "invocation": "/security:rls-test",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "secrets-fix.md",
+          "invocation": "/security:secrets-fix",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "threat-model.md",
+          "invocation": "/security:threat-model",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "seo",
+      "claude": {
+        "skills": [
+          "seo/SKILL.md",
+          "seo-backlinks/SKILL.md",
+          "seo-cluster/SKILL.md",
+          "seo-competitor-pages/SKILL.md",
+          "seo-content/SKILL.md",
+          "seo-content-brief/SKILL.md",
+          "seo-drift/SKILL.md",
+          "seo-ecommerce/SKILL.md",
+          "seo-flow/SKILL.md",
+          "seo-geo/SKILL.md",
+          "seo-google/SKILL.md",
+          "seo-hreflang/SKILL.md",
+          "seo-images/SKILL.md",
+          "seo-local/SKILL.md",
+          "seo-maps/SKILL.md",
+          "seo-page/SKILL.md",
+          "seo-plan/SKILL.md",
+          "seo-programmatic/SKILL.md",
+          "seo-schema/SKILL.md",
+          "seo-sitemap/SKILL.md",
+          "seo-sxo/SKILL.md",
+          "seo-technical/SKILL.md"
+        ],
+        "commands": [
+          "audit.md",
+          "backlinks.md",
+          "cluster.md",
+          "competitor-pages.md",
+          "content-brief.md",
+          "content.md",
+          "drift.md",
+          "ecommerce.md",
+          "flow.md",
+          "geo.md",
+          "google.md",
+          "hreflang.md",
+          "images.md",
+          "local.md",
+          "maps.md",
+          "page.md",
+          "plan.md",
+          "programmatic.md",
+          "schema.md",
+          "sitemap.md",
+          "sxo.md",
+          "technical.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 23
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Treat technical SEO, structured data, GEO, content, image, and sitemap checks as acceptance criteria.",
+      "skillImplementationIdeas": [
+        {
+          "path": "seo/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-backlinks/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-cluster/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-competitor-pages/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-content/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-content-brief/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-drift/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-ecommerce/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-flow/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-geo/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-google/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-hreflang/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-images/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-local/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-maps/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-page/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-plan/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-programmatic/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-schema/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-sitemap/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-sxo/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-technical/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "audit.md",
+          "invocation": "/seo:audit",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "backlinks.md",
+          "invocation": "/seo:backlinks",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "cluster.md",
+          "invocation": "/seo:cluster",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "competitor-pages.md",
+          "invocation": "/seo:competitor-pages",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "content-brief.md",
+          "invocation": "/seo:content-brief",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "content.md",
+          "invocation": "/seo:content",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "drift.md",
+          "invocation": "/seo:drift",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "ecommerce.md",
+          "invocation": "/seo:ecommerce",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "flow.md",
+          "invocation": "/seo:flow",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "geo.md",
+          "invocation": "/seo:geo",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "google.md",
+          "invocation": "/seo:google",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "hreflang.md",
+          "invocation": "/seo:hreflang",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "images.md",
+          "invocation": "/seo:images",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "local.md",
+          "invocation": "/seo:local",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "maps.md",
+          "invocation": "/seo:maps",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "page.md",
+          "invocation": "/seo:page",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "plan.md",
+          "invocation": "/seo:plan",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "programmatic.md",
+          "invocation": "/seo:programmatic",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "schema.md",
+          "invocation": "/seo:schema",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "sitemap.md",
+          "invocation": "/seo:sitemap",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "sxo.md",
+          "invocation": "/seo:sxo",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "technical.md",
+          "invocation": "/seo:technical",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "site-doctor",
+      "claude": {
+        "skills": [
+          "accessibility-review/SKILL.md",
+          "analytics-audit/SKILL.md",
+          "animation-design-audit/SKILL.md",
+          "api-audit/SKILL.md",
+          "backup-recovery/SKILL.md",
+          "compliance-check/SKILL.md",
+          "content-audit/SKILL.md",
+          "cost-optimization/SKILL.md",
+          "data-migration/SKILL.md",
+          "database-audit/SKILL.md",
+          "database-debug/SKILL.md",
+          "database-fix/SKILL.md",
+          "dependency-audit/SKILL.md",
+          "deployment-review/SKILL.md",
+          "email-deliverability/SKILL.md",
+          "forms-audit/SKILL.md",
+          "incident-response/SKILL.md",
+          "infrastructure-audit/SKILL.md",
+          "load-testing/SKILL.md",
+          "mobile-audit/SKILL.md",
+          "observability/SKILL.md",
+          "performance-tuning/SKILL.md",
+          "security-review/SKILL.md",
+          "seo-optimization/SKILL.md",
+          "website-audit/SKILL.md",
+          "website-debug/SKILL.md",
+          "website-fix/SKILL.md"
+        ],
+        "commands": [
+          "a11y.md",
+          "animation.md",
+          "audit-analytics.md",
+          "audit-api.md",
+          "audit-content.md",
+          "audit-db.md",
+          "audit-deps.md",
+          "audit-forms.md",
+          "audit-infra.md",
+          "audit-mobile.md",
+          "audit-site.md",
+          "backups.md",
+          "compliance.md",
+          "cost.md",
+          "debug.md",
+          "email-check.md",
+          "full-checkup.md",
+          "incident.md",
+          "load-test.md",
+          "migrate-data.md",
+          "monitoring.md",
+          "perf.md",
+          "review-deploy.md",
+          "security-scan.md",
+          "seo.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 52
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Make health audits composable across accessibility, content, APIs, dependencies, infrastructure, and observability.",
+      "skillImplementationIdeas": [
+        {
+          "path": "accessibility-review/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "analytics-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "animation-design-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "api-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "backup-recovery/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "compliance-check/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "content-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "cost-optimization/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "data-migration/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "database-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "database-debug/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "database-fix/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "dependency-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "deployment-review/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "email-deliverability/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "forms-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "incident-response/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "infrastructure-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "load-testing/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "mobile-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "observability/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "performance-tuning/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "security-review/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "seo-optimization/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "website-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "website-debug/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "website-fix/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "a11y.md",
+          "invocation": "/site-doctor:a11y",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "animation.md",
+          "invocation": "/site-doctor:animation",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-analytics.md",
+          "invocation": "/site-doctor:audit-analytics",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-api.md",
+          "invocation": "/site-doctor:audit-api",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-content.md",
+          "invocation": "/site-doctor:audit-content",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-db.md",
+          "invocation": "/site-doctor:audit-db",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-deps.md",
+          "invocation": "/site-doctor:audit-deps",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-forms.md",
+          "invocation": "/site-doctor:audit-forms",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-infra.md",
+          "invocation": "/site-doctor:audit-infra",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-mobile.md",
+          "invocation": "/site-doctor:audit-mobile",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-site.md",
+          "invocation": "/site-doctor:audit-site",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "backups.md",
+          "invocation": "/site-doctor:backups",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "compliance.md",
+          "invocation": "/site-doctor:compliance",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "cost.md",
+          "invocation": "/site-doctor:cost",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "debug.md",
+          "invocation": "/site-doctor:debug",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "email-check.md",
+          "invocation": "/site-doctor:email-check",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "full-checkup.md",
+          "invocation": "/site-doctor:full-checkup",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "incident.md",
+          "invocation": "/site-doctor:incident",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "load-test.md",
+          "invocation": "/site-doctor:load-test",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "migrate-data.md",
+          "invocation": "/site-doctor:migrate-data",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "monitoring.md",
+          "invocation": "/site-doctor:monitoring",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "perf.md",
+          "invocation": "/site-doctor:perf",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "review-deploy.md",
+          "invocation": "/site-doctor:review-deploy",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "security-scan.md",
+          "invocation": "/site-doctor:security-scan",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "seo.md",
+          "invocation": "/site-doctor:seo",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": [
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/security-scanning",
+        "EC Solo Suite Learns/repositories/wshobson-agents/plugins/deployment-validation",
+        "EC Solo Suite Learns/repositories/qa-orchestra"
+      ]
+    },
+    {
+      "name": "solo",
+      "claude": {
+        "skills": [
+          "memory-sync/SKILL.md",
+          "project-memory-manager/SKILL.md",
+          "suite-integrity/SKILL.md"
+        ],
+        "commands": [
+          "end-session.md",
+          "full-team-dev.md",
+          "handoff-memory.md",
+          "next-step.md",
+          "project-status.md",
+          "run-cycle.md",
+          "self-check.md",
+          "start-session.md",
+          "sync-grafana.md",
+          "sync-obsidian.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 13
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Keep project memory, decisions, handoffs, and next-step selection stable across every platform.",
+      "skillImplementationIdeas": [
+        {
+          "path": "memory-sync/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "project-memory-manager/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "suite-integrity/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "end-session.md",
+          "invocation": "/solo:end-session",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "full-team-dev.md",
+          "invocation": "/solo:full-team-dev",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "handoff-memory.md",
+          "invocation": "/solo:handoff-memory",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "next-step.md",
+          "invocation": "/solo:next-step",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "project-status.md",
+          "invocation": "/solo:project-status",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "run-cycle.md",
+          "invocation": "/solo:run-cycle",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "self-check.md",
+          "invocation": "/solo:self-check",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "start-session.md",
+          "invocation": "/solo:start-session",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "sync-grafana.md",
+          "invocation": "/solo:sync-grafana",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "sync-obsidian.md",
+          "invocation": "/solo:sync-obsidian",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "spec",
+      "claude": {
+        "skills": [
+          "acceptance-criteria-writer/SKILL.md",
+          "api-contract-designer/SKILL.md"
+        ],
+        "commands": [
+          "acceptance.md",
+          "api-contract.md",
+          "data-contract.md",
+          "env-contract.md",
+          "feature-brief.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 7
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Turn feature briefs and API contracts into the shared input for design, architecture, implementation, and QA.",
+      "skillImplementationIdeas": [
+        {
+          "path": "acceptance-criteria-writer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "api-contract-designer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "acceptance.md",
+          "invocation": "/spec:acceptance",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "api-contract.md",
+          "invocation": "/spec:api-contract",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "data-contract.md",
+          "invocation": "/spec:data-contract",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "env-contract.md",
+          "invocation": "/spec:env-contract",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "feature-brief.md",
+          "invocation": "/spec:feature-brief",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "stack",
+      "claude": {
+        "skills": [
+          "cloudflare-audit/SKILL.md",
+          "connector-auditor/SKILL.md",
+          "payments-audit/SKILL.md",
+          "stack-advisor/SKILL.md",
+          "supabase-audit/SKILL.md",
+          "tag-audit/SKILL.md",
+          "vercel-audit/SKILL.md"
+        ],
+        "commands": [
+          "audit-cloudflare.md",
+          "audit-payments.md",
+          "audit-supabase.md",
+          "audit-tags.md",
+          "audit-vercel.md",
+          "connector-check.md",
+          "intake.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 14
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Capture the real hosting, database, auth, CDN, analytics, email, and payment stack before vendor-specific audits.",
+      "skillImplementationIdeas": [
+        {
+          "path": "cloudflare-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "connector-auditor/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "payments-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "stack-advisor/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "supabase-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "tag-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        },
+        {
+          "path": "vercel-audit/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "audit-cloudflare.md",
+          "invocation": "/stack:audit-cloudflare",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-payments.md",
+          "invocation": "/stack:audit-payments",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-supabase.md",
+          "invocation": "/stack:audit-supabase",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-tags.md",
+          "invocation": "/stack:audit-tags",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "audit-vercel.md",
+          "invocation": "/stack:audit-vercel",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "connector-check.md",
+          "invocation": "/stack:connector-check",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "intake.md",
+          "invocation": "/stack:intake",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    },
+    {
+      "name": "test",
+      "claude": {
+        "skills": [
+          "qa-engineer/SKILL.md"
+        ],
+        "commands": [
+          "e2e.md",
+          "edge-cases.md",
+          "integration.md",
+          "unit.md"
+        ]
+      },
+      "codex": {
+        "skillFiles": 5
+      },
+      "antigravity": {
+        "mirrorOf": "claude"
+      },
+      "implementationIdea": "Use acceptance criteria as a QA contract and combine unit, integration, E2E, edge-case, and performance checks.",
+      "skillImplementationIdeas": [
+        {
+          "path": "qa-engineer/SKILL.md",
+          "idea": "Use this skill as an explicit owner surface; declare inputs, outputs, handoff, and evidence before work begins."
+        }
+      ],
+      "commandImplementationIdeas": [
+        {
+          "path": "e2e.md",
+          "invocation": "/test:e2e",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "edge-cases.md",
+          "invocation": "/test:edge-cases",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "integration.md",
+          "invocation": "/test:integration",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        },
+        {
+          "path": "unit.md",
+          "invocation": "/test:unit",
+          "idea": "Invoke this workflow at its phase boundary, write the promised artifact to .solo or the project workspace, and leave evidence for the next gate."
+        }
+      ],
+      "learnedSources": []
+    }
+  ]
+}

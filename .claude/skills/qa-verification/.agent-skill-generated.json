@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "eb54c29b2a2c1c2e6abc88ded9e5c30c3fdfc850902037a05bd422d5eade4836"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/qa-verification"
+}

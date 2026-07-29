@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "analytics",
+  "enabled_roles": [
+    "data-analyst"
+  ],
+  "enabled_skills": [
+    "data-analysis"
+  ],
+  "optional_skills": [
+    "product-discovery"
+  ],
+  "disabled_duplicates": [],
+  "external_tools": [],
+  "verification_commands": [
+    "python scripts/validate-agent-skills.py",
+    "python scripts/validate-agent-platform.py"
+  ],
+  "token_budget_guidance": {
+    "target_max_active_skills": 2,
+    "load_role_definitions_on_demand": true,
+    "load_references_on_demand": true,
+    "keep_generated_graphs_out_of_startup_context": true
+  }
+}

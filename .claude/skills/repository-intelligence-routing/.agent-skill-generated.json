@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "f59227fdb93f22f5a18edbfb2caffe56b90217922ede35494c100071dbbe12dd"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/repository-intelligence-routing"
+}

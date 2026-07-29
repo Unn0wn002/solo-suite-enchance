@@ -6,13 +6,13 @@
   "archive_sha256": "7dde7bbe44e7534e3f1890ddb1c5feba5554d60127c4dd7ef2095b31cafb03aa",
   "top_level_folder": "solo-suite-plugin-v1.0.27",
   "capabilities_sha256": "3f03cfe3cb25cff447dcfcba028df832288e9212c0fe816b9f702b7a1038f5ec",
-  "working_tree_capabilities_sha256": "7d0fd32bbb6de7f357f1642595c729c2e8b48f39c96184c4c76ce0f046a6b7bd",
-  "working_tree_parity_sha256": "a0b79be1ba2d7b0ce0b027c59c501849481974d7a11a9bd0b6718b9cbb8215d5",
+  "working_tree_capabilities_sha256": "f41023ad95262dfe5585d9d64873c5281dd4b186ae83d025bb0b9ef00efdb1fa",
+  "working_tree_parity_sha256": "03c38278b66d73e4783e290bf1d2921a26691ed30ea1053f2a3e480deba1a4d8",
   "working_tree_counts": {
     "plugins": 19,
-    "source_commands": 125,
-    "source_specialist_skills": 79,
-    "target_skills": 184
+    "source_commands": 126,
+    "source_specialist_skills": 80,
+    "target_skills": 185
   },
   "base_archive": "solo-suite-plugin-v1.0.27.zip",
   "base_archive_sha256": "e6ade834f95695766af5655a2444d49096ba3b0c49b4f1f726a119ef30848caa",
@@ -34,7 +34,7 @@
   "provenance_status": "authenticated-tag-reproducible-overlay",
   "provenance_caveat": "The Claude v1.0.27 annotated tag, commit, tree, and public release asset are pinned; the checked-in provenance JSON is the exact public release CI record and is digest-pinned rather than locally rebuilt. The tag is not cryptographically signed (base_tag_signed=false). The Codex result differs from that base only at the ten paths declared here; those are reviewed adapter or generated-verifier overlays, not an assertion of byte identity with the unmodified Claude archive.",
   "overlay_manifest": "parity/source-overlay-manifest.json",
-  "overlay_manifest_sha256": "34e1811a2124820d24f6be2712db4ebc2487439f9cb4da46b2074e46d8aca95f",
+  "overlay_manifest_sha256": "5a283158988c310728c6390039d5fe5691942fd8d7b7a49c509617e7b6b32547",
   "overlay_verifier": "tools/verify_source_overlay.py",
   "overlay_builder": "tools/build_canonical_source.py",
   "target_sync_commit": "16d3bba2503c1698d770cc52b3fe53be39ab6e09",

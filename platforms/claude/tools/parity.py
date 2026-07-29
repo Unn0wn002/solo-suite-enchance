@@ -38,9 +38,9 @@ SCHEMA = "solo-suite/capability-parity-v1"
 # (command-derived skills union specialist skills union declared extras, so it
 # is smaller than command+specialist because the two sets overlap).
 EXPECTED_PLUGIN_COUNT = 19
-EXPECTED_COMMAND_COUNT = 125
-EXPECTED_SPECIALIST_COUNT = 79
-EXPECTED_TARGET_SKILL_COUNT = 184
+EXPECTED_COMMAND_COUNT = 126
+EXPECTED_SPECIALIST_COUNT = 80
+EXPECTED_TARGET_SKILL_COUNT = 186
 
 # These are genuine platform adapters, not missing capabilities.  Their
 # canonical Claude files are retained byte-for-byte under parity/claude-rooms
@@ -292,7 +292,11 @@ def source_commands(source: Path) -> list[dict[str, object]]:
             if not path.is_file() or path.suffix.lower() != ".md":
                 continue
             command = path.stem
-            skill_name = f"{plugin}-{command}"
+            skill_name = (
+                "capability-routing"
+                if plugin == "project" and command == "capability-map"
+                else f"{plugin}-{command}"
+            )
             commands.append(
                 {
                     "id": f"{plugin}:{command}",

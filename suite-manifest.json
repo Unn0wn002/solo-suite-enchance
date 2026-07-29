@@ -16,31 +16,49 @@
       "path": "platforms/claude",
       "version": "1.0.30",
       "plugins": 19,
-      "skills": 79,
-      "commands": 125,
-      "validation": "self-check 14/14; targeted tests 156 pass"
+      "skills": 80,
+      "commands": 126,
+      "validation": "self-check 14/14; targeted tests 156 pass; capability-routing parity added"
     },
     "codex": {
       "path": "platforms/codex",
       "version": "1.0.27",
       "plugins": 19,
-      "skills": 184,
-      "commands": 125,
-      "validation": "self-check 6/6; portable validation 19/19; AgentRooms 4/4; targeted tests 99 pass"
+      "skills": 185,
+      "commands": 126,
+      "validation": "self-check 6/6; portable validation 19/19; AgentRooms 4/4; targeted parity/inventory/release tests pass; capability-routing parity added"
     },
     "antigravity": {
       "path": "platforms/antigravity",
       "version": "1.0.30",
       "plugins": 19,
-      "skills": 79,
-      "commands": 125,
-      "validation": "self-check 14/14; targeted tests 156 pass"
+      "skills": 80,
+      "commands": 126,
+      "validation": "self-check 14/14; targeted tests 156 pass; capability-routing parity added"
     }
   },
   "notes": [
     "Platform folders are isolated copies of the read-only source distributions.",
     "Codex keeps its native skill and AgentRoom runtime rather than pretending to be a Claude command runtime.",
     "Antigravity uses the validated Claude-compatible trees and documented Google/Gemini config directories.",
-    "Validation is structural plus selected runtime coverage; long-running end-to-end suites remain separate."
-  ]
+    "Validation is structural plus selected runtime coverage; long-running end-to-end suites remain separate.",
+    "The learned upstream corpus is applied through capability-inventory.json, CAPABILITY_ROADMAP.md, and the phase-owned capability-routing workflow."
+  ],
+  "learningIntegration": {
+    "inventory": "capability-inventory.json",
+    "roadmap": "CAPABILITY_ROADMAP.md",
+    "catalog": "CAPABILITY_CATALOG.md",
+    "coreTooling": "core-tooling.json",
+    "coreToolingGuide": "CORE_REPOSITORY_INTELLIGENCE.md",
+    "routingCommand": "/project:capability-map",
+    "codexSkill": "$capability-routing",
+    "sharedPlan": ".solo/capability-plan.md",
+    "principles": [
+      "phase-driven activation",
+      "artifact-based handoffs",
+      "explicit evidence gates",
+      "repository-intelligence routing",
+      "upstream attribution and license review"
+    ]
+  }
 }

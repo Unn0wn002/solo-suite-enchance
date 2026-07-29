@@ -40,6 +40,7 @@ Invoke the specific native Codex skill shown in the second column; the legacy Cl
 | `/git:sync-issues` | `$git-sync-issues` | `plugins/git/skills/git-sync-issues/SKILL.md` |
 | `/growth:conversion-audit` | `$growth-conversion-audit` | `plugins/growth/skills/growth-conversion-audit/SKILL.md` |
 | `/project:architecture` | `$project-architecture` | `plugins/project/skills/project-architecture/SKILL.md` |
+| `/project:capability-map` | `$capability-routing` | `plugins/project/skills/capability-routing/SKILL.md` |
 | `/project:prd` | `$project-prd` | `plugins/project/skills/project-prd/SKILL.md` |
 | `/project:task-breakdown` | `$project-task-breakdown` | `plugins/project/skills/project-task-breakdown/SKILL.md` |
 | `/release:ci-setup` | `$release-ci-setup` | `plugins/release/skills/release-ci-setup/SKILL.md` |

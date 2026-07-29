@@ -1,0 +1,2513 @@
+{
+  "schema_version": 1,
+  "audit_mode": "FULL_AUDIT_AND_IMPLEMENTATION",
+  "audit_date": "2026-07-28",
+  "catalog_source_status": "RECONSTRUCTED_CANONICAL_V1",
+  "default_profile": "planning",
+  "default_profile_rationale": "Planning loads one role and one canonical skill; phase-specific profiles are selected on demand.",
+  "capabilities": [
+    {
+      "canonical_name": "aider",
+      "description": "Aider capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Aider"
+      ],
+      "source_url": "https://github.com/Aider-AI/aider",
+      "source_path": ".",
+      "pinned_commit_sha": "5dc9490bb35f9729ef2c95d00a19ccd30c26339c",
+      "license": "Apache-2.0",
+      "risk_level": "HIGH",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Rejected from all activation paths. Use the active Codex, Claude, or Antigravity client under repository policy.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No dependency, installer, adapter, profile, hook, MCP definition, credential surface, or activation path exists.",
+      "safe_replacement": "The active Codex, Claude, or Antigravity coding host under repository policy."
+    },
+    {
+      "canonical_name": "code-review-graph",
+      "description": "Code Review Graph capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Code Review Graph"
+      ],
+      "source_url": "https://github.com/tirth8205/code-review-graph",
+      "source_path": ".",
+      "pinned_commit_sha": "90d760aa23fac0353637d2e8f2a431aa08f14366",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": {
+        "relationship": "rejected_duplicate_of",
+        "canonical_capability": "graphify",
+        "activation_constraint": "no activation path"
+      },
+      "recommendation": "Rejected as a duplicate graph and hook surface. Graphify is the sole architecture and relationship graph.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The duplicate graph, MCP configuration, and session hook were not copied or activated.",
+      "safe_replacement": "Graphify is the sole relationship and architecture graph."
+    },
+    {
+      "canonical_name": "context7",
+      "description": "Context7 capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Context7"
+      ],
+      "source_url": "https://github.com/upstash/context7",
+      "source_path": ".",
+      "pinned_commit_sha": "b250c2515694eee4b6df4db82fa056df9ed3e306",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "MCP_SERVER",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Rejected from all activation paths. Use primary official documentation through the active client's reviewed web access.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No MCP server, API key requirement, telemetry surface, lifecycle script, adapter, or profile activation exists.",
+      "safe_replacement": "Primary official documentation through reviewed host web access."
+    },
+    {
+      "canonical_name": "graphify",
+      "description": "Graphify capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Graphify"
+      ],
+      "source_url": "https://github.com/Graphify-Labs/graphify",
+      "source_path": ".",
+      "pinned_commit_sha": "0b2bd938c4a48e91d27f0ba09b96409e0a36c78a",
+      "license": "Apache-2.0 OR MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "status": "EXTERNAL_TOOL_ONLY",
+      "integration_kind": "external_reference",
+      "canonical_skill_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/repository-intelligence-routing/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/repository-intelligence-routing/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": "graphify",
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Primary relationship graph; run project-locally and keep optional network/database exports off unless explicitly requested."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-core",
+      "description": "Core API capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Core API"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-core",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-frameworks",
+      "description": "Vue and Svelte integration capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Vue and Svelte integration"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-frameworks",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-performance",
+      "description": "Performance capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Performance"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-performance",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-plugins",
+      "description": "Advanced plugins capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Advanced plugins"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-plugins",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-react",
+      "description": "React integration capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "React integration"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-react",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-scrolltrigger",
+      "description": "ScrollTrigger capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "ScrollTrigger"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-scrolltrigger",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-timeline",
+      "description": "Timelines capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Timelines"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-timeline",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "gsap-skills-skills-gsap-utils",
+      "description": "Utilities capability for the GSAP Animation Developer role.",
+      "role_tags": [
+        "GSAP Animation Developer"
+      ],
+      "category_tags": [
+        "Utilities"
+      ],
+      "source_url": "https://github.com/greensock/gsap-skills",
+      "source_path": "skills/gsap-utils",
+      "pinned_commit_sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/gsap-animation/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation."
+    },
+    {
+      "canonical_name": "qa-orchestra",
+      "description": "QA Orchestra capability for the QA Engineer role.",
+      "role_tags": [
+        "QA Engineer"
+      ],
+      "category_tags": [
+        "QA Orchestra"
+      ],
+      "source_url": "https://github.com/Anasss/qa-orchestra",
+      "source_path": ".",
+      "pinned_commit_sha": "5df9ad4012f78b9ff6ba551c36a3a0f583d26bf3",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "COMMAND_OR_WORKFLOW",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/qa-verification/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/qa-verification/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/qa-verification/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/qa-verification/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/qa-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/qa-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "qa"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Adapt schemas and evidence patterns only; keep orchestration scripts disabled unless separately reviewed for the target project."
+    },
+    {
+      "canonical_name": "repomix",
+      "description": "Repomix capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Repomix"
+      ],
+      "source_url": "https://github.com/yamadashy/repomix",
+      "source_path": ".",
+      "pinned_commit_sha": "b921db74351fd9185897a641a8f39c0b82de7fcb",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "status": "EXTERNAL_TOOL_ONLY",
+      "integration_kind": "external_reference",
+      "canonical_skill_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/repository-intelligence-routing/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/repository-intelligence-routing/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": "repomix",
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use filtered snapshots only and keep generated outputs outside permanent context."
+    },
+    {
+      "canonical_name": "serena",
+      "description": "Serena capability for the Token Reduction and Repository Intelligence role.",
+      "role_tags": [
+        "Token Reduction and Repository Intelligence"
+      ],
+      "category_tags": [
+        "Serena"
+      ],
+      "source_url": "https://github.com/oraios/serena",
+      "source_path": ".",
+      "pinned_commit_sha": "9a9d07e83d8c1cba3458992707f440c624446c6d",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "MCP_SERVER",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Rejected from all activation paths. Use Graphify plus bounded native symbol search and client-native editing instead.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No broad workspace MCP permission, editing server, subprocess surface, adapter, or profile activation exists.",
+      "safe_replacement": "Graphify plus bounded native search and client-native editing."
+    },
+    {
+      "canonical_name": "storymap-skill-skills-user-story-mapping",
+      "description": "Story mapping capability for the Product Manager role.",
+      "role_tags": [
+        "Product Manager"
+      ],
+      "category_tags": [
+        "Story mapping"
+      ],
+      "source_url": "https://github.com/MartinForReal/storymap-skill",
+      "source_path": "skills/user-story-mapping",
+      "pinned_commit_sha": "35cf8a10fc240f809eb7c248c8f3a254e856c65f",
+      "license": "MIT",
+      "risk_level": "LOW",
+      "primary_type": "PORTABLE_AGENT_SKILL",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/product-discovery/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/product-discovery/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/product-discovery/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/product-discovery/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/product-manager.md"
+        ],
+        "antigravity": [
+          ".agents/agents/product-manager.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "planning"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use the original, pinned skill as reference; keep the canonical product-discovery skill original and concise."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-accessibility-compliance",
+      "description": "Accessibility compliance capability for the UI/UX Designer role.",
+      "role_tags": [
+        "Frontend Developer",
+        "UI/UX Designer"
+      ],
+      "category_tags": [
+        "Accessibility compliance"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/accessibility-compliance",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/frontend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/frontend-development/SKILL.md",
+        ".agents/skills/ui-ux-design/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/frontend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/frontend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/frontend-developer.md",
+          ".claude/agents/ui-ux-designer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/frontend-developer.md",
+          ".agents/agents/ui-ux-designer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "design",
+        "frontend"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "ui-ux-designer::wshobson-agents::plugins-accessibility-compliance",
+        "additional_role_assignments": [
+          "frontend-developer::wshobson-agents::plugins-accessibility-compliance"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-api-scaffolding",
+      "description": "API scaffolding capability for the Backend Developer role.",
+      "role_tags": [
+        "Backend Developer"
+      ],
+      "category_tags": [
+        "API scaffolding"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/api-scaffolding",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "backend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-api-testing-observability",
+      "description": "API testing and observability capability for the Backend Developer role.",
+      "role_tags": [
+        "Backend Developer"
+      ],
+      "category_tags": [
+        "API testing and observability"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/api-testing-observability",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "backend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-application-performance",
+      "description": "Application performance capability for the Frontend Developer role.",
+      "role_tags": [
+        "Frontend Developer"
+      ],
+      "category_tags": [
+        "Application performance"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/application-performance",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/frontend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/frontend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/frontend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/frontend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/frontend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/frontend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "frontend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-backend-api-security",
+      "description": "Backend API security capability for the Backend Developer role.",
+      "role_tags": [
+        "Backend Developer",
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "Backend API security"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/backend-api-security",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md",
+        ".agents/skills/security-review/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md",
+          ".claude/agents/security-reviewer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md",
+          ".agents/agents/security-reviewer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "backend",
+        "security"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "backend-developer::wshobson-agents::plugins-backend-api-security",
+        "additional_role_assignments": [
+          "security-reviewer::wshobson-agents::plugins-backend-api-security"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-backend-development",
+      "description": "Backend development capability for the Software Architect role.",
+      "role_tags": [
+        "Backend Developer",
+        "Software Architect"
+      ],
+      "category_tags": [
+        "Backend development"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/backend-development",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md",
+        ".agents/skills/software-architecture/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md",
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md",
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture",
+        "backend"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "software-architect::wshobson-agents::plugins-backend-development",
+        "additional_role_assignments": [
+          "backend-developer::wshobson-agents::plugins-backend-development"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-before-you-build",
+      "description": "Before-you-build review capability for the Product Manager role.",
+      "role_tags": [
+        "Product Manager"
+      ],
+      "category_tags": [
+        "Before-you-build review"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/before-you-build",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/product-discovery/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/product-discovery/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/product-discovery/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/product-discovery/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/product-manager.md"
+        ],
+        "antigravity": [
+          ".agents/agents/product-manager.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "planning"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-block-no-verify",
+      "description": "Git safety hook capability for the Security Reviewer role.",
+      "role_tags": [
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "Git safety hook"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/block-no-verify",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "QUARANTINED",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Do not copy or activate the settings-mutating hook command. Preserve only the verification-policy intent in AGENTS.md; any future project-local hook needs adversarial tests and separate approval.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The settings-mutating hook command was not copied or activated. Verification bypass is prohibited by a portable repository rule and validators.",
+      "safe_replacement": "Repository-local verification-integrity rule and CI/test commands."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-brand-landingpage",
+      "description": "Brand landing pages capability for the UI/UX Designer role.",
+      "role_tags": [
+        "UI/UX Designer"
+      ],
+      "category_tags": [
+        "Brand landing pages"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/brand-landingpage",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/ui-ux-design/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/ui-ux-design/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/ui-ux-design/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/ui-ux-design/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/ui-ux-designer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/ui-ux-designer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "design"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-business-analytics",
+      "description": "Business analytics capability for the Product Manager role.",
+      "role_tags": [
+        "Data Analyst",
+        "Product Manager"
+      ],
+      "category_tags": [
+        "Business analytics"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/business-analytics",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/data-analysis/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/data-analysis/SKILL.md",
+        ".agents/skills/product-discovery/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/data-analysis/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/data-analysis/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/data-analyst.md",
+          ".claude/agents/product-manager.md"
+        ],
+        "antigravity": [
+          ".agents/agents/data-analyst.md",
+          ".agents/agents/product-manager.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "analytics",
+        "planning"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "product-manager::wshobson-agents::plugins-business-analytics",
+        "additional_role_assignments": [
+          "data-analyst::wshobson-agents::plugins-business-analytics"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-c4-architecture",
+      "description": "C4 architecture capability for the Software Architect role.",
+      "role_tags": [
+        "Software Architect",
+        "Technical Writer"
+      ],
+      "category_tags": [
+        "C4 architecture",
+        "C4 architecture documentation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/c4-architecture",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/software-architecture/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/software-architecture/SKILL.md",
+        ".agents/skills/technical-writing/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/software-architecture/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/software-architecture/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/software-architect.md",
+          ".claude/agents/technical-writer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/software-architect.md",
+          ".agents/agents/technical-writer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture",
+        "documentation"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "software-architect::wshobson-agents::plugins-c4-architecture",
+        "additional_role_assignments": [
+          "technical-writer::wshobson-agents::plugins-c4-architecture"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-cicd-automation",
+      "description": "CI/CD automation capability for the DevOps Engineer role.",
+      "role_tags": [
+        "DevOps Engineer"
+      ],
+      "category_tags": [
+        "CI/CD automation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/cicd-automation",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-cloud-infrastructure",
+      "description": "Cloud infrastructure capability for the Software Architect role.",
+      "role_tags": [
+        "DevOps Engineer",
+        "Software Architect"
+      ],
+      "category_tags": [
+        "Cloud infrastructure"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/cloud-infrastructure",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md",
+        ".agents/skills/software-architecture/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md",
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md",
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture",
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "software-architect::wshobson-agents::plugins-cloud-infrastructure",
+        "additional_role_assignments": [
+          "devops-engineer::wshobson-agents::plugins-cloud-infrastructure"
+        ]
+      },
+      "recommendation": "Adapt instruction concepts only after removing download-and-execute examples; keep disabled by default.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "LOW",
+      "remediation": "Only independently written, instruction-only release guidance is used. Download-and-execute examples, source agents, hooks, scripts, and installers were not copied.",
+      "safe_replacement": ".agents/skills/devops-release/SKILL.md"
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-code-documentation",
+      "description": "Code documentation capability for the Technical Writer role.",
+      "role_tags": [
+        "Technical Writer"
+      ],
+      "category_tags": [
+        "Code documentation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/code-documentation",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/technical-writing/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/technical-writing/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/technical-writing/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/technical-writing/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/technical-writer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/technical-writer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "documentation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-conductor",
+      "description": "Conductor workflow capability for the Product Manager role.",
+      "role_tags": [
+        "Product Manager"
+      ],
+      "category_tags": [
+        "Conductor workflow"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/conductor",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/product-discovery/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/product-discovery/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/product-discovery/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/product-discovery/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/product-manager.md"
+        ],
+        "antigravity": [
+          ".agents/agents/product-manager.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "planning"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-data-engineering",
+      "description": "Data engineering capability for the Data Analyst role.",
+      "role_tags": [
+        "Data Analyst"
+      ],
+      "category_tags": [
+        "Data engineering"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/data-engineering",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/data-analysis/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/data-analysis/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/data-analysis/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/data-analysis/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/data-analyst.md"
+        ],
+        "antigravity": [
+          ".agents/agents/data-analyst.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "analytics"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-data-validation-suite",
+      "description": "Data validation capability for the Database Engineer role.",
+      "role_tags": [
+        "Data Analyst",
+        "Database Engineer"
+      ],
+      "category_tags": [
+        "Data validation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/data-validation-suite",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/data-analysis/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/data-analysis/SKILL.md",
+        ".agents/skills/database-engineering/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/data-analysis/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/data-analysis/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/data-analyst.md",
+          ".claude/agents/database-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/data-analyst.md",
+          ".agents/agents/database-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "analytics",
+        "database"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "database-engineer::wshobson-agents::plugins-data-validation-suite",
+        "additional_role_assignments": [
+          "data-analyst::wshobson-agents::plugins-data-validation-suite"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-database-cloud-optimization",
+      "description": "Cloud database optimization capability for the Database Engineer role.",
+      "role_tags": [
+        "Database Engineer"
+      ],
+      "category_tags": [
+        "Cloud database optimization"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/database-cloud-optimization",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/database-engineering/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/database-engineering/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/database-engineering/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/database-engineering/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/database-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/database-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "database"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-database-design",
+      "description": "Database design capability for the Software Architect role.",
+      "role_tags": [
+        "Database Engineer",
+        "Software Architect"
+      ],
+      "category_tags": [
+        "Database design"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/database-design",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/database-engineering/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/database-engineering/SKILL.md",
+        ".agents/skills/software-architecture/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/database-engineering/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/database-engineering/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/database-engineer.md",
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/database-engineer.md",
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture",
+        "database"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "software-architect::wshobson-agents::plugins-database-design",
+        "additional_role_assignments": [
+          "database-engineer::wshobson-agents::plugins-database-design"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-database-migrations",
+      "description": "Database migrations capability for the Database Engineer role.",
+      "role_tags": [
+        "Database Engineer"
+      ],
+      "category_tags": [
+        "Database migrations"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/database-migrations",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/database-engineering/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/database-engineering/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/database-engineering/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/database-engineering/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/database-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/database-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "database"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-deployment-strategies",
+      "description": "Deployment strategies capability for the DevOps Engineer role.",
+      "role_tags": [
+        "DevOps Engineer"
+      ],
+      "category_tags": [
+        "Deployment strategies"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/deployment-strategies",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-deployment-validation",
+      "description": "Deployment validation capability for the QA Engineer role.",
+      "role_tags": [
+        "DevOps Engineer",
+        "QA Engineer"
+      ],
+      "category_tags": [
+        "Deployment validation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/deployment-validation",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md",
+        ".agents/skills/qa-verification/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md",
+          ".claude/agents/qa-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md",
+          ".agents/agents/qa-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops",
+        "qa"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "qa-engineer::wshobson-agents::plugins-deployment-validation",
+        "additional_role_assignments": [
+          "devops-engineer::wshobson-agents::plugins-deployment-validation"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-developer-essentials",
+      "description": "Developer essentials capability for the Frontend Developer role.",
+      "role_tags": [
+        "Frontend Developer"
+      ],
+      "category_tags": [
+        "Developer essentials"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/developer-essentials",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/frontend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/frontend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/frontend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/frontend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/frontend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/frontend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "frontend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-documentation-generation",
+      "description": "Documentation generation capability for the UI/UX Designer role.",
+      "role_tags": [
+        "Technical Writer",
+        "UI/UX Designer"
+      ],
+      "category_tags": [
+        "Documentation generation"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/documentation-generation",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/technical-writing/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/technical-writing/SKILL.md",
+        ".agents/skills/ui-ux-design/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/technical-writing/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/technical-writing/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/technical-writer.md",
+          ".claude/agents/ui-ux-designer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/technical-writer.md",
+          ".agents/agents/ui-ux-designer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "design",
+        "documentation"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "ui-ux-designer::wshobson-agents::plugins-documentation-generation",
+        "additional_role_assignments": [
+          "technical-writer::wshobson-agents::plugins-documentation-generation"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-documentation-standards",
+      "description": "Documentation standards capability for the Technical Writer role.",
+      "role_tags": [
+        "Technical Writer"
+      ],
+      "category_tags": [
+        "Documentation standards"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/documentation-standards",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/technical-writing/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/technical-writing/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/technical-writing/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/technical-writing/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/technical-writer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/technical-writer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "documentation"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-frontend-mobile-development",
+      "description": "Frontend and mobile development capability for the Frontend Developer role.",
+      "role_tags": [
+        "Frontend Developer"
+      ],
+      "category_tags": [
+        "Frontend and mobile development"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/frontend-mobile-development",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/frontend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/frontend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/frontend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/frontend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/frontend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/frontend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "frontend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-frontend-mobile-security",
+      "description": "Frontend and mobile security capability for the Security Reviewer role.",
+      "role_tags": [
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "Frontend and mobile security"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/frontend-mobile-security",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/security-review/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/security-review/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/security-review/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/security-review/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/security-reviewer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/security-reviewer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "security"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-full-stack-orchestration",
+      "description": "Full-stack orchestration capability for the Software Architect role.",
+      "role_tags": [
+        "Software Architect"
+      ],
+      "category_tags": [
+        "Full-stack orchestration"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/full-stack-orchestration",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/software-architecture/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/software-architecture/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/software-architecture/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/software-architecture/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/software-architect.md"
+        ],
+        "antigravity": [
+          ".agents/agents/software-architect.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "architecture"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-incident-response",
+      "description": "Incident response capability for the DevOps Engineer role.",
+      "role_tags": [
+        "DevOps Engineer"
+      ],
+      "category_tags": [
+        "Incident response"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/incident-response",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-javascript-typescript",
+      "description": "JavaScript and TypeScript capability for the Frontend Developer role.",
+      "role_tags": [
+        "Backend Developer",
+        "Frontend Developer"
+      ],
+      "category_tags": [
+        "JavaScript and TypeScript"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/javascript-typescript",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md",
+        ".agents/skills/frontend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md",
+          ".claude/agents/frontend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md",
+          ".agents/agents/frontend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "backend",
+        "frontend"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "frontend-developer::wshobson-agents::plugins-javascript-typescript",
+        "additional_role_assignments": [
+          "backend-developer::wshobson-agents::plugins-javascript-typescript"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-kubernetes-operations",
+      "description": "Kubernetes operations capability for the DevOps Engineer role.",
+      "role_tags": [
+        "DevOps Engineer"
+      ],
+      "category_tags": [
+        "Kubernetes operations"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/kubernetes-operations",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-observability-monitoring",
+      "description": "Observability and monitoring capability for the DevOps Engineer role.",
+      "role_tags": [
+        "DevOps Engineer"
+      ],
+      "category_tags": [
+        "Observability and monitoring"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/observability-monitoring",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/devops-release/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/devops-release/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/devops-release/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/devops-release/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/devops-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/devops-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "devops"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-performance-testing-review",
+      "description": "Performance testing and review capability for the QA Engineer role.",
+      "role_tags": [
+        "QA Engineer"
+      ],
+      "category_tags": [
+        "Performance testing and review"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/performance-testing-review",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/qa-verification/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/qa-verification/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/qa-verification/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/qa-verification/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/qa-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/qa-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "qa"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-protect-mcp",
+      "description": "MCP governance capability for the Security Reviewer role.",
+      "role_tags": [
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "MCP governance"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/protect-mcp",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "CRITICAL",
+      "primary_type": "QUARANTINED",
+      "status": "REJECTED",
+      "integration_kind": "rejected_evidence",
+      "canonical_skill_path": null,
+      "related_canonical_skills": [],
+      "claude_adapter_path": null,
+      "antigravity_adapter_path": null,
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Do not activate, copy, or translate the automatic all-tool npx hook. Promotion requires an offline-reviewed pinned package, lock, privacy review, and explicit trust decision.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The automatic PreToolUse/PostToolUse npx hook was not copied, installed, translated, or activated. Root hooks and MCP activation are prohibited.",
+      "safe_replacement": "Repository-local tool-permission governance and deterministic security validation."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-python-development",
+      "description": "Python development capability for the Backend Developer role.",
+      "role_tags": [
+        "Backend Developer"
+      ],
+      "category_tags": [
+        "Python development"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/python-development",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "HIGH",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/backend-development/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/backend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/backend-development/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/backend-development/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/backend-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/backend-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "backend"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Adapt instruction concepts only after removing download-and-execute and broad cleanup examples.",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "LOW",
+      "remediation": "Only independently written, instruction-only backend guidance is used. Download-and-execute examples, broad cleanup commands, source agents, hooks, scripts, and installers were not copied.",
+      "safe_replacement": ".agents/skills/backend-development/SKILL.md"
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-security-compliance",
+      "description": "Security compliance capability for the Security Reviewer role.",
+      "role_tags": [
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "Security compliance"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/security-compliance",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/security-review/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/security-review/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/security-review/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/security-review/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/security-reviewer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/security-reviewer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "security"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-security-scanning",
+      "description": "Security scanning capability for the Security Reviewer role.",
+      "role_tags": [
+        "Security Reviewer"
+      ],
+      "category_tags": [
+        "Security scanning"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/security-scanning",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/security-review/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/security-review/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/security-review/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/security-review/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/security-reviewer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/security-reviewer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "security"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-startup-business-analyst",
+      "description": "Startup business analysis capability for the Product Manager role.",
+      "role_tags": [
+        "Data Analyst",
+        "Product Manager"
+      ],
+      "category_tags": [
+        "Startup business analysis"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/startup-business-analyst",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/data-analysis/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/data-analysis/SKILL.md",
+        ".agents/skills/product-discovery/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/data-analysis/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/data-analysis/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/data-analyst.md",
+          ".claude/agents/product-manager.md"
+        ],
+        "antigravity": [
+          ".agents/agents/data-analyst.md",
+          ".agents/agents/product-manager.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "analytics",
+        "planning"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "canonical_entry_id": "product-manager::wshobson-agents::plugins-startup-business-analyst",
+        "additional_role_assignments": [
+          "data-analyst::wshobson-agents::plugins-startup-business-analyst"
+        ]
+      },
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-tdd-workflows",
+      "description": "TDD workflows capability for the QA Engineer role.",
+      "role_tags": [
+        "QA Engineer"
+      ],
+      "category_tags": [
+        "TDD workflows"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/tdd-workflows",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/qa-verification/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/qa-verification/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/qa-verification/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/qa-verification/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/qa-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/qa-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "qa"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-ui-design",
+      "description": "UI design capability for the UI/UX Designer role.",
+      "role_tags": [
+        "UI/UX Designer"
+      ],
+      "category_tags": [
+        "UI design"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/ui-design",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/ui-ux-design/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/ui-ux-design/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/ui-ux-design/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/ui-ux-design/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/ui-ux-designer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/ui-ux-designer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "design"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-unit-testing",
+      "description": "Unit testing capability for the QA Engineer role.",
+      "role_tags": [
+        "QA Engineer"
+      ],
+      "category_tags": [
+        "Unit testing"
+      ],
+      "source_url": "https://github.com/wshobson/agents",
+      "source_path": "plugins/unit-testing",
+      "pinned_commit_sha": "c4b82b0ad771190355eb8e204b1329732a18449a",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "CLAUDE_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "original_adapter",
+      "canonical_skill_path": ".agents/skills/qa-verification/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/qa-verification/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/qa-verification/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/qa-verification/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/qa-engineer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/qa-engineer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "qa"
+      ],
+      "replacement_or_duplicate_relationship": null,
+      "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    }
+  ]
+}

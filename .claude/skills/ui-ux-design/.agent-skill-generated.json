@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "bf9167d13e763082178973fc9c77c97b958192133eca7a23e3af742c3cb5c4eb"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/ui-ux-design"
+}

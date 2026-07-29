@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "96ca9d165f1a6ef840f78e4574271d57eb09ea3659eb7c831265c473b5b08946"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/frontend-development"
+}

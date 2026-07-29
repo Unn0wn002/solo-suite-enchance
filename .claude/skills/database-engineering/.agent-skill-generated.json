@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "59f616abcab338a79fc73261fff8631258418f87bd9eea484fa0bffa7e15d090"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/database-engineering"
+}

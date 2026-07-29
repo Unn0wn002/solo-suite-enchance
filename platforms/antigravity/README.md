@@ -4,7 +4,7 @@
 
 This is [solo-team](#the-team-plugins) (nine roles that plan, design, build, test, release, and document), [site-doctor](#the-toolkit-plugin) (27 skills that audit, debug, and fix real websites and databases), and a [stack-aware layer](#the-stack-plugin) (ask what tools you use, then audit them by vendor) in **one marketplace**. They were built for each other: everything runs through the same `.solo/` project memory, so your stack is known before anything runs, an audit finding becomes a task, a task becomes tested code, and tested code becomes a safe release — across sessions, without you re-loading context each time. On top sits a **workflow layer** — git, spec, repo intelligence, deeper security, real-browser QA, quality gates, an AI-coding co-pilot, and growth — so the same memory also drives your branches, contracts, reviews, and go/no-go gates.
 
-- **19 plugins** · **79 skills** · **125 slash commands** · **16 stdlib helper scripts** · **24 room-* agents**
+- **19 plugins** · **80 skills** · **126 slash commands** · **16 stdlib helper scripts** · **24 room-* agents**
   (18 component plugins + the `full-team` meta-plugin that depends on all of them)
 - Offline regression tests (`tests/`, stdlib unittest, loopback fixtures only) + hardened Linux/Windows CI (`.github/workflows/ci.yml`: least-privilege permissions, pinned actions, an integrity-locked Claude CLI whose official validation is mandatory, packaged-install and marketplace smoke tests, and separate read-only build, OIDC-only signing, and write-only publishing jobs for version tags). Signed release assets are checksum-verified at each job boundary and downloaded back from the draft GitHub Release for exact byte/signature verification before promotion. Site-doctor's and seo's network scripts are SSRF-guarded by `url_guard.py` (canonical in site-doctor, mirrored byte-identically into seo and asserted by both the test suite and `self_check.py`); the secret scanner emits only redacted, fingerprinted findings. AgentRooms templates are schema-validated (`agentroom-v1`) with a memory-steward model for parallel agents, a shared untrusted-content contract, supported tool allowlists, and source-labelled task envelopes; they ship with 24 `room-*` agent definitions. The JSON rooms are validated work orders, not an executable runtime.
 - One install source, one shared memory, every command name preserved
@@ -145,6 +145,17 @@ Want everything in one step? Install the **`full-team`** meta-plugin — it depe
 ```
 /plugin install full-team@solo-suite
 ```
+
+For the approved Graphify, native-search, official-docs, and Repomix routing, see
+the root [`CORE_REPOSITORY_INTELLIGENCE.md`](../../CORE_REPOSITORY_INTELLIGENCE.md).
+Check the audited Graphify CLI from the repository root:
+
+```powershell
+python scripts/bootstrap-graphify.py --check
+```
+
+Antigravity uses the repository's reviewed `.agents` skills and rules; do not
+run a platform installer automatically.
 
 ### Verify a published release
 

@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "c2cc633592d8cd03f60e6f9ca29f20051865e6c5ad55f281d25ecb496511f591"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/devops-release"
+}

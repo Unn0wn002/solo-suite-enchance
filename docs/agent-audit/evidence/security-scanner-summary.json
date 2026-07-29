@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-07-29",
+  "policy": {
+    "secret_values_recorded": false,
+    "semgrep_metrics": false,
+    "trivy_telemetry": false,
+    "trivy_severity_gate": [
+      "HIGH",
+      "CRITICAL"
+    ]
+  },
+  "results": {
+    "semgrep": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": [],
+      "errors": []
+    },
+    "gitleaks_worktree": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": []
+    },
+    "gitleaks_history": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": []
+    },
+    "trivy": {
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": []
+    },
+    "pip_audit_scanners": {
+      "target": "scanner environment",
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": []
+    },
+    "pip_audit_graphify": {
+      "target": "Graphify requirements",
+      "status": "PASSED",
+      "exit_code": 0,
+      "findings": []
+    }
+  }
+}
