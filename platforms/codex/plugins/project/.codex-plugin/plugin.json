@@ -1,7 +1,7 @@
 {
   "name": "project",
   "version": "1.0.27",
-  "description": "Turn product ideas into a PRD, architecture, and executable task breakdown. Migrated workflows: $project-architecture, $project-prd, $project-task-breakdown.",
+  "description": "Turn product ideas into a PRD, architecture, and executable task breakdown. Migrated workflows: $project-architecture, $project-prd, $project-task-breakdown, $capability-routing.",
   "author": {
     "name": "Sakura Yukihira (Ayaya)"
   },
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Solo Project Planning",
     "shortDescription": "Turn product ideas into executable plans",
-    "longDescription": "Turn product ideas into a PRD, architecture, and executable task breakdown. Migrated workflows: $project-architecture, $project-prd, $project-task-breakdown. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
+    "longDescription": "Turn product ideas into a PRD, architecture, and executable task breakdown. Migrated workflows: $project-architecture, $project-prd, $project-task-breakdown, $capability-routing. This Codex-native edition packages explicit workflows as skills, records sensitive actions as explicit-only, and uses portable installed-skill paths.",
     "developerName": "Sakura Yukihira (Ayaya)",
     "category": "Productivity",
     "capabilities": [

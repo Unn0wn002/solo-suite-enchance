@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "refresh_date": "2026-07-29",
+  "graphify_version": "0.9.27",
+  "source_update": {
+    "status": "PASSED",
+    "mode": "incremental code-only",
+    "changed_code_files": 7,
+    "unchanged_code_files": 415,
+    "deleted_code_files": 0
+  },
+  "graph": {
+    "nodes": 14105,
+    "edges": 19178,
+    "communities": 1319,
+    "community_labels": 1319,
+    "placeholder_labels": 0,
+    "label_mode": "deterministic community hub"
+  },
+  "llm_label_attempt": {
+    "backend": "claude-cli",
+    "model": "haiku",
+    "status": "FAILED_UNAUTHENTICATED",
+    "reason": "Claude Code returned: Not logged in; run /login.",
+    "credentials_changed": false
+  },
+  "multigraph_diagnostics": {
+    "status": "PASSED",
+    "missing_endpoint_edges": 0,
+    "dangling_endpoint_edges": 0,
+    "self_loop_edges": 0,
+    "exact_duplicate_edges": 0,
+    "post_build_error": ""
+  }
+}

@@ -4,7 +4,7 @@
 owns it -- and `tools/parity.py`'s EXPECTED_* constants are literal drift guards
 in the style of tests/test_inventory.py. Both went a full release stale when the
 `seo` plugin landed: the constants still said 18/102/56 while the filesystem had
-19/125/79, and 66 of the recorded source_sha256 values no longer matched disk.
+19/126/80, and 66 of the recorded source_sha256 values no longer matched disk.
 Nothing caught it because nothing ran the tool.
 
 These tests make the contract self-policing: the constants must equal the

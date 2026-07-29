@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "name": "release",
+  "enabled_roles": [
+    "devops-engineer",
+    "qa-engineer",
+    "security-reviewer"
+  ],
+  "enabled_skills": [
+    "devops-release",
+    "qa-verification",
+    "security-review"
+  ],
+  "optional_skills": [
+    "technical-writing"
+  ],
+  "disabled_duplicates": [],
+  "external_tools": [
+    {
+      "name": "trivy",
+      "required": false
+    },
+    {
+      "name": "gitleaks",
+      "required": false
+    }
+  ],
+  "verification_commands": [
+    "python scripts/validate-agent-skills.py",
+    "python scripts/validate-agent-platform.py"
+  ],
+  "token_budget_guidance": {
+    "target_max_active_skills": 4,
+    "load_role_definitions_on_demand": true,
+    "load_references_on_demand": true,
+    "keep_generated_graphs_out_of_startup_context": true
+  }
+}

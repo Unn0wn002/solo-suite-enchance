@@ -40,3 +40,10 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# isolated audit and documentation caches
+/.tmp/
+**/__pycache__/
+/graphify-out/.graphify_python
+/graphify-out/cache/ast/
+/.tools/

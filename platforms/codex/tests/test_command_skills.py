@@ -28,6 +28,12 @@ SENSITIVE_WORKFLOW = re.compile(
     r"push\w*|commit\w*|create[- ]branch|delete\w*|overwrite\w*|rollback\w*)\b",
     re.I,
 )
+ROUTING_ALIASES = {
+    "project:capability-map": {
+        "skill_name": "capability-routing",
+        "target_path": "plugins/project/skills/capability-routing/SKILL.md",
+    }
+}
 
 
 def read_yaml(path):
@@ -68,9 +74,9 @@ class CommandSkills(unittest.TestCase):
                 "canonicalization": (
                     "UTF-8 forward-slash paths, ordinal sort, one LF after every path"
                 ),
-                "path_count": 125,
+                "path_count": 126,
                 "sorted_paths_sha256": (
-                    "cbb853ba7326f25fcb989d65e4a7d0c1947ecd4ed8f99c6fc8d2dd0b7b2037fa"
+                    "40d2b9a637d62da84d4e2760ec940021f51680d1c3bca69734bd4cf38a793348"
                 ),
             },
         )
@@ -85,18 +91,23 @@ class CommandSkills(unittest.TestCase):
         for item in self.mapping:
             self.assertFalse(item["source_path"].startswith(("../", "/")))
             self.assertEqual(item["source_path"], item["source_path"].replace("\\", "/"))
-            expected_target = os.path.join(
-                "plugins",
-                item["plugin"],
-                "skills",
-                item["plugin"] + "-" + item["command"],
-                "SKILL.md",
-            ).replace(os.sep, "/")
+            alias = ROUTING_ALIASES.get(f"{item['plugin']}:{item['command']}")
+            expected_target = (
+                alias["target_path"]
+                if alias
+                else os.path.join(
+                    "plugins",
+                    item["plugin"],
+                    "skills",
+                    item["plugin"] + "-" + item["command"],
+                    "SKILL.md",
+                ).replace(os.sep, "/")
+            )
             self.assertEqual(item["target_path"], expected_target)
             self.assertTrue(os.path.isfile(os.path.join(REPO, item["target_path"])))
 
     def test_mapping_keys_are_unique_and_invocations_are_native(self):
-        self.assertEqual(len(self.mapping), 125)
+        self.assertEqual(len(self.mapping), 126)
         for key in (
             "legacy_invocation",
             "skill_invocation",
@@ -109,11 +120,13 @@ class CommandSkills(unittest.TestCase):
             self.assertEqual(len(values), len(set(values)), key)
 
         for item in self.mapping:
+            alias = ROUTING_ALIASES.get(f"{item['plugin']}:{item['command']}")
             self.assertEqual(
                 item["legacy_invocation"],
                 "/{}:{}".format(item["plugin"], item["command"]),
             )
-            self.assertEqual(item["skill_name"], item["plugin"] + "-" + item["command"])
+            expected_skill = alias["skill_name"] if alias else item["plugin"] + "-" + item["command"]
+            self.assertEqual(item["skill_name"], expected_skill)
             self.assertEqual(item["skill_invocation"], "$" + item["skill_name"])
             self.assertEqual(item["codex_invocation"], item["skill_invocation"])
 

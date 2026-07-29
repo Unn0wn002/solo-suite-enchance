@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "5987b0ad6fa222d49dd5d403b340229223a3b704b4859b8d7db6fee9836b2d44"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/technical-writing"
+}

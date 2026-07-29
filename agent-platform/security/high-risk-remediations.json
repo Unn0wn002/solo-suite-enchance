@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-07-29",
+  "policy": {
+    "historical_source_severity_is_preserved": true,
+    "allowed_residual_risk": [
+      "NONE",
+      "LOW"
+    ],
+    "required_remediation_status": "VERIFIED",
+    "rejected_capabilities_must_have_no_activation_path": true,
+    "adapted_high_risk_sources_must_use_original_instruction_only_skills": true
+  },
+  "control_artifacts": {
+    ".agents/skills/devops-release/SKILL.md": "3054127f36173381814097a2c14ee35de97538af26caf966d45ebbd358f96c83",
+    ".agents/skills/backend-development/SKILL.md": "2b80c76f96194b69c4f5102f0b27896354fc3ce7bbb4a71f219374f6880c289a",
+    ".agents/rules/verification-integrity.md": "3bba34e2699a44eede5be0f1c5c3876d3621946e0df07687a9be040accc44fff",
+    ".agents/rules/tool-permissions.md": "341ecc29f4675055420413c05e3ca656b8f436920f0c8f10f8728f68e67331e0",
+    "AGENTS.md": "56e93b1ee938e01bfd271ace7810b081caba45e713baf5f429d4a57cf335d44d",
+    "core-tooling.json": "9167bd30298f17d8671b1ae55ee8456716612bd2df31cfcecf2dfa556c7dd48d"
+  },
+  "findings": [
+    {
+      "canonical_name": "wshobson-agents-plugins-protect-mcp",
+      "source_risk": "CRITICAL",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The automatic PreToolUse/PostToolUse npx hook was not copied, installed, translated, or activated. Root hooks and MCP activation are prohibited.",
+      "replacement": "Repository-local tool-permission governance and deterministic security validation."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-block-no-verify",
+      "source_risk": "HIGH",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The settings-mutating hook command was not copied or activated. Verification bypass is prohibited by a portable repository rule and validators.",
+      "replacement": "Repository-local verification-integrity rule and CI/test commands."
+    },
+    {
+      "canonical_name": "aider",
+      "source_risk": "HIGH",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No dependency, installer, adapter, profile, hook, MCP definition, credential surface, or activation path exists.",
+      "replacement": "The active Codex, Claude, or Antigravity coding host under repository policy."
+    },
+    {
+      "canonical_name": "code-review-graph",
+      "source_risk": "HIGH",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "The duplicate graph, MCP configuration, and session hook were not copied or activated.",
+      "replacement": "Graphify is the sole relationship and architecture graph."
+    },
+    {
+      "canonical_name": "context7",
+      "source_risk": "HIGH",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No MCP server, API key requirement, telemetry surface, lifecycle script, adapter, or profile activation exists.",
+      "replacement": "Primary official documentation through reviewed host web access."
+    },
+    {
+      "canonical_name": "serena",
+      "source_risk": "HIGH",
+      "integration_status": "REJECTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "NONE",
+      "remediation": "No broad workspace MCP permission, editing server, subprocess surface, adapter, or profile activation exists.",
+      "replacement": "Graphify plus bounded native search and client-native editing."
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-cloud-infrastructure",
+      "source_risk": "HIGH",
+      "integration_status": "ADAPTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "LOW",
+      "remediation": "Only independently written, instruction-only release guidance is used. Download-and-execute examples, source agents, hooks, scripts, and installers were not copied.",
+      "replacement": ".agents/skills/devops-release/SKILL.md"
+    },
+    {
+      "canonical_name": "wshobson-agents-plugins-python-development",
+      "source_risk": "HIGH",
+      "integration_status": "ADAPTED",
+      "remediation_status": "VERIFIED",
+      "residual_integration_risk": "LOW",
+      "remediation": "Only independently written, instruction-only backend guidance is used. Download-and-execute examples, broad cleanup commands, source agents, hooks, scripts, and installers were not copied.",
+      "replacement": ".agents/skills/backend-development/SKILL.md"
+    }
+  ]
+}

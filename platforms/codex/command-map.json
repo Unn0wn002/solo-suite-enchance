@@ -396,6 +396,17 @@
     "allow_implicit_invocation": false
   },
   {
+    "legacy_invocation": "/project:capability-map",
+    "skill_invocation": "$capability-routing",
+    "codex_invocation": "$capability-routing",
+    "plugin": "project",
+    "command": "capability-map",
+    "skill_name": "capability-routing",
+    "source_path": "plugins/project/commands/capability-map.md",
+    "target_path": "plugins/project/skills/capability-routing/SKILL.md",
+    "allow_implicit_invocation": false
+  },
+  {
     "legacy_invocation": "/project:prd",
     "skill_invocation": "$project-prd",
     "codex_invocation": "$project-prd",
@@ -616,17 +627,6 @@
     "allow_implicit_invocation": false
   },
   {
-    "legacy_invocation": "/seo:content",
-    "skill_invocation": "$seo-content",
-    "codex_invocation": "$seo-content",
-    "plugin": "seo",
-    "command": "content",
-    "skill_name": "seo-content",
-    "source_path": "plugins/seo/commands/content.md",
-    "target_path": "plugins/seo/skills/seo-content/SKILL.md",
-    "allow_implicit_invocation": false
-  },
-  {
     "legacy_invocation": "/seo:content-brief",
     "skill_invocation": "$seo-content-brief",
     "codex_invocation": "$seo-content-brief",
@@ -635,6 +635,17 @@
     "skill_name": "seo-content-brief",
     "source_path": "plugins/seo/commands/content-brief.md",
     "target_path": "plugins/seo/skills/seo-content-brief/SKILL.md",
+    "allow_implicit_invocation": false
+  },
+  {
+    "legacy_invocation": "/seo:content",
+    "skill_invocation": "$seo-content",
+    "codex_invocation": "$seo-content",
+    "plugin": "seo",
+    "command": "content",
+    "skill_name": "seo-content",
+    "source_path": "plugins/seo/commands/content.md",
+    "target_path": "plugins/seo/skills/seo-content/SKILL.md",
     "allow_implicit_invocation": false
   },
   {

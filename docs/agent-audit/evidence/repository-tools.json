@@ -1,0 +1,184 @@
+{
+  "audit_schema": "repository-tools-v1",
+  "audit_date": "2026-07-28",
+  "method": "Static read-only inspection of pre-existing shallow clones. No repository code, installers, package lifecycle scripts, hooks, MCP servers, or tests were executed.",
+  "scope": [
+    "Graphify-Labs/graphify",
+    "oraios/serena",
+    "upstash/context7",
+    "yamadashy/repomix",
+    "Aider-AI/aider",
+    "tirth8205/code-review-graph"
+  ],
+  "sources": [
+    {
+      "name": "graphify",
+      "source_url": "https://github.com/Graphify-Labs/graphify",
+      "commit": "16442303e197650255f6dbf77c6448500bd91e51",
+      "last_commit_date": "2026-07-27",
+      "license": "Apache-2.0 OR MIT",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "risk": "MEDIUM",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Keep disabled by default; use only for repository-relationship and architecture questions. Run in the workspace and keep generated graph output outside prompt startup context.",
+      "permissions_and_behavior": [
+        "Core CLI reads source trees and writes graph/cache output; cache cleanup deletes only its cache entries.",
+        "Optional MCP, database, file-watcher, cloud-LLM, office, video, and graph-export extras add network, credential, filesystem, or service access.",
+        "Query logging is opt-in; when enabled it can write query and optionally response data to a log path."
+      ],
+      "credentials_network_telemetry": [
+        "Optional OpenAI, Anthropic, Bedrock, Gemini, Neo4j, FalkorDB, and Google integrations require their normal external configuration.",
+        "No automatic telemetry was identified in the inspected core; query logging is explicitly opt-in."
+      ],
+      "tests_and_docs": "pytest configuration targets tests; README and packaged host-specific skill files exist. Static inspection cannot confirm documentation/runtime parity.",
+      "evidence": [
+        "pyproject.toml:5-12,51-88 (license, optional services, MCP and CLI entry points)",
+        "graphify/querylog.py:15-35,43-77 (opt-in query/response logging)",
+        "graphify/cache.py:39-61,738-803 (cache-scoped cleanup/deletion)",
+        "pyproject.toml:126-146 (pytest, Bandit, Ruff configuration)"
+      ]
+    },
+    {
+      "name": "serena",
+      "source_url": "https://github.com/oraios/serena",
+      "commit": "9a9d07e83d8c1cba3458992707f440c624446c6d",
+      "last_commit_date": "2026-07-27",
+      "license": "MIT",
+      "primary_type": "MCP_SERVER",
+      "risk": "HIGH",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Do not enable by default. If approved, constrain it to the workspace, review available editing/shell tools, and require explicit user approval for shell or write operations.",
+      "permissions_and_behavior": [
+        "The MCP-oriented toolkit exposes semantic retrieval and editing capabilities.",
+        "File tools include create/replace/line-edit operations that write project files.",
+        "Its shell helper uses subprocess.Popen with shell=True and inherits an environment copy."
+      ],
+      "credentials_network_telemetry": [
+        "Dependencies include requests, python-dotenv, MCP, Anthropic, and optional Google integrations.",
+        "The inspected manifest is broadly pinned, but the access surface still includes filesystem mutation, processes, and optional network-backed providers."
+      ],
+      "tests_and_docs": "pytest, lint, and type-check tasks are defined; README and MCP server script are present. No test or server was run.",
+      "evidence": [
+        "pyproject.toml:5-55,64-70,72-101,164-175 (MCP/CLI, pinned dependencies, optional providers, test/lint tasks)",
+        "src/serena/tools/file_tools.py:26-86,170-557 (read/create/replace/edit operations; write_text at line 86)",
+        "src/serena/util/shell.py:16-49 (shell command execution; shell=True at line 30)",
+        "scripts/mcp_server.py (MCP server entry point present)"
+      ]
+    },
+    {
+      "name": "context7",
+      "source_url": "https://github.com/upstash/context7",
+      "commit": "b250c2515694eee4b6df4db82fa056df9ed3e306",
+      "last_commit_date": "2026-07-25",
+      "license": "MIT",
+      "primary_type": "MCP_SERVER",
+      "risk": "HIGH",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Treat as an optional, approved external documentation service. Do not auto-configure its remote MCP endpoint or credentials; use only when current version-specific external documentation is needed.",
+      "permissions_and_behavior": [
+        "The Codex plugin config points to an HTTPS MCP endpoint rather than a local-only process.",
+        "The MCP package registers tools and supports OAuth discovery/auth flow.",
+        "CLI tracking posts events to a remote API; the monorepo and MCP packaging scripts contain destructive node_modules cleanup and install/build steps that were not executed."
+      ],
+      "credentials_network_telemetry": [
+        "A CONTEXT7_API_KEY is documented for higher quotas.",
+        "Remote MCP URL and CLI event tracking create network and telemetry exposure."
+      ],
+      "tests_and_docs": "Root and MCP package define pnpm tests and package documentation; lockfile exists. No package lifecycle or test command was run.",
+      "evidence": [
+        "plugins/codex/context7/.mcp.json:1-8 (remote HTTPS MCP server)",
+        "packages/mcp/src/index.ts:112-264,501-631 (MCP server, tool registration, OAuth discovery)",
+        "packages/cli/src/utils/tracking.ts:5 (event POST)",
+        "package.json:9-25 (clean/release scripts)",
+        "packages/mcp/package.json:2-17,35-64 (MCP binary, dependencies, package/install/build cleanup)",
+        "skills/find-docs/SKILL.md:138 and rules/context7-cli.md:16 (documented API-key use)"
+      ]
+    },
+    {
+      "name": "repomix",
+      "source_url": "https://github.com/yamadashy/repomix",
+      "commit": "b921db74351fd9185897a641a8f39c0b82de7fcb",
+      "last_commit_date": "2026-07-26",
+      "license": "MIT",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "risk": "MEDIUM",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Keep optional and use only with explicit include/exclude filters for bounded handoffs. Do not activate its MCP server by default or run lifecycle/install scripts without a separate review.",
+      "permissions_and_behavior": [
+        "The tool packages repository content into output files and includes MCP tools for local file reads, directory reads, output attachment, and remote repository packing.",
+        "Package prepare automatically builds when npm lifecycle scripts are allowed; build removes lib before compiling.",
+        "Remote repository and watch/MCP features expand network or filesystem exposure beyond a simple filtered export."
+      ],
+      "credentials_network_telemetry": [
+        "MCP registration includes remote-repository packing and filesystem read tools.",
+        "No core telemetry conclusion is made from the static scan; website analytics is separate from the CLI/MCP review."
+      ],
+      "tests_and_docs": "vitest and secretlint scripts are defined; README and MCP source are present. No build, prepare, MCP, or test execution occurred.",
+      "evidence": [
+        "package.json:1-45,68-129 (MIT, prepare/build lifecycle, test/lint, MCP dependency, engines)",
+        "src/mcp/mcpServer.ts:1-63 (registered local/remote packing and filesystem tools)",
+        "src/mcp/tools/fileSystemReadFileTool.ts:25 onward (filesystem-read tool registration)",
+        "src/core/packager/writeOutputToDisk.ts and src/core/skill/writeSkillOutput.ts (output-writing implementation paths present)"
+      ]
+    },
+    {
+      "name": "aider",
+      "source_url": "https://github.com/Aider-AI/aider",
+      "commit": "5dc9490bb35f9729ef2c95d00a19ccd30c26339c",
+      "last_commit_date": "2026-05-22",
+      "license": "Apache-2.0",
+      "primary_type": "LOCAL_CLI_TOOL",
+      "risk": "HIGH",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Keep separate from this agent platform. Use only when Aider is the explicitly selected coding client, with a separate credential and command-execution review.",
+      "permissions_and_behavior": [
+        "Terminal coding client can run shell commands through a helper that invokes subprocess.Popen with shell=True.",
+        "Analytics integrates PostHog, writes a user-home analytics file, supports custom endpoint/key overrides, and has disable controls.",
+        "The codebase supports many model/provider credentials and repository-editing workflows; it must not be treated as a passive portable skill."
+      ],
+      "credentials_network_telemetry": [
+        "Analytics code contains a PostHog host/project key and can post events when enabled.",
+        "Provider configuration uses environment-backed credentials; do not expose them to an agent extension."
+      ],
+      "tests_and_docs": "Dynamic dependency files and documentation are present; tests include analytics coverage. No installer, model call, shell command, or test was executed.",
+      "evidence": [
+        "pyproject.toml:2-49 (Apache license classifier, CLI entry point, dynamic dependency files)",
+        "aider/run_cmd.py:42-67 (shell selection and subprocess.Popen(shell=True))",
+        "aider/analytics.py:56-105,137-183,213-250 (PostHog, local analytics persistence, event handling)",
+        "aider/args.py:569-593 (analytics enable/disable/custom endpoint options)",
+        "tests/basic/test_analytics.py and aider/website/docs/more/analytics.md (test/documentation paths present)"
+      ]
+    },
+    {
+      "name": "code-review-graph",
+      "source_url": "https://github.com/tirth8205/code-review-graph",
+      "commit": "90d760aa23fac0353637d2e8f2a431aa08f14366",
+      "last_commit_date": "2026-07-28",
+      "license": "MIT",
+      "primary_type": "MCP_SERVER",
+      "risk": "HIGH",
+      "classification": "EXTERNAL_TOOL_ONLY",
+      "recommendation": "Disabled by default and never active alongside Graphify without benchmark evidence. Do not adopt its MCP config or automatic hooks; use only after explicit approval and narrow workspace confinement.",
+      "permissions_and_behavior": [
+        "The supplied MCP config launches uvx code-review-graph serve, which can install/run an external package at activation time.",
+        "Supplied SessionStart/PostToolUse hooks invoke status, background build, and update commands automatically.",
+        "The FastMCP server registers many tools, including graph build/update and query operations; daemon and Git subprocess support exist.",
+        "Uninstall implementation changes configuration and can remove files, with dry-run support."
+      ],
+      "credentials_network_telemetry": [
+        "Optional cloud embedding integrations include Google/OpenAI-compatible configuration and API keys; cloud egress is documented as opt-in.",
+        "MCP/hook auto-execution is the primary activation risk, independently of cloud credentials."
+      ],
+      "tests_and_docs": "pytest configuration and tests are present; README/CLI/docs and hook/MCP configs exist. No hook, uvx invocation, server, or test was executed.",
+      "evidence": [
+        "pyproject.toml:5-50,52-104,123-134 (MIT, MCP/CLI, optional cloud extras, test config, subprocess security exceptions)",
+        ".mcp.json:1-8 (uvx-launched MCP server)",
+        "hooks/hooks.json:1-34 (SessionStart and PostToolUse automatic command hooks)",
+        "code_review_graph/main.py:99-576 (registered MCP graph mutation and query tools)",
+        "code_review_graph/uninstall.py:75-184,415-692 (configuration edits, removal logic, dry-run-aware deletes)",
+        "docs/USAGE.md:90 (cloud embedding configuration and egress warning)"
+      ]
+    }
+  ],
+  "overall_decision": "All six tools remain external-tool-only and disabled by default. Static evidence establishes review leads and permission boundaries, not proof of exploitability. Any installation, MCP activation, hook registration, credential use, or execution requires a separate approved review."
+}

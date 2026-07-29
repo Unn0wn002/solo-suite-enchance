@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "e2c87667ad03d00a2683c401d7f1313cbe5e5d256e205a9f0f2f6477d3b60e75",
+    "references/audit-method.md": "8f184085002e0fdb5947ad3e54ee9dea5516f5f9837aeee458e728e9143700ba"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/agent-extension-audit"
+}

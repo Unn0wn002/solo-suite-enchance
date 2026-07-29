@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "d7a9c629112f2e9a3c59f52ffe5c7e2bdf9f6f8436aff3a7b17d54b3a76adc19"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/security-review"
+}

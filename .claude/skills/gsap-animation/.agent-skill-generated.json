@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "9ec125f812211eb224f40a61dec4f3c0836ca6e12fb651bb2d56e4e7e59023ae"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/gsap-animation"
+}

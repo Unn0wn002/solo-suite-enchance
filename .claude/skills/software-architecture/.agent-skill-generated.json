@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "27d3b63117bf25db9151ffaf500eec4680c9df20cd6a3f2165dd49126dd8f680"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/software-architecture"
+}

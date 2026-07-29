@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "108ff54c0faeb0b30dc9bdc86ce969afe3c16faec94717514a43bbc053ea3ab0"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/data-analysis"
+}

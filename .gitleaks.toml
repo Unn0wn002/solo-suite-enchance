@@ -1,0 +1,18 @@
+title = "EC Solo Suite secret scanning"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Generated, dependency, cache, and isolated-review material"
+paths = [
+  '''(^|[\\/])(?:\.tools|\.tmp|node_modules|graphify-out|dist|coverage|__pycache__)([\\/]|$)''',
+  '''^platforms/(?:claude|antigravity)/release/previous-release-inventory\.json$''',
+]
+
+[[allowlists]]
+description = "Pinned Git commit identifiers recorded as audit evidence"
+regexTarget = "match"
+regexes = [
+  '''\b[0-9a-f]{40}\b''',
+]

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "design",
+  "enabled_roles": [
+    "ui-ux-designer"
+  ],
+  "enabled_skills": [
+    "ui-ux-design"
+  ],
+  "optional_skills": [
+    "gsap-animation",
+    "repository-intelligence-routing"
+  ],
+  "disabled_duplicates": [],
+  "external_tools": [],
+  "verification_commands": [
+    "python scripts/validate-agent-skills.py",
+    "python scripts/validate-agent-platform.py"
+  ],
+  "token_budget_guidance": {
+    "target_max_active_skills": 3,
+    "load_role_definitions_on_demand": true,
+    "load_references_on_demand": true,
+    "keep_generated_graphs_out_of_startup_context": true
+  }
+}

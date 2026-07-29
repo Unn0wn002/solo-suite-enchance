@@ -1,10 +1,10 @@
 # Solo Suite for Codex
 
-Solo Suite is a Codex-native plugin marketplace for planning, designing, building, testing, auditing, and releasing software with shared `.solo/` project memory. This adapter synchronizes 125 workflows from the authenticated Claude v1.0.27 baseline, migrating each legacy command to an explicit Codex skill. The source checkout pins the public base and its reviewed Codex overlay under `parity/artifacts/`. The deterministic install ZIP intentionally omits nested archives and checksum sidecars, so the release workflow publishes the separately attested asset `solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip` only after normal review, protected-tag validation, and final private-draft asset re-verification. The Claude tag is annotated but unsigned; that caveat and every reconstruction input are recorded under [`parity/`](parity/README.md).
+Solo Suite is a Codex-native plugin marketplace for planning, designing, building, testing, auditing, and releasing software with shared `.solo/` project memory. This adapter synchronizes 126 workflows from the authenticated Claude v1.0.27 baseline, migrating each legacy command to an explicit Codex skill. The source checkout pins the public base and its reviewed Codex overlay under `parity/artifacts/`. The deterministic install ZIP intentionally omits nested archives and checksum sidecars, so the release workflow publishes the separately attested asset `solo-suite-plugin-v1.0.27-codex-v1.0.27-parity-source.zip` only after normal review, protected-tag validation, and final private-draft asset re-verification. The Claude tag is annotated but unsigned; that caveat and every reconstruction input are recorded under [`parity/`](parity/README.md).
 
-**19 plugins** · **184 skills** · **125 migrated commands** · **28 helper scripts**
+**19 plugins** · **185 skills** · **126 migrated commands** · **28 helper scripts**
 
-The 184 unique skills comprise 79 synchronized specialist skill definitions, 125 command-derived mappings (including merged specialist collisions), and the Codex-native `full-team-orchestrator` meta-skill. The authoritative one-to-one migration is in [`command-map.json`](command-map.json), the readable table is in [`COMMAND-MAP.md`](COMMAND-MAP.md), and the source-to-adapter contract is in [`parity/capabilities.json`](parity/capabilities.json).
+The 185 unique skills comprise 80 synchronized specialist skill definitions, 126 command-derived mappings (including merged specialist collisions), and the Codex-native `full-team-orchestrator` meta-skill. The authoritative one-to-one migration is in [`command-map.json`](command-map.json), the readable table is in [`COMMAND-MAP.md`](COMMAND-MAP.md), and the source-to-adapter contract is in [`parity/capabilities.json`](parity/capabilities.json).
 
 ## What changed for Codex
 
@@ -67,6 +67,17 @@ Then invoke:
 ```text
 $full-team-orchestrator
 ```
+
+For the approved Graphify, native-search, official-docs, and Repomix routing, see
+the root [`CORE_REPOSITORY_INTELLIGENCE.md`](../../CORE_REPOSITORY_INTELLIGENCE.md).
+Check the audited Graphify CLI from the repository root:
+
+```powershell
+python scripts/bootstrap-graphify.py --check
+```
+
+Codex uses the existing `AGENTS.md` and canonical repository-routing skill; no
+platform installer is needed.
 
 ## Usage
 

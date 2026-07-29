@@ -83,6 +83,7 @@ WAIVER_SKILLS = {
 # Keep these differences explicit in the generated parity manifest while
 # still checking source hashes, target presence, frontmatter, and inventory.
 BODY_ADAPTER_WAIVERS = {
+    "project:capability-routing": "Codex-native cross-platform capability routing wrapper",
     "full-team:full-team-verify": "Codex-native fail-closed preflight wrapper",
     "gate:gate-production-ready": "synchronized Codex gate-policy workflow",
     "gate:production-readiness-reviewer": "synchronized Codex gate-policy specialist",
@@ -550,7 +551,11 @@ def source_commands(source: Path) -> list[dict[str, object]]:
             if not path.is_file() or path.suffix.lower() != ".md":
                 continue
             command = path.stem
-            skill_name = f"{plugin}-{command}"
+            skill_name = (
+                "capability-routing"
+                if plugin == "project" and command == "capability-map"
+                else f"{plugin}-{command}"
+            )
             source_text = path.read_text(encoding="utf-8")
             commands.append(
                 {
@@ -1128,6 +1133,50 @@ def generate(source: Path) -> Path:
     return destination
 
 
+def refresh_target(target: Path) -> Path:
+    """Refresh only target-derived hashes in the checked-in working-tree manifest."""
+
+    target = target.resolve()
+    destination = target / "parity" / "capabilities.json"
+    value = load_json(destination)
+    if not isinstance(value, dict):
+        raise ParityError(f"invalid target parity manifest: {destination}")
+    for item in value.get("commands", []):
+        path = target / str(item["target_path"])
+        if not path.is_file():
+            raise ParityError(f"target command-derived skill missing: {path}")
+        normalized = normalized_command_target(path.read_text(encoding="utf-8"))
+        item["normalized_sha256"] = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+    for item in value.get("specialist_skills", []):
+        path = target / str(item["target_path"])
+        if not path.is_file():
+            raise ParityError(f"target specialist skill missing: {path}")
+        normalized = normalized_specialist(
+            path.read_text(encoding="utf-8"),
+            str(item["plugin"]),
+            str(item["skill"]),
+            source=False,
+        )
+        item["normalized_sha256"] = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+    for item in value.get("companion_files", []):
+        path = target / str(item["path"])
+        if not path.is_file():
+            raise ParityError(f"target companion missing: {path}")
+        item["sha256"] = sha256(path)
+    for item in value.get("agentroom_archive", []):
+        path = target / str(item["archive_path"])
+        if not path.is_file():
+            raise ParityError(f"target AgentRoom archive file missing: {path}")
+        item["sha256"] = sha256(path)
+    counts = value.get("counts")
+    if not isinstance(counts, dict):
+        raise ParityError("target parity manifest has no counts object")
+    counts["target_skills"] = len(_target_skill_ids(target))
+    write_json(destination, value)
+    print(f"Refreshed target-derived hashes in {destination}")
+    return destination
+
+
 def check(source: Path, target: Path) -> int:
     source = source.resolve()
     target = target.resolve()
@@ -1168,10 +1217,11 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "action",
         nargs="?",
-        choices=("generate", "check"),
-        help="generate the canonical manifest or check source/target parity",
+        choices=("generate", "refresh-target", "check"),
+        help="generate source parity, refresh target hashes, or check source/target parity",
     )
     parser.add_argument("--generate", action="store_true", help="alias for the generate action")
+    parser.add_argument("--refresh-target", action="store_true", help="refresh target-derived working-tree hashes")
     parser.add_argument("--check", action="store_true", help="alias for the check action")
     parser.add_argument("--source", type=Path, help="canonical Claude checkout")
     parser.add_argument("--target", type=Path, help="Codex adapter checkout (required for check)")
@@ -1181,7 +1231,15 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     parser = _parser()
     args = parser.parse_args(argv)
-    actions = [name for name, present in (("generate", args.generate), ("check", args.check)) if present]
+    actions = [
+        name
+        for name, present in (
+            ("generate", args.generate),
+            ("refresh-target", args.refresh_target),
+            ("check", args.check),
+        )
+        if present
+    ]
     if args.action:
         actions.append(args.action)
     if len(set(actions)) != 1:
@@ -1191,6 +1249,13 @@ def main(argv: list[str] | None = None) -> int:
     if action == "generate":
         try:
             generate(source)
+        except ParityError as exc:
+            print(f"FAIL {exc}", file=sys.stderr)
+            return 1
+        return 0
+    if action == "refresh-target":
+        try:
+            refresh_target(args.target or Path(__file__).resolve().parents[1])
         except ParityError as exc:
             print(f"FAIL {exc}", file=sys.stderr)
             return 1

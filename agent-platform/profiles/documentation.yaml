@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "name": "documentation",
+  "enabled_roles": [
+    "technical-writer"
+  ],
+  "enabled_skills": [
+    "technical-writing"
+  ],
+  "optional_skills": [
+    "repository-intelligence-routing"
+  ],
+  "disabled_duplicates": [],
+  "external_tools": [
+    {
+      "name": "repomix",
+      "required": false
+    }
+  ],
+  "verification_commands": [
+    "python scripts/validate-agent-skills.py",
+    "python scripts/validate-agent-platform.py"
+  ],
+  "token_budget_guidance": {
+    "target_max_active_skills": 2,
+    "load_role_definitions_on_demand": true,
+    "load_references_on_demand": true,
+    "keep_generated_graphs_out_of_startup_context": true
+  }
+}

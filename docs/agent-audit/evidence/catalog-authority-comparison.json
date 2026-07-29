@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "comparison_date": "2026-07-29",
+  "result": "NO_AUTHORITATIVE_HISTORICAL_COPY_FOUND",
+  "decision": "ADOPT_RECONSTRUCTED_AS_REPOSITORY_CANONICAL_V1",
+  "searched": [
+    {
+      "location": "current Git worktree and all local refs",
+      "result": "No pre-existing historical docs/agent-extension-catalog.md"
+    },
+    {
+      "location": "origin/main at e6705a979f82deaf95dd692794adba550e1de9f2",
+      "result": "Path absent"
+    },
+    {
+      "location": "sites/main",
+      "result": "Path absent"
+    },
+    {
+      "location": "C:/Users/unn0w/Downloads",
+      "result": "Only the current reconstructed catalog"
+    },
+    {
+      "location": "C:/Users/unn0w/Documents",
+      "result": "No matching catalog"
+    },
+    {
+      "location": "C:/Users/unn0w/OneDrive",
+      "result": "No matching catalog"
+    },
+    {
+      "location": "sibling EC Solo Suite Learns checkout",
+      "result": "ROLE_CATALOG.md and REPOSITORIES.json are the reconstruction evidence, not a historical catalog copy"
+    }
+  ],
+  "source_evidence": {
+    "../EC Solo Suite Learns/ROLE_CATALOG.md": "808279945e933f97299aecaa9e96cdac187a273f41c4ba58bd49f2e17a4a3e06",
+    "../EC Solo Suite Learns/REPOSITORIES.json": "4a8f61a03ee04335efe251e873d89bf5e5d3f840f28e9e73f020911920539c89",
+    "capability-inventory.json": "953f77ced13b0d8e3b81f36eb64b277c17bca3e267c125827a413eb0e913f497"
+  },
+  "limitations": [
+    "An unknown copy on an unconnected service or unavailable device cannot be disproved.",
+    "The reconstruction preserves all 69 evidence rows but does not claim unknown original prose."
+  ]
+}

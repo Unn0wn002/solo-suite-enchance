@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "name": "qa",
+  "enabled_roles": [
+    "qa-engineer"
+  ],
+  "enabled_skills": [
+    "qa-verification"
+  ],
+  "optional_skills": [
+    "security-review",
+    "repository-intelligence-routing"
+  ],
+  "disabled_duplicates": [],
+  "external_tools": [],
+  "verification_commands": [
+    "python scripts/validate-agent-skills.py",
+    "python scripts/validate-agent-platform.py"
+  ],
+  "token_budget_guidance": {
+    "target_max_active_skills": 3,
+    "load_role_definitions_on_demand": true,
+    "load_references_on_demand": true,
+    "keep_generated_graphs_out_of_startup_context": true
+  }
+}

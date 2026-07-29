@@ -540,6 +540,19 @@
     },
     {
       "allow_implicit_invocation": false,
+      "codex_invocation": "$capability-routing",
+      "command": "capability-map",
+      "id": "project:capability-map",
+      "legacy_invocation": "/project:capability-map",
+      "plugin": "project",
+      "skill_invocation": "$capability-routing",
+      "skill_name": "capability-routing",
+      "source_path": "plugins/project/commands/capability-map.md",
+      "source_sha256": "c1bf6598ca13e61ac07da09b7232bf2f472409c8ee143669c2531dfc75904ce7",
+      "target_path": "plugins/project/skills/capability-routing/SKILL.md"
+    },
+    {
+      "allow_implicit_invocation": false,
       "codex_invocation": "$project-prd",
       "command": "prd",
       "id": "project:prd",
@@ -1795,9 +1808,9 @@
   ],
   "counts": {
     "plugins": 19,
-    "source_commands": 125,
-    "source_specialist_skills": 79,
-    "target_skills": 184
+    "source_commands": 126,
+    "source_specialist_skills": 80,
+    "target_skills": 186
   },
   "normalization": [
     "Claude/Codex frontmatter (disable-model-invocation is adapter metadata)",
@@ -2023,6 +2036,15 @@
       "source_path": "plugins/growth/skills/conversion-optimizer/SKILL.md",
       "source_sha256": "710181d3bb8902b6781439a1c4e30c2600502150b67153ee71700c858a73522a",
       "target_path": "plugins/growth/skills/conversion-optimizer/SKILL.md"
+    },
+    {
+      "id": "project:capability-routing",
+      "normalized_sha256": "cb26840003297c96d3e220957403f13b9818ed15c1c6d8dbf0b18a0c1ba54cc8",
+      "plugin": "project",
+      "skill": "capability-routing",
+      "source_path": "plugins/project/skills/capability-routing/SKILL.md",
+      "source_sha256": "fab6001a17046acc4e0c8572fed56e3fe4990a5c40274fdd95dbefaddf54b70f",
+      "target_path": "plugins/project/skills/capability-routing/SKILL.md"
     },
     {
       "id": "project:product-manager",

@@ -39,6 +39,13 @@ const modules = [
     tags: ["Release", "Stack", "Docs"],
     accent: "violet",
   },
+  {
+    kicker: "05 / ROUTE",
+    title: "Activate only what the work needs.",
+    copy: "Capability routing reads the phase, stack, risk, and handoff contract before selecting skills, commands, and evidence gates.",
+    tags: ["Route", "Graphify", "Gates"],
+    accent: "coral",
+  },
 ];
 
 const runtimes = [
@@ -91,7 +98,8 @@ export default function Home() {
           <p className="hero-lede">
             Solo Suite Enchance connects the full product team — from first brief to safe release — inside one
             shared memory layer built for Claude, Codex, and Antigravity. Start with websites today; scale the
-            same operating rhythm to bigger products tomorrow.
+            same operating rhythm to bigger products tomorrow. Capability routing keeps each run focused on the
+            smallest team that can finish it.
           </p>
           <div className="hero-actions">
             <button className="button button-primary" onClick={() => setRunStarted(true)}>
@@ -148,7 +156,7 @@ export default function Home() {
         <p className="signal-label">ONE SUITE / MANY SPECIALISTS</p>
         <div className="signal-stats">
           <div><strong>19</strong><span>plugins</span></div>
-          <div><strong>184</strong><span>skills</span></div>
+          <div><strong>185</strong><span>skills</span></div>
           <div><strong>16</strong><span>workflow stages</span></div>
           <div><strong>01</strong><span>project memory</span></div>
         </div>
