@@ -38,7 +38,7 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 ## MCP tool-count risks
 
 - Root MCP activation files: 0.
-- Repository files with MCP in the filename outside dependencies/temp: 3; most belong to isolated platform distributions or audit documentation.
+- Repository files with MCP in the filename outside dependencies/temp: 0; none detected.
 - Exposing multiple broad MCP servers increases metadata, permission, and prompt-injection surface. Profiles therefore name external tools but do not activate servers.
 
 ## Recommended active profile sizes
