@@ -20,6 +20,11 @@ def word_count(text: str) -> int:
     return len(re.findall(r"\b[\w'-]+\b", text))
 
 
+def canonical_text_size(text: str) -> int:
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n")
+    return len(normalized.encode("utf-8"))
+
+
 def build_report() -> str:
     startup_files = [ROOT / "AGENTS.md", ROOT / "CLAUDE.md"]
     skill_rows = []
@@ -33,7 +38,9 @@ def build_report() -> str:
         for path in directory.rglob("*"):
             if path.is_file():
                 text = path.read_text(encoding="utf-8")
-                large_files.append((path.stat().st_size, path.relative_to(ROOT).as_posix(), word_count(text)))
+                large_files.append(
+                    (canonical_text_size(text), path.relative_to(ROOT).as_posix(), word_count(text))
+                )
     duplicate_descriptions = [description for description, count in Counter(descriptions).items() if count > 1]
 
     profile_rows = []
@@ -53,8 +60,8 @@ def build_report() -> str:
     mcp_files = [
         path for path in ROOT.rglob("*")
         if path.is_file()
-        and "node_modules" not in path.parts
-        and ".tmp" not in path.parts
+        and "node_modules" not in path.relative_to(ROOT).parts
+        and ".tmp" not in path.relative_to(ROOT).parts
         and (path.name == ".mcp.json" or "mcp" in path.name.lower())
     ]
     root_mcp = int((ROOT / ".mcp.json").exists())
@@ -73,7 +80,10 @@ def build_report() -> str:
     for path in startup_files:
         if path.is_file():
             text = path.read_text(encoding="utf-8")
-            lines.append(f"| `{path.name}` | {path.stat().st_size} | {word_count(text)} | Startup instruction surface |")
+            lines.append(
+                f"| `{path.name}` | {canonical_text_size(text)} | "
+                f"{word_count(text)} | Startup instruction surface |"
+            )
     lines.append(f"| Canonical skill metadata | {sum(row[1] for row in skill_rows)} description characters | {len(skill_rows)} skills | Metadata first; bodies on demand |")
     lines.extend([
         "",
@@ -99,7 +109,15 @@ def build_report() -> str:
         "## MCP tool-count risks",
         "",
         f"- Root MCP activation files: {root_mcp}.",
-        f"- Repository files with MCP in the filename outside dependencies/temp: {len(mcp_files)}; most belong to isolated platform distributions or audit documentation.",
+        (
+            "- Repository files with MCP in the filename outside dependencies/temp: "
+            f"{len(mcp_files)}; "
+            + (
+                "none detected."
+                if not mcp_files
+                else "most belong to isolated platform distributions or audit documentation."
+            )
+        ),
         "- Exposing multiple broad MCP servers increases metadata, permission, and prompt-injection surface. Profiles therefore name external tools but do not activate servers.",
         "",
         "## Recommended active profile sizes",

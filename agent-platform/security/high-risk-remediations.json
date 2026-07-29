@@ -9,7 +9,8 @@
     ],
     "required_remediation_status": "VERIFIED",
     "rejected_capabilities_must_have_no_activation_path": true,
-    "adapted_high_risk_sources_must_use_original_instruction_only_skills": true
+    "adapted_high_risk_sources_must_use_original_instruction_only_skills": true,
+    "control_artifact_hash_mode": "sha256-lf-normalized"
   },
   "control_artifacts": {
     ".agents/skills/devops-release/SKILL.md": "3054127f36173381814097a2c14ee35de97538af26caf966d45ebbd358f96c83",
