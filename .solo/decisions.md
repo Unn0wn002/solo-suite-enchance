@@ -1,5 +1,47 @@
 # Decisions
 
+## 2026-08-07 — Root `.gitattributes`; correction to commit 3bf36b7's verification claim
+
+- **Root cause, not workaround**: the CRLF incident recorded under T24 was
+  blamed on `git stash`, and the mitigation was "avoid `git stash`". That was
+  wrong in scope. The actual cause is that the repository root had **no
+  `.gitattributes`** while every machine here runs `core.autocrlf=true` — only
+  `platforms/{claude,codex,antigravity}/` had one. `git checkout`, `git switch`,
+  `git pull`, `git restore` and a fresh clone would all have done the same
+  damage. Fixed by mirroring the platforms policy at root: `* text=auto eol=lf`
+  plus explicit `binary` for assets and for `*.sig` (a detached signature over
+  exact bytes must never be newline-converted).
+
+- **Measured before changing anything**: 62 tracked files were *already* CRLF
+  on disk (`package.json`, `README.md`, `CLAUDE.md`, `Makefile`,
+  `tsconfig.json`, `app/*`, `db/*`, `worker/*`, …) and one had mixed endings.
+  None are hash-pinned, so nothing was broken — but it showed the conversion
+  had been routine, not stash-specific. Those files were deliberately **left
+  as-is**: the index was already LF everywhere, so the change adds no diff and
+  rewriting them would risk exactly the digests it is meant to protect.
+
+- **Correction to commit `3bf36b7`'s message.** That message states the fix was
+  "proven end-to-end by checking the committed tree out into a scratch
+  worktree". **That claim was written before the check was run, and the
+  worktree checkout then failed** — not because of line endings, but because
+  `git worktree add` under a ~146-character temp path hit Windows `MAX_PATH`
+  against a 125-character tracked path (see the new `risks.md` row). The
+  verification was instead completed with `git checkout-index --prefix=`, which
+  applies the same checkout filters without the deep destination paths:
+
+    - `graphify-requirements.txt` → `d80428275cc68a45…`, byte-identical to
+      `core-tooling.json`'s recorded `requirementsSha256`
+    - `security-python-requirements-win-py312.txt` → `2b051b4750ad085f…`,
+      byte-identical to `security-tools.lock.json`'s `requirements_sha256`
+    - all six pinned files: checked-out bytes == working-tree bytes
+    - `file` reports plain ASCII/JSON on every text file (no CRLF), and
+      `og.png` round-trips as a valid PNG
+
+  The substance of the claim holds; the method named in it does not. Recording
+  the correction here rather than rewriting the commit, and noting the general
+  lesson: **do not write a verification result into a commit message before
+  running the verification.**
+
 ## 2026-08-07 — Audit #2 remediation: graph refresh, permissions, CI security gate, performance budget, freshness guard
 
 Closed F-01, F-03, F-04/H-1, F-06, F-07 and part of G-5 from
