@@ -23,8 +23,19 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
+def normalized_text_bytes(data: bytes) -> bytes:
+    """Use canonical LF bytes for generated text on every checkout platform."""
+    if b"\0" in data:
+        return data
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError:
+        return data
+    return text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+
+
 def mirrored_bytes(path: Path) -> bytes:
-    data = path.read_bytes()
+    data = normalized_text_bytes(path.read_bytes())
     if path.name != "SKILL.md":
         return data
     text = data.decode("utf-8")
@@ -99,7 +110,7 @@ def compare_directory(directory: Path, expected: dict[Path, bytes]) -> list[str]
             differences.append(f"extra {path.relative_to(ROOT).as_posix()}")
         elif relative not in actual_files:
             differences.append(f"missing {path.relative_to(ROOT).as_posix()}")
-        elif path.read_bytes() != expected[relative]:
+        elif normalized_text_bytes(path.read_bytes()) != normalized_text_bytes(expected[relative]):
             differences.append(f"changed {path.relative_to(ROOT).as_posix()}")
     return differences
 

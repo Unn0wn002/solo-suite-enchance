@@ -33,8 +33,13 @@ def load_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def sha256_lf_normalized(path: Path) -> str:
+    """Hash text controls consistently across Git checkout line endings."""
+    content = path.read_bytes()
+    if b"\0" in content:
+        raise ValueError(f"control artifact is not text: {path}")
+    normalized = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(normalized).hexdigest()
 
 
 def main() -> int:
@@ -128,6 +133,10 @@ def main() -> int:
         else:
             errors.append(f"{name}: HIGH/CRITICAL capability has unsupported status {capability.get('status')}")
 
+    policy = ledger.get("policy", {})
+    if policy.get("control_artifact_hash_mode") != "sha256-lf-normalized":
+        errors.append("remediation ledger control hash mode is not sha256-lf-normalized")
+
     artifacts = ledger.get("control_artifacts")
     if not isinstance(artifacts, dict) or not artifacts:
         errors.append("remediation ledger has no control artifact checksums")
@@ -138,8 +147,14 @@ def main() -> int:
                 errors.append(f"missing remediation control artifact: {relative}")
             elif not re.fullmatch(r"[0-9a-f]{64}", str(expected)):
                 errors.append(f"invalid remediation checksum: {relative}")
-            elif sha256(path) != expected:
-                errors.append(f"remediation control artifact drifted: {relative}")
+            else:
+                try:
+                    actual = sha256_lf_normalized(path)
+                except ValueError as exc:
+                    errors.append(str(exc))
+                    continue
+                if actual != expected:
+                    errors.append(f"remediation control artifact drifted: {relative}")
 
     if (ROOT / ".mcp.json").exists():
         errors.append("root .mcp.json reintroduces an MCP activation path")

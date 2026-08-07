@@ -61,6 +61,15 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def sha256_text_lf(path: Path) -> str:
+    """Hash UTF-8 text with canonical LF newlines across checkout platforms."""
+    content = path.read_bytes()
+    if b"\0" in content:
+        raise ValueError(f"expected a text file: {path}")
+    normalized = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(normalized).hexdigest()
+
+
 def relative(path: Path) -> str:
     return path.resolve().relative_to(ROOT.resolve()).as_posix()
 

@@ -24,6 +24,8 @@ import venv
 import zipfile
 from pathlib import Path, PurePosixPath
 
+from agent_platform_common import sha256_text_lf
+
 
 ROOT = Path(__file__).resolve().parents[1]
 TOOLS_ROOT = (ROOT / ".tools" / "security").resolve()
@@ -45,7 +47,7 @@ def load_lock() -> dict[str, object]:
     data = json.loads(LOCK_PATH.read_text(encoding="utf-8"))
     requirements = ROOT / str(data["python"]["requirements"])
     expected = str(data["python"]["requirements_sha256"])
-    if not requirements.is_file() or sha256(requirements) != expected:
+    if not requirements.is_file() or sha256_text_lf(requirements) != expected:
         raise RuntimeError("security Python requirements lock is missing or has drifted")
     return data
 
