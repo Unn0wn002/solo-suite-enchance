@@ -3,14 +3,20 @@
 
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 
-from agent_platform_common import ROOT, SHA_RE, canonical_skills, load_json_yaml, relative
+from agent_platform_common import (
+    ROOT,
+    SHA_RE,
+    canonical_skills,
+    load_json_yaml,
+    relative,
+    sha256_text_lf,
+)
 
 
 REQUIRED_PROFILES = {
@@ -215,7 +221,7 @@ def main() -> int:
             errors.append("security Python requirements lock is missing")
         else:
             requirements_bytes = requirements.read_bytes()
-            requirements_digest = hashlib.sha256(requirements_bytes).hexdigest()
+            requirements_digest = sha256_text_lf(requirements)
             if requirements_digest != python_lock.get("requirements_sha256"):
                 errors.append("security Python requirements checksum does not match security-tools.lock.json")
             requirement_lines = [
@@ -297,7 +303,7 @@ def main() -> int:
             if not lock_path.is_file():
                 errors.append("Graphify requirements lock is missing")
             else:
-                digest = hashlib.sha256(lock_path.read_bytes()).hexdigest()
+                digest = sha256_text_lf(lock_path)
                 if digest != graphify.get("requirementsSha256"):
                     errors.append("Graphify requirements lock checksum does not match core-tooling.json")
                 pins = [
