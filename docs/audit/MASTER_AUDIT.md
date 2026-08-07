@@ -851,8 +851,9 @@ built to satisfy a checklist.
 |---|---|---|---|
 | **N-1** | **Review and commit the working tree** | **OPEN — the top action, and now more urgent** | A day of security fixes plus this cycle's changes plus ~1,000 regenerated graph artifacts exist in exactly one place. Everything else is secondary to not losing it. |
 | N-2 | Refresh the graph | ✅ **DONE** | F-01 closed; guard added so it cannot silently recur |
-| **N-3** | Answer T25 — confirm the real deploy trigger with the Sites project owner, fill `.solo/release.md` | **BLOCKED — needs external information** | Unblocks the entire release/rollback/incident chain |
-| **N-4** | Push the branch once to exercise CI | **BLOCKED — needs your authorization** | Turns three jobs from hypothesis into evidence |
+| **N-3** | Answer T25 — confirm the deploy trigger with the Sites project owner, fill `.solo/release.md` | **BLOCKED — but now a yes/no question, not an open one** | A `sites` remote matching `hosting.json`'s `project_id` makes `git push sites main` the likely trigger (F-12). Ask: is that it? which branch does prod track? Sites-layer rollback? |
+| ~~**N-4**~~ | ~~Push the branch once to exercise CI~~ — **WITHDRAWN, the advice was wrong** | superseded by N-4b | `ci.yml` triggers on `push: branches: [main]` and `pull_request`. A feature-branch push matches neither, so this would never have exercised CI (F-13). |
+| **N-4b** | **Open a PR into `main`** to fire the `pull_request` trigger | **OPEN — needs you** | Runs all three jobs *before* anything lands on `main`, which merging would not. Compare URL in §N notes. |
 | N-5 | Add a `permissions` block | ✅ **DONE (project scope)** | `.claude/settings.json`; global scope left alone by design |
 | **N-6** | Decide T2b (provision D1 or delete the scaffolding) | **BLOCKED — product decision** | An unresolved product question must not be converted into an implementation assumption |
 
@@ -893,7 +894,9 @@ N-27 decide analytics (`prd.md` Q3) · N-28 devcontainer
 | F-02 | Ambient MCP/plugin/hook surface unaudited, violating `tool-permissions.md` | Governance | **BLOCKED** | Confirmed VERIFIED. Remediation requires modifying **global** user config — a high-risk action needing explicit authorization. |
 | F-03 | No `permissions` block at any scope | Security | **CLOSED (project scope)** | `.claude/settings.json` added with `deny`+`ask`. Global scope deliberately untouched — see F-02. |
 | F-04 | No performance measurement capability | Performance | **PARTIALLY CLOSED** | Transfer size measured + enforced + negative-tested. CWV/LCP/INP/CLS still unmeasured → tracked as H-1. |
-| F-05 | Deploy trigger unestablished; CI never exercised | Release | **BLOCKED** | Needs external information (Sites project owner) and a push. Neither is autonomously available. |
+| F-05 | Deploy trigger unestablished; CI never exercised | Release | **BLOCKED — but materially advanced** | See F-12 and F-13, which split this into its two independent halves. |
+| **F-12** | **Deploy trigger: a `sites` git remote embeds `.openai/hosting.json`'s exact `project_id` (`appgprj_6a67…`) and has a live `sites/main`.** Likely trigger: `git push sites main`. Two prior audits concluded "not establishable from the repository alone" after searching `package.json` and `README.md` — **neither ran `git remote -v`.** | Release | **OPEN — lead, not conclusion** | `git remote -v` + `git branch -r` (VERIFIED). Deliberately not tested: the only empirical confirmation is a production deploy. Drove Improvement-007. |
+| **F-13** | **CI has still never executed, and the audit's own N-4 recommendation would not have changed that.** `ci.yml` triggers on `push: branches: [main]` and `pull_request`; the branch was pushed to `origin` and matched neither. | Audit defect | **CONFIRMED** | Workflow triggers read directly; `gh` unavailable to cross-check, so the trigger config is the evidence. Drove Improvement-006. |
 | F-06 | `.solo/monitoring.md` contradicted shipped worker code | Docs drift | **CLOSED** | Section rewritten against `worker/index.ts`; verified by re-read |
 | F-07 | `README.md` misdescribed npm scripts; layout omitted ~9 directories | Docs drift | **CLOSED** | Corrected against `package.json` and the actual tree |
 | F-08 | Marketplace directory-source into dirty tree | Supply chain | **OPEN** | Unchanged. Mitigation requires a global-config change (F-02) or a commit (N-1). |
@@ -1025,6 +1028,50 @@ the purpose is not forgotten.
 - **Status:** rule applied in Audit #3 and used twice more in the same cycle
   (the bundle-budget negative test and the freshness-guard calibration both
   exist because of it). Now permanent.
+
+### Improvement-006 — A recommendation was issued without checking its mechanism would fire *(new, Audit #3)*
+- **Problem:** action **N-4** told the reader to "push the branch once to
+  exercise CI for the first time." The branch was pushed; **CI did not run.**
+  `.github/workflows/ci.yml` triggers on `push: branches: [main]` and
+  `pull_request`, and a feature-branch push matches neither. The recommended
+  action could never have produced the effect claimed for it.
+- **Root cause:** the same defect as Improvement-005, applied to a
+  *recommendation* rather than a *finding*. Improvement-005 established that a
+  query's population must be checked before its result is trusted; nothing
+  extended that to prescriptions. An action item is a prediction about a
+  mechanism, and predictions need the same grounding as observations.
+- **Audit gap:** findings were verified against evidence; recommendations were
+  not verified against configuration.
+- **New detection rule:** any action item that depends on an automated trigger
+  (CI, cron, webhook, watcher, git hook) must cite the exact trigger
+  configuration that will fire it. If the config cannot be quoted, the action
+  is unverified and must say so.
+- **Applied immediately:** N-4 withdrawn and replaced with N-4b (open a PR,
+  citing the `pull_request` trigger). Recorded as F-13.
+- **Status:** rule defined and applied. Extends Improvement-005 from findings
+  to recommendations.
+
+### Improvement-007 — Discovery searched tracked files and called that "the repository" *(new, Audit #3)*
+- **Problem:** two audits concluded the deploy trigger was "not fully
+  established from the repository alone," having searched `package.json` and
+  `README.md`. A `git remote -v` shows a `sites` remote whose URL embeds
+  `.openai/hosting.json`'s exact `project_id`, with a live `sites/main`. The
+  answer was in the repository the whole time — in git's configuration rather
+  than in a tracked file.
+- **Root cause:** "the repository" was implicitly defined as *files git
+  tracks*. Remotes, hooks, config, branches, tags, and submodules are all
+  repository state that no file-content search will ever surface.
+- **Audit gap:** Stage 0 (Environment & Capability Discovery) and Stage 8
+  (Repository & Source Control) both enumerate git *capabilities* without ever
+  enumerating this repository's git *configuration*.
+- **New detection rule:** capability discovery must include `git remote -v`,
+  `git branch -r`, `git config --local --list`, and `ls .git/hooks` before any
+  conclusion of the form "X is not established from the repository."
+- **Applied immediately:** F-12 raised; `.solo/release.md`'s open question
+  narrowed from "what is the trigger?" to "is `git push sites main` the
+  trigger?".
+- **Status:** rule defined, not yet automated. Natural home is skill J-3
+  (`capability-governance-audit`), which already reads ambient configuration.
 
 ---
 

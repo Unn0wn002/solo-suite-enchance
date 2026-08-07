@@ -1,5 +1,40 @@
 # Decisions
 
+## 2026-08-07 — Branch pushed; CI-trigger correction; `sites` remote found
+
+- **Pushed** `audit/agent-extension-platform` to `origin`
+  (`cea5164..448a7c9`, 4 commits). Deliberately **not** pushed to the `sites`
+  remote — see below.
+
+- **Correction to the audit's own action plan (N-4).** `MASTER_AUDIT.md`
+  recommended "push the branch once to exercise CI for the first time." That
+  recommendation was wrong: `.github/workflows/ci.yml` triggers on
+  `push: branches: [main]` and `pull_request`, neither of which matches a push
+  to a feature branch. **CI still has never executed.** The advice was given
+  without checking that the mechanism it relied on would actually fire — the
+  same failure mode as Improvement-005 (accepting a result without confirming
+  the query could produce one), applied to a recommendation instead of a
+  finding. Recorded as Improvement-006.
+
+  To genuinely exercise CI, open a PR into `main` (the `pull_request` trigger
+  fires from any head branch) — preferable to merging, because it runs all
+  three jobs *before* anything lands on `main`.
+
+- **`sites` remote found — strong but unconfirmed lead on T25.** `git remote
+  -v` lists a second remote whose URL embeds
+  `appgprj_6a6776eb920881918c093b1e28e04127`, byte-identical to
+  `.openai/hosting.json`'s `project_id`, with a live `sites/main` branch. The
+  likely deploy trigger is `git push sites main`. Deliberately **not tested**:
+  the only empirical confirmation is a production deploy, which is not an
+  acceptable way to answer a documentation question. Full detail and the
+  smallest closing action are in `release.md`.
+
+  Worth noting *why* this went unfound for two audits: both searched tracked
+  files (`package.json`, `README.md`) for a deploy mechanism and concluded the
+  repository did not contain one. Neither ran `git remote -v`. Git's own
+  configuration is part of the repository's state and belongs in the discovery
+  sweep — added as Improvement-007.
+
 ## 2026-08-07 — Root `.gitattributes`; correction to commit 3bf36b7's verification claim
 
 - **Root cause, not workaround**: the CRLF incident recorded under T24 was

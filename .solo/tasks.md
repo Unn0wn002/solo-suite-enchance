@@ -13,7 +13,8 @@ them from `decisions.md`/`handoff.md`.
 ### P0 — remaining
 - [ ] T2b: Decide whether to provision D1 for a real feature or remove the scaffolding entirely (guard is in place; the underlying product decision is still open — see `prd.md` Open Question #5)  (feature: database)
 - [ ] T23: Add a Content-Security-Policy — needs a report-only pass against the real RSC/hydration payload before enforcing, not a same-session guess (baseline headers are done, see Done)  (feature: security)
-- [ ] T25: Deploy-trigger for the "Sites" hosting layer is not established from the repo alone — confirm with whoever owns the OpenAI Sites project and fill in `.solo/release.md`'s "Deploy mechanism" section  (feature: release)
+- [ ] T25: Deploy-trigger for the "Sites" hosting layer — **strong lead found 2026-08-07**: a `sites` git remote exists whose URL embeds `.openai/hosting.json`'s exact `project_id`, with a live `sites/main`, so `git push sites main` is the likely trigger. Still **unconfirmed** — the only empirical test is a production deploy. Confirm with whoever owns the OpenAI Sites project (trigger? which branch does prod track? Sites-layer rollback path?) and replace `.solo/release.md`'s "Deploy mechanism" section with the answer.  (feature: release)
+- [ ] T27 (new, 2026-08-07): **CI has still never executed.** `.github/workflows/ci.yml` triggers on `push: branches: [main]` and `pull_request`; the branch was pushed to `origin` but that matches neither. Open a PR into `main` to fire all three jobs before anything lands. Compare URL: https://github.com/Unn0wn002/solo-suite-enchance/compare/main...audit/agent-extension-platform  (feature: release)
 
 ### P1 — remaining
 - [ ] T2b, T23-CSP (see above, carried from P0 remainder)

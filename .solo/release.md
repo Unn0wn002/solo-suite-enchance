@@ -21,6 +21,39 @@ to the artifact itself regardless of how the "Sites" layer triggers it.
 **Open question for whoever owns the Sites project**: confirm the actual
 deploy trigger and update this section once known.
 
+### Strong lead found 2026-08-07 — a second git remote (still UNCONFIRMED)
+
+`git remote -v` shows two remotes, and only `origin` had ever been examined:
+
+```text
+origin  https://github.com/Unn0wn002/solo-suite-enchance.git
+sites   https://git.chatgpt-team.site/2eb312a1-33c7-4816-91e5-007cfae402f8/appgprj_6a6776eb920881918c093b1e28e04127.git
+```
+
+The path segment `appgprj_6a6776eb920881918c093b1e28e04127` is **byte-identical
+to `.openai/hosting.json`'s `project_id`**, and `git branch -r` lists a live
+`sites/main`. The most likely deploy trigger is therefore **`git push sites
+main`**, in the Heroku/Sites style where the hosting platform builds on receipt
+of a push.
+
+**Do not treat this as established.** A matching remote proves the repository
+is *wired to* the Sites project; it does not prove that a push deploys, nor
+what it deploys (branch mapping, build command, environment). Confirming it
+empirically means performing a production deploy, which is not an acceptable
+way to answer a documentation question.
+
+**How this was missed**: the 2026-08-07 audit searched `package.json` for a
+deploy script and `README.md` for deploy prose, found neither, and concluded
+the trigger "is not fully established from the repository alone." It never ran
+`git remote -v`. The repository did contain the answer — in git's own
+configuration rather than in a tracked file.
+
+**Smallest action that closes T25**: ask whoever owns the Sites project to
+confirm (a) whether `git push sites main` is the deploy trigger, (b) which
+branch production tracks, and (c) whether there is a rollback path at the Sites
+layer distinct from `wrangler rollback`. Then replace this section with the
+confirmed answer.
+
 ## Rollback plan
 
 **Precondition**: identify the previous known-good deployment before you need
