@@ -4,7 +4,7 @@ Solo Suite uses one graph tool and one optional export tool:
 
 | Tool | Use it for | Policy |
 | --- | --- | --- |
-| [Graphify](https://github.com/Graphify-Labs/graphify) | Architecture, dependencies, and cross-file relationships | Audited direct version `0.9.27`; explicit project-local bootstrap |
+| [Graphify](https://github.com/Graphify-Labs/graphify) | Architecture, dependencies, and cross-file relationships | Audited direct version `0.9.32`; explicit project-local bootstrap |
 | [Repomix](https://github.com/yamadashy/repomix) | Filtered repository exports and handoffs | Optional; approve and pin separately before use |
 
 Aider, Serena, Context7, and code-review-graph are rejected integration
@@ -29,15 +29,19 @@ python scripts/bootstrap-graphify.py --install
 
 The installer creates `.tools/graphify/venv`, installs the exact dependency
 set in `agent-platform/tooling/graphify-requirements.txt` from wheels only,
-disables pip configuration and cache use, and verifies `graphifyy==0.9.27`.
+disables pip configuration and cache use, and verifies `graphifyy==0.9.32`.
 It does not use administrator access,
 global installation, shell pipelines, Graphify platform installers, Git hooks,
 or MCP configuration. `.tools/` is ignored.
 
-If an audited Graphify `0.9.27` already exists on `PATH`, the bootstrap reuses
+If an audited Graphify `0.9.32` already exists on `PATH`, the bootstrap reuses
 it and performs no installation.
 
 ## Use Graphify
+
+Host-native invocations use the reviewed `graphify` skill: `$graphify` in Codex and `/graphify` in Claude or
+Antigravity. Use `query`, `explain`, `path`, `affected`, or `hubs` for read-only work. The `extract`, `update`, and
+`cluster` modes write only to the active repository's `graphify-out/` and must be requested explicitly.
 
 Build or refresh code-only data without an API key:
 
@@ -60,6 +64,9 @@ install`, `graphify claude install`, or other platform installers from repo
 setup because they can create automatic hooks or mutate platform instructions.
 The repository already provides reviewed cross-platform instructions and skill
 adapters.
+
+To install only those reviewed adapters globally after confirming Graphify `0.9.32`, run
+`scripts/install-global-agent-platforms.ps1 -GraphifyOnly`. This does not run Graphify's own platform installers.
 
 ## Safe replacements
 

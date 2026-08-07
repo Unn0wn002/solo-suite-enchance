@@ -4,8 +4,8 @@
 
 ## Features & Integration
 - **19 Plugins** installed in ~/.gemini/config/plugins/
-- **79 Skills** installed in ~/.gemini/config/skills/
-- **125 Slash Commands** supported across 19 plugin suites
+- **80 Skills** installed in ~/.gemini/config/skills/
+- **126 Slash Commands** supported across 19 plugin suites
 - Fully compatible with .solo/ shared project memory conventions
 - Integrated with graphify knowledge graph analysis
 

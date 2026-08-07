@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "8f5455c3a34e9b42e602cf69cb631338e379cb3f1d5ce3e1687a006465699f7e"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/git-workflow-and-versioning"
+}

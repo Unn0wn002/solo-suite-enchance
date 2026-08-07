@@ -1,5 +1,13 @@
 # Compatibility Matrix
 
+## Requested installation additions
+
+| Source | Type | Codex/ChatGPT | Claude | Antigravity | Adapter | Risk |
+| --- | --- | --- | --- | --- | --- | --- |
+| [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | `PORTABLE_SKILL_PLUGIN` | 24 project skills | 24 generated mirrors + 8 commands | 24 project skills + 8 workflows | Safety-adapted; hook and installer surfaces excluded | `MEDIUM` |
+| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | `LOCAL_CLI_TOOL` | Shared CLI 0.9.32 | Shared CLI 0.9.32 | Shared CLI 0.9.32 | Existing repository-routing skill; no platform installer | `MEDIUM` |
+| [greensock/GSAP](https://github.com/greensock/GSAP) | `PROJECT_JAVASCRIPT_LIBRARY` | Shared project dependency | Shared project dependency | Shared project dependency | Existing `gsap-animation` skill | `LOW` |
+
 Statuses describe the audited integration decision, not whether a local platform runtime was exercised.
 
 | Role | Category | Capability | Source | Type | Codex | ChatGPT | Claude | Antigravity | Antigravity CLI | Required adapter | Risk | Recommendation |

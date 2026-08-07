@@ -66,6 +66,7 @@ export default function Home() {
 
   return (
     <main className="site-shell">
+      <a href="#top" className="skip-link">Skip to content</a>
       <nav className="topbar">
         <button className="brand" onClick={() => scrollTo("top")} aria-label="Solo Suite Enchance home">
           <span className="brand-mark">S</span>

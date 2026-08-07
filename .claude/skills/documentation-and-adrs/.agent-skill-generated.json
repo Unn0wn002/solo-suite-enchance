@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "f500c64ea194f50f5830689b170ff947bce311f043904b71c51c075a9f96c78c"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/documentation-and-adrs"
+}

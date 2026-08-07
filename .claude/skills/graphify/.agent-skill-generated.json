@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "21faaab0a08e4869f14b45ad781261507c254d055c1a98cb19599adfdac06043"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/graphify"
+}

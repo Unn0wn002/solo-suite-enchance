@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "f4d74d63c7e52e3b1d25cfb4f45dccf02267a52898cba1f2fcbf30bcdd8485c1"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/debugging-and-error-recovery"
+}

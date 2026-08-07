@@ -1,6 +1,6 @@
 # Audited Graphify CLI environment for Python 3.12; wheels only.
 # Update through the source-audit workflow, never with floating package ranges.
-graphifyy==0.9.27
+graphifyy==0.9.32
 networkx==3.6.1
 numpy==2.5.1
 rapidfuzz==3.14.5

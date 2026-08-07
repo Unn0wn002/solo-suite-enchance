@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "4f0f34606ed4a54638680fac014fe3079e18afe3528dc3510f3ed6ab1c4a57e3"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/api-and-interface-design"
+}

@@ -1,0 +1,10 @@
+{
+  "files": {
+    "SKILL.md": "43c00790af3e2c450fa1f54c5bd27b5b0033d5506294bce6e6e62e59df6debec",
+    "examples.md": "563204bfbf2f80a444151695205af4cb759e722b3d1e5460e08f278a69c89ba1",
+    "frameworks.md": "161ebc18fdf2d996bc62a87a2d747cf1bf53548354f8925de25c732c27f00309",
+    "refinement-criteria.md": "1ca2973a4d01b5cb37ab7ddb2eff77fa4e792634a33d0ce44961c068fc88d51a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/idea-refine"
+}

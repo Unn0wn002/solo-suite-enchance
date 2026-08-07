@@ -1,5 +1,16 @@
 # Source Inventory
 
+## Requested installation additions (2026-08-01)
+
+These records supplement the historical reconstructed catalog. Detailed static evidence is in
+`evidence/requested-source-additions.json`.
+
+| Source | Pinned commit | Release/version | License | Decision |
+| --- | --- | --- | --- | --- |
+| [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | `7829ffd90d973b6325f5f12f1b1226dcace74443` | plugin 1.0.0 | MIT | `ADAPTED` project skills and commands; hooks excluded |
+| [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) | `00efd6e7969837ae4a9f11d8d504dcd3b20b09df` | v0.9.32 | Apache-2.0 OR MIT | `EXTERNAL_TOOL_ONLY` exact CLI |
+| [greensock/GSAP](https://github.com/greensock/GSAP) | `13e2b790546426a1a2e0e9b409f3f8dc6d6611f2` | 3.15.0 | GSAP Standard No-Charge | `ACCEPTED_PROJECT_DEPENDENCY` |
+
 > Status: `RECONSTRUCTED_CANONICAL_V1`. No authoritative historical copy was found locally or in configured remotes. Entries below preserve all rows from the read-only sibling evidence snapshot.
 
 Catalog entries: **69**. Normalized repositories: **10**.

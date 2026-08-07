@@ -11,5 +11,6 @@ Only the following items need human or unavailable-platform action:
 4. Review repository ownership-transfer history. A shallow source snapshot cannot establish historical
    ownership changes.
 
-No current item requires license approval: all ten audited pins expose a recognized permissive license, and no
-third-party implementation code was copied.
+The historical ten-source catalog requires no license approval. The requested GSAP dependency uses its declared
+standard no-charge license rather than a permissive SPDX license; product use must remain within those terms.
+Only MIT-licensed instruction material was adapted; no upstream executable helper, hook, or installer was copied.

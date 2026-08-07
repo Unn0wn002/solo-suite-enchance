@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "aa371dfa5e3b8afbfccb42054ab31d9ea9e433f7be60a6f1546dcc1fc92e66f9",
+    "references/orchestration-patterns.md": "61e543d86f19f86b83074f8c1c769455c7085a2c72dd47b1da21a8c63785be4a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/doubt-driven-development"
+}

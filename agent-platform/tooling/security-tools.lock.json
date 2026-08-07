@@ -12,7 +12,7 @@
   "python": {
     "platform_lock": "windows-amd64-python-3.12",
     "requirements": "agent-platform/tooling/security-python-requirements-win-py312.txt",
-    "requirements_sha256": "141d3e12ef708b5819554adb2e5c570044049f3ff59c5deaac34e47cfe0d6b6a",
+    "requirements_sha256": "2b051b4750ad085fd46f55ce501920a54882923991c6dfbe5b0a3a75fd075903",
     "packages": {
       "semgrep": {
         "version": "1.171.0",
@@ -45,7 +45,18 @@
         "installed": "1.28.1",
         "reason": "pip-audit reported PYSEC-2026-3481, PYSEC-2026-3482, and PYSEC-2026-3483 in 1.23.3.",
         "verification": "Semgrep 1.171.0 local-rule scan and pip-audit both passed with mcp 1.28.1."
-      }
+      },
+      "remediations": [
+        {
+          "date": "2026-08-07",
+          "package": "cryptography",
+          "from_version": "49.0.0",
+          "to_version": "50.0.0",
+          "reason": "pip-audit (target: scanner environment) reported PYSEC-2026-3552 / CVE-2026-69247 / GHSA-g6cj-pr64-35w5 in 49.0.0; 50.0.0 is the only fix version pip-audit's advisory data lists (no 49.x backport).",
+          "hash_source": "Downloaded the win_amd64/cp311-abi3 wheel directly via `pip download --no-deps cryptography==50.0.0` and computed its SHA-256 locally (not taken from a third-party claim) before pinning it in security-python-requirements-win-py312.txt.",
+          "verification": "Reinstalled via bootstrap-security-tools.py --install under Python 3.12.10; semgrep, pip-audit, gitleaks, and trivy all re-ran successfully afterward with 0 findings each. requirements_sha256 above updated to match the edited requirements file."
+        }
+      ]
     }
   },
   "native_tools": {
