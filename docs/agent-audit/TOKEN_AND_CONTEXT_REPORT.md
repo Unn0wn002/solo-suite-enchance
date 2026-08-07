@@ -7,7 +7,7 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 | Source | Bytes | Words | Loading behavior |
 | --- | ---: | ---: | --- |
 | `AGENTS.md` | 2974 | 372 | Startup instruction surface |
-| `CLAUDE.md` | 555 | 79 | Startup instruction surface |
+| `CLAUDE.md` | 546 | 79 | Startup instruction surface |
 | Canonical skill metadata | 12748 description characters | 39 skills | Metadata first; bodies on demand |
 
 ## Duplicate descriptions
@@ -38,7 +38,7 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 ## MCP tool-count risks
 
 - Root MCP activation files: 0.
-- Repository files with MCP in the filename outside dependencies/temp: 3; most belong to isolated platform distributions or audit documentation.
+- Tracked repository files with MCP in the filename, excluding dependency, build, tool, and generated directories: 0. Any such files belong to isolated platform distributions or audit documentation, not to an activation surface.
 - Exposing multiple broad MCP servers increases metadata, permission, and prompt-injection surface. Profiles therefore name external tools but do not activate servers.
 
 ## Recommended active profile sizes

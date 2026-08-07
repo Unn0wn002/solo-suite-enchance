@@ -16,8 +16,44 @@ from agent_platform_common import ROOT, canonical_skills, parse_frontmatter
 REPORT = ROOT / "docs" / "agent-audit" / "TOKEN_AND_CONTEXT_REPORT.md"
 
 
+# Directories whose contents exist only on a particular machine: dependency
+# trees, build output, tool venvs, and generated caches. A report that counts
+# them measures the developer's disk, not the repository — see normalized_size
+# below for the same class of bug in the size measurement.
+ENVIRONMENT_ONLY_DIRS = frozenset({
+    ".git",
+    ".next",
+    ".tmp",
+    ".tools",
+    ".vinext",
+    ".wrangler",
+    "build",
+    "coverage",
+    "dist",
+    "graphify-out",
+    "node_modules",
+})
+
+
 def word_count(text: str) -> int:
     return len(re.findall(r"\b[\w'-]+\b", text))
+
+
+def normalized_size(path: Path) -> int:
+    """Byte length of a file's content with newlines normalized to LF.
+
+    Deliberately NOT `path.stat().st_size`. This repository is developed on
+    Windows with `core.autocrlf=true`, so a file checked out here can carry
+    CRLF while the same file on a Linux CI runner carries LF — `CLAUDE.md` was
+    555 bytes locally and 546 in CI, a 9-byte difference for 9 line endings.
+    That made this report unreproducible: `--check` passed on the machine that
+    generated it and failed everywhere else. CI caught it on its first ever
+    run (2026-08-08); see docs/audit/MASTER_AUDIT.md finding F-14.
+
+    Normalized size is also the more honest measure for a context-pressure
+    report, since a model reads normalized text, not the on-disk encoding.
+    """
+    return len(path.read_text(encoding="utf-8").encode("utf-8"))
 
 
 def build_report() -> str:
@@ -33,7 +69,7 @@ def build_report() -> str:
         for path in directory.rglob("*"):
             if path.is_file():
                 text = path.read_text(encoding="utf-8")
-                large_files.append((path.stat().st_size, path.relative_to(ROOT).as_posix(), word_count(text)))
+                large_files.append((normalized_size(path), path.relative_to(ROOT).as_posix(), word_count(text)))
     duplicate_descriptions = [description for description, count in Counter(descriptions).items() if count > 1]
 
     profile_rows = []
@@ -53,8 +89,7 @@ def build_report() -> str:
     mcp_files = [
         path for path in ROOT.rglob("*")
         if path.is_file()
-        and "node_modules" not in path.parts
-        and ".tmp" not in path.parts
+        and not ENVIRONMENT_ONLY_DIRS.intersection(path.parts)
         and (path.name == ".mcp.json" or "mcp" in path.name.lower())
     ]
     root_mcp = int((ROOT / ".mcp.json").exists())
@@ -73,7 +108,7 @@ def build_report() -> str:
     for path in startup_files:
         if path.is_file():
             text = path.read_text(encoding="utf-8")
-            lines.append(f"| `{path.name}` | {path.stat().st_size} | {word_count(text)} | Startup instruction surface |")
+            lines.append(f"| `{path.name}` | {normalized_size(path)} | {word_count(text)} | Startup instruction surface |")
     lines.append(f"| Canonical skill metadata | {sum(row[1] for row in skill_rows)} description characters | {len(skill_rows)} skills | Metadata first; bodies on demand |")
     lines.extend([
         "",
@@ -99,7 +134,7 @@ def build_report() -> str:
         "## MCP tool-count risks",
         "",
         f"- Root MCP activation files: {root_mcp}.",
-        f"- Repository files with MCP in the filename outside dependencies/temp: {len(mcp_files)}; most belong to isolated platform distributions or audit documentation.",
+        f"- Tracked repository files with MCP in the filename, excluding dependency, build, tool, and generated directories: {len(mcp_files)}. Any such files belong to isolated platform distributions or audit documentation, not to an activation surface.",
         "- Exposing multiple broad MCP servers increases metadata, permission, and prompt-injection surface. Profiles therefore name external tools but do not activate servers.",
         "",
         "## Recommended active profile sizes",

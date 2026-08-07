@@ -1,5 +1,45 @@
 # Decisions
 
+## 2026-08-08 — PR #3 opened; CI ran for the first time and found a real bug (F-14)
+
+- **PR #3 opened** against `main` — the first thing ever to trigger this
+  repository's CI. Result: **2 of 3 jobs green, 1 red.**
+  - `Typecheck, lint, build & test` — **passed** (39s)
+  - `Dependency + remediation security gate` — **passed** (13s). This was the
+    job I was least sure about, since the pinned scanner wheels are
+    Windows-only; the portable subset ran clean on `ubuntu-latest` as designed.
+  - `Agent platform structural validation` — **failed** (8s), on
+    `agent-token-report.py --check`.
+  - The new graph-freshness guard **passed** on a clean checkout.
+
+- **F-14 — the token report was not reproducible off this machine.** It had
+  passed `--check` locally in all three audits and failed on CI's first run.
+  Two independent causes, neither visible from one machine:
+  1. `path.stat().st_size` counts on-disk bytes. With `core.autocrlf=true`,
+     `CLAUDE.md` is 555 bytes here and 546 on a LF checkout — 9 line endings.
+  2. The MCP filename scan excluded only `node_modules` and `.tmp`, so it
+     counted 3 files inside the **gitignored `.tools/` scanner venv**. CI has
+     no `.tools/` and counted 0.
+
+- **Fixed the script, not the artifact.** Regenerating locally would have
+  baked this machine's values in again and failed CI a second time. Added
+  `normalized_size()` (read with universal newlines, then measure) and an
+  `ENVIRONMENT_ONLY_DIRS` exclusion set, then regenerated: `CLAUDE.md`
+  555→546, MCP count 3→0. Normalized size is also the more honest measure for
+  a context-pressure report — a model reads normalized text, not the on-disk
+  encoding.
+
+- **The uncomfortable part, recorded deliberately.** Three audits reported this
+  validator chain as passing. It was passing *vacuously*: `--check` compared a
+  committed artifact against a value recomputed from local filesystem state,
+  so it could only ever prove "this artifact matches this machine." No amount
+  of local re-running would have found it. This is the strongest evidence in
+  the whole audit for why opening the PR mattered — "verified locally" and
+  "verified" are different claims, and the gap is only visible from somewhere
+  else. Recorded as Improvement-008, with `.claude/skills/*/.agent-skill-generated.json`
+  and `build-agent-audit.py --check` flagged as the next places to check for
+  the same pattern.
+
 ## 2026-08-07 — Branch pushed; CI-trigger correction; `sites` remote found
 
 - **Pushed** `audit/agent-extension-platform` to `origin`
