@@ -903,6 +903,7 @@ N-27 decide analytics (`prd.md` Q3) · N-28 devcontainer
 | F-09 | `gsap-animation` skill orphaned after `gsap` removal | Redundancy | **OPEN** | P3; no action this cycle |
 | F-10 | External link check never runs (26 URLs) | Maintenance | **OPEN** | Confirmed again this cycle: `NOT_EXECUTED: 26 URL(s)` |
 | **F-11** | **Audit #2's coupling query read `node.file`; Graphify's schema uses `node.source_file`. The query returned 0 website nodes, so its "no cross-domain edges" result was vacuous.** | Audit defect | **CLOSED** | Re-run against the correct field: website = 50 nodes; conclusion held, evidence replaced. Drove Improvement-005. |
+| **F-14** | **`TOKEN_AND_CONTEXT_REPORT.md` was not reproducible off the machine that generated it.** `agent-token-report.py` measured `path.stat().st_size` (counts CRLF: `CLAUDE.md` = 555 bytes locally, 546 on a LF checkout) and scanned `ROOT.rglob("*")` excluding only `node_modules`/`.tmp`, so it counted 3 "MCP" files inside the gitignored `.tools/` scanner venv that exist on no other machine. `--check` therefore passed locally and failed everywhere else. | Reproducibility | **CLOSED** | Found by **CI's first-ever run** (2026-08-08). Fixed via `normalized_size()` + an `ENVIRONMENT_ONLY_DIRS` exclusion set; report regenerated (`CLAUDE.md` 555→546, MCP count 3→0). Drove Improvement-008. |
 | T2b, T21, T23, T25, T26, T18–T20 | Carried from Audit #1 | various | **OPEN** | `.solo/tasks.md` |
 
 **On the FIXED → CLOSED transition.** Audit #2 correctly refused to mark
@@ -1072,6 +1073,39 @@ the purpose is not forgotten.
   trigger?".
 - **Status:** rule defined, not yet automated. Natural home is skill J-3
   (`capability-governance-audit`), which already reads ambient configuration.
+
+### Improvement-008 — A generated artifact measured the developer's machine, and only CI could tell *(new, Audit #3)*
+- **Problem:** `agent-token-report.py --check` passed on every local run in
+  Audits #1, #2 and #3 — and failed on CI's **first ever execution**. Two
+  independent causes, both invisible from a single machine:
+  1. `path.stat().st_size` counts bytes as stored on disk. This repository is
+     developed on Windows with `core.autocrlf=true`, so `CLAUDE.md` measured
+     555 bytes locally and 546 on a LF checkout — 9 bytes for 9 line endings.
+  2. The MCP filename scan excluded only `node_modules` and `.tmp`, so it
+     counted 3 files inside the **gitignored `.tools/` scanner venv**. Those
+     files exist on this machine and nowhere else. CI counted 0.
+- **Root cause:** the validator compared a committed artifact against a value
+  recomputed from *filesystem state* rather than from *repository content*. A
+  green `--check` proved only "this artifact matches this machine."
+- **Why no audit caught it:** every prior verification ran on one machine, so
+  local and expected always agreed. This class of defect is undetectable
+  without a second, differently-configured environment — which is precisely
+  what CI is for, and CI had never run. Three audits reported the validator
+  chain as passing; the chain was passing vacuously.
+- **New detection rule:** a generated artifact under `--check` must derive
+  every number from repository content, never from `stat()` sizes, absolute
+  paths, untracked directories, timestamps, or host configuration. Where a
+  filesystem scan is unavoidable, the exclusion set must cover *all*
+  environment-only directories, not the two that happened to cause trouble
+  once.
+- **Broader lesson:** this is the strongest argument in the audit for why
+  N-4b mattered. "Verified locally" and "verified" are different claims, and
+  the gap between them is only visible from somewhere else.
+- **Status:** fixed in `scripts/agent-token-report.py` (`normalized_size()` +
+  `ENVIRONMENT_ONLY_DIRS`); report regenerated. Rule now permanent. The
+  `.claude/skills/*/.agent-skill-generated.json` mirrors and
+  `build-agent-audit.py --check` are the obvious next places to audit for the
+  same pattern — not yet done.
 
 ---
 
