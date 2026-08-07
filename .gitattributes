@@ -1,0 +1,63 @@
+# Root line-ending policy.
+#
+# Why this file exists
+# --------------------
+# This repository records SHA-256 digests of exact file bytes and verifies them
+# on every `npm run agent:validate` / `npm run agent:security` run:
+#
+#   agent-platform/tooling/graphify-requirements.txt            -> core-tooling.json's requirementsSha256
+#   agent-platform/tooling/security-python-requirements-*.txt   -> security-tools.lock.json's requirements_sha256
+#   plus the artifacts checked by scripts/check-high-risk-remediations.py
+#   and scripts/build-agent-audit.py --check
+#
+# Every developer machine here has `core.autocrlf=true`, and until now the
+# repository root had no .gitattributes — only platforms/{claude,codex,
+# antigravity}/ had one. That meant a plain `git checkout`, `git switch`,
+# `git pull`, `git restore`, or fresh clone would rewrite LF to CRLF on disk
+# for every text file outside platforms/, silently invalidating those digests.
+#
+# This is not hypothetical. On 2026-08-07 a diagnostic `git stash`/`git stash
+# pop` flipped AGENTS.md, core-tooling.json, and both tooling requirements
+# files from LF to CRLF and broke three hash checks that had nothing to do with
+# the work in progress. See .solo/risks.md and .solo/decisions.md (T24). The
+# response at the time was "avoid git stash", which addressed one trigger and
+# left checkout, pull, switch, restore, and clone unprotected.
+#
+# `eol=lf` makes checkouts byte-stable across Windows, macOS, and Linux, so the
+# recorded digests mean the same thing on every machine. This mirrors the
+# policy platforms/*/.gitattributes already applies to the distributions.
+#
+# Note: this changes what FUTURE checkouts write. It does not rewrite files
+# already on disk. The index was already LF everywhere, so adding this produces
+# no diff — it only stops the conversion from happening on the way out.
+
+* text=auto eol=lf
+
+# Binary assets must never pass through newline conversion. Auto-detection
+# usually catches these, but the digests above make an incorrect guess
+# expensive, so they are declared explicitly.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.docx binary
+*.xlsx binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp4 binary
+*.mp3 binary
+*.exe binary
+*.dll binary
+*.wasm binary
+
+# Detached signatures cover exact bytes; newline conversion would invalidate
+# them (graphify-out/.graphify_labels.json.sig).
+*.sig binary
