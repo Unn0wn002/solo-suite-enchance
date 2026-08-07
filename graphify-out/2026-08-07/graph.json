@@ -4,589 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "settings.json",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "claude_settings",
-      "community": 1518,
-      "community_name": "settings.json",
-      "norm_label": "settings.json"
-    },
-    {
-      "label": "$schema",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "claude_settings_schema",
-      "community": 1518,
-      "community_name": "settings.json",
-      "norm_label": "$schema"
-    },
-    {
-      "label": "enableAllProjectMcpServers",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "claude_settings_enableallprojectmcpservers",
-      "community": 1518,
-      "community_name": "settings.json",
-      "norm_label": "enableallprojectmcpservers"
-    },
-    {
-      "label": "permissions",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "claude_settings_permissions",
-      "community": 1518,
-      "community_name": "settings.json",
-      "norm_label": "permissions"
-    },
-    {
-      "label": "deny",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "claude_settings_permissions_deny",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "deny"
-    },
-    {
-      "label": "Read(./.env)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_env",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.env)"
-    },
-    {
-      "label": "Read(./.env.local)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_env_local",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.env.local)"
-    },
-    {
-      "label": "Read(./.env.production)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_env_production",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.env.production)"
-    },
-    {
-      "label": "Read(./.env.development)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_env_development",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.env.development)"
-    },
-    {
-      "label": "Read(./.dev.vars)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_dev_vars",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.dev.vars)"
-    },
-    {
-      "label": "Read(./.wrangler/**)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_wrangler",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./.wrangler/**)"
-    },
-    {
-      "label": "Read(./node_modules/**)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_read_node_modules",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "read(./node_modules/**)"
-    },
-    {
-      "label": "Bash(sudo:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_sudo",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(sudo:*)"
-    },
-    {
-      "label": "Bash(npm install -g:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_npm_install_g",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(npm install -g:*)"
-    },
-    {
-      "label": "Bash(npm i -g:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_npm_i_g",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(npm i -g:*)"
-    },
-    {
-      "label": "Bash(pnpm add -g:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_pnpm_add_g",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(pnpm add -g:*)"
-    },
-    {
-      "label": "Bash(yarn global:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_yarn_global",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(yarn global:*)"
-    },
-    {
-      "label": "Bash(pip install:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_pip_install",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(pip install:*)"
-    },
-    {
-      "label": "Bash(pip3 install:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_pip3_install",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(pip3 install:*)"
-    },
-    {
-      "label": "Bash(rm -rf:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_rm_rf",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(rm -rf:*)"
-    },
-    {
-      "label": "Bash(git clean:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_clean",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git clean:*)"
-    },
-    {
-      "label": "Bash(git stash:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_stash",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git stash:*)"
-    },
-    {
-      "label": "Bash(git push --force:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_push_force",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git push --force:*)"
-    },
-    {
-      "label": "Bash(git push -f:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_push_f",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git push -f:*)"
-    },
-    {
-      "label": "Bash(git push --force-with-lease:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_push_force_with_lease",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git push --force-with-lease:*)"
-    },
-    {
-      "label": "Bash(git reset --hard:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_reset_hard",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git reset --hard:*)"
-    },
-    {
-      "label": "Bash(git rebase:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_rebase",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git rebase:*)"
-    },
-    {
-      "label": "Bash(git filter-branch:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_filter_branch",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git filter-branch:*)"
-    },
-    {
-      "label": "Bash(git commit --no-verify:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_commit_no_verify",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git commit --no-verify:*)"
-    },
-    {
-      "label": "Bash(git commit -n:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_commit_n",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git commit -n:*)"
-    },
-    {
-      "label": "Bash(git commit --no-gpg-sign:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "ref_bash_git_commit_no_gpg_sign",
-      "community": 140,
-      "community_name": "deny",
-      "norm_label": "bash(git commit --no-gpg-sign:*)"
-    },
-    {
-      "label": "ask",
-      "file_type": "code",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "claude_settings_permissions_ask",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "ask"
-    },
-    {
-      "label": "Bash(git push:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_git_push",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(git push:*)"
-    },
-    {
-      "label": "Bash(git commit:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_git_commit",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(git commit:*)"
-    },
-    {
-      "label": "Bash(gh pr create:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_gh_pr_create",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(gh pr create:*)"
-    },
-    {
-      "label": "Bash(gh pr merge:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_gh_pr_merge",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(gh pr merge:*)"
-    },
-    {
-      "label": "Bash(npx wrangler deploy:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npx_wrangler_deploy",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npx wrangler deploy:*)"
-    },
-    {
-      "label": "Bash(npx.cmd wrangler deploy:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npx_cmd_wrangler_deploy",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npx.cmd wrangler deploy:*)"
-    },
-    {
-      "label": "Bash(wrangler deploy:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_wrangler_deploy",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(wrangler deploy:*)"
-    },
-    {
-      "label": "Bash(npx wrangler rollback:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npx_wrangler_rollback",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npx wrangler rollback:*)"
-    },
-    {
-      "label": "Bash(npx.cmd wrangler rollback:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npx_cmd_wrangler_rollback",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npx.cmd wrangler rollback:*)"
-    },
-    {
-      "label": "Bash(wrangler rollback:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_wrangler_rollback",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(wrangler rollback:*)"
-    },
-    {
-      "label": "Bash(npx wrangler secret:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npx_wrangler_secret",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npx wrangler secret:*)"
-    },
-    {
-      "label": "Bash(wrangler secret:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_wrangler_secret",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(wrangler secret:*)"
-    },
-    {
-      "label": "Bash(curl:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_curl",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(curl:*)"
-    },
-    {
-      "label": "Bash(wget:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_wget",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(wget:*)"
-    },
-    {
-      "label": "Bash(powershell:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_powershell",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(powershell:*)"
-    },
-    {
-      "label": "Bash(pwsh:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_pwsh",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(pwsh:*)"
-    },
-    {
-      "label": "Bash(python scripts/install-global-agent-platforms.ps1:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_python_scripts_install_global_agent_platforms_ps1",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(python scripts/install-global-agent-platforms.ps1:*)"
-    },
-    {
-      "label": "Bash(./scripts/install-global-agent-platforms.ps1:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_scripts_install_global_agent_platforms_ps1",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(./scripts/install-global-agent-platforms.ps1:*)"
-    },
-    {
-      "label": "Bash(scripts/install-antigravity.ps1:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_scripts_install_antigravity_ps1",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(scripts/install-antigravity.ps1:*)"
-    },
-    {
-      "label": "Bash(npm run agent:bootstrap:install:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npm_run_agent_bootstrap_install",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npm run agent:bootstrap:install:*)"
-    },
-    {
-      "label": "Bash(npm run agent:security:bootstrap:install:*)",
-      "file_type": "concept",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "ref_bash_npm_run_agent_security_bootstrap_install",
-      "community": 1327,
-      "community_name": "ask",
-      "norm_label": "bash(npm run agent:security:bootstrap:install:*)"
-    },
-    {
       "label": "chatgpt-auth.ts",
       "file_type": "code",
       "source_file": "app/chatgpt-auth.ts",
@@ -1462,8 +879,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "package_devdependencies_cloudflare_workers_types",
-      "community": 1523,
-      "community_name": "@cloudflare/workers-types",
+      "community": 95,
+      "community_name": "devDependencies",
       "norm_label": "@cloudflare/workers-types"
     },
     {
@@ -1473,8 +890,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "cloudflare_workers_types",
-      "community": 1523,
-      "community_name": "@cloudflare/workers-types",
+      "community": 95,
+      "community_name": "devDependencies",
       "norm_label": "@cloudflare/workers-types"
     },
     {
@@ -1704,8 +1121,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "package_devdependencies_react_server_dom_webpack",
-      "community": 95,
-      "community_name": "devDependencies",
+      "community": 1504,
+      "community_name": "react-server-dom-webpack",
       "norm_label": "react-server-dom-webpack"
     },
     {
@@ -1715,8 +1132,8 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "react_server_dom_webpack",
-      "community": 95,
-      "community_name": "devDependencies",
+      "community": 1504,
+      "community_name": "react-server-dom-webpack",
       "norm_label": "react-server-dom-webpack"
     },
     {
@@ -40347,8 +39764,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_rules",
-      "community": 87,
-      "community_name": "properties",
+      "community": 134,
+      "community_name": "type",
       "norm_label": "rules"
     },
     {
@@ -40358,8 +39775,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_type",
-      "community": 87,
-      "community_name": "properties",
+      "community": 134,
+      "community_name": "type",
       "norm_label": "type"
     },
     {
@@ -40369,8 +39786,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_items",
-      "community": 87,
-      "community_name": "properties",
+      "community": 134,
+      "community_name": "type",
       "norm_label": "items"
     },
     {
@@ -41601,8 +41018,8 @@
       "source_location": "L260",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_seat",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "seat"
     },
     {
@@ -41656,8 +41073,8 @@
       "source_location": "L267",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_seat",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "seat"
     },
     {
@@ -41667,8 +41084,8 @@
       "source_location": "L268",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seat_type",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -42294,8 +41711,8 @@
       "source_location": "L347",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_integration",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "integration"
     },
     {
@@ -42305,8 +41722,8 @@
       "source_location": "L348",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_integration_type",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -42316,8 +41733,8 @@
       "source_location": "L349",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_integration_required",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "required"
     },
     {
@@ -42327,8 +41744,8 @@
       "source_location": "L349",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_mode",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "mode"
     },
     {
@@ -42338,8 +41755,8 @@
       "source_location": "L349",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_ref",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "ref"
     },
     {
@@ -42349,8 +41766,8 @@
       "source_location": "L354",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_integration_additionalproperties",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "additionalproperties"
     },
     {
@@ -42360,8 +41777,8 @@
       "source_location": "L355",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_integration_properties",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "properties"
     },
     {
@@ -42371,8 +41788,8 @@
       "source_location": "L359",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_mode",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "mode"
     },
     {
@@ -42382,8 +41799,8 @@
       "source_location": "L360",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_mode_enum",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "enum"
     },
     {
@@ -42393,8 +41810,8 @@
       "source_location": "L360",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_merge_exact_shas",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "merge-exact-shas"
     },
     {
@@ -42404,8 +41821,8 @@
       "source_location": "L360",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_checkout_exact_sha",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "checkout-exact-sha"
     },
     {
@@ -42415,8 +41832,8 @@
       "source_location": "L365",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_ref",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "ref"
     },
     {
@@ -42426,8 +41843,8 @@
       "source_location": "L366",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_ref_type",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -42437,8 +41854,8 @@
       "source_location": "L367",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_ref_minlength",
-      "community": 1401,
-      "community_name": "integration",
+      "community": 133,
+      "community_name": "properties",
       "norm_label": "minlength"
     },
     {
@@ -42646,8 +42063,8 @@
       "source_location": "L403",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_gate_requires",
-      "community": 134,
-      "community_name": "type",
+      "community": 87,
+      "community_name": "properties",
       "norm_label": "gate_requires"
     },
     {
@@ -42657,8 +42074,8 @@
       "source_location": "L404",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gate_requires_description",
-      "community": 134,
-      "community_name": "type",
+      "community": 87,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -42668,8 +42085,8 @@
       "source_location": "L405",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gate_requires_type",
-      "community": 134,
-      "community_name": "type",
+      "community": 87,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -42679,8 +42096,8 @@
       "source_location": "L406",
       "_origin": "ast",
       "id": "platforms_claude_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gate_requires_items",
-      "community": 134,
-      "community_name": "type",
+      "community": 87,
+      "community_name": "properties",
       "norm_label": "items"
     },
     {
@@ -61258,8 +60675,8 @@
       "source_location": "L120",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": "inventoryfilesystemsafety"
     },
     {
@@ -61269,8 +60686,8 @@
       "source_location": "L121",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_setup",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".setup()"
     },
     {
@@ -61280,8 +60697,8 @@
       "source_location": "L132",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_write",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".write()"
     },
     {
@@ -61291,8 +60708,8 @@
       "source_location": "L139",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_make_symlink_or_skip",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".make_symlink_or_skip()"
     },
     {
@@ -61302,8 +60719,8 @@
       "source_location": "L155",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_test_regular_inventory_is_deterministic",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".test_regular_inventory_is_deterministic()"
     },
     {
@@ -61313,8 +60730,8 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_test_file_symlink_is_rejected_not_hashed",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".test_file_symlink_is_rejected_not_hashed()"
     },
     {
@@ -61324,8 +60741,8 @@
       "source_location": "L174",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_inventory_inventoryfilesystemsafety_test_ignored_directory_symlink_still_fails_closed",
-      "community": 1492,
-      "community_name": "InventoryFilesystemSafety",
+      "community": 340,
+      "community_name": "Inventory",
       "norm_label": ".test_ignored_directory_symlink_still_fails_closed()"
     },
     {
@@ -67264,8 +66681,8 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_semantic_regressions_iter_plugin_text_files",
-      "community": 341,
-      "community_name": "claude/tests/test_semantic_regressions.py",
+      "community": 677,
+      "community_name": "RunStateHelperDiscipline",
       "norm_label": "_iter_plugin_text_files()"
     },
     {
@@ -67297,8 +66714,8 @@
       "source_location": "L56",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_semantic_regressions_shacarrierlanguage_test_no_tracked_file_is_ever_named_as_a_sha_carrier",
-      "community": 341,
-      "community_name": "claude/tests/test_semantic_regressions.py",
+      "community": 677,
+      "community_name": "RunStateHelperDiscipline",
       "norm_label": ".test_no_tracked_file_is_ever_named_as_a_sha_carrier()"
     },
     {
@@ -67627,8 +67044,8 @@
       "source_location": "L426",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_semantic_regressions_launchcontrolscope",
-      "community": 1520,
-      "community_name": "LaunchControlScope",
+      "community": 341,
+      "community_name": "claude/tests/test_semantic_regressions.py",
       "norm_label": "launchcontrolscope"
     },
     {
@@ -67638,8 +67055,8 @@
       "source_location": "L429",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_semantic_regressions_launchcontrolscope_test_public_launch_contract_states_machine_boundary_and_fail_closed",
-      "community": 1520,
-      "community_name": "LaunchControlScope",
+      "community": 341,
+      "community_name": "claude/tests/test_semantic_regressions.py",
       "norm_label": ".test_public_launch_contract_states_machine_boundary_and_fail_closed()"
     },
     {
@@ -67836,8 +67253,8 @@
       "source_location": "L427",
       "_origin": "ast",
       "id": "platforms_claude_tests_test_semantic_regressions_rationale_427",
-      "community": 1520,
-      "community_name": "LaunchControlScope",
+      "community": 341,
+      "community_name": "claude/tests/test_semantic_regressions.py",
       "norm_label": "a complete category set must never be sold as subcontrol proof."
     },
     {
@@ -73919,8 +73336,8 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_properties_rules",
-      "community": 139,
-      "community_name": "type",
+      "community": 91,
+      "community_name": "properties",
       "norm_label": "rules"
     },
     {
@@ -73930,8 +73347,8 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_rules_type",
-      "community": 139,
-      "community_name": "type",
+      "community": 91,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -73941,8 +73358,8 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_rules_items",
-      "community": 139,
-      "community_name": "type",
+      "community": 91,
+      "community_name": "properties",
       "norm_label": "items"
     },
     {
@@ -76218,8 +75635,8 @@
       "source_location": "L403",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_properties_gate_requires",
-      "community": 91,
-      "community_name": "properties",
+      "community": 139,
+      "community_name": "type",
       "norm_label": "gate_requires"
     },
     {
@@ -76229,8 +75646,8 @@
       "source_location": "L404",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_gate_requires_description",
-      "community": 91,
-      "community_name": "properties",
+      "community": 139,
+      "community_name": "type",
       "norm_label": "description"
     },
     {
@@ -76240,8 +75657,8 @@
       "source_location": "L405",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_gate_requires_type",
-      "community": 91,
-      "community_name": "properties",
+      "community": 139,
+      "community_name": "type",
       "norm_label": "type"
     },
     {
@@ -76251,8 +75668,8 @@
       "source_location": "L406",
       "_origin": "ast",
       "id": "platforms_codex_parity_claude_rooms_schema_agentroom_v1_schema_gate_requires_items",
-      "community": 91,
-      "community_name": "properties",
+      "community": 139,
+      "community_name": "type",
       "norm_label": "items"
     },
     {
@@ -79320,8 +78737,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "codex/plugins/ai/skills/agent-room-templates/schema/agentroom-v1.schema.json"
     },
     {
@@ -79331,8 +78748,8 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_schema",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "$schema"
     },
     {
@@ -79342,8 +78759,8 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_id",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "$id"
     },
     {
@@ -79353,8 +78770,8 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_title",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "title"
     },
     {
@@ -79364,8 +78781,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_description",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "description"
     },
     {
@@ -79375,8 +78792,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_type",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "type"
     },
     {
@@ -79386,8 +78803,8 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_additionalproperties",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "additionalproperties"
     },
     {
@@ -79409,7 +78826,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_schema",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "$schema"
     },
     {
@@ -79452,8 +78869,8 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_run_id",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "run_id"
     },
     {
@@ -79562,7 +78979,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_seats",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "seats"
     },
@@ -79617,8 +79034,8 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_schema",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "$schema"
     },
     {
@@ -79628,8 +79045,8 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_schema_type",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "type"
     },
     {
@@ -79639,8 +79056,8 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_schema_minlength",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "minlength"
     },
     {
@@ -79650,8 +79067,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_schema_const",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "const"
     },
     {
@@ -79750,7 +79167,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_run_id",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "run_id"
     },
     {
@@ -79761,7 +79178,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_run_id_type",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "type"
     },
     {
@@ -79772,7 +79189,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_run_id_pattern",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "pattern"
     },
     {
@@ -79848,8 +79265,8 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_profile",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "profile"
     },
     {
@@ -79859,8 +79276,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_profile_enum",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "enum"
     },
     {
@@ -79870,8 +79287,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_public_marketing_site",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "public-marketing-site"
     },
     {
@@ -79881,8 +79298,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_saas_application",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "saas-application"
     },
     {
@@ -79892,8 +79309,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_e_commerce",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "e-commerce"
     },
     {
@@ -79903,8 +79320,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_internal_application",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "internal-application"
     },
     {
@@ -79914,8 +79331,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_api_service",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "api-service"
     },
     {
@@ -79925,8 +79342,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_library_package",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "library-package"
     },
     {
@@ -79936,8 +79353,8 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "ref_profile_selected_at_runtime",
-      "community": 8,
-      "community_name": "properties",
+      "community": 816,
+      "community_name": "enum",
       "norm_label": "profile-selected-at-runtime"
     },
     {
@@ -79947,8 +79364,8 @@
       "source_location": "L71",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_runtime_trust",
-      "community": 157,
-      "community_name": "runtime_trust",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "runtime_trust"
     },
     {
@@ -79958,8 +79375,8 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_runtime_trust_type",
-      "community": 157,
-      "community_name": "runtime_trust",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -79969,8 +79386,8 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_runtime_trust_additionalproperties",
-      "community": 157,
-      "community_name": "runtime_trust",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "additionalproperties"
     },
     {
@@ -79981,7 +79398,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_runtime_trust_required",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "required"
     },
     {
@@ -79992,7 +79409,7 @@
       "_origin": "ast",
       "id": "ref_suite_digest",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "suite_digest"
     },
     {
@@ -80003,7 +79420,7 @@
       "_origin": "ast",
       "id": "ref_skill_count",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "skill_count"
     },
     {
@@ -80014,7 +79431,7 @@
       "_origin": "ast",
       "id": "ref_validators",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "validators"
     },
     {
@@ -80025,7 +79442,7 @@
       "_origin": "ast",
       "id": "ref_runtime",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "runtime"
     },
     {
@@ -80035,8 +79452,8 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_runtime_trust_properties",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "properties"
     },
     {
@@ -80046,8 +79463,8 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_suite_digest",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "suite_digest"
     },
     {
@@ -80057,8 +79474,8 @@
       "source_location": "L86",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_suite_digest_type",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -80068,8 +79485,8 @@
       "source_location": "L87",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_suite_digest_pattern",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "pattern"
     },
     {
@@ -80079,8 +79496,8 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_skill_count",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "skill_count"
     },
     {
@@ -80090,8 +79507,8 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_skill_count_type",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -80101,8 +79518,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_skill_count_minimum",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "minimum"
     },
     {
@@ -80113,7 +79530,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_validators",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "validators"
     },
     {
@@ -80124,7 +79541,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_validators_type",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "type"
     },
     {
@@ -80135,7 +79552,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_validators_additionalproperties",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "additionalproperties"
     },
     {
@@ -80146,7 +79563,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_validators_required",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "required"
     },
     {
@@ -80157,7 +79574,7 @@
       "_origin": "ast",
       "id": "ref_phase",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "phase"
     },
     {
@@ -80168,7 +79585,7 @@
       "_origin": "ast",
       "id": "ref_production",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "production"
     },
     {
@@ -80179,7 +79596,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_validators_properties",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "properties"
     },
     {
@@ -80190,7 +79607,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_phase",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "phase"
     },
     {
@@ -80201,7 +79618,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_phase_ref",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "$ref"
     },
     {
@@ -80212,7 +79629,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_production",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "production"
     },
     {
@@ -80223,7 +79640,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_production_ref",
       "community": 536,
-      "community_name": "$schema",
+      "community_name": "validators",
       "norm_label": "$ref"
     },
     {
@@ -80453,8 +79870,8 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_runtime_trust_ref",
-      "community": 157,
-      "community_name": "runtime_trust",
+      "community": 409,
+      "community_name": "properties",
       "norm_label": "$ref"
     },
     {
@@ -80531,7 +79948,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_rules",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "rules"
     },
     {
@@ -80542,7 +79959,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_type",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "type"
     },
     {
@@ -80553,7 +79970,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_minitems",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "minitems"
     },
     {
@@ -80564,7 +79981,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_uniqueitems",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "uniqueitems"
     },
     {
@@ -80575,7 +79992,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_rules_items",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "items"
     },
     {
@@ -80586,7 +80003,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_items_type",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "type"
     },
     {
@@ -80597,7 +80014,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_items_minlength",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "minlength"
     },
     {
@@ -80805,8 +80222,8 @@
       "source_location": "L172",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_seats",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 8,
+      "community_name": "properties",
       "norm_label": "seats"
     },
     {
@@ -80816,8 +80233,8 @@
       "source_location": "L173",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seats_type",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 8,
+      "community_name": "properties",
       "norm_label": "type"
     },
     {
@@ -80827,8 +80244,8 @@
       "source_location": "L174",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seats_minitems",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 8,
+      "community_name": "properties",
       "norm_label": "minitems"
     },
     {
@@ -80838,8 +80255,8 @@
       "source_location": "L175",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seats_items",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 8,
+      "community_name": "properties",
       "norm_label": "items"
     },
     {
@@ -81003,8 +80420,8 @@
       "source_location": "L208",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_allof",
-      "community": 76,
-      "community_name": "required",
+      "community": 140,
+      "community_name": "$defs",
       "norm_label": "allof"
     },
     {
@@ -81014,7 +80431,7 @@
       "source_location": "L226",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "$defs"
     },
@@ -81289,7 +80706,7 @@
       "source_location": "L267",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_identifier",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "identifier"
     },
@@ -81300,7 +80717,7 @@
       "source_location": "L268",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_identifier_type",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "type"
     },
@@ -81311,7 +80728,7 @@
       "source_location": "L269",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_identifier_pattern",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "pattern"
     },
@@ -81322,7 +80739,7 @@
       "source_location": "L271",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_artifact",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "artifact"
     },
@@ -81333,7 +80750,7 @@
       "source_location": "L272",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifact_type",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "type"
     },
@@ -81344,7 +80761,7 @@
       "source_location": "L273",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifact_minlength",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "minlength"
     },
@@ -81355,7 +80772,7 @@
       "source_location": "L274",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifact_pattern",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "pattern"
     },
@@ -81366,7 +80783,7 @@
       "source_location": "L276",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_command",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "command"
     },
@@ -81377,7 +80794,7 @@
       "source_location": "L277",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_command_type",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "type"
     },
@@ -81388,7 +80805,7 @@
       "source_location": "L278",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_command_pattern",
-      "community": 32,
+      "community": 140,
       "community_name": "$defs",
       "norm_label": "pattern"
     },
@@ -81620,7 +81037,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_task",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "task"
     },
     {
@@ -81631,7 +81048,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -81642,7 +81059,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_additionalproperties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "additionalproperties"
     },
     {
@@ -81652,7 +81069,7 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_required",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "required"
     },
@@ -81663,7 +81080,7 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_id",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "id"
     },
@@ -81674,7 +81091,7 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_owner",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "owner"
     },
@@ -81685,7 +81102,7 @@
       "source_location": "L310",
       "_origin": "ast",
       "id": "ref_allocated_by",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "allocated_by"
     },
@@ -81697,7 +81114,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_properties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "properties"
     },
     {
@@ -81708,7 +81125,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_id",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "id"
     },
     {
@@ -81719,7 +81136,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_id_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -81730,7 +81147,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_id_pattern",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "pattern"
     },
     {
@@ -81741,7 +81158,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_owner",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "owner"
     },
     {
@@ -81752,7 +81169,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_owner_ref",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "$ref"
     },
     {
@@ -81763,7 +81180,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_allocated_by",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "allocated_by"
     },
     {
@@ -81774,7 +81191,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_allocated_by_ref",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "$ref"
     },
     {
@@ -81785,7 +81202,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_workspace",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "workspace"
     },
     {
@@ -81796,7 +81213,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_workspace_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -81807,7 +81224,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_workspace_additionalproperties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "additionalproperties"
     },
     {
@@ -81817,7 +81234,7 @@
       "source_location": "L331",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_workspace_required",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "required"
     },
@@ -81828,7 +81245,7 @@
       "source_location": "L331",
       "_origin": "ast",
       "id": "ref_type",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "type"
     },
@@ -81840,7 +81257,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_workspace_properties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "properties"
     },
     {
@@ -81851,7 +81268,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_id_ref",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "$ref"
     },
     {
@@ -81862,7 +81279,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -81927,8 +81344,8 @@
       "source_location": "L356",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_artifactlock",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "artifactlock"
     },
     {
@@ -81938,8 +81355,8 @@
       "source_location": "L357",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifactlock_type",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "type"
     },
     {
@@ -81949,8 +81366,8 @@
       "source_location": "L358",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifactlock_additionalproperties",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "additionalproperties"
     },
     {
@@ -81961,7 +81378,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifactlock_required",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "required"
     },
     {
@@ -81972,7 +81389,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_artifact",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "artifact"
     },
     {
@@ -81982,8 +81399,8 @@
       "source_location": "L363",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifactlock_properties",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "properties"
     },
     {
@@ -81993,8 +81410,8 @@
       "source_location": "L364",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_artifact",
-      "community": 343,
-      "community_name": "properties",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "artifact"
     },
     {
@@ -82004,8 +81421,8 @@
       "source_location": "L365",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_artifact_ref",
-      "community": 343,
-      "community_name": "properties",
+      "community": 500,
+      "community_name": "artifactLock",
       "norm_label": "$ref"
     },
     {
@@ -82016,7 +81433,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_stage",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "stage"
     },
     {
@@ -82027,7 +81444,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_stage_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -82038,7 +81455,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_stage_additionalproperties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "additionalproperties"
     },
     {
@@ -82048,7 +81465,7 @@
       "source_location": "L375",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_stage_required",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "required"
     },
@@ -82060,7 +81477,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_stage_properties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "properties"
     },
     {
@@ -82070,8 +81487,8 @@
       "source_location": "L386",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seats_uniqueitems",
-      "community": 32,
-      "community_name": "$defs",
+      "community": 8,
+      "community_name": "properties",
       "norm_label": "uniqueitems"
     },
     {
@@ -82082,7 +81499,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_seat",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "seat"
     },
     {
@@ -82093,7 +81510,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seat_type",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "type"
     },
     {
@@ -82104,7 +81521,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seat_additionalproperties",
       "community": 32,
-      "community_name": "$defs",
+      "community_name": "required",
       "norm_label": "additionalproperties"
     },
     {
@@ -82114,7 +81531,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_seat_required",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "required"
     },
@@ -82125,7 +81542,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_kind",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "kind"
     },
@@ -82136,7 +81553,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_persistent",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "persistent"
     },
@@ -82147,7 +81564,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_role",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "role"
     },
@@ -82158,7 +81575,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_model_hint",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "model_hint"
     },
@@ -82169,7 +81586,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_workspace",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "workspace"
     },
@@ -82180,7 +81597,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_memory_access",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "memory_access"
     },
@@ -82191,7 +81608,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_reads",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "reads"
     },
@@ -82202,7 +81619,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_writes",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "writes"
     },
@@ -82213,7 +81630,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_proposals",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "proposals"
     },
@@ -82224,7 +81641,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_commands",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "commands"
     },
@@ -82235,7 +81652,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_deliverable",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "deliverable"
     },
@@ -82246,7 +81663,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_handoff_to",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "handoff_to"
     },
@@ -82257,7 +81674,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_handoff_check",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "handoff_check"
     },
@@ -82268,7 +81685,7 @@
       "source_location": "L396",
       "_origin": "ast",
       "id": "ref_task_ids",
-      "community": 816,
+      "community": 32,
       "community_name": "required",
       "norm_label": "task_ids"
     },
@@ -82576,7 +81993,7 @@
       "source_location": "L459",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_proposals",
-      "community": 8,
+      "community": 50,
       "community_name": "properties",
       "norm_label": "proposals"
     },
@@ -82587,7 +82004,7 @@
       "source_location": "L460",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_proposals_type",
-      "community": 8,
+      "community": 50,
       "community_name": "properties",
       "norm_label": "type"
     },
@@ -82598,7 +82015,7 @@
       "source_location": "L461",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_proposals_uniqueitems",
-      "community": 8,
+      "community": 50,
       "community_name": "properties",
       "norm_label": "uniqueitems"
     },
@@ -82609,7 +82026,7 @@
       "source_location": "L462",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_proposals_items",
-      "community": 8,
+      "community": 50,
       "community_name": "properties",
       "norm_label": "items"
     },
@@ -82742,7 +82159,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_task_ids",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "task_ids"
     },
     {
@@ -82753,7 +82170,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_ids_type",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "type"
     },
     {
@@ -82764,7 +82181,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_ids_uniqueitems",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "uniqueitems"
     },
     {
@@ -82775,7 +82192,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_task_ids_items",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "items"
     },
     {
@@ -82786,7 +82203,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_items_pattern",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "pattern"
     },
     {
@@ -82797,7 +82214,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_gateprerequisite",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "gateprerequisite"
     },
     {
@@ -82808,7 +82225,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateprerequisite_type",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "type"
     },
     {
@@ -82819,7 +82236,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateprerequisite_additionalproperties",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "additionalproperties"
     },
     {
@@ -82830,7 +82247,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateprerequisite_required",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "required"
     },
     {
@@ -82841,7 +82258,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_category",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "category"
     },
     {
@@ -82852,7 +82269,7 @@
       "_origin": "ast",
       "id": "ref_producer_commands",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "producer_commands"
     },
     {
@@ -82863,7 +82280,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateprerequisite_properties",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "properties"
     },
     {
@@ -82874,7 +82291,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_category",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "category"
     },
     {
@@ -82885,7 +82302,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_category_type",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "type"
     },
     {
@@ -82896,7 +82313,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_category_minlength",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "minlength"
     },
     {
@@ -82907,7 +82324,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_producer_commands",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "producer_commands"
     },
     {
@@ -82918,7 +82335,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_producer_commands_type",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "type"
     },
     {
@@ -82929,7 +82346,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_producer_commands_minitems",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "minitems"
     },
     {
@@ -82940,7 +82357,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_producer_commands_uniqueitems",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "uniqueitems"
     },
     {
@@ -82951,7 +82368,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_producer_commands_items",
       "community": 500,
-      "community_name": "gatePrerequisite",
+      "community_name": "artifactLock",
       "norm_label": "items"
     },
     {
@@ -82962,7 +82379,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_gateevidence",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "gateevidence"
     },
     {
@@ -82973,7 +82390,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateevidence_type",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "type"
     },
     {
@@ -82984,7 +82401,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateevidence_additionalproperties",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "additionalproperties"
     },
     {
@@ -82995,7 +82412,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateevidence_required",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "required"
     },
     {
@@ -83006,7 +82423,7 @@
       "_origin": "ast",
       "id": "ref_required_fields",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "required_fields"
     },
     {
@@ -83017,7 +82434,7 @@
       "_origin": "ast",
       "id": "ref_freshness",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "freshness"
     },
     {
@@ -83027,8 +82444,8 @@
       "source_location": "L550",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateevidence_properties",
-      "community": 343,
-      "community_name": "properties",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "properties"
     },
     {
@@ -83038,8 +82455,8 @@
       "source_location": "L555",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_schema_enum",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "enum"
     },
     {
@@ -83049,8 +82466,8 @@
       "source_location": "L555",
       "_origin": "ast",
       "id": "ref_solo_suite_phase_gate_evidence_v1",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "solo-suite/phase-gate-evidence-v1"
     },
     {
@@ -83060,8 +82477,8 @@
       "source_location": "L555",
       "_origin": "ast",
       "id": "ref_solo_suite_score_evidence_v1",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "solo-suite/score-evidence-v1"
     },
     {
@@ -83071,8 +82488,8 @@
       "source_location": "L555",
       "_origin": "ast",
       "id": "ref_solo_suite_gate_evidence_v1",
-      "community": 536,
-      "community_name": "$schema",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "solo-suite/gate-evidence-v1"
     },
     {
@@ -83082,8 +82499,8 @@
       "source_location": "L561",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_required_fields",
-      "community": 343,
-      "community_name": "properties",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "required_fields"
     },
     {
@@ -83093,8 +82510,8 @@
       "source_location": "L562",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_required_fields_type",
-      "community": 343,
-      "community_name": "properties",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "type"
     },
     {
@@ -83104,8 +82521,8 @@
       "source_location": "L563",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_required_fields_minitems",
-      "community": 343,
-      "community_name": "properties",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "minitems"
     },
     {
@@ -83115,8 +82532,8 @@
       "source_location": "L564",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_required_fields_uniqueitems",
-      "community": 343,
-      "community_name": "properties",
+      "community": 157,
+      "community_name": "freshness",
       "norm_label": "uniqueitems"
     },
     {
@@ -83127,7 +82544,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_required_fields_items",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "items"
     },
     {
@@ -83137,7 +82554,7 @@
       "source_location": "L570",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_freshness",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "freshness"
     },
@@ -83148,7 +82565,7 @@
       "source_location": "L571",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_freshness_type",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "type"
     },
@@ -83159,7 +82576,7 @@
       "source_location": "L572",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_freshness_additionalproperties",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "additionalproperties"
     },
@@ -83170,8 +82587,8 @@
       "source_location": "L573",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_freshness_required",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "required"
     },
     {
@@ -83181,8 +82598,8 @@
       "source_location": "L573",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_commit",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "commit"
     },
     {
@@ -83192,8 +82609,8 @@
       "source_location": "L573",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_environment",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "environment"
     },
     {
@@ -83203,8 +82620,8 @@
       "source_location": "L573",
       "_origin": "ast",
       "id": "ref_max_age_hours",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "max_age_hours"
     },
     {
@@ -83215,7 +82632,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_freshness_properties",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "properties"
     },
     {
@@ -83226,7 +82643,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_run_id_const",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "const"
     },
     {
@@ -83237,7 +82654,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_commit",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "commit"
     },
     {
@@ -83248,7 +82665,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_commit_const",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "const"
     },
     {
@@ -83259,7 +82676,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_environment",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "environment"
     },
     {
@@ -83270,7 +82687,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_environment_const",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "const"
     },
     {
@@ -83281,7 +82698,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_max_age_hours",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "max_age_hours"
     },
     {
@@ -83292,7 +82709,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_max_age_hours_type",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "type"
     },
     {
@@ -83303,7 +82720,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_max_age_hours_minimum",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "minimum"
     },
     {
@@ -83424,7 +82841,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_statuses_items",
       "community": 343,
-      "community_name": "properties",
+      "community_name": "rules",
       "norm_label": "items"
     },
     {
@@ -83721,7 +83138,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_gateresultfreshness",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "gateresultfreshness"
     },
     {
@@ -83732,7 +83149,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultfreshness_type",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "type"
     },
     {
@@ -83743,7 +83160,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultfreshness_additionalproperties",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "additionalproperties"
     },
     {
@@ -83753,8 +83170,8 @@
       "source_location": "L677",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultfreshness_required",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "required"
     },
     {
@@ -83764,8 +83181,8 @@
       "source_location": "L677",
       "_origin": "ast",
       "id": "ref_latest",
-      "community": 215,
-      "community_name": "freshness",
+      "community": 76,
+      "community_name": "required",
       "norm_label": "latest"
     },
     {
@@ -83776,7 +83193,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultfreshness_properties",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "properties"
     },
     {
@@ -83787,7 +83204,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_latest",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "latest"
     },
     {
@@ -83798,7 +83215,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_latest_const",
       "community": 215,
-      "community_name": "freshness",
+      "community_name": "run_id",
       "norm_label": "const"
     },
     {
@@ -83809,7 +83226,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_defs_gateresultrequirement",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "gateresultrequirement"
     },
     {
@@ -83820,7 +83237,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultrequirement_type",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "type"
     },
     {
@@ -83831,7 +83248,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultrequirement_additionalproperties",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "additionalproperties"
     },
     {
@@ -83842,7 +83259,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultrequirement_required",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "required"
     },
     {
@@ -83853,7 +83270,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_gate_id",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "gate_id"
     },
     {
@@ -83864,7 +83281,7 @@
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_json_ref_status",
       "community": 157,
-      "community_name": "runtime_trust",
+      "community_name": "freshness",
       "norm_label": "status"
     },
     {
@@ -83874,7 +83291,7 @@
       "source_location": "L706",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gateresultrequirement_properties",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "properties"
     },
@@ -83885,7 +83302,7 @@
       "source_location": "L707",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_gate_id",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "gate_id"
     },
@@ -83896,7 +83313,7 @@
       "source_location": "L708",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_gate_id_ref",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "$ref"
     },
@@ -83907,7 +83324,7 @@
       "source_location": "L710",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_properties_status",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "status"
     },
@@ -83918,7 +83335,7 @@
       "source_location": "L711",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_status_type",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "type"
     },
@@ -83929,7 +83346,7 @@
       "source_location": "L712",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_status_minlength",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "minlength"
     },
@@ -83940,7 +83357,7 @@
       "source_location": "L715",
       "_origin": "ast",
       "id": "platforms_codex_plugins_ai_skills_agent_room_templates_schema_agentroom_v1_schema_freshness_ref",
-      "community": 215,
+      "community": 157,
       "community_name": "freshness",
       "norm_label": "$ref"
     },
@@ -94280,8 +93697,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_properties_environment",
-      "community": 241,
-      "community_name": "properties",
+      "community": 1492,
+      "community_name": "environment",
       "norm_label": "environment"
     },
     {
@@ -94291,8 +93708,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_environment_type",
-      "community": 241,
-      "community_name": "properties",
+      "community": 1492,
+      "community_name": "environment",
       "norm_label": "type"
     },
     {
@@ -94302,8 +93719,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_environment_minlength",
-      "community": 241,
-      "community_name": "properties",
+      "community": 1492,
+      "community_name": "environment",
       "norm_label": "minlength"
     },
     {
@@ -94313,8 +93730,8 @@
       "source_location": "L115",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_environment_description",
-      "community": 241,
-      "community_name": "properties",
+      "community": 1492,
+      "community_name": "environment",
       "norm_label": "description"
     },
     {
@@ -94731,8 +94148,8 @@
       "source_location": "L166",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_properties_recorder",
-      "community": 1521,
-      "community_name": "recorder",
+      "community": 241,
+      "community_name": "properties",
       "norm_label": "recorder"
     },
     {
@@ -94742,8 +94159,8 @@
       "source_location": "L167",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_recorder_const",
-      "community": 1521,
-      "community_name": "recorder",
+      "community": 241,
+      "community_name": "properties",
       "norm_label": "const"
     },
     {
@@ -94753,8 +94170,8 @@
       "source_location": "L168",
       "_origin": "ast",
       "id": "platforms_codex_plugins_gate_skills_production_readiness_reviewer_schema_gate_evidence_v1_schema_recorder_description",
-      "community": 1521,
-      "community_name": "recorder",
+      "community": 241,
+      "community_name": "properties",
       "norm_label": "description"
     },
     {
@@ -107777,8 +107194,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "generate_source_overlay_manifest.py"
     },
     {
@@ -107788,8 +107205,8 @@
       "source_location": "L99",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_top_level",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "_top_level()"
     },
     {
@@ -107799,8 +107216,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_py_path",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "path"
     },
     {
@@ -107810,8 +107227,8 @@
       "source_location": "L113",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_validate_base_archive",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "_validate_base_archive()"
     },
     {
@@ -107821,8 +107238,8 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_validate_base_provenance",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "_validate_base_provenance()"
     },
     {
@@ -107832,8 +107249,8 @@
       "source_location": "L176",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_generate",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "generate()"
     },
     {
@@ -107843,8 +107260,8 @@
       "source_location": "L296",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_main",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "main()"
     },
     {
@@ -107854,8 +107271,8 @@
       "source_location": "L114",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_rationale_114",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "verify the generator is operating on the pinned public base asset."
     },
     {
@@ -107865,8 +107282,8 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "platforms_codex_tools_generate_source_overlay_manifest_rationale_135",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "verify the exact public provenance record paired with the base asset."
     },
     {
@@ -110175,8 +109592,8 @@
       "source_location": "L111",
       "_origin": "ast",
       "id": "platforms_codex_tools_verify_source_overlay_is_safe_plain_filename",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "is_safe_plain_filename()"
     },
     {
@@ -110373,8 +109790,8 @@
       "source_location": "L112",
       "_origin": "ast",
       "id": "platforms_codex_tools_verify_source_overlay_rationale_112",
-      "community": 1464,
-      "community_name": "generate_source_overlay_manifest.py",
+      "community": 23,
+      "community_name": "verify_source_overlay.py",
       "norm_label": "return whether *value* is safe to append to a directory path. this deliberately..."
     },
     {
@@ -110615,8 +110032,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "scripts_agent_token_report",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "agent-token-report.py"
     },
     {
@@ -110626,8 +110043,8 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "scripts_agent_token_report_word_count",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "word_count()"
     },
     {
@@ -110637,8 +110054,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "scripts_agent_token_report_build_report",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "build_report()"
     },
     {
@@ -110648,8 +110065,8 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "scripts_agent_token_report_main",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "main()"
     },
     {
@@ -110659,8 +110076,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "scripts_agent_update_check",
-      "community": 1522,
-      "community_name": "agent-update-check.py",
+      "community": 282,
+      "community_name": "agent_platform_common.py",
       "norm_label": "agent-update-check.py"
     },
     {
@@ -110670,8 +110087,8 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "scripts_agent_update_check_resolve_head",
-      "community": 1522,
-      "community_name": "agent-update-check.py",
+      "community": 282,
+      "community_name": "agent_platform_common.py",
       "norm_label": "resolve_head()"
     },
     {
@@ -110681,8 +110098,8 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "scripts_agent_update_check_main",
-      "community": 1522,
-      "community_name": "agent-update-check.py",
+      "community": 282,
+      "community_name": "agent_platform_common.py",
       "norm_label": "main()"
     },
     {
@@ -110736,8 +110153,8 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "scripts_agent_platform_common_parse_frontmatter",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "parse_frontmatter()"
     },
     {
@@ -110747,8 +110164,8 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "scripts_agent_platform_common_canonical_skills",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "canonical_skills()"
     },
     {
@@ -111973,61 +111390,6 @@
       "norm_label": "available()"
     },
     {
-      "label": "check-graph-freshness.py",
-      "file_type": "code",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "scripts_check_graph_freshness",
-      "community": 1504,
-      "community_name": "check-graph-freshness.py",
-      "norm_label": "check-graph-freshness.py"
-    },
-    {
-      "label": "tracked_and_untracked()",
-      "file_type": "code",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L105",
-      "_origin": "ast",
-      "id": "scripts_check_graph_freshness_tracked_and_untracked",
-      "community": 1504,
-      "community_name": "check-graph-freshness.py",
-      "norm_label": "tracked_and_untracked()"
-    },
-    {
-      "label": "is_structural()",
-      "file_type": "code",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L124",
-      "_origin": "ast",
-      "id": "scripts_check_graph_freshness_is_structural",
-      "community": 1504,
-      "community_name": "check-graph-freshness.py",
-      "norm_label": "is_structural()"
-    },
-    {
-      "label": "main()",
-      "file_type": "code",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L132",
-      "_origin": "ast",
-      "id": "scripts_check_graph_freshness_main",
-      "community": 1504,
-      "community_name": "check-graph-freshness.py",
-      "norm_label": "main()"
-    },
-    {
-      "label": "Every file on disk that git would consider part of the project. `--cached`\u2026",
-      "file_type": "rationale",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L106",
-      "_origin": "ast",
-      "id": "scripts_check_graph_freshness_rationale_106",
-      "community": 1504,
-      "community_name": "check-graph-freshness.py",
-      "norm_label": "every file on disk that git would consider part of the project. `--cached`..."
-    },
-    {
       "label": "check-high-risk-remediations.py",
       "file_type": "code",
       "source_file": "scripts/check-high-risk-remediations.py",
@@ -112757,8 +112119,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "scripts_validate_agent_skills",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "validate-agent-skills.py"
     },
     {
@@ -112768,8 +112130,8 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "scripts_validate_agent_skills_validate_skill",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "validate_skill()"
     },
     {
@@ -112779,8 +112141,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "scripts_validate_agent_skills_py_path",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "path"
     },
     {
@@ -112790,8 +112152,8 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "scripts_validate_agent_skills_main",
-      "community": 282,
-      "community_name": "agent_platform_common.py",
+      "community": 1464,
+      "community_name": "canonical_skills",
       "norm_label": "main()"
     },
     {
@@ -112859,61 +112221,6 @@
       "community": 282,
       "community_name": "agent_platform_common.py",
       "norm_label": "main()"
-    },
-    {
-      "label": "bundle-budget.test.mjs",
-      "file_type": "code",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "tests_bundle_budget_test",
-      "community": 1517,
-      "community_name": "bundle-budget.test.mjs",
-      "norm_label": "bundle-budget.test.mjs"
-    },
-    {
-      "label": "assetsDir",
-      "file_type": "code",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "tests_bundle_budget_test_assetsdir",
-      "community": 1517,
-      "community_name": "bundle-budget.test.mjs",
-      "norm_label": "assetsdir"
-    },
-    {
-      "label": "budgetFile",
-      "file_type": "code",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "tests_bundle_budget_test_budgetfile",
-      "community": 1517,
-      "community_name": "bundle-budget.test.mjs",
-      "norm_label": "budgetfile"
-    },
-    {
-      "label": "kb()",
-      "file_type": "code",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L28",
-      "_origin": "ast",
-      "id": "tests_bundle_budget_test_kb",
-      "community": 1517,
-      "community_name": "bundle-budget.test.mjs",
-      "norm_label": "kb()"
-    },
-    {
-      "label": "measure()",
-      "file_type": "code",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L30",
-      "_origin": "ast",
-      "id": "tests_bundle_budget_test_measure",
-      "community": 1517,
-      "community_name": "bundle-budget.test.mjs",
-      "norm_label": "measure()"
     },
     {
       "label": "capability-inventory.test.mjs",
@@ -133200,21 +132507,10 @@
       "norm_label": "decisions"
     },
     {
-      "label": "2026-08-07 \u2014 Audit #2 remediation: graph refresh, permissions, CI security gate, performance budget, freshness guard",
-      "file_type": "document",
-      "source_file": ".solo/decisions.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "solo_decisions_2026_08_07_audit_2_remediation_graph_refresh_permissions_ci_security_gate_performance_budget_freshness_guard",
-      "community": 1466,
-      "community_name": "Decisions",
-      "norm_label": "2026-08-07 \u2014 audit #2 remediation: graph refresh, permissions, ci security gate, performance budget, freshness guard"
-    },
-    {
       "label": "2026-08-07 \u2014 P1 fixes: typecheck, env docs, a11y, interaction tests, image compression, dead-code cleanup, parity checker",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L75",
+      "source_location": "L3",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_p1_fixes_typecheck_env_docs_a11y_interaction_tests_image_compression_dead_code_cleanup_parity_checker",
       "community": 1466,
@@ -133225,7 +132521,7 @@
       "label": "2026-08-07 \u2014 P0 fixes: CI, D1 guard, SEO, monitoring, security headers, security-scan refresh, rollback plan",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L125",
+      "source_location": "L53",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_p0_fixes_ci_d1_guard_seo_monitoring_security_headers_security_scan_refresh_rollback_plan",
       "community": 1466,
@@ -133236,7 +132532,7 @@
       "label": "2026-08-07 \u2014 Full lifecycle audit completed; NOT PRODUCTION READY recorded for `app/`",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L186",
+      "source_location": "L114",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_full_lifecycle_audit_completed_not_production_ready_recorded_for_app",
       "community": 1466,
@@ -133247,7 +132543,7 @@
       "label": "2026-08-07 \u2014 Project profile: `public-marketing-site`",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L196",
+      "source_location": "L124",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_project_profile_public_marketing_site",
       "community": 1466,
@@ -133258,7 +132554,7 @@
       "label": "2026-08-07 \u2014 PRD/architecture reverse-engineered rather than freshly interviewed",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L203",
+      "source_location": "L131",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_prd_architecture_reverse_engineered_rather_than_freshly_interviewed",
       "community": 1466,
@@ -133269,7 +132565,7 @@
       "label": "2026-08-07 \u2014 Fixed stale 125/79 \u2192 126/80 count drift in platform docs",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L211",
+      "source_location": "L139",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_fixed_stale_125_79_126_80_count_drift_in_platform_docs",
       "community": 1466,
@@ -133280,7 +132576,7 @@
       "label": "2026-08-07 \u2014 Rewrote `platforms/antigravity/parity/README.md`; discovered its `tools/parity.py` is an unadapted copy of Claude's",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L221",
+      "source_location": "L149",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_rewrote_platforms_antigravity_parity_readme_md_discovered_its_tools_parity_py_is_an_unadapted_copy_of_claude_s",
       "community": 1466,
@@ -133291,7 +132587,7 @@
       "label": "2026-08-07 \u2014 Dependabot scoped to root npm only, not `platforms/*`",
       "file_type": "document",
       "source_file": ".solo/decisions.md",
-      "source_location": "L234",
+      "source_location": "L162",
       "_origin": "ast",
       "id": "solo_decisions_2026_08_07_dependabot_scoped_to_root_npm_only_not_platforms",
       "community": 1466,
@@ -133398,21 +132694,21 @@
       "norm_label": "what exists today"
     },
     {
-      "label": "What's still missing",
+      "label": "What's needed (P0/P1, see `tasks.md` T4)",
       "file_type": "document",
       "source_file": ".solo/monitoring.md",
-      "source_location": "L34",
+      "source_location": "L20",
       "_origin": "ast",
-      "id": "solo_monitoring_what_s_still_missing",
+      "id": "solo_monitoring_what_s_needed_p0_p1_see_tasks_md_t4",
       "community": 1483,
       "community_name": "Monitoring \u2014 Solo Suite Enchance (website)",
-      "norm_label": "what's still missing"
+      "norm_label": "what's needed (p0/p1, see `tasks.md` t4)"
     },
     {
       "label": "Alerts",
       "file_type": "document",
       "source_file": ".solo/monitoring.md",
-      "source_location": "L47",
+      "source_location": "L32",
       "_origin": "ast",
       "id": "solo_monitoring_alerts",
       "community": 1483,
@@ -134652,32 +133948,10 @@
       "norm_label": "website development"
     },
     {
-      "label": "Verifying the website",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L240",
-      "_origin": "ast",
-      "id": "readme_verifying_the_website",
-      "community": 609,
-      "community_name": "Solo Suite Enchance",
-      "norm_label": "verifying the website"
-    },
-    {
-      "label": "Verifying the agent platform",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": "L252",
-      "_origin": "ast",
-      "id": "readme_verifying_the_agent_platform",
-      "community": 609,
-      "community_name": "Solo Suite Enchance",
-      "norm_label": "verifying the agent platform"
-    },
-    {
       "label": "Repository layout",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L259",
+      "source_location": "L238",
       "_origin": "ast",
       "id": "readme_repository_layout",
       "community": 609,
@@ -134688,7 +133962,7 @@
       "label": "Scope and roadmap",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L286",
+      "source_location": "L251",
       "_origin": "ast",
       "id": "readme_scope_and_roadmap",
       "community": 609,
@@ -138651,8 +137925,8 @@
       "source_location": "L1145",
       "_origin": "ast",
       "id": "platforms_antigravity_changelog_1_0_9_2026_07_10",
-      "community": 112,
-      "community_name": "Changelog",
+      "community": 1327,
+      "community_name": "1.0.9 \u2014 2026-07-10",
       "norm_label": "1.0.9 \u2014 2026-07-10"
     },
     {
@@ -138662,8 +137936,8 @@
       "source_location": "L1147",
       "_origin": "ast",
       "id": "platforms_antigravity_changelog_windows_fix",
-      "community": 112,
-      "community_name": "Changelog",
+      "community": 1327,
+      "community_name": "1.0.9 \u2014 2026-07-10",
       "norm_label": "windows fix"
     },
     {
@@ -138673,8 +137947,8 @@
       "source_location": "L1150",
       "_origin": "ast",
       "id": "platforms_antigravity_changelog_versions_1150",
-      "community": 112,
-      "community_name": "Changelog",
+      "community": 1327,
+      "community_name": "1.0.9 \u2014 2026-07-10",
       "norm_label": "versions"
     },
     {
@@ -138992,8 +138266,8 @@
       "source_location": "L1252",
       "_origin": "ast",
       "id": "platforms_antigravity_changelog_1_0_1_2026_07_applied_in_a_prior_session",
-      "community": 1524,
-      "community_name": "1.0.1 \u2014 2026-07 (applied in a prior session)",
+      "community": 112,
+      "community_name": "Changelog",
       "norm_label": "1.0.1 \u2014 2026-07 (applied in a prior session)"
     },
     {
@@ -139003,8 +138277,8 @@
       "source_location": "L1254",
       "_origin": "ast",
       "id": "platforms_antigravity_changelog_fixed_c1_c3_release_tail_ordering_and_monitoring_wiring",
-      "community": 1524,
-      "community_name": "1.0.1 \u2014 2026-07 (applied in a prior session)",
+      "community": 112,
+      "community_name": "Changelog",
       "norm_label": "fixed (c1\u2013c3 \u2014 release-tail ordering and monitoring wiring)"
     },
     {
@@ -153952,8 +153226,8 @@
       "source_location": "L342",
       "_origin": "ast",
       "id": "platforms_claude_changelog_1_0_22_2026_07_13",
-      "community": 115,
-      "community_name": "Changelog",
+      "community": 1401,
+      "community_name": "1.0.22 \u2014 2026-07-13",
       "norm_label": "1.0.22 \u2014 2026-07-13"
     },
     {
@@ -153963,8 +153237,8 @@
       "source_location": "L360",
       "_origin": "ast",
       "id": "platforms_claude_changelog_versions_360",
-      "community": 115,
-      "community_name": "Changelog",
+      "community": 1401,
+      "community_name": "1.0.22 \u2014 2026-07-13",
       "norm_label": "versions"
     },
     {
@@ -154964,8 +154238,8 @@
       "source_location": "L1242",
       "_origin": "ast",
       "id": "platforms_claude_changelog_1_0_2_2026_07_09",
-      "community": 1519,
-      "community_name": "1.0.2 \u2014 2026-07-09",
+      "community": 115,
+      "community_name": "Changelog",
       "norm_label": "1.0.2 \u2014 2026-07-09"
     },
     {
@@ -154975,8 +154249,8 @@
       "source_location": "L1244",
       "_origin": "ast",
       "id": "platforms_claude_changelog_fixed_c4_git_pr_path_wired_into_the_master_flow_and_room",
-      "community": 1519,
-      "community_name": "1.0.2 \u2014 2026-07-09",
+      "community": 115,
+      "community_name": "Changelog",
       "norm_label": "fixed (c4 \u2014 git/pr path wired into the master flow and room)"
     },
     {
@@ -154986,8 +154260,8 @@
       "source_location": "L1249",
       "_origin": "ast",
       "id": "platforms_claude_changelog_versions_1249",
-      "community": 1519,
-      "community_name": "1.0.2 \u2014 2026-07-09",
+      "community": 115,
+      "community_name": "Changelog",
       "norm_label": "versions"
     },
     {
@@ -187904,625 +187178,6 @@
     }
   ],
   "links": [
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "claude_settings",
-      "target": "claude_settings_enableallprojectmcpservers",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "claude_settings",
-      "target": "claude_settings_permissions",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "claude_settings",
-      "target": "claude_settings_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "claude_settings_permissions",
-      "target": "claude_settings_permissions_ask",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "claude_settings_permissions",
-      "target": "claude_settings_permissions_deny",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_clean",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_commit_n",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_commit_no_gpg_sign",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_commit_no_verify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_filter_branch",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_push_f",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_push_force",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_push_force_with_lease",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_rebase",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_reset_hard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_git_stash",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_npm_i_g",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_npm_install_g",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_pip3_install",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_pip_install",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_pnpm_add_g",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_rm_rf",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_sudo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_bash_yarn_global",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_dev_vars",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_env",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_env_development",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_env_local",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_env_production",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_node_modules",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L5",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_deny",
-      "target": "ref_read_wrangler",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_curl",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_gh_pr_create",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_gh_pr_merge",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_git_commit",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_git_push",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npm_run_agent_bootstrap_install",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npm_run_agent_security_bootstrap_install",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npx_cmd_wrangler_deploy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npx_cmd_wrangler_rollback",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npx_wrangler_deploy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npx_wrangler_rollback",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_npx_wrangler_secret",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_powershell",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_pwsh",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_python_scripts_install_global_agent_platforms_ps1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_scripts_install_antigravity_ps1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_scripts_install_global_agent_platforms_ps1",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_wget",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_wrangler_deploy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_wrangler_rollback",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "extends",
-      "confidence": "EXTRACTED",
-      "source_file": ".claude/settings.json",
-      "source_location": "L33",
-      "weight": 1.0,
-      "context": "import",
-      "_origin": "ast",
-      "source": "claude_settings_permissions_ask",
-      "target": "ref_bash_wrangler_secret",
-      "confidence_score": 1.0
-    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -358859,18 +357514,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L39",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness",
-      "target": "scripts_agent_platform_common",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "scripts/reconstruct-agent-extension-catalog.py",
       "source_location": "L12",
       "weight": 1.0,
@@ -361864,74 +360507,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L124",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness",
-      "target": "scripts_check_graph_freshness_is_structural",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L132",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness",
-      "target": "scripts_check_graph_freshness_main",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L105",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness",
-      "target": "scripts_check_graph_freshness_tracked_and_untracked",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L153",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness_main",
-      "target": "scripts_check_graph_freshness_tracked_and_untracked",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L106",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness_rationale_106",
-      "target": "scripts_check_graph_freshness_tracked_and_untracked",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "scripts/check-graph-freshness.py",
-      "source_location": "L153",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "scripts_check_graph_freshness_main",
-      "target": "scripts_check_graph_freshness_is_structural",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "scripts/check-high-risk-remediations.py",
       "source_location": "L32",
       "weight": 1.0,
@@ -363285,50 +361860,6 @@
       "_origin": "ast",
       "source": "scripts_validate_workflow_command_parity_read",
       "target": "scripts_validate_workflow_command_parity_py_path",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L25",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tests_bundle_budget_test",
-      "target": "tests_bundle_budget_test_assetsdir",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tests_bundle_budget_test",
-      "target": "tests_bundle_budget_test_budgetfile",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tests_bundle_budget_test",
-      "target": "tests_bundle_budget_test_kb",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tests/bundle-budget.test.mjs",
-      "source_location": "L30",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tests_bundle_budget_test",
-      "target": "tests_bundle_budget_test_measure",
       "confidence_score": 1.0
     },
     {
@@ -381752,18 +380283,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "solo_decisions_decisions",
-      "target": "solo_decisions_2026_08_07_audit_2_remediation_graph_refresh_permissions_ci_security_gate_performance_budget_freshness_guard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": ".solo/decisions.md",
-      "source_location": "L234",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381774,7 +380294,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L211",
+      "source_location": "L139",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381785,7 +380305,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L186",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381796,7 +380316,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L125",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381807,7 +380327,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L75",
+      "source_location": "L3",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381818,7 +380338,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L203",
+      "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381829,7 +380349,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L196",
+      "source_location": "L124",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381840,7 +380360,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/decisions.md",
-      "source_location": "L221",
+      "source_location": "L149",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_decisions_decisions",
@@ -381917,7 +380437,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/monitoring.md",
-      "source_location": "L47",
+      "source_location": "L32",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_monitoring_monitoring_solo_suite_enchance_website",
@@ -381939,11 +380459,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": ".solo/monitoring.md",
-      "source_location": "L34",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "solo_monitoring_monitoring_solo_suite_enchance_website",
-      "target": "solo_monitoring_what_s_still_missing",
+      "target": "solo_monitoring_what_s_needed_p0_p1_see_tasks_md_t4",
       "confidence_score": 1.0
     },
     {
@@ -383105,7 +381625,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L259",
+      "source_location": "L238",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_solo_suite_enchance",
@@ -383116,7 +381636,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "README.md",
-      "source_location": "L286",
+      "source_location": "L251",
       "weight": 1.0,
       "_origin": "ast",
       "source": "readme_solo_suite_enchance",
@@ -383143,28 +381663,6 @@
       "_origin": "ast",
       "source": "readme_solo_suite_enchance",
       "target": "readme_what_is_in_this_repository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L252",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_website_development",
-      "target": "readme_verifying_the_agent_platform",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "README.md",
-      "source_location": "L240",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "readme_website_development",
-      "target": "readme_verifying_the_website",
       "confidence_score": 1.0
     },
     {

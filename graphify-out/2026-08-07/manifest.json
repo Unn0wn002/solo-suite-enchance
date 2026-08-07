@@ -60,8 +60,8 @@
     "semantic_hash": "025f4fcb6024b3524d19492cf7ce54a2"
   },
   "package.json": {
-    "mtime": 1786118425.59378,
-    "ast_hash": "5de50fdcd5aca09ecbdc498ac2880a61",
+    "mtime": 1786102887.0642042,
+    "ast_hash": "9d01f4a9dd9385e8478c2afafc4df036",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
@@ -90,8 +90,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1786118480.1521947,
-    "ast_hash": "fcfa186ef6ca27dadf34ab171a222004",
+    "mtime": 1786102886.9286647,
+    "ast_hash": "ed53e0373b6fc072a9e609cecc0b6104",
     "semantic_hash": ""
   },
   "platforms/antigravity/.claude-plugin/marketplace.json": {
@@ -7815,8 +7815,8 @@
     "semantic_hash": ""
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1786118203.7730446,
-    "ast_hash": "f19a1cf72d8d504eadf30d0283e15ca1",
+    "mtime": 1786101514.933497,
+    "ast_hash": "48e8ccac44f621b8953c2b624abee7b5",
     "semantic_hash": ""
   },
   ".solo/architecture.md": {
@@ -7825,8 +7825,8 @@
     "semantic_hash": ""
   },
   ".solo/decisions.md": {
-    "mtime": 1786118523.73465,
-    "ast_hash": "9a3fa1cb6c03f2703f8cd4b388663045",
+    "mtime": 1786101923.0133538,
+    "ast_hash": "1bf9efb3621e492e97db18518c9268f1",
     "semantic_hash": ""
   },
   ".solo/handoff.md": {
@@ -7835,8 +7835,8 @@
     "semantic_hash": ""
   },
   ".solo/monitoring.md": {
-    "mtime": 1786118456.5020683,
-    "ast_hash": "457e61dc0594aea0af1d2e4ee9d47032",
+    "mtime": 1786099141.7977192,
+    "ast_hash": "d3027f01cc33119efeeeac74ff4d5157",
     "semantic_hash": ""
   },
   ".solo/prd.md": {
@@ -7860,8 +7860,8 @@
     "semantic_hash": ""
   },
   ".solo/tasks.md": {
-    "mtime": 1786118551.4245932,
-    "ast_hash": "c24065838aa1b70346f7533ec5be8dc5",
+    "mtime": 1786103251.648186,
+    "ast_hash": "f35baa7ae8998e4016100e4ccb4fee3c",
     "semantic_hash": ""
   },
   ".solo/tests.md": {
@@ -7877,26 +7877,6 @@
   "docs/audit/MASTER_AUDIT.md": {
     "mtime": 1786113721.4645934,
     "ast_hash": "182fb068b16f582c0f9866574ec51813",
-    "semantic_hash": ""
-  },
-  ".claude/settings.json": {
-    "mtime": 1786118168.7004237,
-    "ast_hash": "ffcda23759b2fd8ead2fd24bed3f6e73",
-    "semantic_hash": ""
-  },
-  "performance-budget.json": {
-    "mtime": 1786118412.6992674,
-    "ast_hash": "313e6e525fcf9d662e16d9069caf6437",
-    "semantic_hash": ""
-  },
-  "scripts/check-graph-freshness.py": {
-    "mtime": 1786118305.5149894,
-    "ast_hash": "0ad783e186232431d4b9e2ecdd6f295d",
-    "semantic_hash": ""
-  },
-  "tests/bundle-budget.test.mjs": {
-    "mtime": 1786118380.6896682,
-    "ast_hash": "55a1c8cfc5511ae1d850e04e8725a122",
     "semantic_hash": ""
   }
 }

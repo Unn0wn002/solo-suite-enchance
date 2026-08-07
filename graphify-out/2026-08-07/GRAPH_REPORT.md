@@ -1,11 +1,11 @@
 # Graph Report - EC Solo Suite  (2026-08-07)
 
 ## Corpus Check
-- 1362 files · ~1,111,875 words
+- 1358 files · ~1,109,132 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 17081 nodes · 21253 edges · 1525 communities (1127 shown, 398 thin omitted)
+- 17015 nodes · 21187 edges · 1517 communities (1123 shown, 394 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 198 edges (avg confidence: 0.63)
 - Token cost: 0 input · 0 output
 
@@ -47,7 +47,7 @@
 - cp1252_env
 - claude/plugins/seo/lib/url_guard.py
 - cp1252_env
-- $defs
+- required
 - AgentRoomTrustBoundary
 - required
 - PublishScripts
@@ -155,7 +155,7 @@
 - CommandPolicy
 - properties
 - type
-- deny
+- $defs
 - references/gate-evidence-v1.schema.json
 - OWASP Top 10 walkthrough
 - verify_release_assets
@@ -172,7 +172,7 @@
 - ReleaseVersioning
 - NewRules
 - rules
-- runtime_trust
+- freshness
 - properties
 - definitions
 - SEO Content Brief Generator
@@ -230,7 +230,7 @@
 - full-team-website.json
 - production-release.json
 - site-doctor-audit.json
-- freshness
+- run_id
 - validate_gate_evidence.py
 - Database Fix
 - Symptom playbooks
@@ -358,7 +358,7 @@
 - Inventory
 - claude/tests/test_semantic_regressions.py
 - SchemaFirst
-- properties
+- rules
 - Local SEO Analysis
 - Backup & Recovery
 - Content Audit
@@ -515,7 +515,7 @@
 - Running an AgentRoom — the honest execution model
 - properties
 - claude-rooms/schema/agentroom-v1.schema.json
-- gatePrerequisite
+- artifactLock
 - AI Output Auditor
 - Documentation Writer
 - validate_command
@@ -551,7 +551,7 @@
 - OriginBinding
 - loop
 - Security and Hardening
-- $schema
+- validators
 - Test-Driven Development
 - Full-stack Developer
 - preflight
@@ -831,7 +831,7 @@
 - Git Workflow and Versioning
 - antigravity/release/claude-cli/package.json
 - artifact
-- required
+- enum
 - Shipping and Launch
 - Third-Party Notices
 - AI Agent Rooms
@@ -1273,7 +1273,7 @@
 - 1.0.26 — 2026-07-14
 - 1.0.2 — 2026-07-09
 - 1.0.8 — 2026-07-09
-- ask
+- 1.0.9 — 2026-07-10
 - CI/CD and Automation
 - 1.0.26 — 2026-07-14
 - Deprecation and Migration
@@ -1347,7 +1347,7 @@
 - LICENSE_REPORT.md
 - MANUAL_REVIEW_REQUIRED.md
 - UPDATE_GUIDE.md
-- integration
+- 1.0.22 — 2026-07-13
 - THIRD_PARTY_NOTICES.md
 - Performance Optimization
 - Context Engineering
@@ -1410,7 +1410,7 @@
 - The Standing Checklist
 - The Standing Checklist
 - The Standing Checklist
-- generate_source_overlay_manifest.py
+- canonical_skills
 - Architecture — Solo Suite Enchance (website)
 - Decisions
 - Ideation Frameworks Reference
@@ -1438,7 +1438,7 @@
 - commands/webperf.md
 - 0. Audit Metadata
 - E. Command Inventory & Audit
-- InventoryFilesystemSafety
+- environment
 - worker-configuration.d.ts
 - C. Plugin Inventory & Audit
 - D. Skill Inventory & Audit
@@ -1448,15 +1448,7 @@
 - reviewer
 - .agents/skills/graphify/SKILL.md
 - .claude/skills/graphify/SKILL.md
-- check-graph-freshness.py
-- bundle-budget.test.mjs
-- settings.json
-- 1.0.2 — 2026-07-09
-- LaunchControlScope
-- recorder
-- agent-update-check.py
-- @cloudflare/workers-types
-- 1.0.1 — 2026-07 (applied in a prior session)
+- react-server-dom-webpack
 
 ## God Nodes (most connected - your core abstractions)
 1. `base_room()` - 62 edges
@@ -1485,7 +1477,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (1525 total, 398 thin omitted)
+## Communities (1517 total, 394 thin omitted)
 
 ### Community 0 - "package_release.py"
 Cohesion: 0.12
@@ -1520,8 +1512,8 @@ Cohesion: 0.07
 Nodes (12): build_phase(), load_module(), PhaseGateContract, Path, Fail-closed phase-gate and score-only evidence contract tests., schema_errors(), ScoreOnlyContract, build_contract() (+4 more)
 
 ### Community 8 - "properties"
-Cohesion: 0.03
-Nodes (62): items, minItems, type, minLength, type, minLength, type, minLength (+54 more)
+Cohesion: 0.04
+Nodes (54): items, minItems, type, minLength, type, minLength, type, minLength (+46 more)
 
 ### Community 9 - "run_scanner"
 Cohesion: 0.07
@@ -1580,8 +1572,8 @@ Cohesion: 0.11
 Nodes (7): BundledTemplates, full_team_fixture(), load_module(), Path, Strict AgentRooms schema, semantic policy, and runner-adapter tests., room_fixture(), SemanticRules
 
 ### Community 23 - "verify_source_overlay.py"
-Cohesion: 0.17
-Nodes (30): BaseException, HTTPRedirectHandler, _actual_changes(), _digest(), _download_pinned(), fetch_public_base(), _is_transient_download_error(), load_manifest() (+22 more)
+Cohesion: 0.13
+Nodes (40): BaseException, HTTPRedirectHandler, generate(), main(), Path, Verify the generator is operating on the pinned public base asset., Verify the exact public provenance record paired with the base asset., _top_level() (+32 more)
 
 ### Community 24 - "keywords"
 Cohesion: 0.05
@@ -1615,9 +1607,9 @@ Nodes (37): BlockedUrlError, _build_direct_opener(), check_url(), _env_test_loop
 Cohesion: 0.07
 Nodes (22): AllShippedScriptsUnderCp1252, cp1252_env(), entry_point_scripts(), git(), Windows/default-encoding regressions for packaged command-line tools. These…, A finding whose PATH cannot be encoded must still be reported. The text report…, The not-found exit must report the path, not crash encoding it., Every .py this suite ships to users. (+14 more)
 
-### Community 32 - "$defs"
+### Community 32 - "required"
 Cohesion: 0.05
-Nodes (44): $ref, minLength, pattern, type, additionalProperties, properties, type, pattern (+36 more)
+Nodes (47): $ref, seat, stage, task, workspace, pattern, $ref, type (+39 more)
 
 ### Community 33 - "AgentRoomTrustBoundary"
 Cohesion: 0.12
@@ -1689,7 +1681,7 @@ Nodes (26): author, email, name, description, displayName, homepage, before-depl
 
 ### Community 50 - "properties"
 Cohesion: 0.05
-Nodes (38): items, type, uniqueItems, minLength, type, oneOf, oneOf, read-only (+30 more)
+Nodes (42): items, type, uniqueItems, minLength, type, oneOf, oneOf, read-only (+34 more)
 
 ### Community 51 - "canonical-source-overrides/plugins/gate/lib/gate_policy.py"
 Cohesion: 0.07
@@ -1792,8 +1784,8 @@ Cohesion: 0.07
 Nodes (29): enum, pattern, type, minLength, type, format, type, pattern (+21 more)
 
 ### Community 76 - "required"
-Cohesion: 0.07
-Nodes (27): additionalProperties, allOf, description, $id, exit_criteria, name, profile, stages (+19 more)
+Cohesion: 0.08
+Nodes (27): required, required, commit, environment, exit_criteria, name, profile, run_id (+19 more)
 
 ### Community 77 - "antigravity/plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py"
 Cohesion: 0.11
@@ -1837,7 +1829,7 @@ Nodes (13): GateCommandsDocumentTheFallback, load_gate_policy(), skipUnless, Win
 
 ### Community 87 - "properties"
 Cohesion: 0.06
-Nodes (35): minLength, pattern, type, additionalProperties, description, type, type, type (+27 more)
+Nodes (36): minLength, pattern, type, additionalProperties, description, type, type, type (+28 more)
 
 ### Community 88 - "properties"
 Cohesion: 0.09
@@ -1853,7 +1845,7 @@ Nodes (13): GateCommandsDocumentTheFallback, load_gate_policy(), skipUnless, Win
 
 ### Community 91 - "properties"
 Cohesion: 0.06
-Nodes (36): minLength, pattern, type, additionalProperties, description, type, type, type (+28 more)
+Nodes (35): minLength, pattern, type, additionalProperties, description, type, type, type (+27 more)
 
 ### Community 92 - "properties"
 Cohesion: 0.09
@@ -1869,7 +1861,7 @@ Nodes (32): addy_skill_names(), augment_lock(), augment_manifest(), augment_repo
 
 ### Community 95 - "devDependencies"
 Cohesion: 0.06
-Nodes (35): @cloudflare/vite-plugin, drizzle-kit, eslint, eslint-config-next, jsdom, devDependencies, @cloudflare/vite-plugin, drizzle-kit (+27 more)
+Nodes (35): @cloudflare/vite-plugin, @cloudflare/workers-types, drizzle-kit, eslint, eslint-config-next, jsdom, devDependencies, @cloudflare/vite-plugin (+27 more)
 
 ### Community 96 - "type"
 Cohesion: 0.09
@@ -1937,7 +1929,7 @@ Nodes (25): ai, browser, Compatibility legend, design, dev, docs, full-team, gat
 
 ### Community 112 - "Changelog"
 Cohesion: 0.06
-Nodes (32): 1.0.0, 1.0.10 — 2026-07-10, 1.0.18 — 2026-07-12, 1.0.19 — 2026-07-13, 1.0.20 — 2026-07-13, 1.0.21 — 2026-07-13, 1.0.22 — 2026-07-13, 1.0.23 — 2026-07-13 (+24 more)
+Nodes (31): 1.0.0, 1.0.10 — 2026-07-10, 1.0.18 — 2026-07-12, 1.0.19 — 2026-07-13, 1.0.1 — 2026-07 (applied in a prior session), 1.0.20 — 2026-07-13, 1.0.21 — 2026-07-13, 1.0.22 — 2026-07-13 (+23 more)
 
 ### Community 113 - "type"
 Cohesion: 0.22
@@ -1949,7 +1941,7 @@ Nodes (25): Analytics, Applicability matrix (normative), Architecture, Backend, 
 
 ### Community 115 - "Changelog"
 Cohesion: 0.06
-Nodes (31): 1.0.0, 1.0.10 — 2026-07-10, 1.0.18 — 2026-07-12, 1.0.19 — 2026-07-13, 1.0.1 — 2026-07 (applied in a prior session), 1.0.20 — 2026-07-13, 1.0.21 — 2026-07-13, 1.0.22 — 2026-07-13 (+23 more)
+Nodes (32): 1.0.0, 1.0.10 — 2026-07-10, 1.0.18 — 2026-07-12, 1.0.19 — 2026-07-13, 1.0.1 — 2026-07 (applied in a prior session), 1.0.20 — 2026-07-13, 1.0.21 — 2026-07-13, 1.0.23 — 2026-07-13 (+24 more)
 
 ### Community 116 - "definitions"
 Cohesion: 0.08
@@ -2020,12 +2012,12 @@ Cohesion: 0.09
 Nodes (4): CommandPolicy, v1.0.16: release.md/monitoring.md byte counts are NOT deployment or monitoring…, An arbitrary old release can never prove the current commit., v1.0.17: a generic homepage fetch is not deployment or monitoring evidence, and…
 
 ### Community 133 - "properties"
-Cohesion: 0.11
-Nodes (19): description, type, const, allocates_task_ids, owns, additionalProperties, description, properties (+11 more)
+Cohesion: 0.06
+Nodes (36): description, type, const, additionalProperties, properties, required, type, allocates_task_ids (+28 more)
 
 ### Community 134 - "type"
 Cohesion: 0.09
-Nodes (24): description, items, type, description, items, type, items, minItems (+16 more)
+Nodes (23): description, items, type, items, minItems, pattern, type, commands (+15 more)
 
 ### Community 135 - "claude/plugins/site-doctor/skills/compliance-check/scripts/scan_trackers.py"
 Cohesion: 0.13
@@ -2045,11 +2037,11 @@ Nodes (23): minLength, type, minLength, type, description, minLength, type, prop
 
 ### Community 139 - "type"
 Cohesion: 0.09
-Nodes (23): description, items, type, items, minItems, pattern, type, commands (+15 more)
+Nodes (24): description, items, type, description, items, type, items, minItems (+16 more)
 
-### Community 140 - "deny"
-Cohesion: 0.07
-Nodes (27): deny, Bash(git clean:*), Bash(git commit -n:*), Bash(git commit --no-gpg-sign:*), Bash(git commit --no-verify:*), Bash(git filter-branch:*), Bash(git push -f:*), Bash(git push --force:*) (+19 more)
+### Community 140 - "$defs"
+Cohesion: 0.11
+Nodes (18): additionalProperties, allOf, minLength, pattern, type, pattern, type, $defs (+10 more)
 
 ### Community 141 - "references/gate-evidence-v1.schema.json"
 Cohesion: 0.11
@@ -2107,9 +2099,9 @@ Nodes (8): plugin_of(), Release-versioning regression (v1.0.17, blocker 1): a pl
 Cohesion: 0.13
 Nodes (15): Evaluate gate transitions from validated machine-readable status fields; unknown or missing statuses stop the run., Execute provider-specific checks only when .solo/stack.md records that provider., For profile-inapplicable work, record an evidence-backed N/A reason instead of silently skipping it., Only memory_steward writes .solo files; every other seat submits declared proposals., Replace the template run_id with a unique run id before execution., Require exact run, commit, and environment matches; reject expired gate evidence., Run seats in isolated worktrees and enforce every artifact lock., rules (+7 more)
 
-### Community 157 - "runtime_trust"
-Cohesion: 0.09
-Nodes (22): gateEvidence, gateResultRequirement, additionalProperties, required, type, additionalProperties, required, type (+14 more)
+### Community 157 - "freshness"
+Cohesion: 0.05
+Nodes (41): gateEvidence, gateResultRequirement, additionalProperties, $ref, type, $ref, additionalProperties, properties (+33 more)
 
 ### Community 158 - "properties"
 Cohesion: 0.06
@@ -2339,9 +2331,9 @@ Nodes (30): artifact_locks, based_on_room, description, exit_criteria, exit_gate
 Cohesion: 0.06
 Nodes (30): artifact_locks, based_on_room, description, exit_criteria, exit_gate, gates, Evaluate gate transitions from validated machine-readable status fields; unknown or missing statuses stop the run., Execute provider-specific checks only when .solo/stack.md records that provider. (+22 more)
 
-### Community 215 - "freshness"
-Cohesion: 0.07
-Nodes (35): const, gateResultFreshness, const, additionalProperties, properties, $ref, required, type (+27 more)
+### Community 215 - "run_id"
+Cohesion: 0.12
+Nodes (18): const, gateResultFreshness, const, properties, additionalProperties, properties, type, const (+10 more)
 
 ### Community 216 - "validate_gate_evidence.py"
 Cohesion: 0.29
@@ -2445,7 +2437,7 @@ Nodes (30): description, $ref, $ref, description, description, minLength, type, 
 
 ### Community 241 - "properties"
 Cohesion: 0.07
-Nodes (29): description, pattern, type, description, minLength, type, description, $ref (+21 more)
+Nodes (28): description, pattern, type, description, $ref, properties, $ref, description (+20 more)
 
 ### Community 242 - "codex/plugins/gate/skills/production-readiness-reviewer/scripts/update_run_state.py"
 Cohesion: 0.21
@@ -2608,8 +2600,8 @@ Cohesion: 0.15
 Nodes (4): AddressPolicy, url_guard policy tests — schemes, private/metadata addresses, hostname…, ResolutionPolicy, SchemePolicy
 
 ### Community 282 - "agent_platform_common.py"
-Cohesion: 0.15
-Nodes (22): canonical_skills(), load_json_yaml(), parse_frontmatter(), Any, Path, Shared, dependency-free helpers for agent platform tooling., Load the repository's JSON-compatible YAML files without PyYAML., relative() (+14 more)
+Cohesion: 0.16
+Nodes (16): load_json_yaml(), Any, Path, Shared, dependency-free helpers for agent platform tooling., Load the repository's JSON-compatible YAML files without PyYAML., relative(), sha256_file(), main() (+8 more)
 
 ### Community 283 - "enum"
 Cohesion: 0.15
@@ -2824,16 +2816,16 @@ Cohesion: 0.14
 Nodes (7): BuiltinSchemaEvaluator, EndpointBindingsV1017, gate_policy.py — the shared command policy, git-derived source identity, and…, r"""Pick an interpreter token that actually runs. ``shutil.which("python3")``…, The bundled schema is enforced WITHOUT the jsonschema package., v1.0.17 output bindings: deployment responses must contain the derived HEAD;…, _usable_interpreter()
 
 ### Community 340 - "Inventory"
-Cohesion: 0.15
-Nodes (6): Inventory, Inventory consistency — README bold counts, marketplace metadata, CHANGELOG top…, Drift guard with LITERAL expectations: if a plugin, skill, command, script, or…, The 16 helper scripts and 24 room-* agents, by exact name., v1.0.15: count fields were REMOVED from marketplace metadata (the CLI warns on…, real_counts()
+Cohesion: 0.12
+Nodes (7): Inventory, InventoryFilesystemSafety, Inventory consistency — README bold counts, marketplace metadata, CHANGELOG top…, Drift guard with LITERAL expectations: if a plugin, skill, command, script, or…, The 16 helper scripts and 24 room-* agents, by exact name., v1.0.15: count fields were REMOVED from marketplace metadata (the CLI warns on…, real_counts()
 
 ### Community 341 - "claude/tests/test_semantic_regressions.py"
-Cohesion: 0.21
-Nodes (6): _iter_plugin_text_files(), load_room(), PostFinalDiscipline, Semantic regression tripwires (v1.0.16, item 17) — these fail on REINTRODUCTION…, RealFinalizerAgent, ShaCarrierLanguage
+Cohesion: 0.18
+Nodes (7): LaunchControlScope, load_room(), PostFinalDiscipline, Semantic regression tripwires (v1.0.16, item 17) — these fail on REINTRODUCTION…, A complete category set must never be sold as subcontrol proof., RealFinalizerAgent, ShaCarrierLanguage
 
-### Community 343 - "properties"
-Cohesion: 0.10
-Nodes (21): $ref, properties, minLength, pattern, type, artifact, required_fields, rules (+13 more)
+### Community 343 - "rules"
+Cohesion: 0.16
+Nodes (14): minLength, pattern, type, rules, task_ids, items, items, minItems (+6 more)
 
 ### Community 344 - "Local SEO Analysis"
 Cohesion: 0.13
@@ -3096,8 +3088,8 @@ Cohesion: 0.15
 Nodes (12): 1. Planning Room, 2. Build Room, 3. QA Room, 4. Hardening Room, 5. Launch Room, Agent Room Templates, Output, Output of this skill (+4 more)
 
 ### Community 409 - "properties"
-Cohesion: 0.08
-Nodes (24): $ref, $ref, $ref, gate_policy, git_trust, prepare_run, run_room, runtime (+16 more)
+Cohesion: 0.06
+Nodes (35): $ref, $ref, $ref, gate_policy, git_trust, prepare_run, run_room, runtime (+27 more)
 
 ### Community 410 - "Browser QA Engineer"
 Cohesion: 0.15
@@ -3459,9 +3451,9 @@ Nodes (36): description, type, const, additionalProperties, properties, required
 Cohesion: 0.14
 Nodes (13): additionalProperties, description, $id, exit_criteria, name, run, schema, seats (+5 more)
 
-### Community 500 - "gatePrerequisite"
-Cohesion: 0.12
-Nodes (17): required, minLength, type, gatePrerequisite, additionalProperties, properties, required, type (+9 more)
+### Community 500 - "artifactLock"
+Cohesion: 0.09
+Nodes (23): $ref, additionalProperties, properties, required, type, minLength, type, artifactLock (+15 more)
 
 ### Community 501 - "AI Output Auditor"
 Cohesion: 0.17
@@ -3603,9 +3595,9 @@ Nodes (7): loop, from_stage, max_iterations, on_exhaustion, on_exhaustion_action
 Cohesion: 0.07
 Nodes (29): Always Do (No Exceptions), Ask First (Requires Human Approval), Broken Access Control, Broken Authentication, Common Rationalizations, Cross-Site Scripting (XSS), File Upload Safety, Injection (SQL, NoSQL, OS Command) (+21 more)
 
-### Community 536 - "$schema"
-Cohesion: 0.08
-Nodes (26): $ref, $ref, phase, production, $schema, skill_count, suite_digest, validators (+18 more)
+### Community 536 - "validators"
+Cohesion: 0.18
+Nodes (11): $ref, $ref, phase, production, validators, additionalProperties, properties, required (+3 more)
 
 ### Community 537 - "Test-Driven Development"
 Cohesion: 0.07
@@ -3892,8 +3884,8 @@ Cohesion: 0.22
 Nodes (3): actual_counts(), Inventory, Codex marketplace, manifest, release, and README inventory consistency.
 
 ### Community 609 - "Solo Suite Enchance"
-Cohesion: 0.14
-Nodes (14): Add it to Antigravity, Add it to Claude Code, Add it to Codex, Current validation status, Install globally for every project, Install the recommended repository-intelligence core, Project-scoped lifecycle skills and GSAP, Repository layout (+6 more)
+Cohesion: 0.17
+Nodes (12): Add it to Antigravity, Add it to Claude Code, Add it to Codex, Current validation status, Install globally for every project, Install the recommended repository-intelligence core, Project-scoped lifecycle skills and GSAP, Repository layout (+4 more)
 
 ### Community 610 - "is_within"
 Cohesion: 0.31
@@ -4136,8 +4128,8 @@ Cohesion: 0.25
 Nodes (7): After intake — point to what's now available, How to run the intake, Project memory integration, Session lifecycle, Stack Advisor, When to run, Write `.solo/stack.md`
 
 ### Community 677 - "RunStateHelperDiscipline"
-Cohesion: 0.33
-Nodes (3): v1.0.17 (blocker 4): the finalization docs and both production rooms route run-…, The v1.0.16 phrasing 'write FINAL_SHA = git rev-parse HEAD to …' (a hand-write…, RunStateHelperDiscipline
+Cohesion: 0.25
+Nodes (4): _iter_plugin_text_files(), v1.0.17 (blocker 4): the finalization docs and both production rooms route run-…, The v1.0.16 phrasing 'write FINAL_SHA = git rev-parse HEAD to …' (a hand-write…, RunStateHelperDiscipline
 
 ### Community 678 - "_helper_ok"
 Cohesion: 0.25
@@ -4599,9 +4591,9 @@ Nodes (8): dependencies, @anthropic-ai/claude-code, description, @anthropic-ai/c
 Cohesion: 0.50
 Nodes (4): description, minLength, type, artifact
 
-### Community 816 - "required"
-Cohesion: 0.09
-Nodes (23): commands, deliverable, handoff_check, id, owner, reads, role, seats (+15 more)
+### Community 816 - "enum"
+Cohesion: 0.22
+Nodes (9): api-service, e-commerce, internal-application, library-package, public-marketing-site, saas-application, enum, profile (+1 more)
 
 ### Community 817 - "Shipping and Launch"
 Cohesion: 0.08
@@ -5223,9 +5215,9 @@ Nodes (3): 1.0.2 — 2026-07-09, Fixed (C4 — Git/PR path wired into the master
 Cohesion: 0.67
 Nodes (3): 1.0.8 — 2026-07-09, Polish batch (N1–N9), Versions
 
-### Community 1327 - "ask"
-Cohesion: 0.09
-Nodes (22): ask, Bash(curl:*), Bash(gh pr create:*), Bash(gh pr merge:*), Bash(git commit:*), Bash(git push:*), Bash(npm run agent:bootstrap:install:*), Bash(npm run agent:security:bootstrap:install:*) (+14 more)
+### Community 1327 - "1.0.9 — 2026-07-10"
+Cohesion: 0.67
+Nodes (3): 1.0.9 — 2026-07-10, Versions, Windows fix
 
 ### Community 1328 - "CI/CD and Automation"
 Cohesion: 0.08
@@ -5262,10 +5254,6 @@ Nodes (22): Anti-Patterns, Common Rationalizations, Confusion Management, Contex
 ### Community 1395 - "Incremental Implementation"
 Cohesion: 0.09
 Nodes (22): Common Rationalizations, Contract-First Slicing, Implementation Rules, Increment Checklist, Incremental Implementation, Overview, Red Flags, Risk-First Slicing (+14 more)
-
-### Community 1401 - "integration"
-Cohesion: 0.12
-Nodes (17): additionalProperties, properties, required, type, checkout-exact-sha, merge-exact-shas, mode, ref (+9 more)
 
 ### Community 1403 - "Performance Optimization"
 Cohesion: 0.09
@@ -5511,17 +5499,17 @@ Nodes (10): Correctness, Definition of Done, Definition of Done vs. Acceptance C
 Cohesion: 0.18
 Nodes (10): Correctness, Definition of Done, Definition of Done vs. Acceptance Criteria, Documentation, How to Apply, Integration, Quality, Red Flags (+2 more)
 
-### Community 1464 - "generate_source_overlay_manifest.py"
-Cohesion: 0.35
-Nodes (10): generate(), main(), Path, Verify the generator is operating on the pinned public base asset., Verify the exact public provenance record paired with the base asset., _top_level(), _validate_base_archive(), _validate_base_provenance() (+2 more)
+### Community 1464 - "canonical_skills"
+Cohesion: 0.38
+Nodes (8): canonical_skills(), parse_frontmatter(), build_report(), main(), word_count(), main(), Path, validate_skill()
 
 ### Community 1465 - "Architecture — Solo Suite Enchance (website)"
 Cohesion: 0.20
 Nodes (9): API surface, Architecture — Solo Suite Enchance (website), Components (responsibility + boundaries), Cross-cutting, Data model, Non-functional needs (from PRD, where stated — most are not stated), Overview, Risks / things deferred (+1 more)
 
 ### Community 1466 - "Decisions"
-Cohesion: 0.18
-Nodes (10): 2026-08-07 — Audit #2 remediation: graph refresh, permissions, CI security gate, performance budget, freshness guard, 2026-08-07 — Dependabot scoped to root npm only, not `platforms/*`, 2026-08-07 — Fixed stale 125/79 → 126/80 count drift in platform docs, 2026-08-07 — Full lifecycle audit completed; NOT PRODUCTION READY recorded for `app/`, 2026-08-07 — P0 fixes: CI, D1 guard, SEO, monitoring, security headers, security-scan refresh, rollback plan, 2026-08-07 — P1 fixes: typecheck, env docs, a11y, interaction tests, image compression, dead-code cleanup, parity checker, 2026-08-07 — PRD/architecture reverse-engineered rather than freshly interviewed, 2026-08-07 — Project profile: `public-marketing-site` (+2 more)
+Cohesion: 0.20
+Nodes (9): 2026-08-07 — Dependabot scoped to root npm only, not `platforms/*`, 2026-08-07 — Fixed stale 125/79 → 126/80 count drift in platform docs, 2026-08-07 — Full lifecycle audit completed; NOT PRODUCTION READY recorded for `app/`, 2026-08-07 — P0 fixes: CI, D1 guard, SEO, monitoring, security headers, security-scan refresh, rollback plan, 2026-08-07 — P1 fixes: typecheck, env docs, a11y, interaction tests, image compression, dead-code cleanup, parity checker, 2026-08-07 — PRD/architecture reverse-engineered rather than freshly interviewed, 2026-08-07 — Project profile: `public-marketing-site`, 2026-08-07 — Rewrote `platforms/antigravity/parity/README.md`; discovered its `tools/parity.py` is an unadapted copy of Claude's (+1 more)
 
 ### Community 1467 - "Ideation Frameworks Reference"
 Cohesion: 0.22
@@ -5589,7 +5577,7 @@ Nodes (4): main(), run(), run_expect(), safe_detail()
 
 ### Community 1483 - "Monitoring — Solo Suite Enchance (website)"
 Cohesion: 0.40
-Nodes (4): Alerts, Monitoring — Solo Suite Enchance (website), What exists today, What's still missing
+Nodes (4): Alerts, Monitoring — Solo Suite Enchance (website), What exists today, What's needed (P0/P1, see `tasks.md` T4)
 
 ### Community 1484 - "Project — Solo Suite Enchance (website)"
 Cohesion: 0.40
@@ -5623,6 +5611,10 @@ Nodes (4): 0.1 What this repository actually contains, 0.2 Verification evidence
 Cohesion: 0.50
 Nodes (4): E.1 Commands that exist — verified by file inspection, E.2 Workflows with **no** command surface, E.3 Charter commands checked and **confirmed absent**, E. Command Inventory & Audit
 
+### Community 1492 - "environment"
+Cohesion: 0.50
+Nodes (4): description, minLength, type, environment
+
 ### Community 1494 - "C. Plugin Inventory & Audit"
 Cohesion: 0.67
 Nodes (3): C.1 Solo Suite plugins — 19, enabled at **user scope**, C.2 Ambient third-party plugins & MCP servers — **NOT tracked by this repository**, C. Plugin Inventory & Audit
@@ -5647,40 +5639,24 @@ Nodes (3): recorder, const, description
 Cohesion: 0.67
 Nodes (3): reviewer, minLength, type
 
-### Community 1504 - "check-graph-freshness.py"
-Cohesion: 0.60
-Nodes (4): is_structural(), main(), Every file on disk that git would consider part of the project. `--cached`…, tracked_and_untracked()
-
-### Community 1518 - "settings.json"
-Cohesion: 0.50
-Nodes (3): enableAllProjectMcpServers, permissions, $schema
-
-### Community 1519 - "1.0.2 — 2026-07-09"
-Cohesion: 0.67
-Nodes (3): 1.0.2 — 2026-07-09, Fixed (C4 — Git/PR path wired into the master flow and room), Versions
-
-### Community 1521 - "recorder"
-Cohesion: 0.67
-Nodes (3): recorder, const, description
-
 ## Knowledge Gaps
-- **8343 isolated node(s):** `$schema`, `enableAllProjectMcpServers`, `Read(./.env)`, `Read(./.env.local)`, `Read(./.env.production)` (+8338 more)
+- **8290 isolated node(s):** `ChatGPTUser`, `geistSans`, `geistMono`, `metadata`, `workflow` (+8285 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **398 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **394 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `path` connect `path` to `$defs`, `agent-compat.py`, `codex/plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py`, `codex/plugins/solo/skills/suite-integrity/scripts/self_check.py`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `$defs` connect `$defs` to `memorySteward`, `required`, `properties`, `gateTransitions`, `gatePrerequisite`, `freshness`, `path`, `gateTransitionRoute`, `runtime_trust`, `properties`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `path` connect `path` to `required`, `agent-compat.py`, `codex/plugins/ai/skills/agent-room-templates/scripts/validate_rooms.py`, `codex/plugins/solo/skills/suite-integrity/scripts/self_check.py`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `$defs` connect `$defs` to `required`, `memorySteward`, `properties`, `gateTransitions`, `artifactLock`, `run_id`, `path`, `gateTransitionRoute`, `freshness`, `properties`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `main()` connect `codex/plugins/solo/skills/suite-integrity/scripts/self_check.py` to `path`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `RunnerError` (e.g. with `GitTrustError` and `TrustError`) actually correct?**
   _`RunnerError` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `$schema`, `enableAllProjectMcpServers`, `Read(./.env)` to the rest of the system?**
-  _8343 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `ChatGPTUser`, `geistSans`, `geistMono` to the rest of the system?**
+  _8290 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package_release.py` be split into smaller, more focused modules?**
   _Cohesion score 0.11616161616161616 - nodes in this community are weakly interconnected._
 - **Should `RecordEvidence` be split into smaller, more focused modules?**
