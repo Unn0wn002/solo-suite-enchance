@@ -30,6 +30,47 @@ body {
 }
 button { font: inherit; }
 
+/* Respect the user's motion preference: disable smooth scrolling and cut
+   every transition/animation down to effectively instant. Added 2026-08-07
+   — see .solo/risks.md. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard-focus state — no custom styling previously existed for
+   this. Added 2026-08-07 — see .solo/risks.md. */
+a:focus-visible,
+button:focus-visible,
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Skip-to-content link: visually hidden until keyboard-focused, then jumps
+   above the fixed nav. Pair with the .skip-link anchor in app/page.tsx.
+   Added 2026-08-07 — see .solo/risks.md. */
+.skip-link {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  left: 16px;
+  letter-spacing: .08em;
+  padding: 12px 16px;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  top: -100px;
+  transition: top .15s ease;
+  z-index: 1000;
+}
+.skip-link:focus { top: 16px; }
+
 .site-shell { overflow: hidden; }
 .section-pad { padding: 116px clamp(24px, 6vw, 104px); }
 .topbar {

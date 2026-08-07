@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "4cbbb277880ca45862f76b62ea8334117dddfdb081de88dd2edfd693c3919652"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/interview-me"
+}

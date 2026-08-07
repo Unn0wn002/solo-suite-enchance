@@ -10,6 +10,7 @@
   "optional_skills": [
     "database-engineering",
     "security-review",
+    "graphify",
     "repository-intelligence-routing"
   ],
   "disabled_duplicates": [],

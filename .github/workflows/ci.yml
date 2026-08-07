@@ -1,0 +1,90 @@
+name: CI
+
+# Root-level CI for the website (app/, db/, worker/, tests/). Deliberately
+# separate from platforms/*/.github/workflows/ci.yml, which gate the
+# distributable product checkouts, not this repository's own website.
+# See .solo/tasks.md T1 and .solo/risks.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  website:
+    name: Typecheck, lint, build & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.13.0"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build + test
+        run: npm test
+
+  agent-platform-validate:
+    name: Agent platform structural validation (read-only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Structural + license + link + doc-freshness validation
+        run: |
+          python scripts/validate-agent-skills.py
+          python scripts/validate-agent-platform.py
+          python scripts/validate-workflow-command-parity.py
+          python scripts/check-agent-licenses.py
+          python scripts/check-agent-links.py
+          python scripts/build-agent-audit.py --check
+          python scripts/agent-token-report.py --check
+
+      - name: Graph freshness guard
+        run: python scripts/check-graph-freshness.py
+
+  security:
+    name: Dependency + remediation security gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # npm audit reads package-lock.json directly and does not need an
+      # install, so there is deliberately no `npm ci` here — it keeps the gate
+      # fast and avoids executing any package lifecycle script in CI.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22.13.0"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Deliberately WITHOUT --full-scanners: agent-platform/tooling/
+      # security-tools.lock.json hash-pins Semgrep/pip-audit wheels for
+      # `windows-amd64-python-3.12` only, so the pinned scanner suite cannot be
+      # reproduced on ubuntu-latest without expanding that audited trust
+      # surface to a second platform. What DOES run here is fully portable:
+      # the agent-platform text-surface scan, `npm audit --ignore-scripts
+      # --audit-level=high`, and the high-risk remediation validator.
+      # Also WITHOUT --write-evidence: CI must not rewrite tracked evidence
+      # artifacts. Run `npm run agent:security` locally on Windows for the
+      # full 6-scanner pass. See docs/audit/MASTER_AUDIT.md finding G-5.
+      - name: Dependency audit + high-risk remediation validation
+        run: python scripts/agent-security.py --npm-audit

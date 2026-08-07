@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "8e159044fdcdd73d4aa8dea414675f72c0839664b62504043c78dfcb2b533d9d",
+    "references/testing-patterns.md": "f0bf05acd0edcadc27297ad5b74f104c8103ccfedba1a05cd6d6ae4af8364c56"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/test-driven-development"
+}

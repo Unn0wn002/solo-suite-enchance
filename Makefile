@@ -20,10 +20,12 @@ agent-sync:
 agent-validate:
 	$(PYTHON) scripts/validate-agent-skills.py
 	$(PYTHON) scripts/validate-agent-platform.py
+	$(PYTHON) scripts/validate-workflow-command-parity.py
 	$(PYTHON) scripts/check-agent-licenses.py
 	$(PYTHON) scripts/check-agent-links.py
 	$(PYTHON) scripts/build-agent-audit.py --check
 	$(PYTHON) scripts/agent-token-report.py --check
+	$(PYTHON) scripts/check-graph-freshness.py
 
 agent-security:
 	$(PYTHON) scripts/agent-security.py --npm-audit --full-scanners --write-evidence

@@ -8,7 +8,7 @@ The requested historical catalog was absent from the worktree, Git history, conf
 
 - Catalog entries: 69.
 - Unique repositories: 10.
-- Unique source paths: 57.
+- Unique source paths: 59.
 - Adapted capabilities: 49.
 - External-tool-only capabilities: 2.
 - Duplicate role assignments: 12.
@@ -18,8 +18,8 @@ The requested historical catalog was absent from the worktree, Git history, conf
 ## Risk disposition
 
 - Historical source HIGH: 7 unique paths; every integration remediation is verified.
-- MEDIUM: 40 unique paths; adapted or optional, never auto-activated.
-- LOW: 9 unique paths; normalized into original portable guidance.
+- MEDIUM: 41 unique paths; adapted or optional, never auto-activated.
+- LOW: 10 unique paths; normalized into original portable guidance.
 - Historical source CRITICAL: 1 rejected component; no activation path remains.
 - Residual integrated `CRITICAL`/`HIGH` capabilities: 0.
 
@@ -30,7 +30,7 @@ No audited catalog source implementation, installer, hook, MCP server, or packag
 - Branch created for this work: `audit/agent-extension-platform`.
 - Starting commit: `e6705a979f82deaf95dd692794adba550e1de9f2`.
 - Host: Windows x64 with PowerShell 5.1.
-- Available: Node.js 24.18.0, npm 11.16.0, pnpm 11.9.0, Python 3.12.10, Git 2.55.0, Codex 0.144.1, Claude Code 2.1.207, Graphify 0.9.27.
+- Requested-source update (2026-08-01): bundled Node.js 24.14.0, pnpm 11.9.0, Python 3.13.14, the Codex desktop host, and Graphify 0.9.32 were available. Claude Code and Antigravity CLIs were not available for interactive validation.
 - Project-local security tools: Semgrep 1.171.0, Gitleaks 8.30.1, Trivy 0.72.0, and pip-audit 2.10.1. Unavailable locally: uv, Antigravity/`agy`, Serena, Context7, Repomix, Aider, and Make.
 
 ## Verdict

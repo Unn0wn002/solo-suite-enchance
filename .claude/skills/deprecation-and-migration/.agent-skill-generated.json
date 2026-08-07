@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "ad1cd6f9a42af8a68edddd5923c7c6969a5e1ac1e3df32acb670759a81f2aa9a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/deprecation-and-migration"
+}

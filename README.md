@@ -155,6 +155,43 @@ node scripts\check-core-tooling.mjs
 
 The check is read-only and reports which optional tools are available.
 
+## Project-scoped lifecycle skills and GSAP
+
+The repository also carries all 24 audited lifecycle skills from
+[`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills). ChatGPT/Codex and Antigravity discover
+them under `.agents/skills/`; Claude receives generated mirrors under `.claude/skills/`. Claude has eight
+adapted commands under `.claude/commands/`, and Antigravity has the corresponding workflows under
+`.agents/workflows/`. Upstream automatic hooks and unpinned MCP installer instructions are excluded.
+
+[`greensock/GSAP`](https://github.com/greensock/GSAP) is available to every agent as the exact project
+dependency `gsap@3.15.0`; implementation guidance remains in the portable `gsap-animation` skill.
+
+The audited Graphify `0.9.32` CLI is exposed through `$graphify` in Codex and `/graphify` in Claude and
+Antigravity. These reviewed adapters support bounded local queries and explicit code-only graph refreshes; they
+do not enable Graphify hooks, MCP, platform installers, network ingestion, databases, or LLM labeling.
+
+## Install globally for every project
+
+An explicitly requested user-level installation is supported by the reviewed PowerShell installer. It promotes
+the audited portable skills, Claude commands, Antigravity workflows, and all native platform plugin trees into
+the current user's Codex, Claude, and Gemini/Antigravity configuration directories. Existing destinations are
+backed up below `~/.solo-suite-global-backups/` before replacement.
+
+```powershell
+# Inspect the planned targets first.
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -WhatIf
+
+# Install for the current Windows user.
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -Confirm:$false
+
+# Install or refresh only the Graphify host adapters.
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -GraphifyOnly
+```
+
+Restart Codex, Claude, and Antigravity after installation. The installer does not globally install application
+dependencies: Graphify remains separately version-pinned, and GSAP must remain a dependency of each JavaScript
+project that imports it.
+
 ## Add it to Antigravity
 
 Antigravity does not expose a single standardized marketplace CLI in this
@@ -195,20 +232,55 @@ npx.cmd vinext dev
 npx.cmd vinext build
 ```
 
-The `npm run dev` and `npm run build` scripts use POSIX-style environment
-assignment for CI/Linux. On Windows, use the explicit `npx.cmd` commands above.
+`npm run dev` and `npm run build` are thin wrappers over `vinext dev` and
+`vinext build` — they set no environment variables of their own. The
+`WRANGLER_LOG_PATH` line above is a local convenience; `vite.config.ts` already
+defaults Wrangler/Miniflare state to project-local paths.
+
+### Verifying the website
+
+```powershell
+npx.cmd tsc --noEmit    # types
+npm.cmd run lint        # eslint
+npm.cmd test            # build + 11 tests, incl. the bundle-size budget
+```
+
+CI (`.github/workflows/ci.yml`) runs all three on every push to `main` and
+every pull request, plus agent-platform structural validation, a graph
+freshness guard, and a dependency/remediation security gate.
+
+### Verifying the agent platform
+
+```powershell
+npm.cmd run agent:validate    # structure, licenses, links, parity, graph freshness
+npm.cmd run agent:security    # full 6-scanner suite (Windows; needs `py -3.12`)
+```
 
 ## Repository layout
 
 ```text
-app/                         Solo Suite Enchance website
+app/                         Website source (single-page marketing site)
+worker/                      Cloudflare Worker entry: routing, image opt, security headers
+db/                          Drizzle + D1 scaffolding (binding currently unprovisioned)
+tests/                       node --test suites, incl. the bundle-size budget
+public/                      Static assets and the social preview card
+.github/workflows/ci.yml     Root CI: typecheck, lint, build, test, validate, security
+
+.agents/                     Canonical portable skills, rules, agents, workflows
+.claude/                     Generated Claude mirror + commands, agents, permissions
+agent-platform/              Roles, profiles, manifests, locks, security policy
+scripts/                     Validators, bootstrappers, audit and sync tooling
 platforms/claude/            Claude marketplace distribution
 platforms/codex/             Codex-native distribution
 platforms/antigravity/       Antigravity adapter distribution
-capability-inventory.json    Exact plugin, skill, command, and routing inventory
-CAPABILITY_ROADMAP.md        Upstream-informed implementation ideas and phases
+
+.solo/                       Project memory: prd, architecture, tasks, risks, decisions
+docs/audit/MASTER_AUDIT.md   Canonical living lifecycle audit
+docs/agent-audit/            Agent extension platform audit evidence
 graphify-out/                Persistent code graph and reports
-public/og.png                Social preview card
+capability-inventory.json    Exact plugin, skill, command, and routing inventory
+performance-budget.json      Enforced client-bundle transfer-size budget
+CAPABILITY_ROADMAP.md        Upstream-informed implementation ideas and phases
 ```
 
 ## Scope and roadmap

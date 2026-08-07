@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "audit_date": "2026-07-29",
+  "audit_date": "2026-08-07",
   "command_policy": "npm audit --ignore-scripts --audit-level=high --json",
   "lifecycle_scripts_executed": false,
   "vulnerability_counts": {

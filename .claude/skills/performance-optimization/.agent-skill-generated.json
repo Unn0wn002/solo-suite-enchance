@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "3f09f3a9244f7721b4bce5ab448f23b400639dfbbbf11e6dce6a3ad54603e2ad",
+    "references/performance-checklist.md": "628539583b7f515f84d0b8e4f4210ccdc0449afd31901149a078209f0769e654"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/performance-optimization"
+}

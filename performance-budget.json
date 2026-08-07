@@ -1,0 +1,39 @@
+{
+  "schema": "solo-suite/performance-budget-v1",
+  "purpose": "Enforced transfer-size budget for the website's client bundle. Enforced by tests/bundle-budget.test.mjs, which runs as part of `npm test` and CI.",
+  "rationale": [
+    "Audit #2 (docs/audit/MASTER_AUDIT.md) scored performance engineering 25/100 — the repository's weakest area — because no performance measurement of any kind existed. Three skills discussed performance; nothing measured it.",
+    "Budgets below were set from a real measurement of the 2026-08-07 build, not from a generic recommendation. Headroom is deliberately modest (~15%) so a genuine regression fails rather than being absorbed silently.",
+    "Sizes are gzip, not raw: Cloudflare negotiates compression on every asset response, so gzip is the honest proxy for what a visitor actually downloads. Raw sizes are recorded for reference only.",
+    "This is a transfer-size budget, NOT a Core Web Vitals budget. LCP/INP/CLS still have no measurement in this repository — see MASTER_AUDIT.md finding H-1. Do not read a passing budget as a passing performance gate."
+  ],
+  "measuredBaseline": {
+    "date": "2026-08-07",
+    "commit": "cea5164 (working tree, uncommitted)",
+    "jsRawBytes": 286311,
+    "jsGzipBytes": 88130,
+    "cssRawBytes": 29887,
+    "cssGzipBytes": 7555,
+    "totalGzipBytes": 95685,
+    "fileCount": 6,
+    "largestFileGzipBytes": 59024,
+    "largestFile": "framework-*.js"
+  },
+  "budgets": {
+    "jsGzipBytes": 102400,
+    "cssGzipBytes": 10240,
+    "totalGzipBytes": 110592,
+    "largestFileGzipBytes": 71680
+  },
+  "budgetsHuman": {
+    "jsGzipBytes": "100 KB",
+    "cssGzipBytes": "10 KB",
+    "totalGzipBytes": "108 KB",
+    "largestFileGzipBytes": "70 KB"
+  },
+  "whenExceeded": [
+    "Do not raise the budget as the first response. Establish why the bundle grew.",
+    "A new dependency is the usual cause — check whether it is actually needed (the gsap removal in .solo/tasks.md T11 is the precedent).",
+    "Raise a budget only with a recorded justification in .solo/decisions.md, and update measuredBaseline in the same change."
+  ]
+}

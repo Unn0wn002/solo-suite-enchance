@@ -1,0 +1,11 @@
+{
+  "files": {
+    "SKILL.md": "c71723931e31ac0ea8f1574702b8e4ccc5f500706fd01bd4247ba9e36ce5821c",
+    "references/accessibility-checklist.md": "61c759d94d52296231f5f310b92b401f56c44e4430dc3cc95ebac5d7b1d5ffac",
+    "references/definition-of-done.md": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee",
+    "references/performance-checklist.md": "628539583b7f515f84d0b8e4f4210ccdc0449afd31901149a078209f0769e654",
+    "references/security-checklist.md": "a8bbff3b1ac9122985e98fbe9a8fa09cd8ad53b190bac7f8f0f63687900f7d7a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/shipping-and-launch"
+}
