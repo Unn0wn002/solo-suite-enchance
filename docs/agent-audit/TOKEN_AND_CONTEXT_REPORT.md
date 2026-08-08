@@ -6,9 +6,9 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 
 | Source | Bytes | Words | Loading behavior |
 | --- | ---: | ---: | --- |
-| `AGENTS.md` | 2455 | 311 | Startup instruction surface |
-| `CLAUDE.md` | 419 | 59 | Startup instruction surface |
-| Canonical skill metadata | 3327 description characters | 14 skills | Metadata first; bodies on demand |
+| `AGENTS.md` | 2974 | 372 | Startup instruction surface |
+| `CLAUDE.md` | 546 | 79 | Startup instruction surface |
+| Canonical skill metadata | 12748 description characters | 39 skills | Metadata first; bodies on demand |
 
 ## Duplicate descriptions
 
@@ -19,16 +19,16 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 
 | File | Bytes | Words |
 | --- | ---: | ---: |
-| `.agents/skills/agent-extension-audit/references/audit-method.md` | 1933 | 241 |
-| `.agents/skills/repository-intelligence-routing/SKILL.md` | 1423 | 182 |
-| `.agents/skills/agent-extension-audit/SKILL.md` | 1420 | 181 |
-| `.agents/skills/security-review/SKILL.md` | 1116 | 140 |
-| `.agents/skills/software-architecture/SKILL.md` | 1073 | 133 |
-| `.agents/skills/database-engineering/SKILL.md` | 1053 | 131 |
-| `.agents/skills/qa-verification/SKILL.md` | 1038 | 131 |
-| `.agents/skills/backend-development/SKILL.md` | 1037 | 138 |
-| `.agents/skills/devops-release/SKILL.md` | 1029 | 137 |
-| `.agents/skills/product-discovery/SKILL.md` | 1028 | 138 |
+| `.agents/skills/code-review-and-quality/SKILL.md` | 21033 | 2990 |
+| `.agents/skills/security-and-hardening/SKILL.md` | 21002 | 2735 |
+| `.agents/skills/idea-refine/examples.md` | 20284 | 3008 |
+| `.agents/skills/doubt-driven-development/references/orchestration-patterns.md` | 18201 | 2542 |
+| `.agents/skills/doubt-driven-development/SKILL.md` | 16982 | 2424 |
+| `.agents/skills/test-driven-development/SKILL.md` | 16967 | 2219 |
+| `.agents/skills/performance-optimization/SKILL.md` | 15639 | 1993 |
+| `.agents/skills/interview-me/SKILL.md` | 14849 | 2323 |
+| `.agents/skills/git-workflow-and-versioning/SKILL.md` | 14563 | 1984 |
+| `.agents/skills/browser-testing-with-devtools/SKILL.md` | 14529 | 1886 |
 
 ## Large generated files
 
@@ -46,7 +46,7 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 | Profile | Roles | Enabled skills | Optional skills | External tools | Target max active skills |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | `analytics` | 1 | 1 | 1 | 0 | 2 |
-| `architecture` | 1 | 1 | 3 | 1 | 4 |
+| `architecture` | 1 | 1 | 4 | 1 | 4 |
 | `backend` | 1 | 1 | 3 | 0 | 4 |
 | `database` | 1 | 1 | 3 | 0 | 4 |
 | `design` | 1 | 1 | 2 | 0 | 3 |

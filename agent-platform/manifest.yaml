@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "audit_mode": "FULL_AUDIT_AND_IMPLEMENTATION",
-  "audit_date": "2026-07-28",
+  "audit_date": "2026-08-02",
   "catalog_source_status": "RECONSTRUCTED_CANONICAL_V1",
   "default_profile": "planning",
   "default_profile_rationale": "Planning loads one role and one canonical skill; phase-specific profiles are selected on demand.",
@@ -135,18 +135,18 @@
       ],
       "source_url": "https://github.com/Graphify-Labs/graphify",
       "source_path": ".",
-      "pinned_commit_sha": "0b2bd938c4a48e91d27f0ba09b96409e0a36c78a",
+      "pinned_commit_sha": "00efd6e7969837ae4a9f11d8d504dcd3b20b09df",
       "license": "Apache-2.0 OR MIT",
       "risk_level": "MEDIUM",
       "primary_type": "LOCAL_CLI_TOOL",
       "status": "EXTERNAL_TOOL_ONLY",
-      "integration_kind": "external_reference",
-      "canonical_skill_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "integration_kind": "audited_cli_skill_and_global_adapters",
+      "canonical_skill_path": ".agents/skills/graphify/SKILL.md",
       "related_canonical_skills": [
         ".agents/skills/repository-intelligence-routing/SKILL.md"
       ],
-      "claude_adapter_path": ".claude/skills/repository-intelligence-routing/SKILL.md",
-      "antigravity_adapter_path": ".agents/skills/repository-intelligence-routing/SKILL.md",
+      "claude_adapter_path": ".claude/skills/graphify/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/graphify/SKILL.md",
       "role_adapter_paths": {
         "claude": [
           ".claude/agents/software-architect.md"
@@ -164,7 +164,7 @@
         "architecture"
       ],
       "replacement_or_duplicate_relationship": null,
-      "recommendation": "Primary relationship graph; run project-locally and keep optional network/database exports off unless explicitly requested."
+      "recommendation": "Accept the exact CLI version for repository relationship queries and install original reviewed host adapters globally on explicit request. Do not run Graphify platform installers or enable hooks, MCP configuration, model integrations, network ingestion, databases, or global graph mutation."
     },
     {
       "canonical_name": "gsap-skills-skills-gsap-core",
@@ -2508,6 +2508,128 @@
       ],
       "replacement_or_duplicate_relationship": null,
       "recommendation": "Use selected plugin trees as pinned references; do not activate bundled hooks or translate them automatically."
+    },
+    {
+      "canonical_name": "addyosmani-agent-skills",
+      "description": "Audited lifecycle skills and command adapters from addyosmani/agent-skills.",
+      "role_tags": [
+        "Product Manager",
+        "Software Architect",
+        "Frontend Developer",
+        "Backend Developer",
+        "QA Engineer",
+        "Security Reviewer",
+        "DevOps Engineer",
+        "Technical Writer"
+      ],
+      "category_tags": [
+        "specification",
+        "planning",
+        "implementation",
+        "testing",
+        "review",
+        "shipping"
+      ],
+      "source_url": "https://github.com/addyosmani/agent-skills",
+      "source_path": ".",
+      "pinned_commit_sha": "7829ffd90d973b6325f5f12f1b1226dcace74443",
+      "license": "MIT",
+      "risk_level": "MEDIUM",
+      "primary_type": "PORTABLE_SKILL_PLUGIN",
+      "status": "ADAPTED",
+      "integration_kind": "safety_adapted_project_install",
+      "canonical_skill_path": ".agents/skills/using-agent-skills/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/api-and-interface-design/SKILL.md",
+        ".agents/skills/browser-testing-with-devtools/SKILL.md",
+        ".agents/skills/ci-cd-and-automation/SKILL.md",
+        ".agents/skills/code-review-and-quality/SKILL.md",
+        ".agents/skills/code-simplification/SKILL.md",
+        ".agents/skills/context-engineering/SKILL.md",
+        ".agents/skills/debugging-and-error-recovery/SKILL.md",
+        ".agents/skills/deprecation-and-migration/SKILL.md",
+        ".agents/skills/documentation-and-adrs/SKILL.md",
+        ".agents/skills/doubt-driven-development/SKILL.md",
+        ".agents/skills/frontend-ui-engineering/SKILL.md",
+        ".agents/skills/git-workflow-and-versioning/SKILL.md",
+        ".agents/skills/idea-refine/SKILL.md",
+        ".agents/skills/incremental-implementation/SKILL.md",
+        ".agents/skills/interview-me/SKILL.md",
+        ".agents/skills/observability-and-instrumentation/SKILL.md",
+        ".agents/skills/performance-optimization/SKILL.md",
+        ".agents/skills/planning-and-task-breakdown/SKILL.md",
+        ".agents/skills/security-and-hardening/SKILL.md",
+        ".agents/skills/shipping-and-launch/SKILL.md",
+        ".agents/skills/source-driven-development/SKILL.md",
+        ".agents/skills/spec-driven-development/SKILL.md",
+        ".agents/skills/test-driven-development/SKILL.md",
+        ".agents/skills/using-agent-skills/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/using-agent-skills/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/using-agent-skills/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [],
+        "antigravity": []
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [],
+      "replacement_or_duplicate_relationship": {
+        "relationship": "supplements_existing_role_skills",
+        "activation_constraint": "load only the narrow skill needed for the current task"
+      },
+      "recommendation": "Install project-scoped skills and adapted commands/workflows by default; permit explicit promotion of the reviewed, safety-adapted copies through scripts/install-global-agent-platforms.ps1. Continue to exclude the upstream automatic hook, upstream global installers, unpinned on-demand MCP/package instructions, and direct persona activation."
+    },
+    {
+      "canonical_name": "greensock-gsap-runtime",
+      "description": "Exact GSAP runtime dependency shared by all agent platforms working in this repository.",
+      "role_tags": [
+        "GSAP Animation Developer",
+        "Frontend Developer"
+      ],
+      "category_tags": [
+        "animation",
+        "runtime-library"
+      ],
+      "source_url": "https://github.com/greensock/GSAP",
+      "source_path": ".",
+      "pinned_commit_sha": "13e2b790546426a1a2e0e9b409f3f8dc6d6611f2",
+      "license": "LicenseRef-GSAP-Standard-No-Charge",
+      "risk_level": "LOW",
+      "primary_type": "PROJECT_JAVASCRIPT_LIBRARY",
+      "status": "ACCEPTED_PROJECT_DEPENDENCY",
+      "integration_kind": "exact_project_dependency",
+      "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+      "related_canonical_skills": [
+        ".agents/skills/frontend-development/SKILL.md"
+      ],
+      "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+      "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+      "role_adapter_paths": {
+        "claude": [
+          ".claude/agents/gsap-animation-developer.md"
+        ],
+        "antigravity": [
+          ".agents/agents/gsap-animation-developer.md"
+        ]
+      },
+      "external_tool_requirement": {
+        "name": null,
+        "required": false
+      },
+      "enabled_by_default": false,
+      "activation_profile": [
+        "frontend",
+        "gsap-animation"
+      ],
+      "replacement_or_duplicate_relationship": {
+        "relationship": "runtime_for",
+        "canonical_capability": "gsap-animation"
+      },
+      "recommendation": "Install as one exact project dependency with lifecycle scripts disabled; route agent guidance through the existing portable gsap-animation skill."
     }
   ]
 }

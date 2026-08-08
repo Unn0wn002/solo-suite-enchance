@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "7c6526e559e75b50d9abd26c0374e4fb554e644b225056cdc8c308f52b3c111d"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/ci-cd-and-automation"
+}

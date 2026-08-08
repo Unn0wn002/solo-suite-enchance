@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Solo Suite Enchance — The developer operating system",
     description:
       "Solo Suite Enchance is the larger-project developer operating system for Claude, Codex, and Antigravity.",
-    images: [{ url: "/og.png", width: 1536, height: 1024, alt: "Solo Suite Enchance — Ship like a company. Think like a solo." }],
+    images: [{ url: "/og.png", width: 1200, height: 675, alt: "Solo Suite Enchance — Ship like a company. Think like a solo." }],
   },
   twitter: {
     card: "summary_large_image",

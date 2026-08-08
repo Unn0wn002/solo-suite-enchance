@@ -1,8 +1,8 @@
 # Claude ↔ Codex capability parity
 
 `capabilities.json` is the deterministic parity contract for the Solo Suite
-adapter. The Claude checkout is canonical: it owns the 19 plugin IDs, 125
-command definitions, 79 specialist skills, shared helper files, and AgentRoom
+adapter. The Claude checkout is canonical: it owns the 19 plugin IDs, 126
+command definitions, 80 specialist skills, shared helper files, and AgentRoom
 source files. The Codex checkout is regenerated from that source and is allowed
 only the adapter differences declared in the manifest.
 

@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "c730130c1a8bb78ac84d9ed6346fadc76ed526be601adb685f1d359e17c863f6",
+    "references/accessibility-checklist.md": "61c759d94d52296231f5f310b92b401f56c44e4430dc3cc95ebac5d7b1d5ffac"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/frontend-ui-engineering"
+}

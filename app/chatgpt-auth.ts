@@ -1,6 +1,24 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
+/**
+ * TRUST BOUNDARY — read before wiring this into any route (nothing currently
+ * imports this module; see .solo/prd.md Open Question #4 and .solo/risks.md).
+ *
+ * `getChatGPTUser()` trusts the `oai-authenticated-user-*` request headers
+ * verbatim as identity. That is safe ONLY if every request this Worker
+ * serves has already passed through OpenAI's Apps/Sites gateway (the one
+ * `.openai/hosting.json`'s `project_id` implies this site is deployed
+ * behind), and that gateway strips/overwrites any client-supplied header of
+ * the same name before forwarding. It becomes a spoofable-identity
+ * vulnerability the moment this Worker is reachable by ANY other path that
+ * bypasses that gateway — e.g. a direct `*.workers.dev` URL, a custom domain
+ * not routed through the gateway, or a future non-ChatGPT entry point into
+ * the same Worker. This repository does not establish which is true today;
+ * confirm the deployment topology before depending on this for real access
+ * control, not just personalization.
+ */
+
 export type ChatGPTUser = {
   displayName: string;
   email: string;

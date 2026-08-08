@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "70019042888ce8ba9edc9f6e6fcd1e3349ee735e598453123d22faeca747ede1"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/context-engineering"
+}
