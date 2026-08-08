@@ -155,7 +155,7 @@ ROLES = {
 PROFILE_SPECS = {
     "planning": (["product-manager"], ["product-discovery"], ["data-analysis", "repository-intelligence-routing"], [], 3),
     "design": (["ui-ux-designer"], ["ui-ux-design"], ["gsap-animation", "repository-intelligence-routing"], [], 3),
-    "architecture": (["software-architect"], ["software-architecture"], ["database-engineering", "security-review", "repository-intelligence-routing"], ["graphify"], 4),
+    "architecture": (["software-architect"], ["software-architecture"], ["database-engineering", "security-review", "graphify", "repository-intelligence-routing"], ["graphify"], 4),
     "frontend": (["frontend-developer"], ["frontend-development"], ["ui-ux-design", "gsap-animation", "qa-verification"], [], 4),
     "gsap-animation": (["gsap-animation-developer"], ["gsap-animation"], ["frontend-development", "qa-verification"], [], 3),
     "backend": (["backend-developer"], ["backend-development"], ["database-engineering", "security-review", "qa-verification"], [], 4),

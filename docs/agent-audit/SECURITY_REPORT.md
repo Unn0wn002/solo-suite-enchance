@@ -62,6 +62,14 @@ Decision: Rejected; use Graphify plus bounded native symbol search and client-na
 | [gsap-skills](https://github.com/greensock/gsap-skills) | `LOW` | The selected skills are instruction-only, MIT-licensed, and contain no selected lifecycle, hook, MCP, or credential surface. Canonical guidance was independently normalized. | Use the official pinned skills as versioned references; activate only the GSAP skill needed for the current implementation. |
 | [storymap-skill](https://github.com/MartinForReal/storymap-skill) | `LOW` | The selected skill is instruction-only and MIT-licensed with no selected executable, hook, MCP, credential, or lifecycle surface. Canonical planning guidance was independently normalized. | Use the original, pinned skill as reference; keep the canonical product-discovery skill original and concise. |
 
+## Requested installation source findings
+
+| Source | Risk | Surfaces | Decision |
+| --- | --- | --- | --- |
+| [addyosmani-agent-skills](https://github.com/addyosmani/agent-skills) | `MEDIUM` | 24 skills, 8 commands, 4 personas, executable helpers, and an automatic Claude session hook; one skill documented an unpinned MCP install. | Install safety-adapted project skills and commands only; exclude hooks, installers, unpinned MCP/package setup, and direct persona activation. |
+| [Graphify](https://github.com/Graphify-Labs/graphify) | `MEDIUM` | CLI plus optional MCP, hooks, model/network integrations, and repository analysis. | Accept the exact 0.9.32 CLI only; do not activate platform installers, hooks, MCP, or model integrations. |
+| [greensock-GSAP](https://github.com/greensock/GSAP) | `LOW` | Browser animation runtime with no package lifecycle scripts, agent hooks, MCP definitions, credentials, or detected telemetry. | Install exact `gsap@3.15.0` with lifecycle scripts disabled and route usage through the portable GSAP skill. |
+
 ## Controls applied
 
 - All clones were shallow, filtered, non-recursive, and stored under ignored `.tmp/`.
@@ -69,11 +77,13 @@ Decision: Rejected; use Graphify plus bounded native symbol search and client-na
 - No root `.mcp.json` or project hook was activated.
 - Rejected sources have no canonical skill, adapter, profile, hook, MCP, or installation path.
 - Accepted source-driven capabilities are disabled by default and selected only through bounded profiles.
-- Canonical skills are original normalized guidance; no third-party implementation code was copied.
+- Imported lifecycle skills carry a repository safety overlay and local references; automatic hooks and installer instructions were not copied. GSAP is an exact package dependency, not startup agent context.
 - Graphify is the sole relationship graph. `code-review-graph` is rejected rather than co-activated.
 - Repository-local validators reject root MCP activation, project hooks, verification bypasses, and references to rejected external tools in active profiles.
 
 ## Scanner coverage
+
+Requested-source update note (2026-08-01): the repository-local policy/remediation scan passed. A fresh npm audit was `NOT_EXECUTED` because npm is unavailable and pnpm cannot audit an npm lockfile. The installed full scanner suite was attempted, but Windows Application Control blocked Semgrep before scanning; the prior scanner evidence below remains historical and was not represented as a fresh pass.
 
 - Local deterministic secret and dangerous-command scan: implemented by `scripts/agent-security.py`.
 - npm audit with lifecycle scripts disabled: **0** findings (0 critical, 0 high, 0 moderate, 0 low).

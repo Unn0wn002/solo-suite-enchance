@@ -1,50 +1,64 @@
-# Claude ↔ Codex capability parity
+# Claude → Antigravity distribution parity
 
-`capabilities.json` is the deterministic parity contract for the Solo Suite
-adapter. The Claude checkout is canonical: it owns the 19 plugin IDs, 125
-command definitions, 79 specialist skills, shared helper files, and AgentRoom
-source files. The Codex checkout is regenerated from that source and is allowed
-only the adapter differences declared in the manifest.
+This directory is currently a **copy of the Claude ↔ Codex parity tooling**
+(`README.md`, `capabilities.json`, and `../tools/parity.py`) and does not
+describe or check Antigravity-specific parity. `../tools/parity.py` is
+byte-identical to `platforms/claude/tools/parity.py`: its docstring, CLI, and
+checks still reference "the Codex adapter," a `solo-suite-codex-*` target
+checkout, and Codex-specific mechanics (e.g. "all 159 Codex `openai.yaml`
+policies") that do not exist in this distribution. Running `generate`/`--check`
+here would not validate anything about the Antigravity tree — treat this
+subdirectory as inherited scaffolding, not an active parity contract, until it
+is rewritten (or removed) for an Antigravity-specific target.
 
-`capabilities.json` is **generated, never hand-edited**. The counts above and
-the `EXPECTED_*` constants in `tools/parity.py` are literal drift guards, and
-`tests/test_parity_contract.py` fails closed if either goes stale, if a recorded
-`source_sha256` stops matching disk, or if the committed manifest differs from a
-fresh generation.
+## What is actually true about Claude ↔ Antigravity today (observed, not yet enforced by any test)
 
-Generate the contract after changing the canonical source:
+A full recursive comparison of `platforms/claude/` against `platforms/antigravity/`
+(excluding `__pycache__`) shows the two trees are near byte-identical. The only
+differences found:
 
-```text
-python tools/parity.py generate --source <solo-suite-v1.0.27-release-work>
-```
+1. **`plugin.json` at each Antigravity plugin root** (19 files, absent from the
+   equivalent Claude plugin roots) — content is identical to the
+   `.claude-plugin/plugin.json` both platforms also carry. This is an
+   install-path convention for Antigravity's Gemini-config loader (see
+   `../ANTIGRAVITY.md`: installed under `~/.gemini/config/plugins/`), not a
+   functional divergence.
+2. **`plugins/project/skills/capability-routing/SKILL.md` genuinely differs in
+   content** — the one real behavioral drift found anywhere in the tree.
+   Claude's version has an explicit `## Inputs` section, numbered
+   `## Routing rules`, and a `## Handoff contract` section; Antigravity's is a
+   condensed paragraph lacking that structure. Whether this divergence is
+   intentional is undocumented — worth a deliberate decision either way.
+3. **`capabilities.json` differs from Claude's** — expected, since it is
+   per-target generated output, but see the caveat above about what actually
+   generates and consumes it for an Antigravity target today.
+4. **`README.md` differs** (branding/install instructions — this file).
+5. **Antigravity-exclusive files**: `../ANTIGRAVITY.md`, `../antigravity-manifest.json`.
 
-Then check the adapter:
+Both distributions currently ship **19 plugins, 80 specialist skills, and 126
+slash commands** — verified by direct filesystem count and cross-checked
+against `../antigravity-manifest.json` and `../ANTIGRAVITY.md` (both already
+carry the current, correct figures as of this fix).
 
-```text
-python tools/parity.py --check \
-  --source <solo-suite-v1.0.27-release-work> \
-  --target <solo-suite-codex-v1.0.27>
-```
+## If Antigravity-specific parity protection is wanted
 
-The check compares against a Codex adapter checkout, which is a separate
-downstream distribution and is not part of this repository. It reports failures
-whenever the canonical tree has moved ahead of the last published adapter; that
-is expected between releases and is resolved by regenerating the adapter, not by
-editing this contract.
+No Antigravity-aware drift guard exists today: a change that silently
+desynchronizes the Claude and Antigravity trees beyond the two documented
+deltas above would not be caught by any test in this distribution. Two options,
+neither implemented yet:
 
-The checker is standard-library-only and fails closed. It verifies the exact
-command-map IDs/paths and explicit-only policy, normalized specialist bodies,
-byte hashes for helper/schema files, all 159 Codex `openai.yaml` policies, and
-the byte-exact Claude AgentRoom archive under `parity/claude-rooms`.
+- **(a)** Adapt `../tools/parity.py` into a genuine Claude → Antigravity
+  checker. The right shape is different from the Codex checker's
+  adapter-with-declared-waivers model — Antigravity's actual relationship to
+  Claude is "near-identical mirror plus two documented deltas," so a simple
+  `diff`-based checker asserting *only* the deltas above are the sole
+  differences would be both simpler and more accurate than reusing the Codex
+  logic wholesale.
+- **(b)** Remove this vestigial `parity/` subdirectory from the Antigravity
+  distribution entirely if no Antigravity-specific check is planned, so it
+  stops implying a contract that doesn't currently exist.
 
-Two skills are platform adapters rather than byte-identical copies:
-
-* `ai:agent-room-templates` — Codex has a native runner, trust journal, and
-  state machinery. The canonical Claude tree is archived for review.
-* `solo:suite-integrity` — Codex validates Codex manifests and installed
-  plugin metadata, so its implementation is intentionally native.
-
-The only other permitted differences are the Codex-only
-`full-team:full-team-orchestrator` skill and the six gate runtime support files
-listed in `capabilities.json`. Any additional skill, helper, policy, or archive
-file is a parity failure.
+*(This file was corrected 2026-08-07 as part of a documentation-accuracy pass;
+the prior version was a verbatim, semantically wrong copy of
+`platforms/claude/parity/README.md` describing Codex mechanics inside the
+Antigravity distribution.)*

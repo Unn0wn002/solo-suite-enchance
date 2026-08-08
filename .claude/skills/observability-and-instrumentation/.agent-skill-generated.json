@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "b6986d4f273bc69418acb02a559dbf48c98199abf77694645d6dd9c55c50da2a",
+    "references/observability-checklist.md": "28659e0a4b9625a434285fa9ede632802afa909f768d0f8d839dca227e53d8fe"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/observability-and-instrumentation"
+}

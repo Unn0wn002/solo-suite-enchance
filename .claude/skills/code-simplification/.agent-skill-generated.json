@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "ba4e0686b5bb324cc549b38fe4793c77f010275983eeaf3fb189301632f2926c"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/code-simplification"
+}

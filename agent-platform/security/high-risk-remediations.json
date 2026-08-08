@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "audit_date": "2026-07-29",
+  "audit_date": "2026-08-01",
   "policy": {
     "historical_source_severity_is_preserved": true,
     "allowed_residual_risk": [
@@ -17,8 +17,8 @@
     ".agents/skills/backend-development/SKILL.md": "2b80c76f96194b69c4f5102f0b27896354fc3ce7bbb4a71f219374f6880c289a",
     ".agents/rules/verification-integrity.md": "3bba34e2699a44eede5be0f1c5c3876d3621946e0df07687a9be040accc44fff",
     ".agents/rules/tool-permissions.md": "341ecc29f4675055420413c05e3ca656b8f436920f0c8f10f8728f68e67331e0",
-    "AGENTS.md": "56e93b1ee938e01bfd271ace7810b081caba45e713baf5f429d4a57cf335d44d",
-    "core-tooling.json": "9167bd30298f17d8671b1ae55ee8456716612bd2df31cfcecf2dfa556c7dd48d"
+    "AGENTS.md": "7ad963bc1081b4bc35749112e4f2476aac4b088bda86f72f5a8d692218c29337",
+    "core-tooling.json": "46d295eec551fbae3f56e9efc432d4b5d146723e88ef6460053d4f25e54af709"
   },
   "findings": [
     {

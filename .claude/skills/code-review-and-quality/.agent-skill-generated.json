@@ -1,0 +1,9 @@
+{
+  "files": {
+    "SKILL.md": "94ea824e9ddec85ee62e0e27c532dd81b912cf86a9dbea5a49e70342fe5a0cfa",
+    "references/performance-checklist.md": "628539583b7f515f84d0b8e4f4210ccdc0449afd31901149a078209f0769e654",
+    "references/security-checklist.md": "a8bbff3b1ac9122985e98fbe9a8fa09cd8ad53b190bac7f8f0f63687900f7d7a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/code-review-and-quality"
+}

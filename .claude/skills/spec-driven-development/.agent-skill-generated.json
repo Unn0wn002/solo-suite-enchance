@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "c3e8de4adcee84712aa50642baff1acb29458a76a673a8180c2057f79baad537"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/spec-driven-development"
+}

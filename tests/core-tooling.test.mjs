@@ -15,7 +15,7 @@ test("core repository-intelligence manifest exposes only approved tools", async 
     assert.ok(tool.install);
     assert.ok(tool.verify);
   }
-  assert.equal(manifest.tools[0].version, "0.9.27");
+  assert.equal(manifest.tools[0].version, "0.9.32");
   assert.equal(manifest.tools[0].install, "python scripts/bootstrap-graphify.py --install");
   assert.deepEqual(
     manifest.policy.rejected,

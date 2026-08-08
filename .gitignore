@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+tests/.page-compiled.mjs
 
 # next.js
 /.next/
@@ -30,12 +31,19 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+!.dev.vars.example
+
+# Wrangler local secrets (Cloudflare Worker bindings/vars for `vinext dev`) —
+# see .dev.vars.example for the documented shape. Never commit the real file.
+.dev.vars
 
 # vercel
 .vercel
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /outputs/

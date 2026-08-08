@@ -16,10 +16,36 @@ from agent_platform_common import ROOT, canonical_skills, parse_frontmatter
 REPORT = ROOT / "docs" / "agent-audit" / "TOKEN_AND_CONTEXT_REPORT.md"
 
 
+# Directories whose contents exist only on a particular machine: dependency
+# trees, build output, tool venvs, and generated caches. A report that counts
+# them measures the developer's disk, not the repository — see normalized_size
+# below for the same class of bug in the size measurement.
+ENVIRONMENT_ONLY_DIRS = frozenset({
+    ".git",
+    ".next",
+    ".tmp",
+    ".tools",
+    ".vinext",
+    ".wrangler",
+    "build",
+    "coverage",
+    "dist",
+    "graphify-out",
+    "node_modules",
+})
+
+
 def word_count(text: str) -> int:
     return len(re.findall(r"\b[\w'-]+\b", text))
 
 
+# Deliberately not `path.stat().st_size`. This repository is developed on
+# Windows with `core.autocrlf=true`, so a file checked out here can carry CRLF
+# while the same file on a Linux CI runner carries LF — `CLAUDE.md` measured
+# 555 bytes locally and 546 in CI, 9 bytes for 9 line endings. That made this
+# report unreproducible: `--check` passed on the machine that generated it and
+# failed everywhere else, which CI caught on its first ever run. See
+# docs/audit/MASTER_AUDIT.md finding F-14.
 def canonical_text_size(text: str) -> int:
     normalized = text.replace("\r\n", "\n").replace("\r", "\n")
     return len(normalized.encode("utf-8"))
@@ -60,8 +86,7 @@ def build_report() -> str:
     mcp_files = [
         path for path in ROOT.rglob("*")
         if path.is_file()
-        and "node_modules" not in path.relative_to(ROOT).parts
-        and ".tmp" not in path.relative_to(ROOT).parts
+        and not ENVIRONMENT_ONLY_DIRS.intersection(path.relative_to(ROOT).parts)
         and (path.name == ".mcp.json" or "mcp" in path.name.lower())
     ]
     root_mcp = int((ROOT / ".mcp.json").exists())

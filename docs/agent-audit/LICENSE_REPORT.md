@@ -1,9 +1,11 @@
 # License Report
 
-No third-party implementation was copied into the canonical skill library. The repository contains original adapters and references; notices preserve provenance for every audited source.
+The canonical library includes safety-adapted MIT-licensed instruction files from `addyosmani/agent-skills`; the full MIT notice is retained under `agent-platform/licenses/`. GSAP is installed as an exact package dependency under its declared standard no-charge license.
 
 | Source | License | Copy | Modify | Redistribute | Notice | Decision |
 | --- | --- | --- | --- | --- | --- | --- |
+| [addyosmani-agent-skills](https://github.com/addyosmani/agent-skills) | `MIT` | yes | yes | yes | required, retained | `ADAPTED` |
+| [greensock-gsap](https://github.com/greensock/GSAP) | `LicenseRef-GSAP-Standard-No-Charge` | package use | not claimed | not claimed | license URL retained | `ACCEPTED_PROJECT_DEPENDENCY` |
 | [aider](https://github.com/Aider-AI/aider) | `Apache-2.0` | yes | yes | yes | required | `REJECTED` |
 | [code-review-graph](https://github.com/tirth8205/code-review-graph) | `MIT` | yes | yes | yes | required | `REJECTED` |
 | [context7](https://github.com/upstash/context7) | `MIT` | yes | yes | yes | required | `REJECTED` |

@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "d545f8d67f2d2887711167c43f2ce0295aec53fdf2115d1e4600e22d711c80db",
+    "references/security-checklist.md": "a8bbff3b1ac9122985e98fbe9a8fa09cd8ad53b190bac7f8f0f63687900f7d7a"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/security-and-hardening"
+}

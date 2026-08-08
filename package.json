@@ -9,7 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
-    "test": "vinext build && node --test tests/rendered-html.test.mjs tests/capability-inventory.test.mjs tests/core-tooling.test.mjs",
+    "test": "vinext build && node --test tests/rendered-html.test.mjs tests/capability-inventory.test.mjs tests/core-tooling.test.mjs tests/page-interactions.test.mjs tests/bundle-budget.test.mjs",
     "capability:inventory": "node scripts/build-capability-inventory.mjs",
     "capability:catalog": "node scripts/build-capability-catalog.mjs",
     "core:check": "node scripts/check-core-tooling.mjs",
@@ -20,7 +20,7 @@
     "agent:security:remediations": "python scripts/check-high-risk-remediations.py",
     "agent:audit": "python scripts/run-agent-audit.py",
     "agent:sync": "python scripts/sync-agent-skills.py",
-    "agent:validate": "python scripts/validate-agent-skills.py && python scripts/validate-agent-platform.py && python scripts/check-agent-licenses.py && python scripts/check-agent-links.py && python scripts/build-agent-audit.py --check && python scripts/agent-token-report.py --check",
+    "agent:validate": "python scripts/validate-agent-skills.py && python scripts/validate-agent-platform.py && python scripts/validate-workflow-command-parity.py && python scripts/check-agent-licenses.py && python scripts/check-agent-links.py && python scripts/build-agent-audit.py --check && python scripts/agent-token-report.py --check && python scripts/check-graph-freshness.py",
     "agent:security": "python scripts/agent-security.py --npm-audit --full-scanners --write-evidence",
     "agent:compat": "python scripts/agent-compat.py --write",
     "agent:token-report": "python scripts/agent-token-report.py --write",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.47.0",
+    "@cloudflare/workers-types": "^5.20260804.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
@@ -46,6 +47,7 @@
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.12",
+    "jsdom": "^30.0.1",
     "react-server-dom-webpack": "19.2.8",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
@@ -55,13 +57,14 @@
   },
   "overrides": {
     "@babel/core": "7.29.7",
-    "brace-expansion": "5.0.8",
+    "brace-expansion": "5.0.9",
     "esbuild": "0.28.1",
-    "fast-uri": "3.1.4",
-    "js-yaml": "4.3.0",
+    "fast-uri": "3.1.5",
+    "js-yaml": "4.3.1",
     "minimatch": "10.2.5",
     "postcss": "8.5.24",
-    "sharp": "0.35.2"
+    "sharp": "0.35.2",
+    "undici": "7.29.0"
   },
   "type": "module"
 }

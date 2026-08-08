@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "127ff7101dcc31e020100e02a366d496e74a5e3b202aeec7c6c9dde7b732cc45",
+    "references/definition-of-done.md": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/using-agent-skills"
+}

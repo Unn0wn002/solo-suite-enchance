@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TOOL_ROOT = (ROOT / ".tools" / "graphify").resolve()
 VENV_ROOT = TOOL_ROOT / "venv"
 PACKAGE = "graphifyy"
-VERSION = "0.9.27"
+VERSION = "0.9.32"
 REQUIREMENTS = ROOT / "agent-platform" / "tooling" / "graphify-requirements.txt"
 
 

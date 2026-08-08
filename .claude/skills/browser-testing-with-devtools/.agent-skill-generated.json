@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "f5f56b95efc0fa696f264e819a5b6e98d1e8eb76cdead3044a7b765b82cd7c0b"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/browser-testing-with-devtools"
+}

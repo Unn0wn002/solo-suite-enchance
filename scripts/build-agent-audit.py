@@ -21,6 +21,7 @@ NPM_AUDIT_PATH = ROOT / "docs" / "agent-audit" / "evidence" / "npm-audit-summary
 SCANNER_AUDIT_PATH = ROOT / "docs" / "agent-audit" / "evidence" / "security-scanner-summary.json"
 SECURITY_TOOL_LOCK_PATH = ROOT / "agent-platform" / "tooling" / "security-tools.lock.json"
 HIGH_RISK_REMEDIATION_PATH = ROOT / "agent-platform" / "security" / "high-risk-remediations.json"
+REQUESTED_ADDITIONS_PATH = ROOT / "docs" / "agent-audit" / "evidence" / "requested-source-additions.json"
 
 ROLE_ROUTES = {
     "Product Manager": ("product-discovery", "planning", "product-manager"),
@@ -796,7 +797,7 @@ The 69 catalog rows normalize to 57 unique source paths. The remaining 12 rows a
 def build_installation() -> str:
     return """# Agent Platform Installation Guide
 
-No administrator access, global install, symlink, hook, or root MCP activation is required.
+No administrator access, global install, symlink, hook, or root MCP activation is required for project-scoped use.
 
 ## ChatGPT and Codex
 
@@ -820,6 +821,31 @@ No administrator access, global install, symlink, hook, or root MCP activation i
    `.agents/agents/`, and `.agents/agents.md`.
 3. Use `/skills` in `agy` when a supported CLI is installed.
 4. Follow the manual checklist in `PLATFORM_TEST_REPORT.md`; this host has no Antigravity runtime.
+
+## Optional audited global promotion
+
+When the user explicitly requests availability across every local project, preview and run the reviewed installer:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-global-agent-platforms.ps1 -WhatIf
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-global-agent-platforms.ps1
+```
+
+The installer writes only below the current user's `.codex`, `.claude`, `.gemini/config`, and
+`.solo-suite-global-backups` directories. It installs exact reviewed copies, registers the local Codex and Claude
+marketplaces, enables their 19 plugin trees, and backs up existing destinations before replacement. Restart all
+three hosts after installation. It does not globally install Graphify, GSAP, package managers, hooks, or MCP
+servers.
+
+To promote only the reviewed Graphify host adapters after the audited `graphify==0.9.32` CLI is available, use:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-global-agent-platforms.ps1 -GraphifyOnly -WhatIf
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-global-agent-platforms.ps1 -GraphifyOnly
+```
+
+This adds `$graphify` to Codex, `/graphify` to Claude, and `/graphify` to Antigravity without running Graphify's
+own platform installers or enabling hooks, MCP, network ingestion, databases, LLM labeling, or global graphs.
 
 ## Optional repository-intelligence tools
 
@@ -1019,6 +1045,326 @@ def build_notices(audit: dict[str, Any], security_tools: dict[str, Any] | None) 
     return "\n".join(lines)
 
 
+def requested_sources() -> dict[str, dict[str, Any]]:
+    if not REQUESTED_ADDITIONS_PATH.is_file():
+        return {}
+    data = load_json(REQUESTED_ADDITIONS_PATH)
+    sources = data.get("sources")
+    if not isinstance(sources, list):
+        raise ValueError("requested source additions must contain a sources array")
+    result = {str(item.get("id")): item for item in sources if isinstance(item, dict)}
+    required = {"addyosmani-agent-skills", "graphify", "greensock-gsap"}
+    if set(result) != required:
+        raise ValueError(f"requested source additions differ from required set: {sorted(set(result) ^ required)}")
+    return result
+
+
+def addy_skill_names(source: dict[str, Any]) -> list[str]:
+    checksums = source.get("file_checksums")
+    if not isinstance(checksums, dict):
+        raise ValueError("Addy source evidence has no file checksums")
+    names = sorted({
+        path.split("/")[1]
+        for path in checksums
+        if re.fullmatch(r"skills/[^/]+/SKILL\.md", str(path))
+    })
+    if len(names) != 24:
+        raise ValueError(f"Addy source evidence must identify 24 skills, found {len(names)}")
+    return names
+
+
+def augment_manifest(manifest: dict[str, Any], requested: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    graphify = requested["graphify"]
+    addy = requested["addyosmani-agent-skills"]
+    gsap = requested["greensock-gsap"]
+    manifest["audit_date"] = "2026-08-02"
+    for capability in manifest["capabilities"]:
+        if capability.get("source_url") == graphify["source"]:
+            capability["pinned_commit_sha"] = graphify["commit_sha"]
+            capability["integration_kind"] = "audited_cli_skill_and_global_adapters"
+            capability["canonical_skill_path"] = ".agents/skills/graphify/SKILL.md"
+            capability["related_canonical_skills"] = [
+                ".agents/skills/repository-intelligence-routing/SKILL.md"
+            ]
+            capability["claude_adapter_path"] = ".claude/skills/graphify/SKILL.md"
+            capability["antigravity_adapter_path"] = ".agents/skills/graphify/SKILL.md"
+            capability["recommendation"] = graphify["decision"]
+    names = addy_skill_names(addy)
+    manifest["capabilities"].extend([
+        {
+            "canonical_name": "addyosmani-agent-skills",
+            "description": "Audited lifecycle skills and command adapters from addyosmani/agent-skills.",
+            "role_tags": ["Product Manager", "Software Architect", "Frontend Developer", "Backend Developer", "QA Engineer", "Security Reviewer", "DevOps Engineer", "Technical Writer"],
+            "category_tags": ["specification", "planning", "implementation", "testing", "review", "shipping"],
+            "source_url": addy["source"],
+            "source_path": ".",
+            "pinned_commit_sha": addy["commit_sha"],
+            "license": addy["license"],
+            "risk_level": addy["risk"],
+            "primary_type": addy["classification"],
+            "status": addy["status"],
+            "integration_kind": "safety_adapted_project_install",
+            "canonical_skill_path": ".agents/skills/using-agent-skills/SKILL.md",
+            "related_canonical_skills": [f".agents/skills/{name}/SKILL.md" for name in names],
+            "claude_adapter_path": ".claude/skills/using-agent-skills/SKILL.md",
+            "antigravity_adapter_path": ".agents/skills/using-agent-skills/SKILL.md",
+            "role_adapter_paths": {"claude": [], "antigravity": []},
+            "external_tool_requirement": {"name": None, "required": False},
+            "enabled_by_default": False,
+            "activation_profile": [],
+            "replacement_or_duplicate_relationship": {
+                "relationship": "supplements_existing_role_skills",
+                "activation_constraint": "load only the narrow skill needed for the current task",
+            },
+            "recommendation": addy["decision"],
+        },
+        {
+            "canonical_name": "greensock-gsap-runtime",
+            "description": "Exact GSAP runtime dependency shared by all agent platforms working in this repository.",
+            "role_tags": ["GSAP Animation Developer", "Frontend Developer"],
+            "category_tags": ["animation", "runtime-library"],
+            "source_url": gsap["source"],
+            "source_path": ".",
+            "pinned_commit_sha": gsap["commit_sha"],
+            "license": gsap["license"],
+            "risk_level": gsap["risk"],
+            "primary_type": gsap["classification"],
+            "status": gsap["status"],
+            "integration_kind": "exact_project_dependency",
+            "canonical_skill_path": ".agents/skills/gsap-animation/SKILL.md",
+            "related_canonical_skills": [".agents/skills/frontend-development/SKILL.md"],
+            "claude_adapter_path": ".claude/skills/gsap-animation/SKILL.md",
+            "antigravity_adapter_path": ".agents/skills/gsap-animation/SKILL.md",
+            "role_adapter_paths": {
+                "claude": [".claude/agents/gsap-animation-developer.md"],
+                "antigravity": [".agents/agents/gsap-animation-developer.md"],
+            },
+            "external_tool_requirement": {"name": None, "required": False},
+            "enabled_by_default": False,
+            "activation_profile": ["frontend", "gsap-animation"],
+            "replacement_or_duplicate_relationship": {
+                "relationship": "runtime_for",
+                "canonical_capability": "gsap-animation",
+            },
+            "recommendation": gsap["decision"],
+        },
+    ])
+    return manifest
+
+
+def augment_lock(lock: dict[str, Any], requested: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    lock["audit_date"] = "2026-08-01"
+    by_url = {source["source"]: source for source in lock["sources"]}
+    graphify = requested["graphify"]
+    graph_entry = by_url[graphify["source"]]
+    graph_entry.update({
+        "default_branch": graphify["branch"],
+        "commit_sha": graphify["commit_sha"],
+        "latest_release_or_tag": {
+            "tag": graphify["tag"],
+            "published_at": "2026-08-01T14:36:23Z",
+            "url": f"{graphify['source']}/releases/tag/{graphify['tag']}",
+        },
+        "last_meaningful_update": graphify["last_update"],
+        "file_checksums": graphify["file_checksums"],
+        "license": graphify["license"],
+        "status": graphify["status"],
+        "risk_level": graphify["risk"],
+        "security_decision": graphify["decision"],
+    })
+    for source_id in ("addyosmani-agent-skills", "greensock-gsap"):
+        source = requested[source_id]
+        lock["sources"].append({
+            "source": source["source"],
+            "resolved_url": source["source"],
+            "default_branch": source["branch"],
+            "commit_sha": source["commit_sha"],
+            "latest_release_or_tag": (
+                {
+                    "tag": source["tag"],
+                    "published_at": source["last_update"],
+                    "url": f"{source['source']}/tree/{source['tag']}",
+                }
+                if source.get("tag") else None
+            ),
+            "last_meaningful_update": source["last_update"],
+            "file_checksums": source["file_checksums"],
+            "license": source["license"],
+            "status": source["status"],
+            "risk_level": source["risk"],
+            "security_decision": source["decision"],
+            "component_exceptions": [],
+        })
+    lock["sources"].sort(key=lambda item: item["source"].lower())
+    return lock
+
+
+def insert_after_h1(text: str, section: str) -> str:
+    marker = "\n\n"
+    index = text.find(marker)
+    if index < 0:
+        raise ValueError("generated Markdown has no H1 boundary")
+    return text[: index + len(marker)] + section.rstrip() + "\n\n" + text[index + len(marker):]
+
+
+def augment_reports(
+    generated: dict[Path, str],
+    requested: dict[str, dict[str, Any]],
+) -> dict[Path, str]:
+    addy = requested["addyosmani-agent-skills"]
+    graphify = requested["graphify"]
+    gsap = requested["greensock-gsap"]
+
+    generated[REPORT_PATHS["executive"]] = generated[REPORT_PATHS["executive"]].replace(
+        "- Available: Node.js 24.18.0, npm 11.16.0, pnpm 11.9.0, Python 3.12.10, "
+        "Git 2.55.0, Codex 0.144.1, Claude Code 2.1.207, Graphify 0.9.27.",
+        "- Requested-source update (2026-08-01): bundled Node.js 24.14.0, pnpm 11.9.0, "
+        "Python 3.13.14, the Codex desktop host, and Graphify 0.9.32 were available. Claude Code "
+        "and Antigravity CLIs were not available for interactive validation.",
+    )
+
+    inventory_section = f"""## Requested installation additions (2026-08-01)
+
+These records supplement the historical reconstructed catalog. Detailed static evidence is in
+`evidence/requested-source-additions.json`.
+
+| Source | Pinned commit | Release/version | License | Decision |
+| --- | --- | --- | --- | --- |
+| [addyosmani/agent-skills]({addy['source']}) | `{addy['commit_sha']}` | plugin 1.0.0 | MIT | `ADAPTED` project skills and commands; hooks excluded |
+| [Graphify-Labs/graphify]({graphify['source']}) | `{graphify['commit_sha']}` | {graphify['tag']} | Apache-2.0 OR MIT | `EXTERNAL_TOOL_ONLY` exact CLI |
+| [greensock/GSAP]({gsap['source']}) | `{gsap['commit_sha']}` | {gsap['version']} | GSAP Standard No-Charge | `ACCEPTED_PROJECT_DEPENDENCY` |"""
+    generated[REPORT_PATHS["inventory"]] = insert_after_h1(
+        generated[REPORT_PATHS["inventory"]], inventory_section
+    )
+
+    compatibility_section = f"""## Requested installation additions
+
+| Source | Type | Codex/ChatGPT | Claude | Antigravity | Adapter | Risk |
+| --- | --- | --- | --- | --- | --- | --- |
+| [addyosmani/agent-skills]({addy['source']}) | `PORTABLE_SKILL_PLUGIN` | 24 project skills | 24 generated mirrors + 8 commands | 24 project skills + 8 workflows | Safety-adapted; hook and installer surfaces excluded | `MEDIUM` |
+| [Graphify-Labs/graphify]({graphify['source']}) | `LOCAL_CLI_TOOL` | Shared CLI {graphify['version']} | Shared CLI {graphify['version']} | Shared CLI {graphify['version']} | Existing repository-routing skill; no platform installer | `MEDIUM` |
+| [greensock/GSAP]({gsap['source']}) | `PROJECT_JAVASCRIPT_LIBRARY` | Shared project dependency | Shared project dependency | Shared project dependency | Existing `gsap-animation` skill | `LOW` |"""
+    generated[REPORT_PATHS["compatibility"]] = insert_after_h1(
+        generated[REPORT_PATHS["compatibility"]], compatibility_section
+    )
+
+    security_section = f"""## Requested installation source findings
+
+| Source | Risk | Surfaces | Decision |
+| --- | --- | --- | --- |
+| [addyosmani-agent-skills]({addy['source']}) | `MEDIUM` | 24 skills, 8 commands, 4 personas, executable helpers, and an automatic Claude session hook; one skill documented an unpinned MCP install. | Install safety-adapted project skills and commands only; exclude hooks, installers, unpinned MCP/package setup, and direct persona activation. |
+| [Graphify]({graphify['source']}) | `MEDIUM` | CLI plus optional MCP, hooks, model/network integrations, and repository analysis. | Accept the exact {graphify['version']} CLI only; do not activate platform installers, hooks, MCP, or model integrations. |
+| [greensock-GSAP]({gsap['source']}) | `LOW` | Browser animation runtime with no package lifecycle scripts, agent hooks, MCP definitions, credentials, or detected telemetry. | Install exact `gsap@{gsap['version']}` with lifecycle scripts disabled and route usage through the portable GSAP skill. |
+"""
+    security = generated[REPORT_PATHS["security"]]
+    security = security.replace("## Controls applied\n", security_section + "\n## Controls applied\n")
+    security = security.replace(
+        "- Canonical skills are original normalized guidance; no third-party implementation code was copied.",
+        "- Imported lifecycle skills carry a repository safety overlay and local references; automatic hooks "
+        "and installer instructions were not copied. GSAP is an exact package dependency, not startup agent context.",
+    )
+    security = security.replace(
+        "## Scanner coverage\n",
+        "## Scanner coverage\n\nRequested-source update note (2026-08-01): the repository-local policy/remediation "
+        "scan passed. A fresh npm audit was `NOT_EXECUTED` because npm is unavailable and pnpm cannot audit an "
+        "npm lockfile. The installed full scanner suite was attempted, but Windows Application Control blocked "
+        "Semgrep before scanning; the prior scanner evidence below remains historical and was not represented as "
+        "a fresh pass.\n",
+    )
+    generated[REPORT_PATHS["security"]] = security
+
+    license_report = generated[REPORT_PATHS["license"]].replace(
+        "No third-party implementation was copied into the canonical skill library. The repository contains "
+        "original adapters and references; notices preserve provenance for every audited source.",
+        "The canonical library includes safety-adapted MIT-licensed instruction files from "
+        "`addyosmani/agent-skills`; the full MIT notice is retained under `agent-platform/licenses/`. "
+        "GSAP is installed as an exact package dependency under its declared standard no-charge license.",
+    )
+    license_rows = (
+        f"| [addyosmani-agent-skills]({addy['source']}) | `MIT` | yes | yes | yes | required, retained | `ADAPTED` |\n"
+        f"| [greensock-gsap]({gsap['source']}) | `LicenseRef-GSAP-Standard-No-Charge` | package use | not claimed | not claimed | license URL retained | `ACCEPTED_PROJECT_DEPENDENCY` |\n"
+    )
+    license_report = license_report.replace(
+        "| --- | --- | --- | --- | --- | --- | --- |\n",
+        "| --- | --- | --- | --- | --- | --- | --- |\n" + license_rows,
+        1,
+    )
+    generated[REPORT_PATHS["license"]] = license_report
+
+    installation = generated[REPORT_PATHS["installation"]]
+    installation = installation.replace(
+        "4. Invoke a skill by name when deterministic routing matters. Skill bodies and references load on demand.\n",
+        "4. Invoke a skill by name when deterministic routing matters. Skill bodies and references load on demand.\n\n"
+        "The 24 audited `addyosmani/agent-skills` workflows are installed project-locally under "
+        "`.agents/skills/` by default. Codex/ChatGPT invoke the underlying skill directly. An explicitly requested "
+        "run of `scripts/install-global-agent-platforms.ps1` promotes the safety-adapted copies into the supported "
+        "user-level skill roots without activating the excluded upstream hook.\n",
+    )
+    installation = installation.replace(
+        "5. Keep source-provided hooks and MCP servers disabled unless separately approved.\n",
+        "5. Keep source-provided hooks and MCP servers disabled unless separately approved.\n\n"
+        "Eight lifecycle commands are installed under `.claude/commands/`: `/spec`, `/plan`, `/build`, `/test`, "
+        "`/review`, `/webperf`, `/code-simplify`, and `/ship`. They include the repository safety overlay. The "
+        "upstream session-start hook is intentionally absent. The reviewed global installer copies these commands "
+        "to `~/.claude/commands/` and registers the validated plugin distribution at user scope.\n",
+    )
+    installation = installation.replace(
+        "4. Follow the manual checklist in `PLATFORM_TEST_REPORT.md`; this host has no Antigravity runtime.\n",
+        "4. Follow the manual checklist in `PLATFORM_TEST_REPORT.md`; this host has no Antigravity runtime.\n\n"
+        "Eight equivalent workflows are installed under `.agents/workflows/`; Antigravity uses `/planning` rather "
+        "than `/plan` to avoid the platform-reserved plan command. Runtime discovery remains `NOT_EXECUTED` on "
+        "this host. The reviewed global installer copies them to `~/.gemini/config/global_workflows/` and installs "
+        "the audited Antigravity plugin and skill trees under `~/.gemini/config/`.\n\n## GSAP runtime\n\n"
+        "`greensock/GSAP` is installed once as the exact project dependency "
+        "`gsap@3.15.0`, locked by registry integrity in `package-lock.json`. Agents on every platform use that "
+        "same dependency through the portable `gsap-animation` skill. No global package, CDN fallback, or package "
+        "lifecycle script is used.\n",
+    )
+    generated[REPORT_PATHS["installation"]] = installation
+
+    generated[REPORT_PATHS["manual"]] = generated[REPORT_PATHS["manual"]].replace(
+        "No current item requires license approval: all ten audited pins expose a recognized permissive license, "
+        "and no\nthird-party implementation code was copied.",
+        "The historical ten-source catalog requires no license approval. The requested GSAP dependency uses its "
+        "declared\nstandard no-charge license rather than a permissive SPDX license; product use must remain within "
+        "those terms.\nOnly MIT-licensed instruction material was adapted; no upstream executable helper, hook, "
+        "or installer was copied.",
+    )
+
+    notices = generated[REPORT_PATHS["notices"]]
+    notices = notices.replace(
+        "The agent platform uses original adapters and references to the audited sources below; it does not "
+        "vendor their implementation code. Source names and URLs are retained for attribution and provenance.",
+        "The agent platform uses original adapters, audited references, and the safety-adapted instruction files "
+        "listed below. Source names and URLs are retained for attribution and provenance; no upstream hooks or "
+        "installers are vendored or activated.",
+    )
+    notices = notices.replace(
+        "| --- | --- | --- | --- |\n",
+        "| --- | --- | --- | --- |\n"
+        f"| [addyosmani/agent-skills]({addy['source']}) | `{addy['commit_sha']}` | `MIT` | `ADAPTED` 24 project skills and 8 commands/workflows; hooks excluded |\n"
+        f"| [greensock/GSAP]({gsap['source']}) | `{gsap['commit_sha']}` | `LicenseRef-GSAP-Standard-No-Charge` | exact project dependency `gsap@{gsap['version']}` |\n",
+        1,
+    )
+    historical_graph = next(
+        line for line in notices.splitlines() if "Graphify-Labs/graphify" in line
+    )
+    notices = notices.replace(
+        historical_graph,
+        f"| [Graphify-Labs/graphify]({graphify['source']}) | `{graphify['commit_sha']}` | `Apache-2.0 OR MIT` | `EXTERNAL_TOOL_ONLY` exact CLI {graphify['tag']} |",
+    )
+    notices = notices.replace(
+        "License files were inspected at the pinned commits. If implementation code is copied in a future change, "
+        "the applicable full license text, copyright notice, and source-specific obligations must be added before "
+        "promotion.",
+        "License files and package declarations were inspected at the pinned commits. The Addy Osmani MIT text is "
+        "retained under `agent-platform/licenses/`; GSAP remains governed by the license URL declared in its package "
+        "metadata. Future copied implementation must retain all applicable notices and obligations.",
+    )
+    generated[REPORT_PATHS["notices"]] = notices
+    return generated
+
+
 def outputs() -> dict[Path, str]:
     audit = load_json(AUDIT_PATH)
     catalog = load_json(CATALOG_PATH)
@@ -1026,11 +1372,15 @@ def outputs() -> dict[Path, str]:
     scanner_audit = load_json(SCANNER_AUDIT_PATH) if SCANNER_AUDIT_PATH.is_file() else None
     security_tools = load_json(SECURITY_TOOL_LOCK_PATH) if SECURITY_TOOL_LOCK_PATH.is_file() else None
     high_risk_remediations = load_json(HIGH_RISK_REMEDIATION_PATH)
+    requested = requested_sources()
     if audit["catalog_entries"] != catalog["total_catalog_entries"]:
         raise ValueError("catalog and source-audit entry counts differ")
     manifest, group_names = build_manifest(audit, catalog, high_risk_remediations)
     lock = build_lock(audit)
-    return {
+    if requested:
+        manifest = augment_manifest(manifest, requested)
+        lock = augment_lock(lock, requested)
+    generated = {
         REPORT_PATHS["executive"]: build_executive(audit, catalog, manifest),
         REPORT_PATHS["inventory"]: build_inventory(audit, catalog),
         REPORT_PATHS["compatibility"]: build_compatibility(audit, catalog, group_names),
@@ -1052,6 +1402,7 @@ def outputs() -> dict[Path, str]:
         REPORT_PATHS["manifest"]: json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         REPORT_PATHS["lock"]: json.dumps(lock, indent=2, ensure_ascii=False) + "\n",
     }
+    return augment_reports(generated, requested) if requested else generated
 
 
 def main() -> int:

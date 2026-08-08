@@ -1,0 +1,7 @@
+{
+  "files": {
+    "SKILL.md": "c025736f1ca8540b2d5346e330e549213f4445dc414a7274b51901d52d28c596"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/source-driven-development"
+}

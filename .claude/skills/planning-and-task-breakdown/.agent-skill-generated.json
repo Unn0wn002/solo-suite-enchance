@@ -1,0 +1,8 @@
+{
+  "files": {
+    "SKILL.md": "c132098804189f247de73eabe26904079f9f076598bbb8ebec03a7dd41abefb5",
+    "references/definition-of-done.md": "d1c75d2ae65d2c7a9cd01f93fa8de63e00e75f2fe5d08be224d576157054dcee"
+  },
+  "generated_by": "scripts/sync-agent-skills.py",
+  "source": ".agents/skills/planning-and-task-breakdown"
+}
