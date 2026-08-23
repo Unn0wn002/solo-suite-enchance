@@ -59,6 +59,30 @@ jobs:
       - name: Graph freshness guard
         run: python scripts/check-graph-freshness.py
 
+  platform-distributions:
+    name: Claude, Codex & Antigravity distribution validation
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Codex's strict skill-frontmatter validator intentionally requires
+      # PyYAML for safe YAML parsing. Provision only the distribution's
+      # reviewed, hash-pinned dev lock so CI exercises the same validator
+      # contract instead of weakening or bypassing it.
+      - name: Install pinned Codex validation requirements
+        run: python -m pip install --require-hashes -r platforms/codex/requirements-dev.lock
+
+      # Reuse the repository's bounded, reviewed cross-platform validation
+      # harness so distribution self-checks, AgentRoom validation, routing,
+      # plugin validation, and parity contracts cannot drift silently.
+      - name: Validate platform distributions
+        shell: pwsh
+        run: ./scripts/validate-platforms.ps1
+
   security:
     name: Dependency + remediation security gate
     runs-on: ubuntu-latest
