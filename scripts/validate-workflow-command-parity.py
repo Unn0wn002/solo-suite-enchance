@@ -109,7 +109,7 @@ def main() -> int:
             continue
         command_text = read(commands[name])
         renamed_from = renames_by_command.get(name)
-        if renamed_from and renamed_from in workflows and read(commands[name]) == read(workflows[renamed_from]):
+        if renamed_from and renamed_from in workflows and read(workflows[renamed_from]) == command_text:
             continue
         match = next((w for w, p in workflows.items() if read(p) == command_text), None)
         if match:
