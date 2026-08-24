@@ -28,7 +28,9 @@
       "Bash(git filter-branch:*)",
       "Bash(git commit --no-verify:*)",
       "Bash(git commit -n:*)",
-      "Bash(git commit --no-gpg-sign:*)"
+      "Bash(git commit --no-gpg-sign:*)",
+      "Bash(scripts/install-antigravity.ps1:*)",
+      "Bash(./scripts/install-antigravity.ps1:*)"
     ],
     "ask": [
       "Bash(git push:*)",
@@ -49,7 +51,6 @@
       "Bash(pwsh:*)",
       "Bash(python scripts/install-global-agent-platforms.ps1:*)",
       "Bash(./scripts/install-global-agent-platforms.ps1:*)",
-      "Bash(scripts/install-antigravity.ps1:*)",
       "Bash(npm run agent:bootstrap:install:*)",
       "Bash(npm run agent:security:bootstrap:install:*)"
     ]
