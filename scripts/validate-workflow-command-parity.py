@@ -132,7 +132,12 @@ def main() -> int:
         return 1
 
     matched = len(set(commands) & set(workflows))
-    documented = len(ALLOWED_RENAMES) + len(ALLOWED_ORPHAN_WORKFLOWS) + len(ALLOWED_ORPHAN_COMMANDS)
+    documented = (
+        len(ALLOWED_RENAMES)
+        + len(ALLOWED_ORPHAN_WORKFLOWS)
+        + len(ALLOWED_ORPHAN_COMMANDS)
+        + len(ALLOWED_CONTENT_DIFFERENCES)
+    )
     print(
         f"Workflow/command parity validation passed: {matched} matched pair(s), "
         f"{documented} documented exception(s)"
