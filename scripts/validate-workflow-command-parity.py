@@ -29,10 +29,9 @@ ALLOWED_RENAMES: dict[str, str] = {
 }
 
 # Workflow-only files with no .claude/commands/ counterpart, and why.
-# Reviewed 2026-08-07.
+# Reviewed 2026-08-07; full-audit was removed from this allowlist once its
+# Claude wrapper was added so future deletion of that wrapper fails parity.
 ALLOWED_ORPHAN_WORKFLOWS: dict[str, str] = {
-    "full-audit.md": "Uses the agent-extension-audit skill under the full-audit "
-    "profile; no Claude slash-command wrapper has been authored for it.",
     "role-handoff.md": "Generic role/profile handoff ritual; no Claude "
     "slash-command wrapper has been authored for it.",
 }
