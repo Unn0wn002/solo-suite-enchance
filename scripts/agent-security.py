@@ -93,9 +93,17 @@ def npm_audit() -> tuple[str, int, dict[str, object] | None]:
         payload = json.loads(result.stdout)
         vulnerabilities = payload.get("metadata", {}).get("vulnerabilities", {})
         summary = ", ".join(f"{key}={value}" for key, value in vulnerabilities.items()) or "no counts returned"
+        vulnerable_packages = payload.get("vulnerabilities", {})
+        package_summary = ", ".join(
+            f"{name}({item.get('severity')}, range={item.get('range')}, fix={item.get('fixAvailable')})"
+            for name, item in sorted(vulnerable_packages.items())
+            if isinstance(item, dict)
+        )
+        if package_summary:
+            summary = f"{summary}; packages={package_summary}"
         direct = []
-        for name, item in sorted(payload.get("vulnerabilities", {}).items()):
-            if not item.get("isDirect"):
+        for name, item in sorted(vulnerable_packages.items()):
+            if not isinstance(item, dict) or not item.get("isDirect"):
                 continue
             direct.append(
                 {
