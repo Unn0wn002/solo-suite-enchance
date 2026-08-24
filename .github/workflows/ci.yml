@@ -1,8 +1,10 @@
 name: CI
 
-# Root-level CI for the website (app/, db/, worker/, tests/). Deliberately
-# separate from platforms/*/.github/workflows/ci.yml, which gate the
-# distributable product checkouts, not this repository's own website.
+# Root-level CI for the website (app/, db/, worker/, tests/) and repository-level
+# agent-platform checks. Nested platforms/*/.github/workflows/ci.yml files are
+# release/distribution workflow sources; GitHub Actions does not discover nested
+# workflow directories in this monorepo, so the root workflow must exercise any
+# checks that are expected to run on repository PRs.
 # See .solo/tasks.md T1 and .solo/risks.md.
 
 on:
@@ -58,6 +60,32 @@ jobs:
 
       - name: Graph freshness guard
         run: python scripts/check-graph-freshness.py
+
+  platform-distribution-smoke:
+    name: Platform distribution smoke (${{ matrix.platform }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [claude, codex, antigravity]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Require distribution CI source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "platforms/${{ matrix.platform }}/.github/workflows/ci.yml"
+
+      - name: Byte-compile distribution Python helpers
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error::SyntaxWarning -m compileall -q -f "platforms/${{ matrix.platform }}"
 
   security:
     name: Dependency + remediation security gate
