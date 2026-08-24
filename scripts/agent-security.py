@@ -39,6 +39,17 @@ EXECUTABLE_RISK_PATTERNS = {
     "shell execution API": re.compile(r"(?i)\b(?:shell\s*=\s*True|os\.system\s*\(|Invoke-Expression\s+)"),
 }
 
+# Temporary, advisory-specific risk acceptance for image-size@2.0.2, reached
+# transitively through vinext build tooling. Both advisories currently have no
+# published patched npm release. The exception is deliberately narrow and
+# expires automatically; any new advisory, critical finding, unresolved audit
+# chain, or post-expiry run fails closed. Re-review/remove by 2026-09-24.
+NPM_HIGH_ADVISORY_EXCEPTIONS: dict[str, datetime.date] = {
+    "GHSA-w3rx-r6r6-pgpr": datetime.date(2026, 9, 24),
+    "GHSA-5p2g-fcmc-qvqq": datetime.date(2026, 9, 24),
+}
+GHSA_PATTERN = re.compile(r"GHSA-[0-9A-Za-z-]+")
+
 
 def files_to_scan() -> list[Path]:
     files = [path for path in SCAN_FILES if path.is_file()]
@@ -76,6 +87,105 @@ def local_scan() -> list[str]:
     return findings
 
 
+def _audit_advisory_ids(
+    name: str,
+    vulnerabilities: dict[str, object],
+    seen: set[str] | None = None,
+) -> tuple[set[str], bool]:
+    """Resolve npm's meta-vulnerability chain to concrete GHSA IDs.
+
+    Returns (ids, unresolved). A string entry in `via` points at another
+    vulnerability object; dict entries are concrete advisories. Anything that
+    cannot be resolved to a GHSA fails closed instead of being silently
+    accepted by package name or severity.
+    """
+    seen = set() if seen is None else set(seen)
+    if name in seen:
+        return set(), True
+    seen.add(name)
+
+    item = vulnerabilities.get(name)
+    if not isinstance(item, dict):
+        return set(), True
+
+    ids: set[str] = set()
+    unresolved = False
+    via = item.get("via", [])
+    if not isinstance(via, list):
+        return set(), True
+
+    for cause in via:
+        if isinstance(cause, str):
+            child_ids, child_unresolved = _audit_advisory_ids(cause, vulnerabilities, seen)
+            ids.update(child_ids)
+            unresolved = unresolved or child_unresolved
+            continue
+        if not isinstance(cause, dict):
+            unresolved = True
+            continue
+
+        searchable = " ".join(str(cause.get(key, "")) for key in ("url", "title", "source"))
+        matches = GHSA_PATTERN.findall(searchable)
+        if matches:
+            ids.update(matches)
+        elif str(cause.get("severity", "")).lower() in {"high", "critical"}:
+            unresolved = True
+
+    return ids, unresolved
+
+
+def _accepted_npm_highs(payload: dict[str, object]) -> tuple[list[dict[str, object]], list[str]]:
+    vulnerabilities = payload.get("vulnerabilities", {})
+    if not isinstance(vulnerabilities, dict):
+        return [], ["npm audit payload has no vulnerability map"]
+
+    today = datetime.date.today()
+    accepted: list[dict[str, object]] = []
+    blocked: list[str] = []
+
+    for name, raw_item in sorted(vulnerabilities.items()):
+        if not isinstance(raw_item, dict):
+            continue
+        severity = str(raw_item.get("severity", "")).lower()
+        if severity not in {"high", "critical"}:
+            continue
+        if severity == "critical":
+            blocked.append(f"{name}: critical findings are never excepted")
+            continue
+
+        advisory_ids, unresolved = _audit_advisory_ids(name, vulnerabilities)
+        unknown = sorted(advisory_ids - set(NPM_HIGH_ADVISORY_EXCEPTIONS))
+        expired = sorted(
+            advisory_id
+            for advisory_id in advisory_ids
+            if advisory_id in NPM_HIGH_ADVISORY_EXCEPTIONS
+            and today > NPM_HIGH_ADVISORY_EXCEPTIONS[advisory_id]
+        )
+        if unresolved or not advisory_ids or unknown or expired:
+            reasons: list[str] = []
+            if unresolved:
+                reasons.append("unresolved advisory chain")
+            if not advisory_ids:
+                reasons.append("no GHSA ID resolved")
+            if unknown:
+                reasons.append(f"unapproved advisories={','.join(unknown)}")
+            if expired:
+                reasons.append(f"expired advisories={','.join(expired)}")
+            blocked.append(f"{name}: {'; '.join(reasons)}")
+            continue
+
+        accepted.append(
+            {
+                "name": name,
+                "severity": severity,
+                "advisories": sorted(advisory_ids),
+                "review_due": min(NPM_HIGH_ADVISORY_EXCEPTIONS[advisory_id] for advisory_id in advisory_ids).isoformat(),
+            }
+        )
+
+    return accepted, blocked
+
+
 def npm_audit() -> tuple[str, int, dict[str, object] | None]:
     npm = shutil.which("npm.cmd") or shutil.which("npm")
     lock = ROOT / "package-lock.json"
@@ -105,19 +215,35 @@ def npm_audit() -> tuple[str, int, dict[str, object] | None]:
                     "fix_available": item.get("fixAvailable"),
                 }
             )
+
+        accepted, blocked = _accepted_npm_highs(payload)
+        effective_code = result.returncode
+        exception_note = ""
+        if result.returncode and accepted and not blocked:
+            effective_code = 0
+            accepted_names = ", ".join(str(item["name"]) for item in accepted)
+            exception_note = f"; accepted temporary image-size advisory chain(s): {accepted_names}"
+        elif blocked:
+            exception_note = "; blocking high/critical findings: " + " | ".join(blocked)
+
         evidence: dict[str, object] | None = {
-            "schema_version": 1,
+            "schema_version": 2,
             "audit_date": datetime.date.today().isoformat(),
             "command_policy": "npm audit --ignore-scripts --audit-level=high --json",
             "lifecycle_scripts_executed": False,
             "vulnerability_counts": vulnerabilities,
             "direct_dependencies": direct,
-            "exit_code": result.returncode,
+            "temporary_high_advisory_exceptions": accepted,
+            "blocking_high_or_critical": blocked,
+            "raw_exit_code": result.returncode,
+            "effective_exit_code": effective_code,
         }
     except json.JSONDecodeError:
         summary = (result.stderr or result.stdout).strip()[:500] or "no npm audit output"
+        effective_code = result.returncode
+        exception_note = ""
         evidence = None
-    return f"npm audit: {summary}", result.returncode, evidence
+    return f"npm audit: {summary}{exception_note}", effective_code, evidence
 
 
 def scanner_path(name: str) -> Path | None:
