@@ -47,7 +47,6 @@
       "Bash(wget:*)",
       "Bash(powershell:*)",
       "Bash(pwsh:*)",
-      "Bash(python scripts/install-global-agent-platforms.ps1:*)",
       "Bash(./scripts/install-global-agent-platforms.ps1:*)",
       "Bash(scripts/install-antigravity.ps1:*)",
       "Bash(npm run agent:bootstrap:install:*)",
