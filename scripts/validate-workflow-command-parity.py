@@ -109,7 +109,7 @@ def main() -> int:
             continue
         command_text = read(commands[name])
         renamed_from = renames_by_command.get(name)
-        if renamed_from and renamed_from in workflows and read(workflows[renamed_from]) == command_text:
+        if renamed_from and renamed_from in workflows and read(commands[name]) == read(workflows[renamed_from]):
             continue
         match = next((w for w, p in workflows.items() if read(p) == command_text), None)
         if match:
@@ -132,7 +132,12 @@ def main() -> int:
         return 1
 
     matched = len(set(commands) & set(workflows))
-    documented = len(ALLOWED_RENAMES) + len(ALLOWED_ORPHAN_WORKFLOWS) + len(ALLOWED_ORPHAN_COMMANDS)
+    documented = (
+        len(ALLOWED_RENAMES)
+        + len(ALLOWED_ORPHAN_WORKFLOWS)
+        + len(ALLOWED_ORPHAN_COMMANDS)
+        + len(ALLOWED_CONTENT_DIFFERENCES)
+    )
     print(
         f"Workflow/command parity validation passed: {matched} matched pair(s), "
         f"{documented} documented exception(s)"
