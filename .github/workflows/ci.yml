@@ -1,8 +1,10 @@
 name: CI
 
-# Root-level CI for the website (app/, db/, worker/, tests/). Deliberately
-# separate from platforms/*/.github/workflows/ci.yml, which gate the
-# distributable product checkouts, not this repository's own website.
+# Root-level CI for the website (app/, db/, worker/, tests/) and repository-level
+# agent-platform checks. Nested platforms/*/.github/workflows/ci.yml files are
+# release/distribution workflow sources; GitHub Actions does not discover nested
+# workflow directories in this monorepo, so the root workflow must exercise any
+# checks that are expected to run on repository PRs.
 # See .solo/tasks.md T1 and .solo/risks.md.
 
 on:
@@ -18,9 +20,11 @@ jobs:
     name: Typecheck, lint, build & test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: "22.13.0"
           cache: "npm"
@@ -40,9 +44,11 @@ jobs:
     name: Agent platform structural validation (read-only)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
 
@@ -59,20 +65,50 @@ jobs:
       - name: Graph freshness guard
         run: python scripts/check-graph-freshness.py
 
+  platform-distribution-smoke:
+    name: Platform distribution smoke (${{ matrix.platform }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [claude, codex, antigravity]
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+
+      - name: Require distribution CI source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "platforms/${{ matrix.platform }}/.github/workflows/ci.yml"
+
+      - name: Byte-compile distribution Python helpers
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -W error::SyntaxWarning -m compileall -q -f "platforms/${{ matrix.platform }}"
+
   security:
     name: Dependency + remediation security gate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
 
       # npm audit reads package-lock.json directly and does not need an
       # install, so there is deliberately no `npm ci` here — it keeps the gate
       # fast and avoids executing any package lifecycle script in CI.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: "22.13.0"
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
 
