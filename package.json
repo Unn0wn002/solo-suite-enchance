@@ -20,7 +20,7 @@
     "agent:security:remediations": "python scripts/check-high-risk-remediations.py",
     "agent:audit": "python scripts/run-agent-audit.py",
     "agent:sync": "python scripts/sync-agent-skills.py",
-    "agent:validate": "python scripts/sync-agent-skills.py --check && python scripts/validate-agent-skills.py && python scripts/validate-agent-platform.py && python scripts/validate-workflow-command-parity.py && python scripts/validate-distribution-parity.py && python scripts/check-agent-licenses.py && python scripts/check-agent-links.py && python scripts/build-agent-audit.py --check && python scripts/agent-token-report.py --check && python scripts/check-graph-freshness.py",
+    "agent:validate": "python scripts/sync-agent-skills.py --check && python scripts/validate-agent-skills.py && python scripts/validate-agent-platform.py && python scripts/validate-workflow-command-parity.py && python platforms/validate-distribution-parity.py && python scripts/check-agent-licenses.py && python scripts/check-agent-links.py && python scripts/build-agent-audit.py --check && python scripts/agent-token-report.py --check && python scripts/check-graph-freshness.py",
     "agent:security": "python scripts/agent-security.py --npm-audit --full-scanners --write-evidence",
     "agent:compat": "python scripts/agent-compat.py --write",
     "agent:token-report": "python scripts/agent-token-report.py --write",
