@@ -29,10 +29,9 @@ ALLOWED_RENAMES: dict[str, str] = {
 }
 
 # Workflow-only files with no .claude/commands/ counterpart, and why.
-# Reviewed 2026-08-07.
+# Reviewed 2026-08-07; full-audit was removed from this allowlist once its
+# Claude wrapper was added so future deletion of that wrapper fails parity.
 ALLOWED_ORPHAN_WORKFLOWS: dict[str, str] = {
-    "full-audit.md": "Uses the agent-extension-audit skill under the full-audit "
-    "profile; no Claude slash-command wrapper has been authored for it.",
     "role-handoff.md": "Generic role/profile handoff ritual; no Claude "
     "slash-command wrapper has been authored for it.",
 }
@@ -65,6 +64,74 @@ def main() -> int:
     commands = {p.name: p for p in COMMANDS_DIR.glob("*.md")}
     workflows = {p.name: p for p in WORKFLOWS_DIR.glob("*.md")}
     errors: list[str] = []
+
+    # 0. Exception declarations are part of the contract, not permanent bypasses.
+    #    Fail closed when an allowlist entry no longer describes the tree so stale
+    #    routing exceptions cannot silently survive after files are added/renamed.
+    for workflow_name, command_name in sorted(ALLOWED_RENAMES.items()):
+        workflow = workflows.get(workflow_name)
+        command = commands.get(command_name)
+        if workflow is None:
+            errors.append(
+                f"ALLOWED_RENAMES references missing workflow .agents/workflows/{workflow_name}"
+            )
+            continue
+        if command is None:
+            errors.append(
+                f"ALLOWED_RENAMES references missing command .claude/commands/{command_name}"
+            )
+            continue
+        if workflow_name in commands:
+            errors.append(
+                f"ALLOWED_RENAMES entry {workflow_name} -> {command_name} is stale because "
+                f".claude/commands/{workflow_name} now exists"
+            )
+        if read(workflow) != read(command):
+            errors.append(
+                f"ALLOWED_RENAMES entry {workflow_name} -> {command_name} no longer has "
+                "identical content"
+            )
+
+    for name in sorted(ALLOWED_ORPHAN_WORKFLOWS):
+        if name not in workflows:
+            errors.append(
+                f"ALLOWED_ORPHAN_WORKFLOWS references missing workflow .agents/workflows/{name}"
+            )
+        elif name in commands:
+            errors.append(
+                f"ALLOWED_ORPHAN_WORKFLOWS entry {name} is stale because "
+                f".claude/commands/{name} now exists"
+            )
+
+    for name in sorted(ALLOWED_ORPHAN_COMMANDS):
+        if name not in commands:
+            errors.append(
+                f"ALLOWED_ORPHAN_COMMANDS references missing command .claude/commands/{name}"
+            )
+        elif name in workflows:
+            errors.append(
+                f"ALLOWED_ORPHAN_COMMANDS entry {name} is stale because "
+                f".agents/workflows/{name} now exists"
+            )
+
+    for name in sorted(ALLOWED_CONTENT_DIFFERENCES):
+        command = commands.get(name)
+        workflow = workflows.get(name)
+        if command is None or workflow is None:
+            missing = []
+            if command is None:
+                missing.append(f".claude/commands/{name}")
+            if workflow is None:
+                missing.append(f".agents/workflows/{name}")
+            errors.append(
+                f"ALLOWED_CONTENT_DIFFERENCES entry {name} references missing file(s): "
+                + ", ".join(missing)
+            )
+        elif read(command) == read(workflow):
+            errors.append(
+                f"ALLOWED_CONTENT_DIFFERENCES entry {name} is stale because the files "
+                "are now identical"
+            )
 
     # 1. Matching filenames must carry identical content, unless explicitly
     #    documented above.
@@ -132,7 +199,12 @@ def main() -> int:
         return 1
 
     matched = len(set(commands) & set(workflows))
-    documented = len(ALLOWED_RENAMES) + len(ALLOWED_ORPHAN_WORKFLOWS) + len(ALLOWED_ORPHAN_COMMANDS)
+    documented = (
+        len(ALLOWED_RENAMES)
+        + len(ALLOWED_ORPHAN_WORKFLOWS)
+        + len(ALLOWED_ORPHAN_COMMANDS)
+        + len(ALLOWED_CONTENT_DIFFERENCES)
+    )
     print(
         f"Workflow/command parity validation passed: {matched} matched pair(s), "
         f"{documented} documented exception(s)"
