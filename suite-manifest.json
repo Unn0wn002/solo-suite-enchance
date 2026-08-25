@@ -2,14 +2,16 @@
   "name": "Solo Suite Enchance",
   "slug": "solo-suite-enchance",
   "scope": {
-    "current": "advanced website delivery",
-    "next": [
+    "current": "cross-platform AI development extension platform",
+    "supports": [
+      "websites and web applications",
       "SaaS applications",
       "e-commerce",
       "internal applications",
       "APIs and services",
       "libraries and packages"
-    ]
+    ],
+    "repository_boundary": "AI tooling only; consuming application source, runtime configuration, deployment metadata, secrets, and product data remain in the consuming application repository"
   },
   "platforms": {
     "claude": {
@@ -18,15 +20,15 @@
       "plugins": 19,
       "skills": 80,
       "commands": 126,
-      "validation": "self-check 14/14; targeted tests 156 pass; capability-routing parity added"
+      "validation": "self-check, targeted tests, routing and parity validation"
     },
     "codex": {
       "path": "platforms/codex",
       "version": "1.0.27",
       "plugins": 19,
-      "skills": 185,
+      "skills": 186,
       "commands": 126,
-      "validation": "self-check 6/6; portable validation 19/19; AgentRooms 4/4; targeted parity/inventory/release tests pass; capability-routing parity added"
+      "validation": "self-check, portable plugin validation, AgentRooms, routing and parity validation"
     },
     "antigravity": {
       "path": "platforms/antigravity",
@@ -34,15 +36,15 @@
       "plugins": 19,
       "skills": 80,
       "commands": 126,
-      "validation": "self-check 14/14; targeted tests 156 pass; capability-routing parity added"
+      "validation": "self-check, targeted tests, routing and parity validation"
     }
   },
   "notes": [
-    "Platform folders are isolated copies of the read-only source distributions.",
+    "Platform folders are isolated copies of the validated native distributions.",
     "Codex keeps its native skill and AgentRoom runtime rather than pretending to be a Claude command runtime.",
-    "Antigravity uses the validated Claude-compatible trees and documented Google/Gemini config directories.",
-    "Validation is structural plus selected runtime coverage; long-running end-to-end suites remain separate.",
-    "The learned upstream corpus is applied through capability-inventory.json, CAPABILITY_ROADMAP.md, and the phase-owned capability-routing workflow."
+    "Antigravity uses validated Claude-compatible capability trees with documented Google/Gemini config targets.",
+    "Generic application-delivery capabilities are instructions used on consuming projects; no application implementation is bundled here.",
+    "The 2026-08-25 repair update is included in the current mainline ancestry."
   ],
   "learningIntegration": {
     "inventory": "capability-inventory.json",
