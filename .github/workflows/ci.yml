@@ -49,11 +49,12 @@ jobs:
       - name: Generated skill mirror parity
         run: python scripts/sync-agent-skills.py --check
 
-      - name: Structural + license + link + doc-freshness validation
+      - name: Structural + parity + license + link + doc-freshness validation
         run: |
           python scripts/validate-agent-skills.py
           python scripts/validate-agent-platform.py
           python scripts/validate-workflow-command-parity.py
+          python scripts/validate-distribution-parity.py
           python scripts/check-agent-licenses.py
           python scripts/check-agent-links.py
           python scripts/build-agent-audit.py --check
