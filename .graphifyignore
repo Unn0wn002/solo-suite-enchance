@@ -1,15 +1,11 @@
 node_modules/
-.next/
-.vinext/
-dist/
-build/
 coverage/
 .tmp/
 graphify-out/
-.wrangler/
 outputs/
 work/
-public/
+.tools/
+**/__pycache__/
 **/*.map
 **/*.min.js
 **/*.png

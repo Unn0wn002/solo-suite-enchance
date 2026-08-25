@@ -6,10 +6,7 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "start": "vinext start",
-    "test": "vinext build && node --test tests/rendered-html.test.mjs tests/capability-inventory.test.mjs tests/core-tooling.test.mjs tests/page-interactions.test.mjs tests/bundle-budget.test.mjs",
+    "test": "node --test tests/capability-inventory.test.mjs tests/core-tooling.test.mjs",
     "capability:inventory": "node scripts/build-capability-inventory.mjs",
     "capability:catalog": "node scripts/build-capability-catalog.mjs",
     "core:check": "node scripts/check-core-tooling.mjs",
@@ -25,47 +22,7 @@
     "agent:compat": "python scripts/agent-compat.py --write",
     "agent:token-report": "python scripts/agent-token-report.py --write",
     "agent:update-check": "python scripts/agent-update-check.py",
-    "agent:clean-temp": "python scripts/agent-clean-temp.py",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "db:generate": "drizzle-kit generate"
-  },
-  "dependencies": {
-    "drizzle-orm": "0.45.2",
-    "next": "16.2.12",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
-  },
-  "devDependencies": {
-    "@cloudflare/vite-plugin": "1.47.0",
-    "@cloudflare/workers-types": "^5.20260804.1",
-    "@tailwindcss/postcss": "4.2.1",
-    "@types/node": "22.19.19",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
-    "drizzle-kit": "0.31.10",
-    "eslint": "9.39.4",
-    "eslint-config-next": "16.2.12",
-    "jsdom": "^30.0.1",
-    "react-server-dom-webpack": "19.2.8",
-    "tailwindcss": "4.2.1",
-    "typescript": "5.9.3",
-    "vinext": "0.0.50",
-    "vite": "8.1.5",
-    "wrangler": "4.114.0"
-  },
-  "overrides": {
-    "@babel/core": "7.29.7",
-    "brace-expansion": "5.0.9",
-    "esbuild": "0.28.1",
-    "fast-uri": "3.1.5",
-    "js-yaml": "4.3.1",
-    "minimatch": "10.2.5",
-    "nanoid": "3.3.18",
-    "postcss": "8.5.24",
-    "sharp": "0.35.2",
-    "undici": "7.29.0"
+    "agent:clean-temp": "python scripts/agent-clean-temp.py"
   },
   "type": "module"
 }
