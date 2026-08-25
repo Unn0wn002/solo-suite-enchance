@@ -1,43 +1,43 @@
 ---
-description: Run the pre-launch checklist via parallel fan-out to specialist personas, then synthesize a go/no-go decision
+description: Run the pre-launch checklist via parallel fan-out to canonical project agents, then synthesize a go/no-go decision
 ---
 
 Follow repository authority and safety boundaries. Invocation does not authorize commits, pushes, deployments, destructive operations, package/MCP installation, credential access, or external writes; obtain explicit approval where required.
 
-
 Invoke the shipping-and-launch skill.
 
-`/ship` is a **fan-out orchestrator**. It runs three specialist personas in parallel against the current change, then merges their reports into a single go/no-go decision with a rollback plan. The personas operate independently — no shared state, no ordering — which is what makes parallel execution safe and useful here.
+`/ship` is a **fan-out orchestrator**. It runs three canonical project personas in parallel against the current change, then merges their reports into a single go/no-go decision with a rollback plan. The personas operate independently — no shared state, no ordering — which is what makes parallel execution safe and useful here.
 
 ## Phase A — Parallel fan-out
 
 Spawn three subagents concurrently using the Agent tool. **Issue all three Agent tool calls in a single assistant turn so they execute in parallel** — sequential calls defeat the purpose of this command.
 
-In Claude Code, each call passes `subagent_type` matching the persona's `name` field:
+In Claude Code, each call passes `subagent_type` matching an agent present in `.claude/agents/`:
 
-1. **`code-reviewer`** — Run a five-axis review (correctness, readability, architecture, security, performance) on the staged changes or recent commits. Output the standard review template.
-2. **`security-auditor`** — Run a vulnerability and threat-model pass. Check OWASP Top 10, secrets handling, auth/authz, dependency CVEs. Output the standard audit report.
-3. **`test-engineer`** — Analyze test coverage for the change. Identify gaps in happy path, edge cases, error paths, and concurrency scenarios. Output the standard coverage analysis.
+1. **`software-architect`** — Run the code-quality and architecture pass: correctness risks, readability, coupling, architectural consistency, and performance implications. Output prioritized findings with file/line evidence.
+2. **`security-reviewer`** — Run a vulnerability and threat-model pass. Check OWASP Top 10, secrets handling, auth/authz, dependency risk, and least privilege. Output the standard security report.
+3. **`qa-engineer`** — Analyze verification coverage for the change. Identify gaps in happy path, edge cases, error paths, regressions, concurrency, accessibility, and runtime/browser checks. Output the standard QA coverage analysis.
 
-In other harnesses without an Agent tool, invoke each persona's system prompt sequentially and treat their outputs as if returned in parallel — the merge phase still works.
+In harnesses without an Agent tool, invoke each persona's system prompt sequentially and treat their outputs as independent reports — the merge phase still works.
 
-Constraints (from Claude Code's subagent model):
-- Subagents cannot spawn other subagents — do not let one persona delegate to another.
+Constraints:
+- Subagents cannot spawn other subagents.
 - Each subagent gets its own context window and returns only its report to this main session.
-- If you need teammates that talk to each other instead of just reporting back, use Claude Code Agent Teams and reference these personas as teammate types (see `references/orchestration-patterns.md`).
+- Agent names in this command must resolve to checked-in project adapters; do not invent or rely on undeclared plugin-only personas.
 
-**Persona resolution.** If you've defined your own `code-reviewer`, `security-auditor`, or `test-engineer` in `.claude/agents/` or `~/.claude/agents/`, those take precedence over this plugin's versions — `/ship` picks up your customizations automatically. This is intentional: plugin subagents sit at the bottom of Claude Code's scope priority table, so user-level definitions win by design.
+**Persona resolution.** Project-level definitions in `.claude/agents/` are authoritative for this command. If a user-level agent with the same canonical name exists, normal host precedence may customize it, but `/ship` must remain valid using only repository-defined adapters.
 
 ## Phase B — Merge in main context
 
-Once all three reports are back, the main agent (not a sub-persona) synthesizes them:
+Once all three reports are back, the main agent synthesizes them:
 
-1. **Code Quality** — Aggregate Critical/Important findings from `code-reviewer` and any failing tests, lint, or build output. Resolve duplicates between reviewers.
-2. **Security** — Promote any Critical/High `security-auditor` findings to launch blockers. Cross-reference with `code-reviewer`'s security axis.
-3. **Performance** — Pull from `code-reviewer`'s performance axis; cross-check Core Web Vitals if applicable.
-4. **Accessibility** — Verify keyboard nav, screen reader support, contrast (not covered by the three personas — handle directly here, or invoke the accessibility checklist).
-5. **Infrastructure** — Env vars, migrations, monitoring, feature flags. Verify directly.
-6. **Documentation** — README, ADRs, changelog. Verify directly.
+1. **Code Quality & Architecture** — Aggregate Critical/Important findings from `software-architect` and any failing tests, lint, or build output. Resolve duplicates.
+2. **Security** — Promote any Critical/High `security-reviewer` findings to launch blockers. Cross-reference architecture findings that affect trust boundaries.
+3. **Testing & Runtime Quality** — Pull coverage and regression gaps from `qa-engineer`; include browser/runtime checks when applicable.
+4. **Performance** — Combine architect and QA evidence; cross-check Core Web Vitals for user-facing web changes when available.
+5. **Accessibility** — Require keyboard access, focus visibility, semantics, contrast, and reduced-motion checks for user-facing changes.
+6. **Infrastructure** — Verify env vars, migrations, monitoring, feature flags, and rollback prerequisites directly.
+7. **Documentation** — Verify README, ADRs, changelog, runbook, or migration notes when the change requires them.
 
 ## Phase C — Decision and rollback
 
@@ -61,15 +61,15 @@ Produce a single output:
 - Recovery time objective: [target]
 
 ### Specialist reports (full)
-- [code-reviewer report]
-- [security-auditor report]
-- [test-engineer report]
+- [software-architect report]
+- [security-reviewer report]
+- [qa-engineer report]
 ```
 
 ## Rules
 
-1. The three Phase A personas run in parallel — never sequentially.
+1. The three Phase A personas run in parallel when the host supports it.
 2. Personas do not call each other. The main agent merges in Phase B.
 3. The rollback plan is mandatory before any GO decision.
 4. If any persona returns a Critical finding, the default verdict is NO-GO unless the user explicitly accepts the risk.
-5. **Skip the fan-out only if all of the following are true:** the change touches 2 files or fewer, the diff is under 50 lines, and it does not touch auth, payments, data access, or config/env. Otherwise, default to fan-out. `/ship` is designed for production-bound changes — when the blast radius is non-trivial, run the parallel review even if the diff looks small.
+5. **Skip the fan-out only if all of the following are true:** the change touches 2 files or fewer, the diff is under 50 lines, and it does not touch auth, payments, data access, or config/env. Otherwise, default to fan-out.
