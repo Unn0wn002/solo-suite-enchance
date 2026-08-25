@@ -14,26 +14,29 @@ them from `decisions.md`/`handoff.md`.
 - [ ] T2b: Decide whether to provision D1 for a real feature or remove the scaffolding entirely (guard is in place; the underlying product decision is still open — see `prd.md` Open Question #5)  (feature: database)
 - [ ] T23: Add a Content-Security-Policy — needs a report-only pass against the real RSC/hydration payload before enforcing, not a same-session guess (baseline headers are done, see Done)  (feature: security)
 - [ ] T25: Deploy-trigger for the "Sites" hosting layer — **strong lead found 2026-08-07**: a `sites` git remote exists whose URL embeds `.openai/hosting.json`'s exact `project_id`, with a live `sites/main`, so `git push sites main` is the likely trigger. Still **unconfirmed** — the only empirical test is a production deploy. Confirm with whoever owns the OpenAI Sites project (trigger? which branch does prod track? Sites-layer rollback path?) and replace `.solo/release.md`'s "Deploy mechanism" section with the answer.  (feature: release)
-- [ ] T27 (new, 2026-08-07): **CI has still never executed.** `.github/workflows/ci.yml` triggers on `push: branches: [main]` and `pull_request`; the branch was pushed to `origin` but that matches neither. Open a PR into `main` to fire all three jobs before anything lands. Compare URL: https://github.com/Unn0wn002/solo-suite-enchance/compare/main...audit/agent-extension-platform  (feature: release)
 
 ### P1 — remaining
 - [ ] T2b, T23-CSP (see above, carried from P0 remainder)
 
 ### P2 — recommended
 - [x] T13–T17 (see Done)
-- [ ] T21: Decide the fate of `platforms/antigravity/parity/`'s vestigial Codex-flavored `tools/parity.py` — adapt it into a real Claude→Antigravity checker, or remove the subdirectory  (feature: tooling)
 
 ### P3 — optional
 - [ ] T18: Add dark-mode support (the design-token structure already supports it)  (feature: design)
 - [ ] T19: Add CodeQL/Dependabot to the Claude and Antigravity product distributions' own CI, matching what Codex's distribution already has  (feature: security)
 - [ ] T20: Reconcile the three different Graphify version numbers appearing across the prior audit's own artifacts (0.9.27 / 0.9.29 / 0.9.32)  (feature: tooling)
-- [ ] T26 (new, found during T12): `EXPECTED_TARGET_SKILL_COUNT = 186` in both `platforms/claude/tools/parity.py` and `platforms/antigravity/tools/parity.py` doesn't match the actually-counted 185 Codex skill files the original audit found (`find platforms/codex/plugins -name openai.yaml | wc -l` = 185). Not independently re-verified or fixed this session — flagged as a follow-up, since it could mean `test_parity_contract.py` is currently failing in the Codex checkout too.  (feature: tooling)
 
 ## Blocked
 
-*(none)*
+- [ ] Refresh the persisted Graphify graph after AI-work command/document changes. The audited bootstrap requires an explicit project-local `--install` opt-in when Graphify 0.9.32 is not already available, so unattended repair runs must not fabricate or hand-edit graph evidence.
 
 ## Done
+
+### AI-work repair-cycle reconciliation (2026-08-25)
+
+- [x] T27: Root CI has executed repeatedly on pull requests. Current repair-cycle evidence includes successful website typecheck/lint/build/tests, dependency/remediation security, generated-skill and structural/parity validation, and Claude/Codex/Antigravity distribution jobs; the old "CI has still never executed" state was stale.
+- [x] T21: The vestigial `platforms/antigravity/parity/tools/parity.py` path no longer exists. Cross-distribution parity is now enforced by the maintained repository-level platform validator instead of that obsolete subdirectory.
+- [x] T26: Re-verified through the full Windows Claude/Codex/Antigravity distribution validation suite. The current parity contract uses `EXPECTED_TARGET_SKILL_COUNT = 186` and passes; the older audit note claiming 185 and predicting a failing parity test is stale.
 
 ### Audit #2 remediation (2026-08-07)
 
