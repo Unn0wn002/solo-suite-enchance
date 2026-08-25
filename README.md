@@ -1,289 +1,78 @@
 # Solo Suite Enchance
 
-Solo Suite Enchance is a website-first developer operating system that brings a
-full product team workflow to Claude, Codex, and Antigravity. The current
-website is the public-facing command center; the repository also contains the
-validated platform distributions that power larger projects later.
+Solo Suite Enchance is a cross-platform AI development extension platform for Claude Code, Codex, and Antigravity. It provides portable plugins, skills, commands/workflows, agent roles, shared `.solo/` project memory, Graphify adapters, security checks, and release/validation gates.
 
-The suite is built around one shared project-memory contract (`.solo/`) and a
-repeatable loop:
+## Repository boundary
 
-`intake → spec → architecture → design → build → review → test → audit → gate → release → document`
+This repository contains **AI tooling only**. It does not contain, host, deploy, or persist the MysteryMart/Website application or its product data. Application repositories may install or consume Solo Suite, but their application source, runtime configuration, databases, deployment metadata, and business data remain in those application repositories.
 
-## What is in this repository
+The bundled surfaces are:
 
-| Surface | Location | Current state |
-| --- | --- | --- |
-| Website | `app/` | Production-ready Vinext/Sites landing experience |
-| Claude distribution | `platforms/claude/` | 19 plugins, 80 skills, 126 slash commands |
-| Codex distribution | `platforms/codex/` | 19 plugins, 185 skills, 126 migrated workflows |
-| Antigravity distribution | `platforms/antigravity/` | 19 plugins, 80 skills, 126 slash commands |
-| Graphify map | `graphify-out/` | Code graph, report, and historical refreshes |
-| Learned capability map | `capability-inventory.json` + `CAPABILITY_ROADMAP.md` | Upstream-informed routing and implementation ideas |
-| Complete capability catalog | `CAPABILITY_CATALOG.md` | Every native skill, plugin, command, and learned-role mapping |
+| Surface | Location |
+| --- | --- |
+| Portable project skills/rules/workflows | `.agents/` |
+| Claude project adapters, commands, permissions | `.claude/` |
+| Shared project-memory contract | `.solo/` |
+| Agent roles, profiles, manifests, security policy | `agent-platform/` |
+| Claude distribution | `platforms/claude/` |
+| Codex distribution | `platforms/codex/` |
+| Antigravity distribution | `platforms/antigravity/` |
+| Validation, audit, bootstrap and installer tooling | `scripts/` |
+| Agent-specific audit evidence | `docs/agent-audit/` |
 
-The platform folders were copied from the three read-only source checkouts and
-kept isolated so their native manifests and validation tooling remain intact.
-The website is focused on advanced website delivery today, while the workflow
-profiles already cover SaaS applications, e-commerce, internal applications,
-APIs, and packages.
+Generic website-development, browser, SEO, frontend, backend, database, and deployment **skills** remain valid AI capabilities. They are instructions for working on other projects; they are not a bundled website application.
 
-## Current validation status
+## Current repair/update state
 
-The platform distributions are structurally healthy, but “fully working” means
-more than a manifest check. The evidence currently available is:
+The repository includes the consolidated 2026-08-25 repair update: safer command authorization, canonical agent routing, hardened Claude permissions, dependency/security remediation, generated-skill parity, Claude↔Antigravity distribution parity, `/full-audit` command parity, immutable CI action pins, and Linux/Windows distribution validation.
 
-- Claude: native self-check passes (14/14) and 156 targeted tests pass.
-- Antigravity: native self-check passes (14/14) and 156 targeted tests pass.
-- Codex: self-check passes (6/6), portable validation passes for all 19 plugins,
-  all four AgentRooms validate, and 99 targeted tests pass.
-- Codex’s full AgentRoom integration suite contains long-running end-to-end
-  cases; those were not treated as passed when they exceeded the bounded local
-  test window. Treat this as “validated structure + selected runtime checks,”
-  not a blanket production guarantee.
-
-Run the checks from each platform folder:
+## Validate
 
 ```powershell
-# Claude or Antigravity
-python plugins\solo\skills\suite-integrity\scripts\self_check.py . -
-python plugins\ai\skills\agent-room-templates\scripts\validate_rooms.py --suite .
-python -m unittest tests.test_inventory tests.test_parity_contract tests.test_validate_rooms tests.test_output_contract tests.test_documentation_truth tests.test_readonly_audit tests.test_trigger_routing
-
-# Codex
-python plugins\solo\skills\suite-integrity\scripts\self_check.py . -
-python plugins\ai\skills\agent-room-templates\scripts\validate_rooms.py --suite .
-python tools\validate_plugins.py --official-if-available
-python -m unittest tests.test_self_check tests.test_validate_plugins tests.test_command_skills tests.test_validate_rooms tests.test_full_team_preflight tests.test_gate_contracts tests.test_site_doctor_helpers tests.test_parity
+npm ci
+npm test
+npm run agent:validate
+python scripts/agent-security.py --npm-audit
 ```
 
-## Add it to Claude Code
+`npm test` validates the generated capability inventory and core tooling contract. `agent:validate` verifies generated mirrors, platform structure, workflow/command parity, distribution parity, licenses, links, generated audit/token reports, and Graphify snapshot consistency.
 
-From Claude Code, register the Claude marketplace folder:
+Graphify is an optional, explicitly provisioned project-local intelligence tool. This distribution does not commit a pre-generated `graphify-out/` snapshot. After explicitly installing the audited Graphify toolchain, a user may generate a graph in the active project when graph-backed analysis is needed.
 
-```text
-/plugin marketplace add C:\path\to\Solo Suite Enchance\platforms\claude
-/plugin install solo@solo-suite
-/plugin install project@solo-suite
-/plugin install design@solo-suite
-/plugin install dev@solo-suite
-/plugin install test@solo-suite
-/plugin install release@solo-suite
-/plugin install docs@solo-suite
-/plugin install site-doctor@solo-suite
-/plugin install stack@solo-suite
-/plugin install git@solo-suite
-/plugin install spec@solo-suite
-/plugin install repo@solo-suite
-/plugin install security@solo-suite
-/plugin install browser@solo-suite
-/plugin install gate@solo-suite
-/plugin install ai@solo-suite
-/plugin install growth@solo-suite
-/reload-plugins
-```
+## Claude Code
 
-Install `solo` first because it owns the shared `.solo/` memory lifecycle. Use
-`/solo:start-session` to orient the project, `/solo:run-cycle` for a focused
-task, and `/solo:full-team-dev` for the complete website-to-release workflow.
+Register `platforms/claude/` as the Solo Suite marketplace and install the required plugins. Install `solo` first because it owns the `.solo/` lifecycle. Use `/solo:start-session`, `/solo:run-cycle`, or `/solo:full-team-dev` as appropriate.
 
-## Add it to Codex
+## Codex
 
-From a PowerShell terminal:
+Register `platforms/codex/` and install the required plugins. Codex exposes migrated workflows as skills; use `platforms/codex/COMMAND-MAP.md` for command-to-skill mappings. Start a new Codex task after installing or updating plugins so newly installed skills are discovered.
+
+## Antigravity
+
+Use the validated adapter under `platforms/antigravity/`. `platforms/antigravity/ANTIGRAVITY.md` documents the Google/Gemini configuration targets and platform assumptions.
+
+## Global user installation
+
+The reviewed Windows installer can promote the audited portable skills and native platform distributions into the current user's agent configuration directories. Inspect targets first:
 
 ```powershell
-codex plugin marketplace add "C:\path\to\Solo Suite Enchance\platforms\codex"
-codex plugin add solo@solo-suite-codex
-codex plugin add project@solo-suite-codex
-codex plugin add design@solo-suite-codex
-codex plugin add dev@solo-suite-codex
-codex plugin add test@solo-suite-codex
-codex plugin add release@solo-suite-codex
-codex plugin add docs@solo-suite-codex
-codex plugin add site-doctor@solo-suite-codex
-codex plugin add stack@solo-suite-codex
-codex plugin add git@solo-suite-codex
-codex plugin add spec@solo-suite-codex
-codex plugin add repo@solo-suite-codex
-codex plugin add security@solo-suite-codex
-codex plugin add browser@solo-suite-codex
-codex plugin add gate@solo-suite-codex
-codex plugin add ai@solo-suite-codex
-codex plugin add growth@solo-suite-codex
-codex plugin add seo@solo-suite-codex
-codex plugin add full-team@solo-suite-codex
-```
-
-Codex exposes the workflows as skills, not Claude slash commands:
-
-```text
-$solo-start-session
-$dev-implement-feature
-$site-doctor-full-checkup
-$gate-production-ready
-$full-team-orchestrator
-```
-
-Use `platforms\codex\COMMAND-MAP.md` for the complete legacy-command to Codex
-skill mapping. Start a new Codex task after installing or updating plugins so
-the new skills are loaded.
-
-Use `$capability-routing` before a large task to select the smallest
-phase-owned set of plugins and skills. It writes `.solo/capability-plan.md`.
-
-## Install the recommended repository-intelligence core
-
-For architecture-aware and token-efficient work, use the approved tools and
-local fallbacks after cloning:
-
-- Graphify for architecture and cross-file relationships;
-- bounded native search for symbols and references;
-- primary official documentation for current library guidance;
-- Repomix for filtered repository snapshots.
-
-Aider, Serena, Context7, and code-review-graph are retained only as rejected
-audit evidence and are not installed or activated.
-
-Follow [`CORE_REPOSITORY_INTELLIGENCE.md`](CORE_REPOSITORY_INTELLIGENCE.md).
-The guide covers Claude, Codex, and Antigravity. Graphify installation is
-explicit, project-local, and user-controlled; cloning this repository never
-silently changes global agent configuration.
-
-```powershell
-node scripts\check-core-tooling.mjs
-```
-
-The check is read-only and reports which optional tools are available.
-
-## Project-scoped lifecycle skills
-
-The repository also carries all 24 audited lifecycle skills from
-[`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills). ChatGPT/Codex and Antigravity discover
-them under `.agents/skills/`; Claude receives generated mirrors under `.claude/skills/`. Claude has eight
-adapted commands under `.claude/commands/`, and Antigravity has the corresponding workflows under
-`.agents/workflows/`. Upstream automatic hooks and unpinned MCP installer instructions are excluded.
-
-The audited Graphify `0.9.32` CLI is exposed through `$graphify` in Codex and `/graphify` in Claude and
-Antigravity. These reviewed adapters support bounded local queries and explicit code-only graph refreshes; they
-do not enable Graphify hooks, MCP, platform installers, network ingestion, databases, or LLM labeling.
-
-## Install globally for every project
-
-An explicitly requested user-level installation is supported by the reviewed PowerShell installer. It promotes
-the audited portable skills, Claude commands, Antigravity workflows, and all native platform plugin trees into
-the current user's Codex, Claude, and Gemini/Antigravity configuration directories. Existing destinations are
-backed up below `~/.solo-suite-global-backups/` before replacement.
-
-```powershell
-# Inspect the planned targets first.
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -WhatIf
-
-# Install for the current Windows user.
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -Confirm:$false
-
-# Install or refresh only the Graphify host adapters.
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent-platforms.ps1 -GraphifyOnly
 ```
 
-Restart Codex, Claude, and Antigravity after installation. The installer does not globally install application
-dependencies; Graphify remains separately version-pinned.
+Then run the installer only when a user-level installation is explicitly wanted. Existing destinations are backed up below `~/.solo-suite-global-backups/`. Graphify remains separately version-pinned and opt-in.
 
-## Add it to Antigravity
+## Repository intelligence
 
-Antigravity does not expose a single standardized marketplace CLI in this
-checkout. The adapter is therefore installed by copying the validated plugin
-and skill trees into the Google/Gemini configuration directories:
+See `CORE_REPOSITORY_INTELLIGENCE.md`. Graphify installation is explicit and project-local; cloning or installing Solo Suite never silently enables hooks, MCP servers, global tool installers, or application dependencies.
 
-```powershell
-$source = (Resolve-Path "C:\path\to\Solo Suite Enchance\platforms\antigravity").Path
-$config = Join-Path $HOME ".gemini\config"
-New-Item -ItemType Directory -Force (Join-Path $config "plugins") | Out-Null
-New-Item -ItemType Directory -Force (Join-Path $config "skills") | Out-Null
-Copy-Item "$source\plugins\*" (Join-Path $config "plugins") -Recurse -Force
-Get-ChildItem "$source\plugins" -Directory | ForEach-Object {
-  $skills = Join-Path $_.FullName "skills"
-  if (Test-Path $skills) {
-    Copy-Item "$skills\*" (Join-Path $config "skills") -Recurse -Force
-  }
-}
-```
+## Capability references
 
-Restart Antigravity after copying. The adapter keeps the Claude-compatible
-`/plugin:*` command names and the same `.solo/` project memory convention.
-`platforms\antigravity\ANTIGRAVITY.md` documents the target directories and
-platform-specific assumptions.
+- `CAPABILITY_CATALOG.md` — complete native capability catalog.
+- `capability-inventory.json` — generated inventory used by tests.
+- `CAPABILITY_ROADMAP.md` — phase-owned capability evolution.
+- `suite-manifest.json` — platform/distribution summary.
+- `THIRD_PARTY_NOTICES.md` — attribution and license notices.
 
-Use `/project:capability-map` before a large task to select the smallest
-phase-owned set of plugins and commands.
+## Safety boundary
 
-## Website development
-
-The website lives in `app/` and deploys through the Sites project configured in
-`.openai/hosting.json`.
-
-```powershell
-npm.cmd ci
-$env:WRANGLER_LOG_PATH = ".wrangler\wrangler.log"
-npx.cmd vinext dev
-npx.cmd vinext build
-```
-
-`npm run dev` and `npm run build` are thin wrappers over `vinext dev` and
-`vinext build` — they set no environment variables of their own. The
-`WRANGLER_LOG_PATH` line above is a local convenience; `vite.config.ts` already
-defaults Wrangler/Miniflare state to project-local paths.
-
-### Verifying the website
-
-```powershell
-npx.cmd tsc --noEmit    # types
-npm.cmd run lint        # eslint
-npm.cmd test            # build + 11 tests, incl. the bundle-size budget
-```
-
-CI (`.github/workflows/ci.yml`) runs all three on every push to `main` and
-every pull request, plus agent-platform structural validation, a graph
-freshness guard, and a dependency/remediation security gate.
-
-### Verifying the agent platform
-
-```powershell
-npm.cmd run agent:validate    # structure, licenses, links, parity, graph freshness
-npm.cmd run agent:security    # full 6-scanner suite (Windows; needs `py -3.12`)
-```
-
-## Repository layout
-
-```text
-app/                         Website source (single-page marketing site)
-worker/                      Cloudflare Worker entry: routing, image opt, security headers
-db/                          Drizzle + D1 scaffolding (binding currently unprovisioned)
-tests/                       node --test suites, incl. the bundle-size budget
-public/                      Static assets and the social preview card
-.github/workflows/ci.yml     Root CI: typecheck, lint, build, test, validate, security
-
-.agents/                     Canonical portable skills, rules, agents, workflows
-.claude/                     Generated Claude mirror + commands, agents, permissions
-agent-platform/              Roles, profiles, manifests, locks, security policy
-scripts/                     Validators, bootstrappers, audit and sync tooling
-platforms/claude/            Claude marketplace distribution
-platforms/codex/             Codex-native distribution
-platforms/antigravity/       Antigravity adapter distribution
-
-.solo/                       Project memory: prd, architecture, tasks, risks, decisions
-docs/audit/MASTER_AUDIT.md   Canonical living lifecycle audit
-docs/agent-audit/            Agent extension platform audit evidence
-graphify-out/                Persistent code graph and reports
-capability-inventory.json    Exact plugin, skill, command, and routing inventory
-performance-budget.json      Enforced client-bundle transfer-size budget
-CAPABILITY_ROADMAP.md        Upstream-informed implementation ideas and phases
-```
-
-## Scope and roadmap
-
-The current website surface is optimized for advanced website projects. The
-platform distributions already provide the larger-project workflow primitives:
-shared memory, stack intake, AgentRooms, security and quality gates, release
-evidence, browser QA, SEO, and documentation. The next expansion is to add
-project-specific dashboard routes and authenticated workspace state without
-changing the platform contracts.
+Do not commit application secrets, environment files, production data, deployment credentials, or copied application source into this repository. Keep application-specific implementation and data in the application repository that consumes Solo Suite.

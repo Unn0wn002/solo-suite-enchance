@@ -6,7 +6,7 @@ Generated from measured file sizes, word counts, metadata counts, and profile co
 
 | Source | Bytes | Words | Loading behavior |
 | --- | ---: | ---: | --- |
-| `AGENTS.md` | 2974 | 372 | Startup instruction surface |
+| `AGENTS.md` | 3310 | 406 | Startup instruction surface |
 | `CLAUDE.md` | 546 | 79 | Startup instruction surface |
 | Canonical skill metadata | 12748 description characters | 39 skills | Metadata first; bodies on demand |
 
