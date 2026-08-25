@@ -155,16 +155,13 @@ node scripts\check-core-tooling.mjs
 
 The check is read-only and reports which optional tools are available.
 
-## Project-scoped lifecycle skills and GSAP
+## Project-scoped lifecycle skills
 
 The repository also carries all 24 audited lifecycle skills from
 [`addyosmani/agent-skills`](https://github.com/addyosmani/agent-skills). ChatGPT/Codex and Antigravity discover
 them under `.agents/skills/`; Claude receives generated mirrors under `.claude/skills/`. Claude has eight
 adapted commands under `.claude/commands/`, and Antigravity has the corresponding workflows under
 `.agents/workflows/`. Upstream automatic hooks and unpinned MCP installer instructions are excluded.
-
-[`greensock/GSAP`](https://github.com/greensock/GSAP) is available to every agent as the exact project
-dependency `gsap@3.15.0`; implementation guidance remains in the portable `gsap-animation` skill.
 
 The audited Graphify `0.9.32` CLI is exposed through `$graphify` in Codex and `/graphify` in Claude and
 Antigravity. These reviewed adapters support bounded local queries and explicit code-only graph refreshes; they
@@ -189,8 +186,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts\install-global-agent
 ```
 
 Restart Codex, Claude, and Antigravity after installation. The installer does not globally install application
-dependencies: Graphify remains separately version-pinned, and GSAP must remain a dependency of each JavaScript
-project that imports it.
+dependencies; Graphify remains separately version-pinned.
 
 ## Add it to Antigravity
 
