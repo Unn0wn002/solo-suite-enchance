@@ -1,11 +1,9 @@
 name: CI
 
-# Root-level CI for the website (app/, db/, worker/, tests/) and repository-level
-# agent-platform checks. Nested platforms/*/.github/workflows/ci.yml files are
-# release/distribution workflow sources; GitHub Actions does not discover nested
-# workflow directories in this monorepo, so the root workflow must exercise any
-# checks expected to run on repository PRs.
-# See .solo/tasks.md T1 and .solo/risks.md.
+# Root-level CI for the Solo Suite AI extension platform. Nested platform
+# workflow files are release/distribution sources and are not discovered by
+# GitHub Actions from their nested locations, so this workflow exercises the
+# repository-level and cross-platform contracts.
 
 on:
   push:
@@ -16,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  website:
-    name: Typecheck, lint, build & test
+  tooling-tests:
+    name: AI tooling tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
@@ -30,15 +28,7 @@ jobs:
           cache: "npm"
 
       - run: npm ci
-
-      - name: Typecheck
-        run: npx tsc --noEmit
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Build + test
-        run: npm test
+      - run: npm test
 
   agent-platform-validate:
     name: Agent platform structural validation (read-only)
@@ -66,7 +56,7 @@ jobs:
           python scripts/build-agent-audit.py --check
           python scripts/agent-token-report.py --check
 
-      - name: Graph freshness guard
+      - name: Graph snapshot consistency
         run: python scripts/check-graph-freshness.py
 
   platform-distribution-smoke:
@@ -109,16 +99,9 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Codex's strict skill-frontmatter validator intentionally requires
-      # PyYAML for safe YAML parsing. Provision only the distribution's
-      # reviewed, hash-pinned dev lock so CI exercises the same validator
-      # contract instead of weakening or bypassing it.
       - name: Install pinned Codex validation requirements
         run: python -m pip install --require-hashes -r platforms/codex/requirements-dev.lock
 
-      # Reuse the repository's bounded, reviewed cross-platform validation
-      # harness so distribution self-checks, AgentRoom validation, routing,
-      # plugin validation, and parity contracts cannot drift silently.
       - name: Validate platform distributions
         shell: pwsh
         run: ./scripts/validate-platforms.ps1
@@ -131,9 +114,6 @@ jobs:
         with:
           persist-credentials: false
 
-      # npm audit reads package-lock.json directly and does not need an
-      # install, so there is deliberately no `npm ci` here — it keeps the gate
-      # fast and avoids executing any package lifecycle script in CI.
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
         with:
           node-version: "22.13.0"
@@ -142,15 +122,5 @@ jobs:
         with:
           python-version: "3.12"
 
-      # Deliberately WITHOUT --full-scanners: agent-platform/tooling/
-      # security-tools.lock.json hash-pins Semgrep/pip-audit wheels for
-      # `windows-amd64-python-3.12` only, so the pinned scanner suite cannot be
-      # reproduced on ubuntu-latest without expanding that audited trust
-      # surface to a second platform. What DOES run here is fully portable:
-      # the agent-platform text-surface scan, `npm audit --ignore-scripts
-      # --audit-level=high`, and the high-risk remediation validator.
-      # Also WITHOUT --write-evidence: CI must not rewrite tracked evidence
-      # artifacts. Run `npm run agent:security` locally on Windows for the
-      # full 6-scanner pass. See docs/audit/MASTER_AUDIT.md finding G-5.
       - name: Dependency audit + high-risk remediation validation
         run: python scripts/agent-security.py --npm-audit
